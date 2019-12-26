@@ -1,0 +1,9 @@
+{
+    "name": "ocelot/core",
+    "description": "Ocelot core package",
+    "type": "library",
+    "require": {
+        "php": "^7.3",
+        "laravel/framework": "^6.9"
+    }
+}
