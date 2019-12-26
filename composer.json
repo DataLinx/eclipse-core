@@ -5,5 +5,25 @@
     "require": {
         "php": "^7.3",
         "laravel/framework": "^6.9"
+    },
+    "require-dev": {
+        "laravel/ui": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ocelot\\Core\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ocelot\\Core\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ocelot\\Core\\Providers\\CoreServiceProvider"
+            ]
+        }
     }
 }
