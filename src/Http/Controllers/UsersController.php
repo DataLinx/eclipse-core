@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Ocelot\Core\Models\User;
 use Illuminate\Http\Request;
 
-class UsersController extends \App\Http\Controllers\Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
