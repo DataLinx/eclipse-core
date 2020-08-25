@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Ocelot\Core\Console\Commands\OcelotInstall;
 use Ocelot\Core\Console\Commands\PostComposerInstall;
+use Ocelot\Core\Console\Commands\PostComposerUpdate;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,7 @@ class CoreServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 PostComposerInstall::class,
+                PostComposerUpdate::class,
                 OcelotInstall::class,
             ]);
         }

@@ -52,5 +52,9 @@ class PostComposerInstall extends Command
         } else {
             echo ".env already exists" . PHP_EOL;
         }
+
+        // Install Telescope
+        // ------------------
+        Artisan::call('telescope:install');
     }
 }
