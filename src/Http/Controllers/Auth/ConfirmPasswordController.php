@@ -43,8 +43,8 @@ class ConfirmPasswordController extends Controller
      *
      * @return \Illuminate\View\View
      */
-//    public function showConfirmForm()
-//    {
-//        return view('core::auth.passwords.confirm');
-//    }
+    public function showConfirmForm()
+    {
+        return view('core::auth.passwords.confirm');
+    }
 }

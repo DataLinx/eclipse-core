@@ -43,8 +43,8 @@ class LoginController extends Controller
      *
      * @return \Illuminate\View\View
      */
-//    public function showLoginForm()
-//    {
-//        return view('core::auth.login');
-//    }
+    public function showLoginForm()
+    {
+        return view('core::auth.login');
+    }
 }

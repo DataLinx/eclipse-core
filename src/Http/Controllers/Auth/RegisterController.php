@@ -46,10 +46,10 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\View\View
      */
-//    public function showRegistrationForm()
-//    {
-//        return view('core::auth.register');
-//    }
+    public function showRegistrationForm()
+    {
+        return view('core::auth.register');
+    }
 
     /**
      * Get a validator for an incoming registration request.
