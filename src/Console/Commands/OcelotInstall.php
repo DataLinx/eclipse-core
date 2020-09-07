@@ -5,7 +5,7 @@ namespace Ocelot\Core\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Ocelot\Core\User;
+use Ocelot\Core\Models\User;
 
 class OcelotInstall extends Command
 {
