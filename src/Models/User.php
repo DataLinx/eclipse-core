@@ -61,4 +61,15 @@ class User extends Authenticatable
     {
         return $this->name .' '. $this->surname;
     }
+
+    /**
+     * Fetch User by email
+     *
+     * @param string $email User email
+     * @return User
+     */
+    public static function fetchByEmail($email)
+    {
+        return self::where('email', $email)->firstOrFail();
+    }
 }

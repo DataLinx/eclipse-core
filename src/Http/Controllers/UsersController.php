@@ -17,7 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('core::users/index', [
+        return view('core::users.index', [
             'users' => User::all(),
         ]);
     }
@@ -29,7 +29,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('core::users/edit', [
+        return view('core::users.edit', [
             'user' => new User,
             'action' => url('users'),
         ]);
@@ -71,7 +71,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        return view('core::users/edit', [
+        return view('core::users.edit', [
             'user' => $user,
             'action' => url("users/{$user->id}"),
         ]);
