@@ -40,5 +40,9 @@ class CoreServiceProvider extends ServiceProvider
             ]);
             $this->loadFactoriesFrom($package_dir .'database/factories');
         }
+
+        $this->publishes([
+            $package_dir .'public' => public_path('vendor/ocelot/core'),
+        ], 'ocelot/core');
     }
 }
