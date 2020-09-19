@@ -2,9 +2,10 @@
 
 namespace Ocelot\Core\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Ocelot\Core\Database\Factories\UserFactory;
 
 /**
  * Class User
@@ -16,7 +17,7 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasFactory, Notifiable;
 
     protected $table = 'cr_user';
 
@@ -71,5 +72,15 @@ class User extends Authenticatable
     public static function fetchByEmail($email)
     {
         return self::where('email', $email)->firstOrFail();
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return UserFactory
+     */
+    public static function newFactory()
+    {
+        return UserFactory::new();
     }
 }

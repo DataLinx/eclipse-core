@@ -15,7 +15,7 @@ class UserTest extends PackageTestCase
     {
         parent::setUp();
 
-        $this->authedUser = factory(User::class)->create();
+        $this->authedUser = User::factory()->make();
     }
 
     public function testUnauthorizedAccess()
@@ -74,11 +74,13 @@ class UserTest extends PackageTestCase
                 $this->assertEquals($val, $user->$key);
             }
         }
+
+        $this->assertEquals('John Doe', $user->getFullName());
     }
 
     public function testEdit()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($this->authedUser)
              ->get('users/'. $user->id .'/edit')
@@ -88,7 +90,7 @@ class UserTest extends PackageTestCase
 
     public function testUpdateCancel()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($this->authedUser)
              ->put('users/'. $user->id,  [
@@ -101,7 +103,7 @@ class UserTest extends PackageTestCase
     {
         $this->actingAs($this->authedUser);
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $data = [
             'name' => 'Diego',
@@ -127,7 +129,7 @@ class UserTest extends PackageTestCase
     {
         $this->actingAs($this->authedUser);
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->deleteJson('users/'. $user->id);
 

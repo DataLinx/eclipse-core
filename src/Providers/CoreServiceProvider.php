@@ -38,7 +38,6 @@ class CoreServiceProvider extends ServiceProvider
                 PostComposerUpdate::class,
                 OcelotInstall::class,
             ]);
-            $this->loadFactoriesFrom($package_dir .'database/factories');
         }
 
         $this->publishes([
