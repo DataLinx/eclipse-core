@@ -14,4 +14,11 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 abstract class AppTestCase extends BaseTestCase
 {
     use CreatesApplication;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('migrate')->run();
+    }
 }

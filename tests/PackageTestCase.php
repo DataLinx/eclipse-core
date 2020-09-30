@@ -30,5 +30,7 @@ class PackageTestCase extends TestCase
         parent::setUp();
 
         $this->artisan('migrate')->run();
+
+        $this->withoutMix();
     }
 }
