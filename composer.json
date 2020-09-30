@@ -39,7 +39,10 @@
             "Ocelot\\Core\\": "src/",
             "Ocelot\\Core\\Database\\Factories\\": "database/factories/",
             "Ocelot\\Core\\Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
