@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Ocelot\Core\Console\Commands\OcelotInstall;
 use Ocelot\Core\Console\Commands\PostComposerInstall;
 use Ocelot\Core\Console\Commands\PostComposerUpdate;
+use Ocelot\Core\Framework\L10n;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,9 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('l10n', function() {
+            return new L10n();
+        });
     }
 
     /**
@@ -26,11 +29,9 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $package_dir = __DIR__ .'/../../';
-
-        $this->loadRoutesFrom($package_dir .'routes/web.php');
-        $this->loadViewsFrom($package_dir .'resources/views', 'core');
-        $this->loadMigrationsFrom($package_dir .'database/migrations');
+        $this->loadRoutesFrom(package_path('ocelot/core', 'routes/web.php'));
+        $this->loadViewsFrom(package_path('ocelot/core', 'resources/views'), 'core');
+        $this->loadMigrationsFrom(package_path('ocelot/core', 'database/migrations'));
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -41,7 +42,7 @@ class CoreServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            $package_dir .'public' => public_path('vendor/ocelot/core'),
+            package_path('ocelot/core', 'public') => public_path('vendor/ocelot/core'),
         ], 'ocelot/core');
     }
 }

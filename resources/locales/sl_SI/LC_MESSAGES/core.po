@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Ocelot Core\n"
+"POT-Creation-Date: 2020-09-25 08:32+0200\n"
+"PO-Revision-Date: 2020-09-25 08:37+0200\n"
+"Last-Translator: Omer Sabic <omer@datalinx.si>\n"
+"Language-Team: \n"
+"Language: sl_SI\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ../../../..\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
+"X-Poedit-KeywordsList: _;pgettext:1c,2;npgettext:1c,2,3;dpgettext:2c,3\n"
+"X-Poedit-SearchPath-0: resources/views\n"
+"X-Poedit-SearchPath-1: src\n"
+
+#: resources/views/users/index.blade.php:6
+msgid "Users"
+msgstr "Uporabniki"
+
+#: resources/views/users/index.blade.php:8
+msgid "Create new user"
+msgstr "Ustvari novega uporabnika"
+
+#: resources/views/users/index.blade.php:11
+msgctxt "User"
+msgid "Name"
+msgstr "Ime"
+
+#: resources/views/users/index.blade.php:12
+msgctxt "Product"
+msgid "Name"
+msgstr "Naziv"
+
+#: resources/views/users/index.blade.php:14
+#: resources/views/users/index.blade.php:15
+#, python-format
+msgctxt "User"
+msgid "%d name missing"
+msgid_plural "%d names missing"
+msgstr[0] "%d manjkajoče ime"
+msgstr[1] "%d manjkajoči imeni"
+msgstr[2] "%d manjkajoča imena"
+msgstr[3] "%d manjkajočih imen"
+
+#: resources/views/users/index.blade.php:17
+#: resources/views/users/index.blade.php:18
+#, fuzzy, python-format
+#| msgctxt "User"
+#| msgid "%d name missing"
+#| msgid_plural "%d names missing"
+msgctxt "User"
+msgid "%d name present"
+msgid_plural "%d names present"
+msgstr[0] "%d manjkajoče ime"
+msgstr[1] "%d manjkajoči imeni"
+msgstr[2] "%d manjkajoča imena"
+msgstr[3] "%d manjkajočih imen"
+
+#: resources/views/users/index.blade.php:20
+#: resources/views/users/index.blade.php:21
+#, python-format
+msgctxt "Product"
+msgid "%d name missing"
+msgid_plural "%d names missing"
+msgstr[0] "%d manjkajoči naziv"
+msgstr[1] "%d manjkajoča naziva"
+msgstr[2] "%d manjkajoči nazivi"
+msgstr[3] "%d manjkajočih nazivov"
+
+#: resources/views/users/index.blade.php:28
+msgid "Full name"
+msgstr "Ime in priimek"
+
+#: resources/views/users/index.blade.php:29
+msgid "Email address"
+msgstr "E-naslov"
+
+#: resources/views/users/index.blade.php:30
+msgid "Created on"
+msgstr "Ustvarjeno"
+
+#: resources/views/users/index.blade.php:31
+msgid "Last seen"
+msgstr "Zadnjič viden"
+
+#: resources/views/users/index.blade.php:32
+msgid "Login count"
+msgstr "Število prijav"
+
+#: resources/views/users/index.blade.php:33
+msgid "Action"
+msgstr "Dejanje"
+
+#: resources/views/users/index.blade.php:46
+msgid "Delete"
+msgstr "Izbriši"
+
+#, fuzzy
+#~| msgid "Users"
+#~ msgid "User"
+#~ msgstr "Uporabniki"

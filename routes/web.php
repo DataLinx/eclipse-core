@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home', '\Ocelot\Core\Http\Controllers\HomeController@index')->middleware('web')->name('home');
+Route::get('/home', '\Ocelot\Core\Http\Controllers\HomeController@index')->middleware(['web', 'auth'])->name('home');
 Route::resource('/users', '\Ocelot\Core\Http\Controllers\UsersController')->middleware(['web', 'auth']);
+Route::resource('/languages', '\Ocelot\Core\Http\Controllers\LanguagesController')->middleware(['web', 'auth']);
 
 /*
  * Auth routes, copied from laravel/ui AuthRouteMethods

@@ -3,6 +3,7 @@
 namespace Ocelot\Core\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
+use Ocelot\Core\Framework\L10n;
 
 class EncryptCookies extends Middleware
 {
@@ -12,6 +13,6 @@ class EncryptCookies extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        L10n::COOKIE_NAME,
     ];
 }
