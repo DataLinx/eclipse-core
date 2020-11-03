@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Models\Foundation;
+namespace Ocelot\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Ocelot\Core\Database\Model;

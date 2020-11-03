@@ -5,7 +5,7 @@ namespace Ocelot\Core\Tests\Feature;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Ocelot\Core\Models\User;
-use Ocelot\Core\Tests\PackageTestCase;
+use Ocelot\Core\Testing\PackageTestCase;
 
 class UserTest extends PackageTestCase
 {

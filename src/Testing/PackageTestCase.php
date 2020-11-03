@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Tests;
+namespace Ocelot\Core\Testing;
 
 use Ocelot\Core\Providers\AuthServiceProvider;
 use Ocelot\Core\Providers\CoreServiceProvider;

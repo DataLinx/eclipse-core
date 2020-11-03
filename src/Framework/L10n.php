@@ -4,7 +4,7 @@ namespace Ocelot\Core\Framework;
 
 use Exception;
 use Illuminate\Support\Facades\Cookie;
-use Ocelot\Core\Models\Foundation\Language;
+use Ocelot\Core\Models\Language;
 
 /**
  * Class L10n

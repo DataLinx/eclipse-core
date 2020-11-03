@@ -5,7 +5,7 @@ namespace Ocelot\Core\Tests\Feature;
 use Exception;
 use Ocelot\Core\Framework\L10n;
 use Ocelot\Core\Models\User;
-use Ocelot\Core\Tests\PackageTestCase;
+use Ocelot\Core\Testing\PackageTestCase;
 
 class L10nTest extends PackageTestCase
 {
