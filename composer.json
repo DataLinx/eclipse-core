@@ -5,7 +5,9 @@
     "require": {
         "php": "^7.3",
         "ext-gettext": "*",
+        "ext-json": "*",
         "datalinx/gettext-context": "^1.0",
+        "doctrine/dbal": "^2.12",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -33,6 +35,9 @@
             "providers": [
                 "Ocelot\\Core\\Providers\\CoreServiceProvider"
             ]
+        },
+        "ocelot": {
+            "type": "app"
         }
     },
     "autoload": {
