@@ -30,6 +30,14 @@ class PostComposerUpdate extends Command
     {
         echo "Running Ocelot's Post Composer update procedure..." . PHP_EOL;
 
+        // Discover Ocelot packages
+        // ------------------
+        Artisan::call('ocelot:discover-packages');
+
+        // Map config files
+        // ------------------
+        Artisan::call('ocelot:map-config');
+
         // Update Telescope
         // ------------------
         Artisan::call('telescope:publish');

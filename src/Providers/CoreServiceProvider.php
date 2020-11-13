@@ -38,6 +38,8 @@ class CoreServiceProvider extends ServiceProvider
                 PostComposerInstall::class,
                 PostComposerUpdate::class,
                 OcelotInstall::class,
+                DiscoverPackages::class,
+                MapConfig::class,
             ]);
         }
 

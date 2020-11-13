@@ -19,7 +19,7 @@ if ( ! function_exists('app_base_path'))
                 throw new Exception('APP_BASE_PATH must be set in .env for testing!');
             }
 
-            return env('APP_BASE_PATH') . ($path ? trim($path, '/') : '');
+            return env('APP_BASE_PATH') . ($path ? ltrim($path, '/') : '');
         }
 
         // Otherwise, fallback to standard base_path()

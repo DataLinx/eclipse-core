@@ -2,6 +2,7 @@
 
 namespace Ocelot\Core\Testing;
 
+use Illuminate\Support\Facades\Artisan;
 use Ocelot\Core\Providers\AuthServiceProvider;
 use Ocelot\Core\Providers\CoreServiceProvider;
 use Ocelot\Core\Providers\EventServiceProvider;
@@ -16,6 +17,11 @@ use Orchestra\Testbench\TestCase;
  */
 class PackageTestCase extends TestCase
 {
+    /**
+     * @var bool Run the Ocelot install procedure in setUp()
+     */
+    protected $ocelot_install = true;
+
     protected function getPackageProviders($app)
     {
         return [
@@ -29,7 +35,9 @@ class PackageTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->artisan('migrate')->run();
+        if ($this->ocelot_install) {
+            Artisan::call('ocelot:install -n'); // -n = no interaction, use testing defaults
+        }
 
         $this->withoutMix();
     }
