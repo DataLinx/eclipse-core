@@ -3,6 +3,8 @@
 namespace Ocelot\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Ocelot\Core\Console\Commands\DiscoverPackages;
+use Ocelot\Core\Console\Commands\MapConfig;
 use Ocelot\Core\Console\Commands\OcelotInstall;
 use Ocelot\Core\Console\Commands\PostComposerInstall;
 use Ocelot\Core\Console\Commands\PostComposerUpdate;
