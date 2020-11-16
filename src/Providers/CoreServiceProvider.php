@@ -8,6 +8,7 @@ use Ocelot\Core\Console\Commands\MapConfig;
 use Ocelot\Core\Console\Commands\OcelotInstall;
 use Ocelot\Core\Console\Commands\PostComposerInstall;
 use Ocelot\Core\Console\Commands\PostComposerUpdate;
+use Ocelot\Core\Framework\Context;
 use Ocelot\Core\Framework\L10n;
 
 class CoreServiceProvider extends ServiceProvider
@@ -19,6 +20,10 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton('context', function() {
+            return new Context();
+        });
+
         $this->app->singleton('l10n', function() {
             return new L10n();
         });

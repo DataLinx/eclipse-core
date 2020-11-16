@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Ocelot\Core\Models\AppInstance;
+use Ocelot\Core\Models\Package;
 use Ocelot\Core\Models\Site;
 use Ocelot\Core\Models\User;
 
@@ -41,7 +43,7 @@ class OcelotInstall extends Command
     {
         $this->info("Running Ocelot installation procedure...");
 
-        $this->callSilent('migrate');
+        $this->callSilent('migrate:fresh');
 
         $this->callSilent('ocelot:discover-packages');
 
@@ -95,6 +97,22 @@ class OcelotInstall extends Command
 
         $site->save();
 
+        // Create default instance
+        $core_package = Package::fetchByName('ocelot', 'core');
+
+        $instance = new AppInstance;
+        $instance->site_id = $site->id;
+        $instance->app_package_id = $core_package->id;
+        $instance->path = '/';
+        $instance->save();
+
+        $instance_lang = new AppInstance\Language();
+        $instance_lang->app_instance_id = $instance->id;
+        $instance_lang->language_id = 'en';
+        $instance_lang->is_default = true;
+        $instance_lang->save();
+
+        // Done
         $this->info("Created site {$site->domain}");
     }
 

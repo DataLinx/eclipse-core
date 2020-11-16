@@ -29,4 +29,19 @@ class Package extends Model
     {
         return app_base_path("vendor/{$this->vendor}/{$this->name}/");
     }
+
+    /**
+     * Fetch Package by vendor and name
+     *
+     * @param string $vendor Vendor name
+     * @param string $name Package name
+     * @return \Illuminate\Database\Eloquent\Model|Package
+     */
+    public static function fetchByName($vendor, $name)
+    {
+        return self::where([
+            'vendor' => $vendor,
+            'name' => $name,
+        ])->firstOrFail();
+    }
 }
