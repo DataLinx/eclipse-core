@@ -23,35 +23,11 @@
                 <div class="card-header">Basic information</div>
                 <div class="card-body">
 
-                    <div class="form-group">
-                        <label for="user-name">Name</label>
-                        <input name="name" class="form-control @error('name') is-invalid @enderror" id="user-name" value="{{ old('name', $user->name) }}">
-                        @error('name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                    <x-form::input name="name" :object="$user" :label="_('Name')" required autocomplete="off"/>
 
-                    <div class="form-group">
-                        <label for="user-surname">Surname</label>
-                        <input name="surname" class="form-control @error('surname') is-invalid @enderror" id="user-surname" value="{{ old('surname', $user->surname) }}">
-                        @error('surname')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                    <x-form::input name="surname" :object="$user" :label="_('Surname')" required autocomplete="off"/>
 
-                    <div class="form-group">
-                        <label for="user-email">Email address</label>
-                        <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="user-email" value="{{ old('email', $user->email) }}">
-                        @error('email')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                    <x-form::input type="email" name="email" :object="$user" :label="_('Email address')" required autocomplete="off"/>
 
                 </div>
             </div>
@@ -60,15 +36,7 @@
                 <div class="card-header">Set password</div>
                 <div class="card-body">
 
-                    <div class="form-group">
-                        <label for="user-password">Password</label>
-                        <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="user-password" value="{{ old('password') }}">
-                        @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                    <x-form::input type="password" name="password" :label="_('Password')"/>
 
                 </div>
             </div>

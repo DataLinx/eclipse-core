@@ -2,6 +2,7 @@
 
 namespace Ocelot\Core\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Ocelot\Core\Console\Commands\DiscoverPackages;
 use Ocelot\Core\Console\Commands\MapConfig;
@@ -53,5 +54,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->publishes([
             package_path('ocelot/core', 'public') => public_path('vendor/ocelot/core'),
         ], 'ocelot/core');
+
+        Blade::componentNamespace('Ocelot\\Core\\View\\Components\\Form', 'form');
     }
 }
