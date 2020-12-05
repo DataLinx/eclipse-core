@@ -2,7 +2,6 @@
 
 namespace Ocelot\Core\Foundation\View\Components\Form;
 
-use Illuminate\Validation\Validator;
 use Illuminate\View\Component;
 
 class AbstractInput extends Component
@@ -48,7 +47,7 @@ class AbstractInput extends Component
     public $object;
 
     /**
-     * @var mixed|null Default input value
+     * @var mixed|null Default (initial) input value
      */
     public $default;
 
@@ -56,6 +55,11 @@ class AbstractInput extends Component
      * @var string Blade view file
      */
     protected $view;
+
+    /**
+     * @var mixed Component value/state that should be set
+     */
+    protected $current;
 
     /**
      * Select constructor.
@@ -91,6 +95,8 @@ class AbstractInput extends Component
         $this->size = $size;
         $this->object = $object;
         $this->default = $default;
+
+        $this->current = old() ? old($this->name) : $this->default;
     }
 
     /**
@@ -100,7 +106,7 @@ class AbstractInput extends Component
     {
         // Generate an id if it was not supplied, since we need it at least for the label
         if (empty($this->id)) {
-            $this->id = 'i'. md5($this->name);
+            $this->id = uniqid('input-');
         }
 
         return view($this->view);
@@ -108,6 +114,7 @@ class AbstractInput extends Component
 
     /**
      * Get form-control classes
+     *
      * @return string
      */
     public function getClasses()
