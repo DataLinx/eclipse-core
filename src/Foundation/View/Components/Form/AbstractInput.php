@@ -62,7 +62,7 @@ class AbstractInput extends Component
     protected $current;
 
     /**
-     * Select constructor.
+     * Common form input constructor.
      *
      * @param string $name
      * @param string|null $label

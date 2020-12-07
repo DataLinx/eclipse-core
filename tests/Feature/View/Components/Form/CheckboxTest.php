@@ -197,4 +197,27 @@ class CheckboxTest extends PackageTestCase
             'Three'
         ]);
     }
+
+    public function testAsSwitches()
+    {
+        $view = $this->component(Checkbox::class, [
+            'name' => 'foo',
+            'options' => [
+                1 => 'One',
+                2 => 'Two',
+                3 => 'Three',
+            ],
+            'default' => 2,
+            'asSwitches' => true,
+        ]);
+
+        $view
+            ->assertSee('custom-switch')
+            ->assertSeeInOrder([
+                'One',
+                'checked',
+                'Two',
+                'Three'
+            ]);
+    }
 }

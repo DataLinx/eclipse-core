@@ -26,7 +26,15 @@ class Checkbox extends AbstractInput
      */
     public $inline;
 
+    /**
+     * @var bool|null Show the options as buttons
+     */
     public $as_buttons;
+
+    /**
+     * @var bool Show the options as switches
+     */
+    public $as_switches;
 
     /**
      * @var string Input type
@@ -53,6 +61,7 @@ class Checkbox extends AbstractInput
      * @param bool|null $disabled
      * @param bool|null $inline
      * @param bool|null $asButtons
+     * @param bool|null $asSwitches
      */
     public function __construct(
         string $name
@@ -67,6 +76,7 @@ class Checkbox extends AbstractInput
         , bool $disabled = null
         , bool $inline = null
         , bool $asButtons = null
+        , bool $asSwitches = null
     )
     {
         parent::__construct(
@@ -86,6 +96,7 @@ class Checkbox extends AbstractInput
         $this->disabled = $disabled;
         $this->inline = $inline;
         $this->as_buttons = $asButtons;
+        $this->as_switches = $asSwitches;
     }
 
     /**

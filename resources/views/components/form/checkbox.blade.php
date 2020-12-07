@@ -26,7 +26,7 @@
         @if (! $inline) </div> @endif
     @else
         @foreach($options as $option)
-            <div class="custom-control custom-{{ $type }} @if($inline) custom-control-inline @endif">
+            <div class="custom-control @if ($as_switches) custom-switch @else custom-{{ $type }} @endif @if($inline) custom-control-inline @endif">
                 <input class="custom-control-input" name="{{ $getName() }}" type="{{ $type }}" value="{{ $option['value'] }}" @if($option['checked']) checked @endif id="{{ $option['id'] }}" @if($required) required @endif @if($disabled) disabled @endif>
                 <label class="custom-control-label" for="{{ $option['id'] }}">
                     {{ $option['label'] }}
