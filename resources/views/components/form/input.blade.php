@@ -18,7 +18,7 @@
             id="{{ $id }}"
             name="{{ $name }}"
             type="{{ $type }}"
-            value="{{ old($name, $object ? $object->$name : $default) }}"
+            value="{{ $current }}"
             @if($placeholder)
                 placeholder="{{ $placeholder }}"
             @endif

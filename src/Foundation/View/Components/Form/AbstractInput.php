@@ -52,14 +52,14 @@ class AbstractInput extends Component
     public $default;
 
     /**
+     * @var mixed Component value/state that should be set
+     */
+    public $current;
+
+    /**
      * @var string Blade view file
      */
     protected $view;
-
-    /**
-     * @var mixed Component value/state that should be set
-     */
-    protected $current;
 
     /**
      * Common form input constructor.
@@ -96,7 +96,7 @@ class AbstractInput extends Component
         $this->object = $object;
         $this->default = $default;
 
-        $this->current = old() ? old($this->name) : $this->default;
+        $this->current = old() ? old($this->name) : ($object ? $object->$name : $this->default);
     }
 
     /**

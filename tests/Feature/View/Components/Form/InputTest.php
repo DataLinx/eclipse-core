@@ -4,11 +4,13 @@ namespace Ocelot\Core\Tests\View\Components\Form;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Ocelot\Core\Testing\PackageTestCase;
+use Ocelot\Core\Testing\TestsComponents;
 use Ocelot\Core\View\Components\Form\Input;
 
 class InputTest extends PackageTestCase
 {
-    use InteractsWithViews;
+    use InteractsWithViews,
+        TestsComponents;
 
     public function setUp(): void
     {
@@ -53,5 +55,20 @@ class InputTest extends PackageTestCase
         $view->assertSee('is-invalid')
              ->assertSee('invalid-feedback')
              ->assertSee('Test error');
+    }
+
+    public function testRepopulate()
+    {
+        $this->mockSessionFlashedData([
+            'foo' => 'Flashed',
+        ]);
+
+        $view = $this->component(Input::class, [
+            'name' => 'foo',
+            'default' => 'Saved',
+        ]);
+
+        $view->assertSee('Flashed')
+             ->assertDontSee('Saved');
     }
 }
