@@ -17,7 +17,7 @@
                 @endif
             </h1>
 
-            @include('core::shared.errors')
+            <x-form::error/>
 
             <div class="card">
                 <div class="card-header">Basic information</div>
