@@ -36,7 +36,7 @@ class SelectTest extends PackageTestCase
              ->assertSee('aria-describedby')
              ->assertSee('Help text')
              ->assertSee('Placeholder')
-             ->assertSee('input-size-sm')
+             ->assertSee('form-control-sm')
              ->assertDontSee('is-invalid');
     }
 

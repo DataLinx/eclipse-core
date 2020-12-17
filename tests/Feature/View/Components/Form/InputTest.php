@@ -32,7 +32,7 @@ class InputTest extends PackageTestCase
              ->assertSee('aria-describedby')
              ->assertSee('Help text')
              ->assertSee('Placeholder')
-             ->assertSee('input-size-sm')
+             ->assertSee('form-control-sm')
              ->assertSeeInOrder([
                  'input-group-prepend',
                  'www.',
