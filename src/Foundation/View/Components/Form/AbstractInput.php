@@ -124,7 +124,7 @@ class AbstractInput extends Component
         ];
 
         if ($this->size) {
-            $classes[] = 'input-size-'. $this->size;
+            $classes[] = 'form-control-'. $this->size;
         }
 
         if ($this->hasError()) {
