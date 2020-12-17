@@ -4,6 +4,8 @@ namespace Ocelot\Core\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use League\Glide\Responses\LaravelResponseFactory;
+use League\Glide\ServerFactory;
 use Ocelot\Core\Console\Commands\DiscoverPackages;
 use Ocelot\Core\Console\Commands\MapConfig;
 use Ocelot\Core\Console\Commands\OcelotInstall;
@@ -27,6 +29,14 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->app->singleton('l10n', function() {
             return new L10n();
+        });
+
+        $this->app->singleton('glide', function() {
+            return ServerFactory::create([
+                'response' => new LaravelResponseFactory(app('request')),
+                'source' => app_base_path('storage/app'),
+                'cache' => app_base_path('storage/app/cache'),
+            ]);
         });
     }
 

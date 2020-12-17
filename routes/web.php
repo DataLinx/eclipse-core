@@ -30,3 +30,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('email/verify/{id}/{hash}', '\Ocelot\Core\Http\Controllers\Auth\VerificationController@verify')->name('verification.verify');
     Route::post('email/resend', '\Ocelot\Core\Http\Controllers\Auth\VerificationController@resend')->name('verification.resend');
 });
+
+/*
+ * Glide image server
+ */
+Route::get('img/{path}', function ($path) {
+
+    return app()->glide->getImageResponse($path, request()->all());
+
+})->where('path', '.*');
