@@ -40,7 +40,7 @@
                         <img src="img/{{ $user->image }}?w=200&h=200" />
                     @endif
 
-                    <x-form::file name="image" :label="_('Upload new image')" size="sm"/>
+                    <x-form::file name="image" :label="_('Upload new image')"/>
 
                     @if ($user->image)
                         <x-form::switcher name="delete_image" :label="_('Delete existing image')" :help="_('Select this if you just want to delete the existing image without uploading a new one.')"/>
