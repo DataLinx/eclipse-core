@@ -31,6 +31,7 @@ class User extends Authenticatable
         'password',
         'name',
         'surname',
+        'image',
     ];
 
     /**
@@ -61,6 +62,30 @@ class User extends Authenticatable
     public function getFullName()
     {
         return $this->name .' '. $this->surname;
+    }
+
+    /**
+     * Delete user's image, if set
+     */
+    public function deleteImage()
+    {
+        if (empty($this->image)) {
+            return;
+        }
+
+        // Delete file from filesystem
+        $file = storage_path('app/'. $this->image);
+
+        if (file_exists($file)) {
+            unlink($file);
+        }
+
+        // Delete from cache
+        app()->glide->deleteCache($this->image);
+
+        // Clear the attribute
+        $this->image = null;
+        $this->save();
     }
 
     /**

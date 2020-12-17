@@ -1,7 +1,7 @@
 @extends('core::layouts.app')
 
 @section('content')
-    <form method="post" action="{{ $action }}">
+    <form method="post" action="{{ $action }}" autocomplete="off" enctype="multipart/form-data">
         @csrf
         @if($user->id)
             @method('PUT')
@@ -23,11 +23,28 @@
                 <div class="card-header">Basic information</div>
                 <div class="card-body">
 
-                    <x-form::input name="name" :object="$user" :label="_('Name')" required autocomplete="off"/>
+                    <x-form::input name="name" :object="$user" :label="_('Name')" required/>
 
-                    <x-form::input name="surname" :object="$user" :label="_('Surname')" required autocomplete="off"/>
+                    <x-form::input name="surname" :object="$user" :label="_('Surname')" required/>
 
-                    <x-form::input type="email" name="email" :object="$user" :label="_('Email address')" required autocomplete="off"/>
+                    <x-form::input type="email" name="email" :object="$user" :label="_('Email address')" required/>
+
+                </div>
+            </div>
+
+            <div class="card my-3">
+                <div class="card-header">{{ _('User image') }}</div>
+                <div class="card-body">
+
+                    @if ($user->image)
+                        <img src="img/{{ $user->image }}?w=200&h=200" />
+                    @endif
+
+                    <x-form::file name="image" :label="_('Upload new image')" size="sm"/>
+
+                    @if ($user->image)
+                        <x-form::switcher name="delete_image" :label="_('Delete existing image')" :help="_('Select this if you just want to delete the existing image without uploading a new one.')"/>
+                    @endif
 
                 </div>
             </div>

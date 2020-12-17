@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <base href="{{ config('app.url') }}" />
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>

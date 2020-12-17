@@ -90,6 +90,10 @@ class UsersController extends Controller
             return redirect('users');
         }
 
+        if ($request->delete_image) {
+            $user->deleteImage();
+        }
+
         $user->update($this->validateRequest($request));
 
         return redirect('users');
@@ -122,6 +126,7 @@ class UsersController extends Controller
             'name' => 'required|max:100',
             'surname' => 'required|max:100',
             'email' => 'required|email|max:100',
+            'image' => 'image',
         ];
 
         if ($is_new or $request->get('password')) {
@@ -132,6 +137,16 @@ class UsersController extends Controller
 
         if (isset($data['password'])) {
             $data['password'] = Hash::make($data['password']);
+        }
+
+        unset($data['image']); // At the moment, I have no idea how to validate an input without fetching it to the data array
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+
+            if ($image->isValid()) {
+                $data['image'] = $image->store('storage/images/users');
+            }
         }
 
         return $data;
