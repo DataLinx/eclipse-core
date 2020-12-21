@@ -21,14 +21,16 @@ class PlaintextTest extends PackageTestCase
 
     public function testLabelSlot()
     {
-        $view = $this->blade('<x-form::plaintext id="some-id">
+        $view = $this->blade('<x-form::plaintext>
                 <x-slot name="label">Foo <b>Woo</b></x-slot>
                 Bar
             </x-form::plaintext>');
 
         $view->assertSeeInOrder([
-            '<label for="some-id">Foo <b>Woo</b></label>',
-            '<div class="form-control-plaintext" id="some-id">Bar</div>',
+            '<label for="plaintext-',
+            'Foo <b>Woo</b></label>',
+            '<div class="form-control-plaintext" id="plaintext-',
+            'Bar</div>',
         ], false);
     }
 }
