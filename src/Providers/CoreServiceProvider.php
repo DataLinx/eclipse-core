@@ -13,6 +13,7 @@ use Ocelot\Core\Console\Commands\PostComposerInstall;
 use Ocelot\Core\Console\Commands\PostComposerUpdate;
 use Ocelot\Core\Framework\Context;
 use Ocelot\Core\Framework\L10n;
+use Ocelot\Core\View\Components\Alert;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -66,5 +67,6 @@ class CoreServiceProvider extends ServiceProvider
         ], 'ocelot/core');
 
         Blade::componentNamespace('Ocelot\\Core\\View\\Components\\Form', 'form');
+        Blade::component(Alert::class);
     }
 }
