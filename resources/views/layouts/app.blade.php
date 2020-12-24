@@ -12,6 +12,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    @if (config('ocelot.fontawesome_kit_url'))
+        <script src="{{ config('ocelot.fontawesome_kit_url') }}" crossorigin="anonymous"></script>
+    @endif
 
     <!-- Styles -->
     <base href="{{ config('app.url') }}" />
