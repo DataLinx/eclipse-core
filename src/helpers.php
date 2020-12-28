@@ -1,5 +1,7 @@
 <?php
 
+use Ocelot\Core\Framework\Output\Toast;
+
 if ( ! function_exists('app_base_path'))
 {
     /**
@@ -41,4 +43,16 @@ if ( ! function_exists('package_path'))
     {
         return app_base_path("vendor/$package") . ($path ? '/'. trim($path, '/') : '');
     }
+}
+
+/**
+ * Create a toast
+ *
+ * @param string $message Toast message
+ * @param string|null $title Optional title
+ * @return Toast
+ */
+function toast(string $message, string $title = null)
+{
+    return app(\Ocelot\Core\Framework\Output::class)->toast($message, $title);
 }

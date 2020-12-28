@@ -1,1 +1,26 @@
 
+#toast-container {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+
+    .toast {
+        margin: 15px auto;
+        max-width: 500px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .toast-header {
+            color: white;
+            &.bg-warning {
+                color: #343a40;
+            }
+        }
+
+        .toast-action {
+            margin-top: 6px;
+        }
+    }
+}

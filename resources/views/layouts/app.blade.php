@@ -75,7 +75,35 @@
         </nav>
 
         <main class="py-4">
+
             @yield('content')
+
+            <div id="toast-container" aria-live="polite" aria-atomic="true">
+                @foreach (app(\Ocelot\Core\Framework\Output::class)->getToasts() as $toast)
+                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" @if ($toast->isSticky()) data-autohide="false" @else data-delay="10000" @endif>
+                        <div class="toast-header bg-{{ $toast->getType() }}">
+                            <x-icon name="{{ $toast->getIcon() }}" class="mr-2"/>
+                            <strong class="mr-auto">{{ $toast->getTitle() }}</strong>
+                            @if (! $toast->isSticky())
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            @endif
+                        </div>
+                        <div class="toast-body">
+                            {{ $toast->getMessage() }}
+                            @if ($toast->hasLinks())
+                                <div class="toast-action">
+                                    @foreach ($toast->getLinks() as $label => $href)
+                                        <a class="btn btn-light" href="{{ $href ?? 'javascript:void(0);' }}">{{ $label }}</a>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
         </main>
     </div>
 

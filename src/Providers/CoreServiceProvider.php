@@ -13,6 +13,7 @@ use Ocelot\Core\Console\Commands\PostComposerInstall;
 use Ocelot\Core\Console\Commands\PostComposerUpdate;
 use Ocelot\Core\Framework\Context;
 use Ocelot\Core\Framework\L10n;
+use Ocelot\Core\Framework\Output;
 use Ocelot\Core\View\Components\Alert;
 use Ocelot\Core\View\Components\Icon;
 
@@ -31,6 +32,10 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->app->singleton('l10n', function() {
             return new L10n();
+        });
+
+        $this->app->singleton(Output::class, function() {
+            return new Output();
         });
 
         $this->app->singleton('glide', function() {
