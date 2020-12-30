@@ -1,3 +1,5 @@
+require('./bootstrap');
+
 $('.user-delete').click(function(){
     if (confirm('Are you sure you want to delete this user?')) {
         var $row = $(this).closest('tr');
@@ -14,3 +16,5 @@ $('.user-delete').click(function(){
         })
     }
 });
+
+$('.toast').toast('show');
