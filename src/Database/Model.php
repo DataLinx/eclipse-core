@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @package Ocelot\Core\Database
  * @mixin Builder
  */
-class Model extends \Illuminate\Database\Eloquent\Model
+abstract class Model extends \Illuminate\Database\Eloquent\Model
 {
     public $timestamps = false;
 }

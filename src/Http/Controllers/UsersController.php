@@ -2,9 +2,9 @@
 
 namespace Ocelot\Core\Http\Controllers;
 
-use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Ocelot\Core\DataGrids\UsersGrid;
+use Ocelot\Core\Framework\Output;
 use Ocelot\Core\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,8 +17,10 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $grid = new UsersGrid();
+
         return view('core::users.index', [
-            'users' => User::all(),
+            'grid' => $grid,
         ]);
     }
 
@@ -38,16 +40,19 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param Output $output
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(Request $request, Output $output)
     {
         if (request('action') === 'cancel') {
             return redirect('users');
         }
 
         User::create($this->validateRequest($request), true);
+
+        $output->toast(_('User created'))->success();
 
         return redirect('users');
     }
@@ -84,7 +89,7 @@ class UsersController extends Controller
      * @param  \Ocelot\Core\Models\User  $user
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user, Output $output)
     {
         if (request('action') === 'cancel') {
             return redirect('users');
@@ -96,18 +101,24 @@ class UsersController extends Controller
 
         $user->update($this->validateRequest($request));
 
+        $output->toast(_('User updated'))->success();
+
         return redirect('users');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Ocelot\Core\Models\User  $user
+     * @param \Ocelot\Core\Models\User $user
+     * @param Output $output
      * @return array
+     * @throws \Exception
      */
-    public function destroy(User $user)
+    public function destroy(User $user, Output $output)
     {
         $user->delete();
+
+        $output->toast(_('User deleted'));
 
         return [
             'error' => 0,
