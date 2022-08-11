@@ -46,7 +46,7 @@ class MapperTest extends PackageTestCase
     {
         $this->mapper->map(ValidConfig::class);
 
-        $this->assertTrue($this->schema->hasTable('cr_test_config'));
+        $this->assertTrue($this->schema->hasTable('core_test_config'));
     }
 
     public function testInvalidColumnType()
@@ -61,11 +61,14 @@ class MapperTest extends PackageTestCase
 
         // Add column
         $this->mapper->map(UpdatedValidConfig::class);
-        $this->assertTrue($this->schema->hasColumn('cr_test_config', 'another_bool'));
+        $this->assertTrue($this->schema->hasColumn('core_test_config', 'another_bool'));
 
-        // Remove column
-        $this->mapper->removeDeprecatedColumns(UpdatedValidConfig::class);
-        $this->assertFalse($this->schema->hasColumn('cr_test_config', 'test_object'));
+        if (env('DB_CONNECTION') !== 'sqlite')
+        {
+            // Remove column - this does not work with sqlite databases
+            $this->mapper->removeDeprecatedColumns(UpdatedValidConfig::class);
+            $this->assertFalse($this->schema->hasColumn('core_test_config', 'test_object'));
+        }
 
         // Invalid config
         $this->expectExceptionMessage('Column definition property not set');

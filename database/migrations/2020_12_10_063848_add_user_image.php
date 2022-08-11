@@ -13,7 +13,7 @@ class AddUserImage extends Migration
      */
     public function up()
     {
-        Schema::table('cr_user', function (Blueprint $table) {
+        Schema::table('core_user', function (Blueprint $table) {
             $table->string('image')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class AddUserImage extends Migration
      */
     public function down()
     {
-        Schema::table('cr_user', function (Blueprint $table) {
+        Schema::table('core_user', function (Blueprint $table) {
             $table->dropColumn('image');
         });
     }

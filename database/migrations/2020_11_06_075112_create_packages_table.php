@@ -13,7 +13,7 @@ class CreatePackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cr_package', function (Blueprint $table) {
+        Schema::create('core_package', function (Blueprint $table) {
             $table->id();
             $table->string('vendor', 50);
             $table->string('name', 50);
@@ -28,6 +28,6 @@ class CreatePackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cr_package');
+        Schema::dropIfExists('core_package');
     }
 }

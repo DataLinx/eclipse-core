@@ -136,6 +136,6 @@ class UserTest extends PackageTestCase
         $response->assertOk()
                  ->assertJsonFragment(['error' => 0]);
 
-        $this->assertTrue(DB::table('cr_user')->where('id', $user->id)->doesntExist(), 'User was not deleted!');
+        $this->assertTrue(DB::table('core_user')->where('id', $user->id)->doesntExist(), 'User was not deleted!');
     }
 }

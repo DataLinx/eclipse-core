@@ -104,7 +104,7 @@ class L10nTest extends PackageTestCase
         $this->actingAs(User::factory()->make())
              ->withUnencryptedCookie(L10n::COOKIE_NAME, 'sl');
 
-        $response = $this->get('/home');
+        $response = $this->get('/dashboard');
 
         $response->assertSee('html lang="sl"', false);
     }
@@ -114,7 +114,7 @@ class L10nTest extends PackageTestCase
         $this->actingAs(User::factory()->make())
              ->withUnencryptedCookie(L10n::COOKIE_NAME, 'en');
 
-        $response = $this->get('/home');
+        $response = $this->get('/dashboard');
 
         $response->assertSee('html lang="en"', false);
     }
@@ -124,7 +124,7 @@ class L10nTest extends PackageTestCase
         $this->actingAs(User::factory()->make())
              ->withHeader('HTTP_ACCEPT_LANGUAGE', 'sl,en');
 
-        $response = $this->get('/home');
+        $response = $this->get('/dashboard');
 
         $response->assertSee('html lang="sl"', false);
     }
@@ -134,7 +134,7 @@ class L10nTest extends PackageTestCase
         $this->actingAs(User::factory()->make())
              ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru,en');
 
-        $response = $this->get('/home');
+        $response = $this->get('/dashboard');
 
         $response->assertSee('html lang="en"', false);
     }
@@ -144,7 +144,7 @@ class L10nTest extends PackageTestCase
         $this->actingAs(User::factory()->make())
              ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru');
 
-        $response = $this->get('/home');
+        $response = $this->get('/dashboard');
 
         $response->assertSee('html lang="en"', false);
     }

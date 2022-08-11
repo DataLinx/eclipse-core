@@ -30,6 +30,10 @@ class PostComposerUpdate extends Command
     {
         echo "Running Ocelot's Post Composer update procedure..." . PHP_EOL;
 
+        // Publish Laravel assets
+        // ------------------
+        Artisan::call('vendor:publish --tag=laravel-assets');
+
         // Discover Ocelot packages
         // ------------------
         Artisan::call('ocelot:discover-packages');

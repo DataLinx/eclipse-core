@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Tests\View\Components;
+namespace Ocelot\Core\Tests\Feature\View\Components;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Ocelot\Core\Testing\PackageTestCase;

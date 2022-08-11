@@ -17,7 +17,7 @@ use Ocelot\Core\Foundation\AbstractConfig;
  */
 class Config extends AbstractConfig
 {
-    protected $table = 'cr_config';
+    protected $table = 'core_config';
 
     protected static $definition = [
         'site_id',

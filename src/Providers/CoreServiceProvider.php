@@ -4,6 +4,7 @@ namespace Ocelot\Core\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Sanctum\Sanctum;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 use Ocelot\Core\Console\Commands\DiscoverPackages;
@@ -14,7 +15,9 @@ use Ocelot\Core\Console\Commands\PostComposerUpdate;
 use Ocelot\Core\Framework\Context;
 use Ocelot\Core\Framework\L10n;
 use Ocelot\Core\Framework\Output;
+use Ocelot\Core\Models\PersonalAccessToken;
 use Ocelot\Core\View\Components\Alert;
+use Ocelot\Core\View\Components\AppLayout;
 use Ocelot\Core\View\Components\Icon;
 
 class CoreServiceProvider extends ServiceProvider
@@ -55,6 +58,7 @@ class CoreServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(package_path('ocelot/core', 'routes/web.php'));
+        $this->loadRoutesFrom(package_path('ocelot/core', 'routes/auth.php'));
         $this->loadViewsFrom(package_path('ocelot/core', 'resources/views'), 'core');
         $this->loadMigrationsFrom(package_path('ocelot/core', 'database/migrations'));
 
@@ -73,7 +77,10 @@ class CoreServiceProvider extends ServiceProvider
         ], 'ocelot/core');
 
         Blade::componentNamespace('Ocelot\\Core\\View\\Components\\Form', 'form');
+        Blade::component(AppLayout::class);
         Blade::component(Alert::class);
         Blade::component(Icon::class);
+
+        Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     }
 }

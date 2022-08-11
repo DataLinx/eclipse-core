@@ -1,6 +1,15 @@
-@extends('core::layouts.app')
+<x-app-layout>
 
-@section('content')
+    <x-slot name="header">
+        <h1>
+            @if($user->id)
+                {{ _('Edit user') }} - {{ $user->email }}
+            @else
+                {{ _('New user') }}
+            @endif
+        </h1>
+    </x-slot>
+
     <form method="post" action="{{ $action }}" autocomplete="off" enctype="multipart/form-data">
         @csrf
         @if($user->id)
@@ -9,21 +18,13 @@
 
         <div class="container">
 
-            <h1>
-                @if($user->id)
-                    Edit user - {{ $user->email }}
-                @else
-                    New user
-                @endif
-            </h1>
-
             <x-form::error/>
 
             <div class="card">
                 <div class="card-header">Basic information</div>
                 <div class="card-body">
 
-                    <x-form::input name="name" :object="$user" :label="_('Name')" required/>
+                    <x-form::input name="name" :object="$user" :label="_('Name')" required />
 
                     <x-form::input name="surname" :object="$user" :label="_('Surname')" required/>
 
@@ -37,7 +38,7 @@
                 <div class="card-body">
 
                     @if ($user->image)
-                        <img src="img/{{ $user->image }}?w=200&h=200" />
+                        <img src="img/{{ $user->image }}?w=200&h=200" alt="" />
                     @endif
 
                     <x-form::file name="image" :label="_('Upload new image')"/>
@@ -63,4 +64,5 @@
 
         </div>
     </form>
-@endsection
+
+</x-app-layout>

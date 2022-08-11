@@ -13,7 +13,7 @@ class CreateSitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cr_site', function (Blueprint $table) {
+        Schema::create('core_site', function (Blueprint $table) {
             $table->id();
             $table->string('domain', 100);
             $table->string('name', 100);
@@ -30,6 +30,6 @@ class CreateSitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cr_site');
+        Schema::dropIfExists('core_site');
     }
 }

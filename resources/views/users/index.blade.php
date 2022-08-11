@@ -1,9 +1,10 @@
-@extends('core::layouts.app')
+<x-app-layout>
 
-@section('content')
-    <div class="container">
-
+    <x-slot name="header">
         <h1>{{ _('Users') }}</h1>
+    </x-slot>
+
+    <div class="container">
 
         <a class="btn btn-primary mb-3" href="{{ url('users/create') }}">{{ _('Create new user') }}</a>
 
@@ -27,5 +28,4 @@
         </table>
 
     </div>
-
-@endsection
+</x-app-layout>

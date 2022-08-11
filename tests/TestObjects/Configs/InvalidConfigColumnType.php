@@ -6,7 +6,7 @@ use Ocelot\Core\Foundation\AbstractConfig;
 
 class InvalidConfigColumnType extends AbstractConfig
 {
-    protected $table = 'cr_invalid_config_column_type';
+    protected $table = 'core_invalid_config_column_type';
 
     protected static $definition = [
         'col' => [

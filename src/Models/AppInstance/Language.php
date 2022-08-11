@@ -17,5 +17,5 @@ use Ocelot\Core\Database\Model;
  */
 class Language extends Model
 {
-    protected $table = 'cr_app_instance_language';
+    protected $table = 'core_app_instance_language';
 }

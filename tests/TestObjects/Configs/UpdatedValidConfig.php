@@ -7,7 +7,7 @@ use Ocelot\Core\Foundation\AbstractConfig;
 
 class UpdatedValidConfig extends AbstractConfig
 {
-    protected $table = 'cr_test_config';
+    protected $table = 'core_test_config';
 
     protected static $definition = [
         'site_id',

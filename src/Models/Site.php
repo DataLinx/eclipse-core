@@ -17,7 +17,7 @@ use Ocelot\Core\Database\Model;
  */
 class Site extends Model
 {
-    protected $table = 'cr_site';
+    protected $table = 'core_site';
 
     protected $attributes = [
         'is_active' => 1,

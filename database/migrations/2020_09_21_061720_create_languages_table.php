@@ -14,7 +14,7 @@ class CreateLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cr_language', function (Blueprint $table) {
+        Schema::create('core_language', function (Blueprint $table) {
             $table->char('id', 2)->primary();
             $table->string('name', 100);
             $table->string('system_locale', 50);
@@ -29,7 +29,7 @@ class CreateLanguagesTable extends Migration
             $table->boolean('is_ui_available')->default(0);
         });
 
-        DB::table('cr_language')->insert([
+        DB::table('core_language')->insert([
             'id' => 'en',
             'name' => 'English',
             'system_locale' => 'en_GB.UTF8',
@@ -42,7 +42,7 @@ class CreateLanguagesTable extends Migration
             'is_ui_available' => 1,
         ]);
 
-        DB::table('cr_language')->insert([
+        DB::table('core_language')->insert([
             'id' => 'sl',
             'name' => 'Slovenščina',
             'system_locale' => 'sl_SI.UTF8',
@@ -55,7 +55,7 @@ class CreateLanguagesTable extends Migration
             'is_ui_available' => 1,
         ]);
 
-        DB::table('cr_language')->insert([
+        DB::table('core_language')->insert([
             'id' => 'hr',
             'name' => 'Hrvatski',
             'system_locale' => 'hr_HR.UTF8',
@@ -67,7 +67,7 @@ class CreateLanguagesTable extends Migration
             'thousands_separator' => '.',
         ]);
 
-        DB::table('cr_language')->insert([
+        DB::table('core_language')->insert([
             'id' => 'sr',
             'name' => 'Srpski',
             'system_locale' => 'sr_RS.UTF8@latin',
@@ -79,7 +79,7 @@ class CreateLanguagesTable extends Migration
             'thousands_separator' => '.',
         ]);
 
-        DB::table('cr_language')->insert([
+        DB::table('core_language')->insert([
             'id' => 'it',
             'name' => 'Italiano',
             'system_locale' => 'it_IT.UTF8',
@@ -91,7 +91,7 @@ class CreateLanguagesTable extends Migration
             'thousands_separator' => '.',
         ]);
 
-        DB::table('cr_language')->insert([
+        DB::table('core_language')->insert([
             'id' => 'de',
             'name' => 'Deutsch',
             'system_locale' => 'de_DE.UTF8',
@@ -111,6 +111,6 @@ class CreateLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cr_language');
+        Schema::dropIfExists('core_language');
     }
 }

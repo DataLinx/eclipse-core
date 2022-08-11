@@ -190,7 +190,7 @@ class Toast
     }
 
     /**
-     * Does the toast have linky?
+     * Does the toast have links?
      *
      * @return bool
      */

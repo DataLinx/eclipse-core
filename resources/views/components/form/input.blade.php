@@ -1,6 +1,6 @@
-<div class="form-group">
+<div class="mb-3">
     @if($label)
-        <label for="{{ $id }}">
+        <label class="form-label" for="{{ $id }}">
             {{ $label }}
             @if(isset($attributes['required']))
                 <span class="required">*</span>

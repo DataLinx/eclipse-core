@@ -84,7 +84,7 @@ class Mapper
                     // Preset columns
                     case 'site_id':
                         $table->foreignId('site_id')
-                            ->constrained('cr_site')
+                            ->constrained('core_site')
                             ->onDelete($attr['on_delete'] ?? 'cascade')
                             ->onUpdate($attr['on_update'] ?? 'cascade');
                         break;
@@ -234,6 +234,7 @@ class Mapper
     /**
      * Remove deprecated columns
      *
+     * @todo Needs to be fixed for SQLite databases, so that MapperTest::testUpdateMap() can run
      * @param string $class Object class
      * @throws Exception
      */

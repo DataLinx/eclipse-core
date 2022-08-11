@@ -26,5 +26,5 @@ class Language extends Model
 {
     //use HasFactory;
 
-    protected $table = 'cr_language';
+    protected $table = 'core_language';
 }

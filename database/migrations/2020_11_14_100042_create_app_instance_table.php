@@ -13,28 +13,28 @@ class CreateAppInstanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('cr_app_instance', function (Blueprint $table) {
+        Schema::create('core_app_instance', function (Blueprint $table) {
             $table->id();
             $table->foreignId('site_id')
-                ->constrained('cr_site')
+                ->constrained('core_site')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->foreignId('app_package_id')
-                ->constrained('cr_package')
+                ->constrained('core_package')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->string('path');
             $table->boolean('is_active');
         });
 
-        Schema::create('cr_app_instance_language', function (Blueprint $table) {
+        Schema::create('core_app_instance_language', function (Blueprint $table) {
             $table->id();
             $table->foreignId('app_instance_id')
-                ->constrained('cr_app_instance')
+                ->constrained('core_app_instance')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->char('language_id', 2)
-                ->constrained('cr_language')
+                ->constrained('core_language')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->boolean('is_default');
@@ -50,7 +50,7 @@ class CreateAppInstanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cr_app_instance_language');
-        Schema::dropIfExists('cr_app_instance');
+        Schema::dropIfExists('core_app_instance_language');
+        Schema::dropIfExists('core_app_instance');
     }
 }

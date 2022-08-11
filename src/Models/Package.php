@@ -17,7 +17,7 @@ class Package extends Model
     const TYPE_APP = 'a';
     const TYPE_MODULE = 'm';
 
-    protected $table = 'cr_package';
+    protected $table = 'core_package';
 
     /**
      * Get package directory

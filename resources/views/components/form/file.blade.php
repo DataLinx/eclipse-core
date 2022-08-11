@@ -1,30 +1,21 @@
-<div class="form-group">
+<div class="mb-3">
     @if($label)
-        <label for="{{ $id }}">
+        <label class="form-label" for="{{ $id }}">
             {{ $label }}
             @if(isset($attributes['required']))
                 <span class="required">*</span>
             @endif
         </label>
     @endif
-    <div class="custom-file @if($size) form-control-{{ $size }} @endif">
-        <input
-            type="file"
-            name="{{ $name }}"
-            id="{{ $id }}"
-            {{ $getClasses() }}
-            {{ $attributes }}
-            @if($help)
-            aria-describedby="{{ $id }}_help"
-            @endif>
-        <label class="custom-file-label" for="customFile">
-            @if($placeholder)
-                {{ $placeholder }}
-            @else
-                {{ _('Choose file') }}
-            @endif
-        </label>
-    </div>
+    <input
+        type="file"
+        name="{{ $name }}"
+        id="{{ $id }}"
+        {{ $getClasses() }}
+        {{ $attributes }}
+        @if($help)
+        aria-describedby="{{ $id }}_help"
+        @endif>
     @if($help)
         <small id="{{ $id }}_help" class="text-muted">
             {{ $help }}

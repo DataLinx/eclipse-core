@@ -16,7 +16,7 @@ use Ocelot\Core\Database\Model;
  */
 class AppInstance extends Model
 {
-    protected $table = 'cr_app_instance';
+    protected $table = 'core_app_instance';
 
     protected $attributes = [
         'is_active' => 1,

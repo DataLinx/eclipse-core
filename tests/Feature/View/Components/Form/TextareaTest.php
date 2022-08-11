@@ -1,7 +1,6 @@
 <?php
 
-
-namespace Ocelot\Core\Tests\View\Components\Form;
+namespace Ocelot\Core\Tests\Feature\View\Components\Form;
 
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;

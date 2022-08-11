@@ -2,7 +2,7 @@
 
 namespace Ocelot\Core\Http\Controllers;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -11,6 +11,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('core::home');
+        return view('core::dashboard');
     }
 }
