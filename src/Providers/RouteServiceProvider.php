@@ -28,16 +28,16 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        // Core routes
-        $this->loadRoutesFrom(package_path('ocelot/core', 'routes/web.php'));
-        $this->loadRoutesFrom(package_path('ocelot/core', 'routes/auth.php'));
-
-        // Additional app routes
         $this->routes(function () {
-//            Route::middleware('api')
-//                ->prefix('api')
-//                ->group(package_path('ocelot/core', 'routes/api.php'));
+            // Core routes
+            Route::middleware('web')
+                ->group(package_path('ocelot/core', 'routes/web.php'));
 
+            // Core auth routes
+            Route::middleware('web')
+                ->group(package_path('ocelot/core', 'routes/auth.php'));
+
+            // Any additional app routes
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
