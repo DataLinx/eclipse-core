@@ -2,7 +2,7 @@
 
 namespace Ocelot\Core\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
+use Ocelot\Core\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

@@ -57,8 +57,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(package_path('ocelot/core', 'routes/web.php'));
-        $this->loadRoutesFrom(package_path('ocelot/core', 'routes/auth.php'));
         $this->loadViewsFrom(package_path('ocelot/core', 'resources/views'), 'core');
         $this->loadMigrationsFrom(package_path('ocelot/core', 'database/migrations'));
 

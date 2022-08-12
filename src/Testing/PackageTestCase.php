@@ -24,7 +24,11 @@ class PackageTestCase extends TestCase
 
     protected function getPackageProviders($app)
     {
+        // We need to manually include this class, since the AppServiceProvider is set in providers in config/app.php
+        require_once app_path('Providers/AppServiceProvider.php');
+
         return [
+            'App\Providers\AppServiceProvider',
             AuthServiceProvider::class,
             CoreServiceProvider::class,
             EventServiceProvider::class,
@@ -40,5 +44,15 @@ class PackageTestCase extends TestCase
         }
 
         $this->withoutMix();
+    }
+
+    /**
+     * Get the path to the skeleton dir, which is needed to load the correct configs etc. instead of using the ones Testbench provides
+     *
+     * @return string
+     */
+    protected function getBasePath(): string
+    {
+        return env('APP_BASE_PATH');
     }
 }
