@@ -6,7 +6,7 @@
     @endif
     {{ $attributes }}>
     @if($label)
-        <label>
+        <label class="form-label">
             {{ $label }}
             @if($required)
                 <span class="required">*</span>
@@ -15,27 +15,25 @@
     @endif
     @if ($as_buttons)
         @if (! $inline) <div> @endif
-        <div class="btn-group btn-group-toggle @if ($size) btn-group-{{ $size }} @endif" data-toggle="buttons">
+        <div class="btn-group @if ($size) btn-group-{{ $size }} @endif" role="group">
             @foreach($options as $option)
-                <label class="btn btn-secondary @if($option['checked']) active @endif">
-                    <input name="{{ $getName() }}" type="{{ $type }}" value="{{ $option['value'] }}" @if($option['checked']) checked @endif @if($required) required @endif @if($disabled) disabled @endif>
-                    {{ $option['label'] }}
-                </label>
+                <input class="btn-check" autocomplete="off" name="{{ $getName() }}" type="{{ $type }}" value="{{ $option['value'] }}" id="{{ $option['id'] }}" @if($option['checked']) checked @endif @if($required) required @endif @if($disabled) disabled @endif>
+                <label class="btn btn-outline-primary" for="{{ $option['id'] }}">{{ $option['label'] }}</label>
             @endforeach
         </div>
         @if (! $inline) </div> @endif
     @else
         @foreach($options as $option)
-            <div class="custom-control @if ($as_switches) custom-switch @else custom-{{ $type }} @endif @if($inline) custom-control-inline @endif">
-                <input class="custom-control-input" name="{{ $getName() }}" type="{{ $type }}" value="{{ $option['value'] }}" @if($option['checked']) checked @endif id="{{ $option['id'] }}" @if($required) required @endif @if($disabled) disabled @endif>
-                <label class="custom-control-label" for="{{ $option['id'] }}">
+            <div class="form-check @if ($as_switches) form-switch @endif @if($inline) form-check-inline @endif">
+                <input class="form-check-input" name="{{ $getName() }}" type="{{ $type }}" value="{{ $option['value'] }}" @if($option['checked']) checked @endif id="{{ $option['id'] }}" @if($required) required @endif @if($disabled) disabled @endif>
+                <label class="form-check-label" for="{{ $option['id'] }}">
                     {{ $option['label'] }}
                 </label>
             </div>
         @endforeach
     @endif
     @if($help)
-        <small id="{{ $id }}-help" class="text-muted">
+        <small id="{{ $id }}-help" class="form-text">
             {{ $help }}
         </small>
     @endif

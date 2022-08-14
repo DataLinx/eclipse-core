@@ -19,7 +19,7 @@ class FileTest extends PackageTestCase
         $this->withViewErrors([]);
     }
 
-    public function testStandard()
+    public function test_common_example_can_be_displayed()
     {
         $view = $this->blade('<x-form::file name="foo" label="Bar" help="Help text" required size="sm" />');
 
@@ -34,7 +34,7 @@ class FileTest extends PackageTestCase
             ->assertDontSee('is-invalid');
     }
 
-    public function testWithError()
+    public function test_errors_can_be_displayed()
     {
         $this->withViewErrors([
             'foo' => 'Test error',

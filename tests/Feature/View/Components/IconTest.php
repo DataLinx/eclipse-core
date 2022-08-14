@@ -10,7 +10,7 @@ class IconTest extends PackageTestCase
 {
     use InteractsWithViews;
 
-    public function testMinimal()
+    public function test_minimal_example_can_be_displayed()
     {
         $view = $this->component(Icon::class, [
             'name' => 'user',
@@ -23,7 +23,7 @@ class IconTest extends PackageTestCase
         ], false)->assertDontSee('text-');
     }
 
-    public function testFull()
+    public function test_full_example_can_be_displayed()
     {
         $view = $this->blade('<x-icon name="user" pack="fal" color="success" class="fa-10x" id="some-id"/>');
 

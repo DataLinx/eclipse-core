@@ -10,7 +10,7 @@ class ErrorTest extends PackageTestCase
 {
     use InteractsWithViews;
 
-    public function testStandard()
+    public function test_common_example_can_be_rendered()
     {
         $this->withViewErrors([
             'foo' => 'Test error',
@@ -20,7 +20,9 @@ class ErrorTest extends PackageTestCase
         $view = $this->component(Error::class);
 
         $view->assertSeeInOrder([
+            'alert alert-danger',
             'Test error',
+            'hr',
             'Another error',
         ]);
     }

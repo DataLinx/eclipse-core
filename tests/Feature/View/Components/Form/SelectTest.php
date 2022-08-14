@@ -17,7 +17,7 @@ class SelectTest extends PackageTestCase
         $this->withViewErrors([]);
     }
 
-    public function testStandard()
+    public function test_common_example_can_be_displayed()
     {
         // We have to use the blade() method, since component() does not pass the additional simple attributes, e.g. "required"
         $view = $this->blade('<x-form::select name="foo" label="Bar" :options="$options" default="2" help="Help text" required placeholder="Placeholder" size="sm" />', [
@@ -40,7 +40,7 @@ class SelectTest extends PackageTestCase
              ->assertDontSee('is-invalid');
     }
 
-    public function testWithError()
+    public function test_errors_can_be_displayed()
     {
         $this->withViewErrors([
             'foo' => 'Test error',
@@ -55,7 +55,7 @@ class SelectTest extends PackageTestCase
              ->assertSee('Test error');
     }
 
-    public function testEmptyOptions()
+    public function test_can_be_displayed_without_options()
     {
         $view = $this->component(Select::class, [
             'name' => 'foo',
@@ -66,7 +66,7 @@ class SelectTest extends PackageTestCase
              ->assertSee('option value=""', false);
     }
 
-    public function testOptionGroups()
+    public function test_option_groups_can_be_displayed()
     {
         $view = $this->component(Select::class, [
             'name' => 'foo',
@@ -92,7 +92,7 @@ class SelectTest extends PackageTestCase
              ]);
     }
 
-    public function testMultiple()
+    public function test_multiple_options_can_be_preselected()
     {
         $view = $this->component(Select::class, [
             'name' => 'foo',

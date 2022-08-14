@@ -20,7 +20,7 @@ class TextareaTest extends PackageTestCase
         $this->withViewErrors([]);
     }
 
-    public function testStandard()
+    public function test_common_example_can_be_displayed()
     {
         // We have to use the blade() method, since component() does not pass the additional simple attributes, e.g. "required"
         $view = $this->blade('<x-form::textarea name="foo" label="Bar" help="Help text" required placeholder="Placeholder" rows="10" />');
@@ -35,7 +35,7 @@ class TextareaTest extends PackageTestCase
             ->assertDontSee('is-invalid');
     }
 
-    public function testWithError()
+    public function test_error_can_be_displayed()
     {
         $this->withViewErrors([
             'foo' => 'Test error',
@@ -50,7 +50,7 @@ class TextareaTest extends PackageTestCase
              ->assertSee('Test error');
     }
 
-    public function testRepopulate()
+    public function test_submitted_data_can_be_initialized()
     {
         $this->mockSessionFlashedData([
             'foo' => 'Flashed',

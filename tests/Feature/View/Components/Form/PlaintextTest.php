@@ -9,17 +9,17 @@ class PlaintextTest extends PackageTestCase
 {
     use InteractsWithViews;
 
-    public function testStandard()
+    public function test_common_example_can_be_displayed()
     {
         $view = $this->blade('<x-form::plaintext label="Foo" id="some-id">Bar</x-form::plaintext>');
 
         $view->assertSeeInOrder([
-            '<label for="some-id">Foo</label>',
+            '<label class="form-label" for="some-id">Foo</label>',
             '<div class="form-control-plaintext" id="some-id">Bar</div>',
         ], false);
     }
 
-    public function testLabelSlot()
+    public function test_label_slot_can_be_displayed()
     {
         $view = $this->blade('<x-form::plaintext>
                 <x-slot name="label">Foo <b>Woo</b></x-slot>
@@ -27,7 +27,7 @@ class PlaintextTest extends PackageTestCase
             </x-form::plaintext>');
 
         $view->assertSeeInOrder([
-            '<label for="plaintext-',
+            '<label class="form-label" for="plaintext-',
             'Foo <b>Woo</b></label>',
             '<div class="form-control-plaintext" id="plaintext-',
             'Bar</div>',

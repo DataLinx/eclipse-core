@@ -20,7 +20,7 @@ class CheckboxTest extends PackageTestCase
         $this->withViewErrors([]);
     }
 
-    public function testStandard()
+    public function test_common_example_can_be_rendered()
     {
         // We have to use the blade() method, since component() does not pass the additional simple attributes, e.g. "required"
         $view = $this->blade('<x-form::checkbox name="foo" label="Bar" id="some-id" :options="$options" default="2" help="Help text" class="some-other-class" required inline />', [
@@ -33,7 +33,7 @@ class CheckboxTest extends PackageTestCase
 
         $view->assertSeeInOrder([
                 'class',
-                'form-group',
+                'mb-3',
                 'some-other-class',
             ])
             ->assertSeeInOrder([
@@ -54,11 +54,11 @@ class CheckboxTest extends PackageTestCase
                 'Two',
                 'Three',
             ])
-            ->assertSee('custom-control-inline')
+            ->assertSee('form-check')
             ->assertDontSee('is-invalid');
     }
 
-    public function testWithError()
+    public function test_error_can_be_displayed()
     {
         $this->withViewErrors([
             'foo' => 'Test error',
@@ -75,7 +75,7 @@ class CheckboxTest extends PackageTestCase
         ]);
     }
 
-    public function testMultipleDefaults()
+    public function test_multiple_choices_can_be_selected_by_default()
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
@@ -96,7 +96,7 @@ class CheckboxTest extends PackageTestCase
         ]);
     }
 
-    public function testRepopulate()
+    public function test_data_can_be_repopulated_from_submit()
     {
         $this->mockSessionFlashedData([
             'foo' => [2, 3],
@@ -121,7 +121,7 @@ class CheckboxTest extends PackageTestCase
         ]);
     }
 
-    public function testNoDefault()
+    public function test_can_be_displayed_without_defaults()
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
@@ -135,7 +135,7 @@ class CheckboxTest extends PackageTestCase
         $view->assertDontSee('checked');
     }
 
-    public function testDisabled()
+    public function test_can_be_displayed_as_disabled()
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
@@ -150,7 +150,7 @@ class CheckboxTest extends PackageTestCase
         $view->assertSee('disabled');
     }
 
-    public function testRadioVariant()
+    public function test_can_be_displayed_as_radio_choices()
     {
         $view = $this->component(Radio::class, [
             'name' => 'foo',
@@ -172,7 +172,7 @@ class CheckboxTest extends PackageTestCase
             ]);
     }
 
-    public function testAsButtons()
+    public function test_can_be_displayed_as_buttons()
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
@@ -191,14 +191,13 @@ class CheckboxTest extends PackageTestCase
             'btn-group-sm',
         ])->assertSeeInOrder([
             'One',
-            'active',
             'checked',
             'Two',
             'Three'
         ]);
     }
 
-    public function testAsSwitches()
+    public function test_can_be_displayed_as_switches()
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
@@ -212,7 +211,7 @@ class CheckboxTest extends PackageTestCase
         ]);
 
         $view
-            ->assertSee('custom-switch')
+            ->assertSee('form-switch')
             ->assertSeeInOrder([
                 'One',
                 'checked',

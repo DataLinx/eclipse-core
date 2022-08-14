@@ -19,7 +19,7 @@ class InputTest extends PackageTestCase
         $this->withViewErrors([]);
     }
 
-    public function testStandard()
+    public function test_common_example_can_be_displayed()
     {
         // We have to use the blade() method, since component() does not pass the additional simple attributes, e.g. "required"
         $view = $this->blade('<x-form::input name="foo" label="Bar" help="Help text" required placeholder="Placeholder" size="sm" prepend="www." append=".com" />', [
@@ -34,15 +34,17 @@ class InputTest extends PackageTestCase
              ->assertSee('Placeholder')
              ->assertSee('form-control-sm')
              ->assertSeeInOrder([
-                 'input-group-prepend',
+                 'input-group',
+                 'input-group-text',
                  'www.',
-                 'input-group-append',
+                 '<input',
+                 'input-group-text',
                  '.com',
-             ])
+             ], false)
              ->assertDontSee('is-invalid');
     }
 
-    public function testWithError()
+    public function test_errors_can_be_displayed()
     {
         $this->withViewErrors([
             'foo' => 'Test error',
@@ -57,7 +59,7 @@ class InputTest extends PackageTestCase
              ->assertSee('Test error');
     }
 
-    public function testRepopulate()
+    public function test_can_repopulate_data_from_submit()
     {
         $this->mockSessionFlashedData([
             'foo' => 'Flashed',

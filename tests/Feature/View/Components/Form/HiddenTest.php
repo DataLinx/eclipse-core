@@ -10,7 +10,7 @@ class HiddenTest extends PackageTestCase
 {
     use InteractsWithViews;
 
-    public function testStandard()
+    public function test_common_example_can_be_displayed()
     {
         $view = $this->component(Hidden::class, [
             'name' => 'foo',
@@ -23,7 +23,7 @@ class HiddenTest extends PackageTestCase
         ], false);
     }
 
-    public function testArray()
+    public function test_multiple_values_can_be_displayed()
     {
         $view = $this->component(Hidden::class, [
             'data' => [
@@ -45,7 +45,7 @@ class HiddenTest extends PackageTestCase
         ], false);
     }
 
-    public function testComplexArray()
+    public function test_multidimensional_arrays_can_be_displayed()
     {
         $view = $this->component(Hidden::class, [
             'data' => [

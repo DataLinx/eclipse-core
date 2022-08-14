@@ -7,11 +7,9 @@
             @endif
         </label>
     @endif
-    <div class="input-group">
+    <div class="input-group @if(empty($noerror)) @error($name) is-invalid @enderror @endif">
         @if($prepend)
-            <div class="input-group-prepend">
-                <div class="input-group-text">{{ $prepend }}</div>
-            </div>
+            <div class="input-group-text">{{ $prepend }}</div>
         @endif
         <input
             {{ $getClasses() }}
@@ -27,13 +25,11 @@
             @endif
             {{ $attributes }}/>
         @if($append)
-            <div class="input-group-append">
-                <div class="input-group-text">{{ $append }}</div>
-            </div>
+            <div class="input-group-text">{{ $append }}</div>
         @endif
     </div>
     @if($help)
-        <small id="{{ $id }}_help" class="text-muted">
+        <small id="{{ $id }}_help" class="form-text">
             {{ $help }}
         </small>
     @endif

@@ -1,6 +1,6 @@
-<div class="form-group">
+<div class="mb-3">
     @if($label)
-        <label for="{{ $id }}">
+        <label class="form-label" for="{{ $id }}">
             {{ $label }}
             @if(isset($attributes['required']))
                 <span class="required">*</span>
@@ -33,7 +33,7 @@
         @endforeach
     </select>
     @if($help)
-        <small id="{{ $id }}_help" class="text-muted">
+        <small id="{{ $id }}_help" class="form-text">
             {{ $help }}
         </small>
     @endif

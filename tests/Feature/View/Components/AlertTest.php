@@ -9,7 +9,7 @@ class AlertTest extends PackageTestCase
 {
     use InteractsWithViews;
 
-    public function testStandard()
+    public function test_common_example_can_be_displayed()
     {
         $view = $this->blade('<x-alert heading="Foo">
                 <p>Bar</p>
@@ -24,7 +24,7 @@ class AlertTest extends PackageTestCase
             ->assertDontSee('button');
     }
 
-    public function testOptions()
+    public function test_dismissible_example_can_be_displayed()
     {
         $view = $this->blade('<x-alert type="success" dismissible id="some-id">
                 <x-slot name="heading">Foo</x-slot>

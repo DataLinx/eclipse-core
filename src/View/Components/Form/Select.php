@@ -60,7 +60,7 @@ class Select extends AbstractInput
             , $label
             , $id
             , $help
-            , $placeholder ?? ($this->multiple ? null : _('-- select value --'))
+            , $placeholder ?? ($multiple ? null : _('-- select value --'))
             , $noerror
             , $size
             , $object

@@ -17,7 +17,7 @@
         aria-describedby="{{ $id }}_help"
         @endif>
     @if($help)
-        <small id="{{ $id }}_help" class="text-muted">
+        <small id="{{ $id }}_help" class="form-text">
             {{ $help }}
         </small>
     @endif

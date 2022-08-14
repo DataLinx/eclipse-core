@@ -84,7 +84,7 @@ class Switcher extends AbstractInput
     public function getClasses()
     {
         $classes = [
-            'form-group',
+            'mb-3',
         ];
 
         if ($this->hasError()) {

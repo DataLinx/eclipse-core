@@ -12,7 +12,7 @@ class Alert extends Component
 {
     /**
      * @var string Alert type (primary, secondary, success...)
-     * @link https://getbootstrap.com/docs/4.5/components/alerts/#examples
+     * @link https://getbootstrap.com/docs/5.2/components/alerts/#examples
      */
     public $type;
 
@@ -52,9 +52,7 @@ class Alert extends Component
         return <<<'blade'
             <div class="alert alert-{{ $type }} @if ($dismissible) alert-dismissible fade show @endif" role="alert" {{ $attributes }}>
                 @if ($dismissible)
-                    <button type="button" class="close" data-dismiss="alert" aria-label="{{ _('Close') }}">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ _('Close') }}"></button>
                 @endif
                 @if ($heading)
                     <h4 class="alert-heading">{{ $heading }}</h4>
