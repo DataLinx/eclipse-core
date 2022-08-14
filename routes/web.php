@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Ocelot\Core\Http\Controllers\DashboardController;
 use Ocelot\Core\Http\Controllers\UsersController;
 
 // Redirect root requests
+// -------------------------------------------
 Route::get('/', function () {
     if ( ! auth()->check()) {
         return redirect('dashboard');
@@ -16,8 +18,16 @@ Route::get('/', function () {
 // Routes for logged in users only
 // -------------------------------------------
 Route::middleware('auth')->group(function(){
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/users', UsersController::class);
+    // Dashboard
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Users
+    Route::resource('users', UsersController::class);
+
+    // Testing route — available only in development
+    if (App::environment('local')) {
+        Route::get('test/components', [\Ocelot\Core\Http\Controllers\Test::class, 'components']);
+    }
 });
 
 // Glide image server
