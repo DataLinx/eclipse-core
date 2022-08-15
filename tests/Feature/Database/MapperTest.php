@@ -5,7 +5,7 @@ namespace Ocelot\Core\Tests\Feature\Database;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Facades\DB;
 use Ocelot\Core\Database\Mapper;
-use Ocelot\Core\Testing\PackageTestCase;
+use Ocelot\Core\Foundation\Testing\PackageTestCase;
 use Ocelot\Core\Tests\TestObjects\Configs\InvalidConfigColumnType;
 use Ocelot\Core\Tests\TestObjects\Configs\InvalidConfigDefinition;
 use Ocelot\Core\Tests\TestObjects\Configs\UpdatedValidConfig;
@@ -28,34 +28,14 @@ class MapperTest extends PackageTestCase
         $this->schema = DB::connection()->getSchemaBuilder();
     }
 
-    public function testNonExistingClass()
-    {
-        $non_existent_class = '\Some\Class';
-
-        $this->expectExceptionMessage("Class $non_existent_class does not exist");
-        $this->mapper->map($non_existent_class);
-    }
-
-    public function testEmptyDefinition()
-    {
-        $this->expectExceptionMessage("Column definition property not set");
-        $this->mapper->map(InvalidConfigDefinition::class);
-    }
-
-    public function testCreateMap()
+    public function test_config_can_be_mapped()
     {
         $this->mapper->map(ValidConfig::class);
 
         $this->assertTrue($this->schema->hasTable('core_test_config'));
     }
 
-    public function testInvalidColumnType()
-    {
-        $this->expectExceptionMessage(sprintf('Could not create column %s: %s', 'col', 'Unknown column type'));
-        $this->mapper->map(InvalidConfigColumnType::class);
-    }
-
-    public function testUpdateMap()
+    public function test_config_can_be_updated()
     {
         $this->mapper->map(ValidConfig::class);
 
@@ -73,5 +53,25 @@ class MapperTest extends PackageTestCase
         // Invalid config
         $this->expectExceptionMessage('Column definition property not set');
         $this->mapper->removeDeprecatedColumns(InvalidConfigDefinition::class);
+    }
+
+    public function test_non_existing_class_can_be_detected()
+    {
+        $non_existent_class = '\Some\Class';
+
+        $this->expectExceptionMessage("Class $non_existent_class does not exist");
+        $this->mapper->map($non_existent_class);
+    }
+
+    public function test_empty_definition_can_be_detected()
+    {
+        $this->expectExceptionMessage("Column definition property not set");
+        $this->mapper->map(InvalidConfigDefinition::class);
+    }
+
+    public function test_invalid_column_type_can_be_detected()
+    {
+        $this->expectExceptionMessage(sprintf('Could not create column %s: %s', 'col', 'Unknown column type'));
+        $this->mapper->map(InvalidConfigColumnType::class);
     }
 }

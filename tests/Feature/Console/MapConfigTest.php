@@ -2,12 +2,12 @@
 
 namespace Ocelot\Core\Tests\Feature\Console;
 
-use Ocelot\Core\Testing\PackageTestCase;
+use Ocelot\Core\Foundation\Testing\PackageTestCase;
 use Ocelot\Core\Tests\TestObjects\Configs\InvalidConfigDefinition;
 
 class MapConfigTest extends PackageTestCase
 {
-    public function testHandle()
+    public function test_invalid_config_can_be_detected()
     {
         // Trigger autoload
         $invalid_cfg = new InvalidConfigDefinition;

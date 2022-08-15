@@ -1,13 +1,13 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature;
+namespace Ocelot\Core\Tests\Feature\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Ocelot\Core\Foundation\Testing\PackageTestCase;
 use Ocelot\Core\Models\User;
-use Ocelot\Core\Testing\PackageTestCase;
 
-class UserTest extends PackageTestCase
+class UsersTest extends PackageTestCase
 {
     protected $authedUser;
 
@@ -18,13 +18,13 @@ class UserTest extends PackageTestCase
         $this->authedUser = User::factory()->make();
     }
 
-    public function testUnauthorizedAccess()
+    public function test_unauthorized_access_can_be_prevented()
     {
         $this->get('users')
              ->assertRedirect('login');
     }
 
-    public function testAuthorizedAccess()
+    public function test_authorized_access_can_be_allowed()
     {
         $this->actingAs($this->authedUser)
              ->get('users')
@@ -32,7 +32,7 @@ class UserTest extends PackageTestCase
              ->assertViewIs('core::users.index');
     }
 
-    public function testCreate()
+    public function test_create_user_screen_can_be_rendered()
     {
         $this->actingAs($this->authedUser)
              ->get('users/create')
@@ -40,7 +40,7 @@ class UserTest extends PackageTestCase
              ->assertViewIs('core::users.edit');
     }
 
-    public function testStoreCancel()
+    public function test_creation_can_be_canceled()
     {
         $this->actingAs($this->authedUser)
              ->post('users', [
@@ -49,7 +49,7 @@ class UserTest extends PackageTestCase
              ->assertRedirect('users');
     }
 
-    public function testStoreSubmit()
+    public function test_new_user_can_be_created()
     {
         $this->actingAs($this->authedUser);
 
@@ -78,7 +78,7 @@ class UserTest extends PackageTestCase
         $this->assertEquals('John Doe', $user->getFullName());
     }
 
-    public function testEdit()
+    public function test_edit_user_screen_can_be_rendered()
     {
         $user = User::factory()->create();
 
@@ -88,7 +88,7 @@ class UserTest extends PackageTestCase
              ->assertViewIs('core::users.edit');
     }
 
-    public function testUpdateCancel()
+    public function test_edit_can_be_canceled()
     {
         $user = User::factory()->create();
 
@@ -99,7 +99,7 @@ class UserTest extends PackageTestCase
              ->assertRedirect('users');
     }
 
-    public function testUpdateSubmit()
+    public function test_existing_user_can_be_updated()
     {
         $this->actingAs($this->authedUser);
 
@@ -125,7 +125,7 @@ class UserTest extends PackageTestCase
         $this->assertEquals($user->password, $updatedUser->password);
     }
 
-    public function testDestroy()
+    public function test_user_can_be_deleted()
     {
         $this->actingAs($this->authedUser);
 

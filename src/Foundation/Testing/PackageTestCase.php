@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Testing;
+namespace Ocelot\Core\Foundation\Testing;
 
 use Illuminate\Support\Facades\Artisan;
 use Ocelot\Core\Providers\AuthServiceProvider;
@@ -15,7 +15,7 @@ use Orchestra\Testbench\TestCase;
  *
  * @package Ocelot\Core\Tests
  */
-class PackageTestCase extends TestCase
+abstract class PackageTestCase extends TestCase
 {
     /**
      * @var bool Run the Ocelot install procedure in setUp()

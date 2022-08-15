@@ -2,13 +2,13 @@
 
 namespace Ocelot\Core\Tests\Feature\Console;
 
-use Ocelot\Core\Testing\PackageTestCase;
+use Ocelot\Core\Foundation\Testing\PackageTestCase;
 
 class OcelotInstallTest extends PackageTestCase
 {
     protected $ocelot_install = false;
 
-    public function testHandle()
+    public function test_system_can_be_installed()
     {
         $cmd = $this->artisan('ocelot:install');
 

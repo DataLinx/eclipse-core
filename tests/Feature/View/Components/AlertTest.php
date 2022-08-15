@@ -3,7 +3,7 @@
 namespace Ocelot\Core\Tests\Feature\View\Components;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use Ocelot\Core\Testing\PackageTestCase;
+use Ocelot\Core\Foundation\Testing\PackageTestCase;
 
 class AlertTest extends PackageTestCase
 {

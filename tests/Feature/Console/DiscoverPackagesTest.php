@@ -2,8 +2,8 @@
 
 namespace Ocelot\Core\Tests\Feature\Console;
 
+use Ocelot\Core\Foundation\Testing\PackageTestCase;
 use Ocelot\Core\Models\Package;
-use Ocelot\Core\Testing\PackageTestCase;
 
 class DiscoverPackagesTest extends PackageTestCase
 {
@@ -34,7 +34,7 @@ class DiscoverPackagesTest extends PackageTestCase
         parent::tearDown();
     }
 
-    public function testHandle()
+    public function test_command_can_run()
     {
         // Create a mock package directory without composer.json
         $dir = app_base_path('vendor/datalinx/non-composer-test');
@@ -47,7 +47,7 @@ class DiscoverPackagesTest extends PackageTestCase
              ->assertExitCode(0);
     }
 
-    public function testPackageTypeChange()
+    public function test_package_type_change_can_be_handled()
     {
         $dir = app_base_path('vendor/datalinx/package-type-change-test');
 

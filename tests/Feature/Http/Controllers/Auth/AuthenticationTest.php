@@ -1,11 +1,10 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\Auth;
+namespace Ocelot\Core\Tests\Feature\Http\Controllers\Auth;
 
-use Ocelot\Core\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Ocelot\Core\Foundation\Testing\PackageTestCase;
 use Ocelot\Core\Models\User;
-use Ocelot\Core\Testing\PackageTestCase;
+use Ocelot\Core\Providers\RouteServiceProvider;
 
 class AuthenticationTest extends PackageTestCase
 {

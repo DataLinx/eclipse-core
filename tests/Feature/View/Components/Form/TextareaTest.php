@@ -4,8 +4,8 @@ namespace Ocelot\Core\Tests\Feature\View\Components\Form;
 
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use Ocelot\Core\Testing\PackageTestCase;
-use Ocelot\Core\Testing\TestsComponents;
+use Ocelot\Core\Foundation\Testing\PackageTestCase;
+use Ocelot\Core\Foundation\Testing\TestsComponents;
 use Ocelot\Core\View\Components\Form\Textarea;
 
 class TextareaTest extends PackageTestCase

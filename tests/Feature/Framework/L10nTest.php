@@ -1,11 +1,11 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature;
+namespace Ocelot\Core\Tests\Feature\Framework;
 
 use Exception;
+use Ocelot\Core\Foundation\Testing\PackageTestCase;
 use Ocelot\Core\Framework\L10n;
 use Ocelot\Core\Models\User;
-use Ocelot\Core\Testing\PackageTestCase;
 
 class L10nTest extends PackageTestCase
 {
@@ -27,22 +27,24 @@ class L10nTest extends PackageTestCase
         $this->l10n->setDomain('core');
     }
 
-    public function testBindDomain()
+    public function test_domain_can_be_bound()
     {
         // Test with set_domain
         $this->l10n->setDomain('core');
         $this->assertEquals('core', textdomain(NULL));
         $this->l10n->bindDomain('test', package_path('ocelot/core', 'resources/locales'), true);
         $this->assertEquals('test', textdomain(NULL));
+    }
 
-        // Test non-existing domain
+    public function test_non_existing_domain_can_be_detected()
+    {
         $dir = 'some/dir';
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("Directory $dir does not exist");
         $this->l10n->bindDomain('test123', $dir);
     }
 
-    public function testSetDomain()
+    public function test_empty_domain_can_be_detected()
     {
         // Test empty domain
         $this->expectException(Exception::class);
@@ -50,7 +52,7 @@ class L10nTest extends PackageTestCase
         $this->l10n->setDomain('');
     }
 
-    public function testSetTmpDomain()
+    public function test_tmp_domain_can_be_set()
     {
         $this->l10n->bindDomain('test', package_path('ocelot/core', 'resources/locales'));
 
@@ -71,35 +73,35 @@ class L10nTest extends PackageTestCase
         $this->assertEquals('core', textdomain(NULL));
     }
 
-    public function testSetInvalidLanguage()
+    public function test_invalid_language_can_be_detected()
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('"bla" is not a valid UI language');
         $this->l10n->setLanguage('bla');
     }
 
-    public function testSetInvalidDataLanguage()
+    public function test_invalid_data_language_can_be_detected()
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('"hr" is not a valid data language');
         $this->l10n->setLanguage('en', 'hr');
     }
 
-    public function testSetLanguage()
+    public function test_language_can_be_set()
     {
         $this->l10n->setLanguage('en', 'sl');
         $this->assertEquals('en', $this->l10n->getLanguageId());
         $this->assertEquals('sl', $this->l10n->getDataLanguageId());
     }
 
-    public function testNoValidationLanguage()
+    public function test_language_validation_can_be_disabled()
     {
         $this->l10n->setLanguageValidation(false);
         $this->l10n->setLanguage('hr');
         $this->assertEquals('hr', $this->l10n->getLanguageId());
     }
 
-    public function testDetectLanguageFromCookieSl()
+    public function test_sl_language_can_be_set_from_cookie()
     {
         $this->actingAs(User::factory()->make())
              ->withUnencryptedCookie(L10n::COOKIE_NAME, 'sl');
@@ -109,7 +111,7 @@ class L10nTest extends PackageTestCase
         $response->assertSee('html lang="sl"', false);
     }
 
-    public function testDetectLanguageFromCookieEn()
+    public function test_en_language_can_be_set_from_cookie()
     {
         $this->actingAs(User::factory()->make())
              ->withUnencryptedCookie(L10n::COOKIE_NAME, 'en');
@@ -119,7 +121,7 @@ class L10nTest extends PackageTestCase
         $response->assertSee('html lang="en"', false);
     }
 
-    public function testDetectLanguageFromHeaderFirst()
+    public function test_language_can_be_set_from_first_header_value()
     {
         $this->actingAs(User::factory()->make())
              ->withHeader('HTTP_ACCEPT_LANGUAGE', 'sl,en');
@@ -129,7 +131,7 @@ class L10nTest extends PackageTestCase
         $response->assertSee('html lang="sl"', false);
     }
 
-    public function testDetectLanguageFromHeaderNonFirst()
+    public function test_language_can_be_set_from_non_first_header_value()
     {
         $this->actingAs(User::factory()->make())
              ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru,en');
@@ -139,7 +141,7 @@ class L10nTest extends PackageTestCase
         $response->assertSee('html lang="en"', false);
     }
 
-    public function testDetectLanguageFromHeaderInvalid()
+    public function test_invalid_language_in_header_can_be_handled()
     {
         $this->actingAs(User::factory()->make())
              ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru');
