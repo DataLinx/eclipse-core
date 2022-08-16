@@ -1,5 +1,7 @@
-require('./bootstrap');
+import './bootstrap';
+import {Toast} from 'bootstrap';
 
+/*
 $('.user-delete').click(function(){
     if (confirm('Are you sure you want to delete this user?')) {
         var $row = $(this).closest('tr');
@@ -16,5 +18,9 @@ $('.user-delete').click(function(){
         })
     }
 });
+*/
 
-$('.toast').toast('show');
+_.forEach(document.getElementsByClassName('toast'), function(element) {
+    const toast = new Toast(element);
+    toast.show();
+});
