@@ -18,6 +18,6 @@ class Controller extends BaseController
         $context->initialize();
 
         $l10n->initialize()
-             ->bindDomain('core', package_path('sdlx/core', 'resources/locales'), true);
+             ->bindDomain('core', __DIR__ . '/../../../resources/locales', true);
     }
 }

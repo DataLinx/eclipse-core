@@ -44,8 +44,8 @@ class CoreServiceProvider extends ServiceProvider
         $this->app->singleton('glide', function() {
             return ServerFactory::create([
                 'response' => new LaravelResponseFactory(app('request')),
-                'source' => app_base_path('storage/app'),
-                'cache' => app_base_path('storage/app/cache'),
+                'source' => base_path('storage/app'),
+                'cache' => base_path('storage/app/cache'),
             ]);
         });
     }
@@ -57,8 +57,8 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(package_path('sdlx/core', 'resources/views'), 'core');
-        $this->loadMigrationsFrom(package_path('sdlx/core', 'database/migrations'));
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'core');
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -69,10 +69,6 @@ class CoreServiceProvider extends ServiceProvider
                 MapConfig::class,
             ]);
         }
-
-        $this->publishes([
-            package_path('sdlx/core', 'public') => public_path('vendor/sdlx/core'),
-        ], 'sdlx/core');
 
         Blade::componentNamespace('SDLX\\Core\\View\\Components\\Form', 'form');
         Blade::component(AppLayout::class);

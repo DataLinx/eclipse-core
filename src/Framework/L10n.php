@@ -51,7 +51,7 @@ class L10n
      */
     public function __construct()
     {
-        require_once package_path('datalinx/gettext-context','src/gettext-context.php');
+        require_once base_path('vendor/datalinx/gettext-context/src/gettext-context.php');
     }
 
     /**

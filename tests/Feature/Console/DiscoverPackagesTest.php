@@ -11,12 +11,12 @@ class DiscoverPackagesTest extends PackageTestCase
     {
         // Clean up test files and directories
         $files = [
-            app_base_path('vendor/datalinx/package-type-change-test') .'/composer.json',
+            base_path('vendor/datalinx/package-type-change-test/composer.json'),
         ];
 
         $dirs = [
-            app_base_path('vendor/datalinx/non-composer-test'),
-            app_base_path('vendor/datalinx/package-type-change-test'),
+            base_path('vendor/datalinx/non-composer-test'),
+            base_path('vendor/datalinx/package-type-change-test'),
         ];
 
         foreach ($files as $file) {
@@ -37,7 +37,7 @@ class DiscoverPackagesTest extends PackageTestCase
     public function test_command_can_run()
     {
         // Create a mock package directory without composer.json
-        $dir = app_base_path('vendor/datalinx/non-composer-test');
+        $dir = base_path('vendor/datalinx/non-composer-test');
 
         if (! file_exists($dir)) {
             mkdir($dir);
@@ -49,7 +49,7 @@ class DiscoverPackagesTest extends PackageTestCase
 
     public function test_package_type_change_can_be_handled()
     {
-        $dir = app_base_path('vendor/datalinx/package-type-change-test');
+        $dir = base_path('vendor/datalinx/package-type-change-test');
 
         if (! file_exists($dir)) {
             mkdir($dir);

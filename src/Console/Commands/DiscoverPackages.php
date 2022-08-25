@@ -29,9 +29,11 @@ class DiscoverPackages extends Command
      */
     public function handle()
     {
-        $this->info("Discovering SDLX packages in ". app_base_path('vendor'));
+        $dir = base_path('vendor');
 
-        foreach (File::directories(app_base_path('vendor')) as $vendor_dir) {
+        $this->info("Discovering SDLX packages in $dir");
+
+        foreach (File::directories($dir) as $vendor_dir) {
             foreach (File::directories($vendor_dir) as $package_dir) {
 
                 if (! file_exists($package_dir .'/composer.json')) {

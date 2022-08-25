@@ -32,7 +32,7 @@ class L10nTest extends PackageTestCase
         // Test with set_domain
         $this->l10n->setDomain('core');
         $this->assertEquals('core', textdomain(NULL));
-        $this->l10n->bindDomain('test', package_path('sdlx/core', 'resources/locales'), true);
+        $this->l10n->bindDomain('test', __DIR__ . '/../../../resources/locales', true);
         $this->assertEquals('test', textdomain(NULL));
     }
 
@@ -54,7 +54,7 @@ class L10nTest extends PackageTestCase
 
     public function test_tmp_domain_can_be_set()
     {
-        $this->l10n->bindDomain('test', package_path('sdlx/core', 'resources/locales'));
+        $this->l10n->bindDomain('test', __DIR__ . '/../../../resources/locales');
 
         // Initial state
         $this->l10n->setDomain('core');

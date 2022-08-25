@@ -27,7 +27,7 @@ class Package extends Model
      */
     public function getDirectory()
     {
-        return app_base_path("vendor/{$this->vendor}/{$this->name}/");
+        return base_path("vendor/$this->vendor/$this->name/");
     }
 
     /**
