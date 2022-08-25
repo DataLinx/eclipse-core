@@ -50,7 +50,11 @@
         "laravel": {
             "dont-discover": [],
             "providers": [
-                "SDLX\\Core\\Providers\\CoreServiceProvider"
+                "SDLX\\Core\\Providers\\CoreServiceProvider",
+                "SDLX\\Core\\Providers\\AuthServiceProvider",
+                "SDLX\\Core\\Providers\\EventServiceProvider",
+                "SDLX\\Core\\Providers\\RouteServiceProvider",
+                "SDLX\\Core\\Providers\\TelescopeServiceProvider"
             ]
         },
         "sdlx": {

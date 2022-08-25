@@ -7,6 +7,7 @@ use Orchestra\Testbench\TestCase;
 use SDLX\Core\Providers\AuthServiceProvider;
 use SDLX\Core\Providers\CoreServiceProvider;
 use SDLX\Core\Providers\EventServiceProvider;
+use SDLX\Core\Providers\RouteServiceProvider;
 
 /**
  * Class PackageTestCase
@@ -34,6 +35,7 @@ abstract class PackageTestCase extends TestCase
             AuthServiceProvider::class,
             CoreServiceProvider::class,
             EventServiceProvider::class,
+            RouteServiceProvider::class,
         ];
     }
 

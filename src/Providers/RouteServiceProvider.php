@@ -31,15 +31,17 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             // Core routes
             Route::middleware('web')
-                ->group(package_path('sdlx/core', 'routes/web.php'));
+                ->group(__DIR__ . '/../../routes/web.php');
 
             // Core auth routes
             Route::middleware('web')
-                ->group(package_path('sdlx/core', 'routes/auth.php'));
+                ->group(__DIR__ . '/../../routes/auth.php');
 
             // Any additional app routes
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
+            if (file_exists(base_path('routes/web.php'))) {
+                Route::middleware('web')
+                    ->group(base_path('routes/web.php'));
+            }
         });
     }
 
