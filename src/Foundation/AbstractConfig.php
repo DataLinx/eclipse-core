@@ -1,8 +1,8 @@
 <?php
 
-namespace Ocelot\Core\Foundation;
+namespace SDLX\Core\Foundation;
 
-use Ocelot\Core\Database\Model;
+use SDLX\Core\Database\Model;
 
 abstract class AbstractConfig extends Model
 {

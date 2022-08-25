@@ -1,13 +1,13 @@
 <?php
 
-namespace Ocelot\Core\Http\Controllers;
+namespace SDLX\Core\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Ocelot\Core\Framework\Context;
-use Ocelot\Core\Framework\L10n;
+use SDLX\Core\Framework\Context;
+use SDLX\Core\Framework\L10n;
 
 class Controller extends BaseController
 {
@@ -18,6 +18,6 @@ class Controller extends BaseController
         $context->initialize();
 
         $l10n->initialize()
-             ->bindDomain('core', package_path('ocelot/core', 'resources/locales'), true);
+             ->bindDomain('core', package_path('sdlx/core', 'resources/locales'), true);
     }
 }

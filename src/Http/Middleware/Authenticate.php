@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Http\Middleware;
+namespace SDLX\Core\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 

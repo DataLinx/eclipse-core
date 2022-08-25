@@ -1,22 +1,22 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\Console;
+namespace SDLX\Core\Tests\Feature\Console;
 
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
 
-class OcelotInstallTest extends PackageTestCase
+class SDLXInstallTest extends PackageTestCase
 {
-    protected $ocelot_install = false;
+    protected $sdlx_install = false;
 
     public function test_system_can_be_installed()
     {
-        $cmd = $this->artisan('ocelot:install');
+        $cmd = $this->artisan('sdlx:install');
 
         // Test site creation
-        $cmd->expectsQuestion('Enter the project domain name', 'test.ocelot.dev')
-            ->expectsQuestion('Enter the project name', 'Ocelot Test')
+        $cmd->expectsQuestion('Enter the project domain name', 'test.sdlx.dev')
+            ->expectsQuestion('Enter the project name', 'SDLX Test')
             ->expectsConfirmation('Is this site served over HTTPS?', 'no')
-            ->expectsOutput('Created site test.ocelot.dev');
+            ->expectsOutput('Created site test.sdlx.dev');
 
         // Test user creation
         $cmd->expectsQuestion('What is your name?', 'John')

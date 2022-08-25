@@ -1,17 +1,17 @@
 <?php
 
-namespace Ocelot\Core\Models;
+namespace SDLX\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Ocelot\Core\Database\Factories\UserFactory;
+use SDLX\Core\Database\Factories\UserFactory;
 
 /**
  * Class User
  *
- * @package Ocelot\Core\Models
+ * @package SDLX\Core\Models
  *
  * @property int $id User ID
  *

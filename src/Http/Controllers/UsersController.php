@@ -1,12 +1,12 @@
 <?php
 
-namespace Ocelot\Core\Http\Controllers;
+namespace SDLX\Core\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash;
-use Ocelot\Core\DataGrids\UsersGrid;
-use Ocelot\Core\Framework\Output;
-use Ocelot\Core\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use SDLX\Core\DataGrids\UsersGrid;
+use SDLX\Core\Framework\Output;
+use SDLX\Core\Models\User;
 
 class UsersController extends Controller
 {
@@ -60,7 +60,7 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Ocelot\Core\Models\User  $user
+     * @param  \SDLX\Core\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -71,7 +71,7 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Ocelot\Core\Models\User  $user
+     * @param  \SDLX\Core\Models\User  $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(User $user)
@@ -86,7 +86,7 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Ocelot\Core\Models\User  $user
+     * @param  \SDLX\Core\Models\User  $user
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, User $user, Output $output)
@@ -109,7 +109,7 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \Ocelot\Core\Models\User $user
+     * @param \SDLX\Core\Models\User $user
      * @param Output $output
      * @return array
      * @throws \Exception

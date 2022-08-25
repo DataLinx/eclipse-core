@@ -14,3 +14,8 @@ auth.json
 npm-debug.log
 yarn-error.log
 phpunit.xml
+
+# IDE/Editor files
+nbproject
+.idea/workspace.xml
+.idea/vcs.xml

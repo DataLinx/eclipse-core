@@ -1,9 +1,9 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\View\Components;
+namespace SDLX\Core\Tests\Feature\View\Components;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
 
 class AlertTest extends PackageTestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Exceptions;
+namespace SDLX\Core\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;

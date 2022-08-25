@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Http\Controllers\Auth;
+namespace SDLX\Core\Http\Controllers\Auth;
 
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\Foundation\Application;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
-use Ocelot\Core\Http\Controllers\Controller;
+use SDLX\Core\Http\Controllers\Controller;
 
 class NewPasswordController extends Controller
 {

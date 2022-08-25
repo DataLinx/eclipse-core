@@ -1,11 +1,11 @@
 <?php
 
-namespace Ocelot\Core\Framework\Output;
+namespace SDLX\Core\Framework\Output;
 
 /**
  * Class Toast
  *
- * @package Ocelot\Core\Framework\Output
+ * @package SDLX\Core\Framework\Output
  * @method self success()
  * @method self danger()
  * @method self warning()
@@ -16,32 +16,32 @@ class Toast
     /**
      * @var string Toast message
      */
-    protected $message;
+    protected string $message;
 
     /**
      * @var string|null Optional title - will default based on toast type
      */
-    protected $title;
+    protected ?string $title;
 
     /**
      * @var string Type: info (default), success, danger, warning
      */
-    protected $type = 'info';
+    protected string $type = 'info';
 
     /**
-     * @var string Icon for the header
+     * @var string|null Icon for the header
      */
-    protected $icon;
+    protected ?string $icon;
 
     /**
      * @var bool Make toast sticky, which means it does not autohide and there's no way to close it
      */
-    protected $sticky = false;
+    protected bool $sticky = false;
 
     /**
-     * @var array An array of labels and links
+     * @var array|null An array of labels and links
      */
-    protected $links;
+    protected ?array $links;
 
     /**
      * Toast constructor.
@@ -55,7 +55,7 @@ class Toast
         $this->title = $title;
     }
 
-    public function __call($name, $arguments)
+    public function __call($name, $arguments): self
     {
         switch ($name) {
             case 'success':
@@ -76,7 +76,7 @@ class Toast
      *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->message;
     }
@@ -87,7 +87,7 @@ class Toast
      * @param string $title
      * @return $this
      */
-    public function title(string $title)
+    public function title(string $title): self
     {
         $this->title = $title;
 
@@ -99,9 +99,9 @@ class Toast
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
-        if ($this->title) {
+        if (isset($this->title)) {
             return $this->title;
         }
 
@@ -123,7 +123,7 @@ class Toast
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type ?? 'info';
     }
@@ -134,7 +134,7 @@ class Toast
      * @param string $name Icon name
      * @return $this
      */
-    public function icon($name)
+    public function icon(string $name): self
     {
         $this->icon = $name;
 
@@ -146,9 +146,9 @@ class Toast
      *
      * @return string
      */
-    public function getIcon()
+    public function getIcon(): string
     {
-        if ($this->icon) {
+        if (isset($this->icon)) {
             return $this->icon;
         }
 
@@ -170,7 +170,7 @@ class Toast
      *
      * @return bool
      */
-    public function isSticky()
+    public function isSticky(): bool
     {
         return $this->sticky;
     }
@@ -182,7 +182,7 @@ class Toast
      * @param string $href Link location / href attribute
      * @return $this
      */
-    public function link(string $label, string $href)
+    public function link(string $label, string $href): self
     {
         $this->links[$label] = $href;
 
@@ -194,9 +194,9 @@ class Toast
      *
      * @return bool
      */
-    public function hasLinks()
+    public function hasLinks(): bool
     {
-        return is_array($this->links) && count($this->links) > 0;
+        return isset($this->links) && is_array($this->links) && count($this->links) > 0;
     }
 
     /**
@@ -204,7 +204,7 @@ class Toast
      *
      * @return array
      */
-    public function getLinks()
+    public function getLinks(): array
     {
         return $this->links;
     }

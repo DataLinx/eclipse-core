@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Providers;
+namespace SDLX\Core\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;

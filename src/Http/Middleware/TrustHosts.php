@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Http\Middleware;
+namespace SDLX\Core\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustHosts as Middleware;
 

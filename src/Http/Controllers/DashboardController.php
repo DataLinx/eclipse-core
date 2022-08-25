@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Http\Controllers;
+namespace SDLX\Core\Http\Controllers;
 
 class DashboardController extends Controller
 {

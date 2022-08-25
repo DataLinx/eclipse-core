@@ -1,9 +1,9 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\Console;
+namespace SDLX\Core\Tests\Feature\Console;
 
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
-use Ocelot\Core\Tests\TestObjects\Configs\InvalidConfigDefinition;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Tests\TestObjects\Configs\InvalidConfigDefinition;
 
 class MapConfigTest extends PackageTestCase
 {
@@ -12,7 +12,7 @@ class MapConfigTest extends PackageTestCase
         // Trigger autoload
         $invalid_cfg = new InvalidConfigDefinition;
 
-        $this->artisan('ocelot:map-config')
+        $this->artisan('sdlx:map-config')
              ->expectsOutput(sprintf("Exception thrown when mapping columns for %s: %s", InvalidConfigDefinition::class, 'Column definition property not set'))
              ->assertExitCode(0);
     }

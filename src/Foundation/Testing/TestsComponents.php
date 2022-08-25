@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Foundation\Testing;
+namespace SDLX\Core\Foundation\Testing;
 
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Request;
@@ -9,7 +9,7 @@ use Mockery;
 /**
  * Trait TestsComponents
  *
- * @package Ocelot\Core\Testing
+ * @package SDLX\Core\Testing
  */
 trait TestsComponents
 {

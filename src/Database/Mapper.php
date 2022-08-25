@@ -1,13 +1,13 @@
 <?php
 
-namespace Ocelot\Core\Database;
+namespace SDLX\Core\Database;
 
 use Exception;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Database\Schema\ColumnDefinition;
 use Illuminate\Support\Facades\DB;
-use Ocelot\Core\Foundation\Mappable;
+use SDLX\Core\Foundation\Mappable;
 
 class Mapper
 {

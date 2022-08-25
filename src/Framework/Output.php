@@ -1,13 +1,13 @@
 <?php
 
-namespace Ocelot\Core\Framework;
+namespace SDLX\Core\Framework;
 
-use Ocelot\Core\Framework\Output\Toast;
+use SDLX\Core\Framework\Output\Toast;
 
 /**
  * Response output utility class
  *
- * @package Ocelot\Core\Framework
+ * @package SDLX\Core\Framework
  */
 class Output
 {

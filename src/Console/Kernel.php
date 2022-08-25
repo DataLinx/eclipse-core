@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Console;
+namespace SDLX\Core\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -36,6 +36,6 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
-        require package_path('ocelot/core', 'routes/console.php');
+        require package_path('sdlx/core', 'routes/console.php');
     }
 }

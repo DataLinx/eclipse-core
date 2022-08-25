@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Models;
+namespace SDLX\Core\Models;
 
 use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
 

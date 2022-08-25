@@ -1,10 +1,10 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\View\Components\Form;
+namespace SDLX\Core\Tests\Feature\View\Components\Form;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
-use Ocelot\Core\View\Components\Form\Error;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\View\Components\Form\Error;
 
 class ErrorTest extends PackageTestCase
 {

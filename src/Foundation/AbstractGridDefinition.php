@@ -1,8 +1,8 @@
 <?php
 
-namespace Ocelot\Core\Foundation;
+namespace SDLX\Core\Foundation;
 
-use Ocelot\Core\Framework\Grid\Columns\Column;
+use SDLX\Core\Framework\Grid\Columns\Column;
 
 /**
  * Abstract Grid Definition that every Grid should implement

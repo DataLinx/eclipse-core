@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'SDLX') }}</title>
 
-        @if (config('ocelot.fontawesome_kit_url'))
-            <script src="{{ config('ocelot.fontawesome_kit_url') }}" crossorigin="anonymous"></script>
+        @if (config('sdlx.fontawesome_kit_url'))
+            <script src="{{ config('sdlx.fontawesome_kit_url') }}" crossorigin="anonymous"></script>
         @endif
 
         <!-- Styles -->
@@ -30,7 +30,7 @@
                 {{ $slot }}
 
                 <div id="toast-container" aria-live="polite" aria-atomic="true">
-                    @foreach (app(\Ocelot\Core\Framework\Output::class)->getToasts() as $toast)
+                    @foreach (app(\SDLX\Core\Framework\Output::class)->getToasts() as $toast)
                         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" @if ($toast->isSticky()) data-autohide="false" @else data-delay="10000" @endif>
                             <div class="toast-header bg-{{ $toast->getType() }}">
                                 <x-icon name="{{ $toast->getIcon() }}" class="mr-2"/>

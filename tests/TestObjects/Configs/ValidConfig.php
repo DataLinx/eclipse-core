@@ -1,9 +1,9 @@
 <?php
 
-namespace Ocelot\Core\Tests\TestObjects\Configs;
+namespace SDLX\Core\Tests\TestObjects\Configs;
 
-use Ocelot\Core\Database\Mapper;
-use Ocelot\Core\Foundation\AbstractConfig;
+use SDLX\Core\Database\Mapper;
+use SDLX\Core\Foundation\AbstractConfig;
 
 class ValidConfig extends AbstractConfig
 {

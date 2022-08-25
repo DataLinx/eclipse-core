@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\View\Components;
+namespace SDLX\Core\View\Components;
 
 use Illuminate\View\Component;
 

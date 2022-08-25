@@ -1,11 +1,11 @@
 <?php
 
-use Ocelot\Core\Framework\Output\Toast;
+use SDLX\Core\Framework\Output\Toast;
 
 if ( ! function_exists('app_base_path'))
 {
     /**
-     * Get the full Ocelot app installation base path
+     * Get the full SDLX app installation base path
      *
      * @param string|null $path Optional relative path to a file/directory which will be appended
      * @return string
@@ -34,7 +34,7 @@ if ( ! function_exists('package_path'))
     /**
      * Get full path to a package
      *
-     * @param string $package Package name (e.g. ocelot/core)
+     * @param string $package Package name (e.g. sdlx/core)
      * @param string|null $path Optional relative path to a file/directory which will be appended
      * @return string
      * @throws Exception
@@ -54,5 +54,5 @@ if ( ! function_exists('package_path'))
  */
 function toast(string $message, string $title = null)
 {
-    return app(\Ocelot\Core\Framework\Output::class)->toast($message, $title);
+    return app(\SDLX\Core\Framework\Output::class)->toast($message, $title);
 }

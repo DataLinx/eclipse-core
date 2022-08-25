@@ -1,14 +1,14 @@
 <?php
 
-namespace Ocelot\Core\Console\Commands;
+namespace SDLX\Core\Console\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Ocelot\Core\Database\Mapper;
-use Ocelot\Core\Foundation\AbstractConfig;
-use Ocelot\Core\Models\Package;
-use Ocelot\Core\Models\Site;
+use SDLX\Core\Database\Mapper;
+use SDLX\Core\Foundation\AbstractConfig;
+use SDLX\Core\Models\Package;
+use SDLX\Core\Models\Site;
 
 class MapConfig extends Command
 {
@@ -17,7 +17,7 @@ class MapConfig extends Command
      *
      * @var string
      */
-    protected $signature = 'ocelot:map-config';
+    protected $signature = 'sdlx:map-config';
 
     /**
      * The console command description.

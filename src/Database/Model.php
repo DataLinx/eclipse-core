@@ -1,11 +1,11 @@
 <?php
-namespace Ocelot\Core\Database;
+namespace SDLX\Core\Database;
 
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Object Model class
- * @package Ocelot\Core\Database
+ * @package SDLX\Core\Database
  * @mixin Builder
  */
 abstract class Model extends \Illuminate\Database\Eloquent\Model

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Providers;
+namespace SDLX\Core\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -31,11 +31,11 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             // Core routes
             Route::middleware('web')
-                ->group(package_path('ocelot/core', 'routes/web.php'));
+                ->group(package_path('sdlx/core', 'routes/web.php'));
 
             // Core auth routes
             Route::middleware('web')
-                ->group(package_path('ocelot/core', 'routes/auth.php'));
+                ->group(package_path('sdlx/core', 'routes/auth.php'));
 
             // Any additional app routes
             Route::middleware('web')

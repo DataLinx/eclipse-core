@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Console\Commands;
+namespace SDLX\Core\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
@@ -12,7 +12,7 @@ class PostComposerUpdate extends Command
      *
      * @var string
      */
-    protected $signature = 'ocelot:post-composer-update';
+    protected $signature = 'sdlx:post-composer-update';
 
     /**
      * The console command description.
@@ -28,24 +28,24 @@ class PostComposerUpdate extends Command
      */
     public function handle()
     {
-        echo "Running Ocelot's Post Composer update procedure..." . PHP_EOL;
+        echo "Running SDLX Post Composer update procedure..." . PHP_EOL;
 
         // Publish Laravel assets
         // ------------------
         Artisan::call('vendor:publish --tag=laravel-assets');
 
-        // Discover Ocelot packages
+        // Discover SDLX packages
         // ------------------
-        Artisan::call('ocelot:discover-packages');
+        Artisan::call('sdlx:discover-packages');
 
         // Map config files
         // ------------------
-        Artisan::call('ocelot:map-config');
+        Artisan::call('sdlx:map-config');
 
         // Update Telescope
         // ------------------
         Artisan::call('telescope:publish');
 
-        echo "Ocelot's Post Composer update procedure completed!" . PHP_EOL;
+        echo "SDLX Post Composer update procedure completed!" . PHP_EOL;
     }
 }

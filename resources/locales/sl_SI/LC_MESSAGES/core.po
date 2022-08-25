@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Ocelot Core\n"
+"Project-Id-Version: SDLX Core\n"
 "POT-Creation-Date: 2020-09-25 08:32+0200\n"
 "PO-Revision-Date: 2020-09-25 08:37+0200\n"
 "Last-Translator: Omer Sabic <omer@datalinx.si>\n"

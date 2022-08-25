@@ -1,15 +1,15 @@
 <?php
 
-namespace Ocelot\Core\Http;
+namespace SDLX\Core\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Ocelot\Core\Http\Middleware\Authenticate;
-use Ocelot\Core\Http\Middleware\EncryptCookies;
-use Ocelot\Core\Http\Middleware\PreventRequestsDuringMaintenance;
-use Ocelot\Core\Http\Middleware\RedirectIfAuthenticated;
-use Ocelot\Core\Http\Middleware\TrimStrings;
-use Ocelot\Core\Http\Middleware\TrustProxies;
-use Ocelot\Core\Http\Middleware\VerifyCsrfToken;
+use SDLX\Core\Http\Middleware\Authenticate;
+use SDLX\Core\Http\Middleware\EncryptCookies;
+use SDLX\Core\Http\Middleware\PreventRequestsDuringMaintenance;
+use SDLX\Core\Http\Middleware\RedirectIfAuthenticated;
+use SDLX\Core\Http\Middleware\TrimStrings;
+use SDLX\Core\Http\Middleware\TrustProxies;
+use SDLX\Core\Http\Middleware\VerifyCsrfToken;
 
 class Kernel extends HttpKernel
 {

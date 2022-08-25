@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Foundation\Testing;
+namespace SDLX\Core\Foundation\Testing;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
  *
  * This should be used when implementing App tests.
  *
- * @package Ocelot\Core\Testing
+ * @package SDLX\Core\Testing
  */
 abstract class AppTestCase extends BaseTestCase
 {

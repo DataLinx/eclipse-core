@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use Ocelot\Core\Http\Controllers\DashboardController;
-use Ocelot\Core\Http\Controllers\UsersController;
+use SDLX\Core\Http\Controllers\DashboardController;
+use SDLX\Core\Http\Controllers\UsersController;
 
 // Redirect root requests
 // -------------------------------------------
@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function(){
 
     // Testing route — available only in development
     if (App::environment('local')) {
-        Route::get('test/components', [\Ocelot\Core\Http\Controllers\Test::class, 'components']);
+        Route::get('test/components', [\SDLX\Core\Http\Controllers\Test::class, 'components']);
     }
 });
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\Database;
+namespace SDLX\Core\Tests\Feature\Database;
 
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Facades\DB;
-use Ocelot\Core\Database\Mapper;
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
-use Ocelot\Core\Tests\TestObjects\Configs\InvalidConfigColumnType;
-use Ocelot\Core\Tests\TestObjects\Configs\InvalidConfigDefinition;
-use Ocelot\Core\Tests\TestObjects\Configs\UpdatedValidConfig;
-use Ocelot\Core\Tests\TestObjects\Configs\ValidConfig;
+use SDLX\Core\Database\Mapper;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Tests\TestObjects\Configs\InvalidConfigColumnType;
+use SDLX\Core\Tests\TestObjects\Configs\InvalidConfigDefinition;
+use SDLX\Core\Tests\TestObjects\Configs\UpdatedValidConfig;
+use SDLX\Core\Tests\TestObjects\Configs\ValidConfig;
 
 class MapperTest extends PackageTestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Framework\Grid;
+namespace SDLX\Core\Framework\Grid;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace Ocelot\Core\Database\Factories;
+namespace SDLX\Core\Database\Factories;
 
-use Ocelot\Core\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use SDLX\Core\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Ocelot\Core\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\SDLX\Core\Models\User>
  */
 class UserFactory extends Factory
 {

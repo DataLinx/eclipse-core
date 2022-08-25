@@ -1,26 +1,28 @@
 <?php
 
-namespace Ocelot\Core\Foundation\Testing;
+namespace SDLX\Core\Foundation\Testing;
 
 use Illuminate\Support\Facades\Artisan;
-use Ocelot\Core\Providers\AuthServiceProvider;
-use Ocelot\Core\Providers\CoreServiceProvider;
-use Ocelot\Core\Providers\EventServiceProvider;
 use Orchestra\Testbench\TestCase;
+use SDLX\Core\Providers\AuthServiceProvider;
+use SDLX\Core\Providers\CoreServiceProvider;
+use SDLX\Core\Providers\EventServiceProvider;
 
 /**
  * Class PackageTestCase
  *
- * This should be used when implementing Ocelot packages
+ * This should be used when implementing SDLX packages
  *
- * @package Ocelot\Core\Tests
+ * @package SDLX\Core\Tests
  */
 abstract class PackageTestCase extends TestCase
 {
     /**
-     * @var bool Run the Ocelot install procedure in setUp()
+     * @var bool Run the SDLX install procedure in setUp()
      */
-    protected $ocelot_install = true;
+    protected $sdlx_install = true;
+
+    protected $loadEnvironmentVariables = true;
 
     protected function getPackageProviders($app)
     {
@@ -39,11 +41,11 @@ abstract class PackageTestCase extends TestCase
     {
         parent::setUp();
 
-        if ($this->ocelot_install) {
-            Artisan::call('ocelot:install -n'); // -n = no interaction, use testing defaults
+        if ($this->sdlx_install) {
+            Artisan::call('sdlx:install -n'); // -n = no interaction, use testing defaults
         }
 
-        $this->withoutMix();
+        $this->withoutVite();
     }
 
     /**

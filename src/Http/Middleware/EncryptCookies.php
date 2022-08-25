@@ -1,9 +1,9 @@
 <?php
 
-namespace Ocelot\Core\Http\Middleware;
+namespace SDLX\Core\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
-use Ocelot\Core\Framework\L10n;
+use SDLX\Core\Framework\L10n;
 
 class EncryptCookies extends Middleware
 {

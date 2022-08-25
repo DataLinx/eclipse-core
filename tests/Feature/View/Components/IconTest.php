@@ -1,10 +1,10 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\View\Components;
+namespace SDLX\Core\Tests\Feature\View\Components;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
-use Ocelot\Core\View\Components\Icon;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\View\Components\Icon;
 
 class IconTest extends PackageTestCase
 {

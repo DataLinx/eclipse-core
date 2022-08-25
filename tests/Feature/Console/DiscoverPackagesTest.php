@@ -1,9 +1,9 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\Console;
+namespace SDLX\Core\Tests\Feature\Console;
 
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
-use Ocelot\Core\Models\Package;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Models\Package;
 
 class DiscoverPackagesTest extends PackageTestCase
 {
@@ -43,7 +43,7 @@ class DiscoverPackagesTest extends PackageTestCase
             mkdir($dir);
         }
 
-        $this->artisan('ocelot:discover-packages')
+        $this->artisan('sdlx:discover-packages')
              ->assertExitCode(0);
     }
 
@@ -57,7 +57,7 @@ class DiscoverPackagesTest extends PackageTestCase
 
         $json = [
             'extra' => [
-                'ocelot' => [
+                'sdlx' => [
                     'type' => 'app',
                 ],
             ],
@@ -65,7 +65,7 @@ class DiscoverPackagesTest extends PackageTestCase
 
         file_put_contents("$dir/composer.json", json_encode($json));
 
-        $this->artisan('ocelot:discover-packages')
+        $this->artisan('sdlx:discover-packages')
              ->assertExitCode(0);
 
         $package = Package::where([
@@ -77,11 +77,11 @@ class DiscoverPackagesTest extends PackageTestCase
         $this->assertEquals(Package::TYPE_APP, $package->type);
 
         // Change package type
-        $json['extra']['ocelot']['type'] = 'module';
+        $json['extra']['sdlx']['type'] = 'module';
 
         file_put_contents("$dir/composer.json", json_encode($json));
 
-        $this->artisan('ocelot:discover-packages')
+        $this->artisan('sdlx:discover-packages')
              ->assertExitCode(0);
 
         $package->refresh();

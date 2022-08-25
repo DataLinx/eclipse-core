@@ -1,14 +1,14 @@
 <?php
 
-namespace Ocelot\Core\Framework;
+namespace SDLX\Core\Framework;
 
 use Exception;
 use Illuminate\Support\Facades\Cookie;
-use Ocelot\Core\Models\Language;
+use SDLX\Core\Models\Language;
 
 /**
  * Class L10n
- * @package Ocelot\Core\Framework
+ * @package SDLX\Core\Framework
  */
 class L10n
 {

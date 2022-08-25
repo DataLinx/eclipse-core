@@ -1,9 +1,9 @@
 <?php
 
-namespace Ocelot\Core\Http\Controllers;
+namespace SDLX\Core\Http\Controllers;
 
-use Ocelot\Core\Models\Language;
 use Illuminate\Http\Request;
+use SDLX\Core\Models\Language;
 
 class LanguageController extends Controller
 {
@@ -41,7 +41,7 @@ class LanguageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Ocelot\Core\Models\Language  $language
+     * @param  \SDLX\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function show(Language $language)
@@ -52,7 +52,7 @@ class LanguageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Ocelot\Core\Models\Language  $language
+     * @param  \SDLX\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function edit(Language $language)
@@ -64,7 +64,7 @@ class LanguageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Ocelot\Core\Models\Language  $language
+     * @param  \SDLX\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Language $language)
@@ -75,7 +75,7 @@ class LanguageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Ocelot\Core\Models\Language  $language
+     * @param  \SDLX\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function destroy(Language $language)

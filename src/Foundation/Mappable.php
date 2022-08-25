@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Foundation;
+namespace SDLX\Core\Foundation;
 
 trait Mappable
 {

@@ -1,31 +1,31 @@
 <?php
 
-namespace Ocelot\Core\Console\Commands;
+namespace SDLX\Core\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Ocelot\Core\Models\AppInstance;
-use Ocelot\Core\Models\Package;
-use Ocelot\Core\Models\Site;
-use Ocelot\Core\Models\User;
+use SDLX\Core\Models\AppInstance;
+use SDLX\Core\Models\Package;
+use SDLX\Core\Models\Site;
+use SDLX\Core\Models\User;
 
-class OcelotInstall extends Command
+class SDLXInstall extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'ocelot:install';
+    protected $signature = 'sdlx:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Start the Ocelot installation procedure';
+    protected $description = 'Start the SDLX installation procedure';
 
     /**
      * Default answers, used for testing
@@ -41,21 +41,21 @@ class OcelotInstall extends Command
      */
     public function handle()
     {
-        $this->info("Running Ocelot installation procedure...");
+        $this->info("Running SDLX installation procedure...");
 
         $this->callSilent('migrate:fresh');
 
-        $this->callSilent('ocelot:discover-packages');
+        $this->callSilent('sdlx:discover-packages');
 
-        $this->callSilent('ocelot:map-config');
+        $this->callSilent('sdlx:map-config');
 
         // Are we in testing?
         if (App::environment('testing') and $this->option('no-interaction')) {
             // Set defaults when there's no interaction
             $this->defaults = [
                 'site' => [
-                    'domain' => 'test.ocelot.dev',
-                    'name' => 'Ocelot Test',
+                    'domain' => 'test.sdlx.dev',
+                    'name' => 'SDLX Test',
                 ],
                 'user' => [
                     'name' => 'John',
@@ -98,7 +98,7 @@ class OcelotInstall extends Command
         $site->save();
 
         // Create default instance
-        $core_package = Package::fetchByName('ocelot', 'core');
+        $core_package = Package::fetchByName('sdlx', 'core');
 
         $instance = new AppInstance;
         $instance->site_id = $site->id;

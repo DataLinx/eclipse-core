@@ -1,15 +1,15 @@
 <?php
 
-namespace Ocelot\Core\Http\Controllers\Auth;
+namespace SDLX\Core\Http\Controllers\Auth;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Ocelot\Core\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Ocelot\Core\Http\Controllers\Controller;
-use Ocelot\Core\Http\Requests\Auth\LoginRequest;
+use SDLX\Core\Http\Controllers\Controller;
+use SDLX\Core\Http\Requests\Auth\LoginRequest;
+use SDLX\Core\Providers\RouteServiceProvider;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      *
-     * @param  \Ocelot\Core\Http\Requests\Auth\LoginRequest  $request
+     * @param  \SDLX\Core\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request)

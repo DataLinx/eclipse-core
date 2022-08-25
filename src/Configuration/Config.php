@@ -1,14 +1,14 @@
 <?php
 
-namespace Ocelot\Core\Configuration;
+namespace SDLX\Core\Configuration;
 
-use Ocelot\Core\Database\Mapper;
-use Ocelot\Core\Foundation\AbstractConfig;
+use SDLX\Core\Database\Mapper;
+use SDLX\Core\Foundation\AbstractConfig;
 
 /**
  * Class Config
  *
- * @package Ocelot\Core\Configuration
+ * @package SDLX\Core\Configuration
  * @property int $id Config ID
  * @property int $site_id Site ID
  * @property string $owner_name Owner name

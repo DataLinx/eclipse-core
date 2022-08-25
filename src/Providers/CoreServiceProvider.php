@@ -1,24 +1,24 @@
 <?php
 
-namespace Ocelot\Core\Providers;
+namespace SDLX\Core\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
-use Ocelot\Core\Console\Commands\DiscoverPackages;
-use Ocelot\Core\Console\Commands\MapConfig;
-use Ocelot\Core\Console\Commands\OcelotInstall;
-use Ocelot\Core\Console\Commands\PostComposerInstall;
-use Ocelot\Core\Console\Commands\PostComposerUpdate;
-use Ocelot\Core\Framework\Context;
-use Ocelot\Core\Framework\L10n;
-use Ocelot\Core\Framework\Output;
-use Ocelot\Core\Models\PersonalAccessToken;
-use Ocelot\Core\View\Components\Alert;
-use Ocelot\Core\View\Components\AppLayout;
-use Ocelot\Core\View\Components\Icon;
+use SDLX\Core\Console\Commands\DiscoverPackages;
+use SDLX\Core\Console\Commands\MapConfig;
+use SDLX\Core\Console\Commands\PostComposerInstall;
+use SDLX\Core\Console\Commands\PostComposerUpdate;
+use SDLX\Core\Console\Commands\SDLXInstall;
+use SDLX\Core\Framework\Context;
+use SDLX\Core\Framework\L10n;
+use SDLX\Core\Framework\Output;
+use SDLX\Core\Models\PersonalAccessToken;
+use SDLX\Core\View\Components\Alert;
+use SDLX\Core\View\Components\AppLayout;
+use SDLX\Core\View\Components\Icon;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -57,24 +57,24 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(package_path('ocelot/core', 'resources/views'), 'core');
-        $this->loadMigrationsFrom(package_path('ocelot/core', 'database/migrations'));
+        $this->loadViewsFrom(package_path('sdlx/core', 'resources/views'), 'core');
+        $this->loadMigrationsFrom(package_path('sdlx/core', 'database/migrations'));
 
         if ($this->app->runningInConsole()) {
             $this->commands([
                 PostComposerInstall::class,
                 PostComposerUpdate::class,
-                OcelotInstall::class,
+                SDLXInstall::class,
                 DiscoverPackages::class,
                 MapConfig::class,
             ]);
         }
 
         $this->publishes([
-            package_path('ocelot/core', 'public') => public_path('vendor/ocelot/core'),
-        ], 'ocelot/core');
+            package_path('sdlx/core', 'public') => public_path('vendor/sdlx/core'),
+        ], 'sdlx/core');
 
-        Blade::componentNamespace('Ocelot\\Core\\View\\Components\\Form', 'form');
+        Blade::componentNamespace('SDLX\\Core\\View\\Components\\Form', 'form');
         Blade::component(AppLayout::class);
         Blade::component(Alert::class);
         Blade::component(Icon::class);

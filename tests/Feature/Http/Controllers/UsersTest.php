@@ -1,11 +1,11 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\Http\Controllers;
+namespace SDLX\Core\Tests\Feature\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
-use Ocelot\Core\Models\User;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Models\User;
 
 class UsersTest extends PackageTestCase
 {

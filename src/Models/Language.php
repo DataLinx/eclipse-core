@@ -1,13 +1,13 @@
 <?php
 
-namespace Ocelot\Core\Models;
+namespace SDLX\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Ocelot\Core\Database\Model;
+use SDLX\Core\Database\Model;
 
 /**
  * Class Language
- * @package Ocelot\Core\Models
+ * @package SDLX\Core\Models
  *
  * @property int $id Language ID
  * @property string $name Name

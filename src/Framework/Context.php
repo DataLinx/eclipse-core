@@ -1,19 +1,19 @@
 <?php
 
-namespace Ocelot\Core\Framework;
+namespace SDLX\Core\Framework;
 
 use Exception;
 use Illuminate\Support\Facades\Auth;
-use Ocelot\Core\Models\AppInstance;
-use Ocelot\Core\Models\Language;
-use Ocelot\Core\Models\Package;
-use Ocelot\Core\Models\Site;
-use Ocelot\Core\Models\User;
+use SDLX\Core\Models\AppInstance;
+use SDLX\Core\Models\Language;
+use SDLX\Core\Models\Package;
+use SDLX\Core\Models\Site;
+use SDLX\Core\Models\User;
 
 /**
  * Execution context
  *
- * @package Ocelot\Core\Framework
+ * @package SDLX\Core\Framework
  */
 class Context
 {
@@ -69,7 +69,7 @@ class Context
     {
         if (empty($this->app_package)) {
             // TODO App package should be detected or registered
-            $this->app_package = Package::fetchByName('ocelot', 'core');
+            $this->app_package = Package::fetchByName('sdlx', 'core');
         }
 
         return $this->app_package;

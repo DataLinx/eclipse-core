@@ -1,13 +1,13 @@
 <?php
 
-namespace Ocelot\Core\DataGrids;
+namespace SDLX\Core\DataGrids;
 
-use Ocelot\Core\Foundation\AbstractGridDefinition;
-use Ocelot\Core\Framework\Grid\Action;
-use Ocelot\Core\Framework\Grid\Columns\ActionColumn;
-use Ocelot\Core\Framework\Grid\Columns\Column;
-use Ocelot\Core\Framework\Grid\Columns\ImageColumn;
-use Ocelot\Core\Models\User;
+use SDLX\Core\Foundation\AbstractGridDefinition;
+use SDLX\Core\Framework\Grid\Action;
+use SDLX\Core\Framework\Grid\Columns\ActionColumn;
+use SDLX\Core\Framework\Grid\Columns\Column;
+use SDLX\Core\Framework\Grid\Columns\ImageColumn;
+use SDLX\Core\Models\User;
 
 class UsersGrid extends AbstractGridDefinition
 {

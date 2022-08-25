@@ -1,12 +1,12 @@
 <?php
 
-namespace Ocelot\Core\View\Components;
+namespace SDLX\Core\View\Components;
 
 use Illuminate\View\Component;
 
 /**
  * Class Alert
- * @package Ocelot\Core\View\Components
+ * @package SDLX\Core\View\Components
  */
 class Alert extends Component
 {

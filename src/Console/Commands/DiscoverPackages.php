@@ -1,10 +1,10 @@
 <?php
 
-namespace Ocelot\Core\Console\Commands;
+namespace SDLX\Core\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Ocelot\Core\Models\Package;
+use SDLX\Core\Models\Package;
 
 class DiscoverPackages extends Command
 {
@@ -13,14 +13,14 @@ class DiscoverPackages extends Command
      *
      * @var string
      */
-    protected $signature = 'ocelot:discover-packages';
+    protected $signature = 'sdlx:discover-packages';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Discover Ocelot packages from vendors';
+    protected $description = 'Discover SDLX packages from vendors';
 
     /**
      * Execute the console command.
@@ -29,7 +29,7 @@ class DiscoverPackages extends Command
      */
     public function handle()
     {
-        $this->info("Discovering Ocelot packages in ". app_base_path('vendor'));
+        $this->info("Discovering SDLX packages in ". app_base_path('vendor'));
 
         foreach (File::directories(app_base_path('vendor')) as $vendor_dir) {
             foreach (File::directories($vendor_dir) as $package_dir) {
@@ -40,14 +40,14 @@ class DiscoverPackages extends Command
 
                 $json = json_decode(file_get_contents($package_dir .'/composer.json'), true);
 
-                if (! isset($json['extra']['ocelot']['type'])) {
-                    // Not an Ocelot package
+                if (! isset($json['extra']['sdlx']['type'])) {
+                    // Not an SDLX package
                     continue;
                 }
 
                 $vendor = basename($vendor_dir);
                 $name = basename($package_dir);
-                $type = substr($json['extra']['ocelot']['type'], 0, 1);
+                $type = substr($json['extra']['sdlx']['type'], 0, 1);
 
                 $package = Package::where([
                     'vendor' => $vendor,

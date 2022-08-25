@@ -1,11 +1,11 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\Http\Controllers\Auth;
+namespace SDLX\Core\Tests\Feature\Http\Controllers\Auth;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
-use Ocelot\Core\Models\User;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Models\User;
 
 class PasswordResetTest extends PackageTestCase
 {

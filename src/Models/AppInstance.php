@@ -1,12 +1,12 @@
 <?php
 
-namespace Ocelot\Core\Models;
+namespace SDLX\Core\Models;
 
-use Ocelot\Core\Database\Model;
+use SDLX\Core\Database\Model;
 
 /**
  * Class AppInstance
- * @package Ocelot\Core\Models
+ * @package SDLX\Core\Models
  *
  * @property int $id App instance ID
  * @property int $site_id Site ID

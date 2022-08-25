@@ -1,11 +1,11 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\View\Components\Form;
+namespace SDLX\Core\Tests\Feature\View\Components\Form;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
-use Ocelot\Core\Foundation\Testing\TestsComponents;
-use Ocelot\Core\View\Components\Form\File;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Foundation\Testing\TestsComponents;
+use SDLX\Core\View\Components\Form\File;
 
 class FileTest extends PackageTestCase
 {

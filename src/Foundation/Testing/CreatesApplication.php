@@ -1,6 +1,6 @@
 <?php
 
-namespace Ocelot\Core\Foundation\Testing;
+namespace SDLX\Core\Foundation\Testing;
 
 use Illuminate\Contracts\Console\Kernel;
 

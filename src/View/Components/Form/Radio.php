@@ -1,11 +1,11 @@
 <?php
 
-namespace Ocelot\Core\View\Components\Form;
+namespace SDLX\Core\View\Components\Form;
 
 /**
  * Form radio component - extends the checkbox component for a simple output tweak.
  *
- * @package Ocelot\Core\View\Components\Form
+ * @package SDLX\Core\View\Components\Form
  */
 class Radio extends Checkbox
 {

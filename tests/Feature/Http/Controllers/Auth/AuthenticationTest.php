@@ -1,10 +1,10 @@
 <?php
 
-namespace Ocelot\Core\Tests\Feature\Http\Controllers\Auth;
+namespace SDLX\Core\Tests\Feature\Http\Controllers\Auth;
 
-use Ocelot\Core\Foundation\Testing\PackageTestCase;
-use Ocelot\Core\Models\User;
-use Ocelot\Core\Providers\RouteServiceProvider;
+use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Models\User;
+use SDLX\Core\Providers\RouteServiceProvider;
 
 class AuthenticationTest extends PackageTestCase
 {

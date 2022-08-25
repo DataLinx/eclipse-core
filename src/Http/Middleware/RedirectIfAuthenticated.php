@@ -1,11 +1,11 @@
 <?php
 
-namespace Ocelot\Core\Http\Middleware;
+namespace SDLX\Core\Http\Middleware;
 
-use Ocelot\Core\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use SDLX\Core\Providers\RouteServiceProvider;
 
 class RedirectIfAuthenticated
 {

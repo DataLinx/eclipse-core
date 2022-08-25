@@ -1,9 +1,9 @@
 <?php
 
-use Ocelot\Core\Http\Controllers\Auth\AuthenticatedSessionController;
-use Ocelot\Core\Http\Controllers\Auth\NewPasswordController;
-use Ocelot\Core\Http\Controllers\Auth\PasswordResetLinkController;
 use Illuminate\Support\Facades\Route;
+use SDLX\Core\Http\Controllers\Auth\AuthenticatedSessionController;
+use SDLX\Core\Http\Controllers\Auth\NewPasswordController;
+use SDLX\Core\Http\Controllers\Auth\PasswordResetLinkController;
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])

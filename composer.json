@@ -1,7 +1,7 @@
 {
-    "name": "ocelot/core",
+    "name": "sdlx/core",
     "type": "library",
-    "description": "Ocelot core package",
+    "description": "SDLX core package",
     "license": "MIT",
     "authors": [
         {
@@ -33,9 +33,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Ocelot\\Core\\": "src/",
-            "Ocelot\\Core\\Database\\Factories\\": "database/factories/",
-            "Ocelot\\Core\\Database\\Seeders\\": "database/seeders/"
+            "SDLX\\Core\\": "src/",
+            "SDLX\\Core\\Database\\Factories\\": "database/factories/",
+            "SDLX\\Core\\Database\\Seeders\\": "database/seeders/"
         },
         "files": [
             "src/helpers.php"
@@ -43,17 +43,17 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Ocelot\\Core\\Tests\\": "tests/"
+            "SDLX\\Core\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "dont-discover": [],
             "providers": [
-                "Ocelot\\Core\\Providers\\CoreServiceProvider"
+                "SDLX\\Core\\Providers\\CoreServiceProvider"
             ]
         },
-        "ocelot": {
+        "sdlx": {
             "type": "app"
         }
     },

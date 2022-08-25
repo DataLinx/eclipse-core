@@ -1,13 +1,13 @@
 <?php
 
-namespace Ocelot\Core\Http\Controllers\Auth;
+namespace SDLX\Core\Http\Controllers\Auth;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-use Ocelot\Core\Http\Controllers\Controller;
+use SDLX\Core\Http\Controllers\Controller;
 
 class PasswordResetLinkController extends Controller
 {
