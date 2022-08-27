@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Http\Controllers;
+namespace SDLX\Core\Foundation\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use SDLX\Core\Framework\Context;
 use SDLX\Core\Framework\L10n;
 
-class Controller extends BaseController
+abstract class AbstractController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -18,6 +18,6 @@ class Controller extends BaseController
         $context->initialize();
 
         $l10n->initialize()
-             ->bindDomain('core', __DIR__ . '/../../../resources/locales', true);
+             ->bindDomain('core', __DIR__ . '/../../../../resources/locales', true);
     }
 }

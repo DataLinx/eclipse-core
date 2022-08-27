@@ -2,7 +2,7 @@
 
 namespace SDLX\Core\Tests\TestObjects\Configs;
 
-use SDLX\Core\Foundation\AbstractConfig;
+use SDLX\Core\Foundation\Database\AbstractConfig;
 
 class InvalidConfigColumnType extends AbstractConfig
 {

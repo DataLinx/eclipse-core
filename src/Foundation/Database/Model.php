@@ -1,5 +1,5 @@
 <?php
-namespace SDLX\Core\Database;
+namespace SDLX\Core\Foundation\Database;
 
 use Illuminate\Database\Eloquent\Builder;
 

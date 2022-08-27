@@ -2,8 +2,8 @@
 
 namespace SDLX\Core\Tests\TestObjects\Configs;
 
-use SDLX\Core\Database\Mapper;
-use SDLX\Core\Foundation\AbstractConfig;
+use SDLX\Core\Foundation\Database\AbstractConfig;
+use SDLX\Core\Framework\Database\Mapper;
 
 class UpdatedValidConfig extends AbstractConfig
 {

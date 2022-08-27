@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
-use SDLX\Core\Http\Controllers\Controller;
+use SDLX\Core\Foundation\Http\Controllers\AbstractController;
 
-class NewPasswordController extends Controller
+class NewPasswordController extends AbstractController
 {
     /**
      * Display the password reset view.

@@ -7,11 +7,11 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use SDLX\Core\Http\Controllers\Controller;
+use SDLX\Core\Foundation\Http\Controllers\AbstractController;
 use SDLX\Core\Http\Requests\Auth\LoginRequest;
 use SDLX\Core\Providers\RouteServiceProvider;
 
-class AuthenticatedSessionController extends Controller
+class AuthenticatedSessionController extends AbstractController
 {
     /**
      * Display the login view.

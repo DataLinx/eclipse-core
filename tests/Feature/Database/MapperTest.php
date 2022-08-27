@@ -4,8 +4,8 @@ namespace SDLX\Core\Tests\Feature\Database;
 
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Facades\DB;
-use SDLX\Core\Database\Mapper;
 use SDLX\Core\Foundation\Testing\PackageTestCase;
+use SDLX\Core\Framework\Database\Mapper;
 use SDLX\Core\Tests\TestObjects\Configs\InvalidConfigColumnType;
 use SDLX\Core\Tests\TestObjects\Configs\InvalidConfigDefinition;
 use SDLX\Core\Tests\TestObjects\Configs\UpdatedValidConfig;

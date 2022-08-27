@@ -1,8 +1,8 @@
 <?php
 
-namespace SDLX\Core\DataGrids;
+namespace SDLX\Core\Grids;
 
-use SDLX\Core\Foundation\AbstractGridDefinition;
+use SDLX\Core\Foundation\Grid\AbstractGridDefinition;
 use SDLX\Core\Framework\Grid\Action;
 use SDLX\Core\Framework\Grid\Columns\ActionColumn;
 use SDLX\Core\Framework\Grid\Columns\Column;

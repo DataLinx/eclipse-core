@@ -3,8 +3,9 @@
 namespace SDLX\Core\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
+use SDLX\Core\Foundation\Http\Controllers\AbstractController;
 
-class Test extends Controller
+class TestController extends AbstractController
 {
     public function components(): Renderable
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation;
+namespace SDLX\Core\Foundation\Grid;
 
 use SDLX\Core\Framework\Grid\Columns\Column;
 

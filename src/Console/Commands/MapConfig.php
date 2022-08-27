@@ -5,8 +5,8 @@ namespace SDLX\Core\Console\Commands;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use SDLX\Core\Database\Mapper;
-use SDLX\Core\Foundation\AbstractConfig;
+use SDLX\Core\Foundation\Database\AbstractConfig;
+use SDLX\Core\Framework\Database\Mapper;
 use SDLX\Core\Models\Package;
 use SDLX\Core\Models\Site;
 

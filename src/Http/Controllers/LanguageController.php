@@ -3,9 +3,10 @@
 namespace SDLX\Core\Http\Controllers;
 
 use Illuminate\Http\Request;
+use SDLX\Core\Foundation\Http\Controllers\AbstractController;
 use SDLX\Core\Models\Language;
 
-class LanguageController extends Controller
+class LanguageController extends AbstractController
 {
     /**
      * Display a listing of the resource.

@@ -4,11 +4,12 @@ namespace SDLX\Core\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use SDLX\Core\DataGrids\UsersGrid;
+use SDLX\Core\Foundation\Http\Controllers\AbstractController;
 use SDLX\Core\Framework\Output;
+use SDLX\Core\Grids\UsersGrid;
 use SDLX\Core\Models\User;
 
-class UsersController extends Controller
+class UsersController extends AbstractController
 {
     /**
      * Display a listing of the resource.

@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation;
+namespace SDLX\Core\Foundation\Database;
 
 trait Mappable
 {

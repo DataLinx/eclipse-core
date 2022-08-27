@@ -1,8 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation;
-
-use SDLX\Core\Database\Model;
+namespace SDLX\Core\Foundation\Database;
 
 abstract class AbstractConfig extends Model
 {

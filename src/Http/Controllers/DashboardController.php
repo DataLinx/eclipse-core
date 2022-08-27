@@ -2,7 +2,9 @@
 
 namespace SDLX\Core\Http\Controllers;
 
-class DashboardController extends Controller
+use SDLX\Core\Foundation\Http\Controllers\AbstractController;
+
+class DashboardController extends AbstractController
 {
     /**
      * Show the application dashboard.

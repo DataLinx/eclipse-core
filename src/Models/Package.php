@@ -1,7 +1,7 @@
 <?php
 namespace SDLX\Core\Models;
 
-use SDLX\Core\Database\Model;
+use SDLX\Core\Foundation\Database\Model;
 
 /**
  * Class Package

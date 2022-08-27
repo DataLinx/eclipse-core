@@ -7,9 +7,9 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-use SDLX\Core\Http\Controllers\Controller;
+use SDLX\Core\Foundation\Http\Controllers\AbstractController;
 
-class PasswordResetLinkController extends Controller
+class PasswordResetLinkController extends AbstractController
 {
     /**
      * Display the password reset link request view.

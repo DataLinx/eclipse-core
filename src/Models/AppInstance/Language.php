@@ -2,7 +2,7 @@
 
 namespace SDLX\Core\Models\AppInstance;
 
-use SDLX\Core\Database\Model;
+use SDLX\Core\Foundation\Database\Model;
 
 /**
  * Class Language

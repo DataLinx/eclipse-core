@@ -2,8 +2,7 @@
 
 namespace SDLX\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use SDLX\Core\Database\Model;
+use SDLX\Core\Foundation\Database\Model;
 
 /**
  * Class Language
