@@ -1,0 +1,6 @@
+# -------------------------------------
+# Testbench configuration file example
+# -------------------------------------
+env:
+  - DB_CONNECTION=sqlite
+  - DB_DATABASE=":memory:"
