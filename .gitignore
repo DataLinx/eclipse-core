@@ -1,21 +1,16 @@
+/.idea/vcs.xml
+/.idea/workspace.xml
+/build
+/nbproject
 /node_modules
 /public/build
 /public/hot
 /public/storage
-/storage/*.key
 /vendor
-/build
-.env
-.env.backup
-.phpunit.result.cache
 Homestead.json
 Homestead.yaml
 auth.json
 npm-debug.log
-yarn-error.log
+.phpunit.result.cache
 phpunit.xml
-
-# IDE/Editor files
-nbproject
-.idea/workspace.xml
-.idea/vcs.xml
+testbench.yaml
