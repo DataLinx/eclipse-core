@@ -1,5 +1,6 @@
-import './bootstrap';
-import {Toast} from 'bootstrap';
+import './init';
+
+import '../sass/core.scss';
 
 /*
 $('.user-delete').click(function(){
@@ -21,6 +22,6 @@ $('.user-delete').click(function(){
 */
 
 _.forEach(document.getElementsByClassName('toast'), function(element) {
-    const toast = new Toast(element);
+    const toast = new bootstrap.Toast(element);
     toast.show();
 });
