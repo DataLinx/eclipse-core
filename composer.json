@@ -14,6 +14,7 @@
         "ext-gettext": "*",
         "ext-json": "*",
         "datalinx/gettext-context": "^1.0",
+        "datalinx/php-utils": "dev-master",
         "doctrine/dbal": "^3.4",
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^9.24",
@@ -38,7 +39,8 @@
             "SDLX\\Core\\Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "src/helpers.php"
+            "src/helpers.php",
+            "vendor/datalinx/php-utils/src/fluent_helpers.php"
         ]
     },
     "autoload-dev": {
@@ -70,5 +72,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/datalinx/php-utils"
+        }
+    ]
 }
