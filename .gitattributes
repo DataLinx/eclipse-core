@@ -9,7 +9,6 @@
 # Ignore development folders and files when deploying with "--preferdist" composer option
 /tests export-ignore
 /.editorconfig export-ignore
-/.env.example export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
 /package.json export-ignore
