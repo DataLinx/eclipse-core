@@ -31,6 +31,8 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        require_once app_path('../vendor/datalinx/php-utils/src/fluent_helpers.php');
+
         $this->app->singleton('context', function() {
             return new Context();
         });

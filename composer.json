@@ -39,8 +39,7 @@
             "SDLX\\Core\\Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "src/helpers.php",
-            "vendor/datalinx/php-utils/src/fluent_helpers.php"
+            "src/helpers.php"
         ]
     },
     "autoload-dev": {
