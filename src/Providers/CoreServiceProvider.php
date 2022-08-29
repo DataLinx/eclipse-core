@@ -15,6 +15,7 @@ use SDLX\Core\Console\Commands\SDLXInstall;
 use SDLX\Core\Framework\Context;
 use SDLX\Core\Framework\L10n;
 use SDLX\Core\Framework\Output;
+use SDLX\Core\Framework\Output\Menu;
 use SDLX\Core\Models\PersonalAccessToken;
 use SDLX\Core\View\Components\Alert;
 use SDLX\Core\View\Components\AppLayout;
@@ -41,6 +42,10 @@ class CoreServiceProvider extends ServiceProvider
             return new Output();
         });
 
+        $this->app->singleton(Menu::class, function () {
+            return new Menu();
+        });
+
         $this->app->singleton('glide', function() {
             return ServerFactory::create([
                 'response' => new LaravelResponseFactory(app('request')),
@@ -53,9 +58,13 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      *
+     * @param Menu $menu
+     * @param Context $context
+     * @param L10n $l10n
      * @return void
+     * @throws \Exception
      */
-    public function boot()
+    public function boot(Menu $menu, Context $context, L10n $l10n)
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'core');
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
@@ -76,5 +85,22 @@ class CoreServiceProvider extends ServiceProvider
         Blade::component(Icon::class);
 
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+
+        $context->initialize();
+
+        $l10n->initialize()
+             ->bindDomain('core', __DIR__ . '/../../resources/locales', true);
+
+        // Nav menu
+        // --------------------------------------------------
+        $menu->addItem(new Menu\Item(_('Dashboard'), url('dashboard')))
+             ->addItem(new Menu\Item(_('Users'), url('users')));
+
+        if ($this->app->environment('local')) {
+            // Menu that is visible only in development
+            $tools = new Menu\Section(_('Tools'), null, 'tools');
+            $tools->addItem(new Menu\Item(_('Visual component test'), url('test/components')));
+            $menu->addItem($tools);
+        }
     }
 }
