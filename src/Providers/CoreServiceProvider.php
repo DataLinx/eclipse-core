@@ -2,6 +2,7 @@
 
 namespace SDLX\Core\Providers;
 
+use Exception;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
@@ -28,7 +29,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton('context', function() {
             return new Context();
@@ -43,7 +44,21 @@ class CoreServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(Menu::class, function () {
-            return new Menu();
+            app('l10n')->setDomain('core');
+
+            $menu = new Menu();
+
+            $menu->addItem(new Menu\Item(_('Dashboard'), url('dashboard')))
+                ->addItem(new Menu\Item(_('Users'), url('users')));
+
+            if ($this->app->environment('local')) {
+                // Menu that is visible only in development
+                $tools = new Menu\Section(_('Tools'), null, 'tools');
+                $tools->addItem(new Menu\Item(_('Visual component test'), url('test/components')));
+                $menu->addItem($tools);
+            }
+
+            return $menu;
         });
 
         $this->app->singleton('glide', function() {
@@ -58,13 +73,10 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      *
-     * @param Menu $menu
-     * @param Context $context
-     * @param L10n $l10n
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
-    public function boot(Menu $menu, Context $context, L10n $l10n)
+    public function boot(): void
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'core');
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
@@ -85,22 +97,5 @@ class CoreServiceProvider extends ServiceProvider
         Blade::component(Icon::class);
 
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
-
-        $context->initialize();
-
-        $l10n->initialize()
-             ->bindDomain('core', __DIR__ . '/../../resources/locales', true);
-
-        // Nav menu
-        // --------------------------------------------------
-        $menu->addItem(new Menu\Item(_('Dashboard'), url('dashboard')))
-             ->addItem(new Menu\Item(_('Users'), url('users')));
-
-        if ($this->app->environment('local')) {
-            // Menu that is visible only in development
-            $tools = new Menu\Section(_('Tools'), null, 'tools');
-            $tools->addItem(new Menu\Item(_('Visual component test'), url('test/components')));
-            $menu->addItem($tools);
-        }
     }
 }

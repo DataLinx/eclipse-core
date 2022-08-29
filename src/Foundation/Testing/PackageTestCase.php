@@ -30,8 +30,8 @@ abstract class PackageTestCase extends TestCase
         // We need to manually include this class, since the AppServiceProvider is set in providers in config/app.php
         require_once app_path('Providers/AppServiceProvider.php');
 
+        // Our additional providers
         return [
-            'App\Providers\AppServiceProvider',
             AuthServiceProvider::class,
             CoreServiceProvider::class,
             EventServiceProvider::class,
