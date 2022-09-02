@@ -1,5 +1,6 @@
 <?php
 
+use SDLX\Core\Framework\Output;
 use SDLX\Core\Framework\Output\Toast;
 
 /**
@@ -11,5 +12,5 @@ use SDLX\Core\Framework\Output\Toast;
  */
 function toast(string $message, string $title = null)
 {
-    return app(\SDLX\Core\Framework\Output::class)->toast($message, $title);
+    return app(Output::class)->toast($message, $title);
 }

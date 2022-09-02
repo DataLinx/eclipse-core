@@ -1,3 +1,6 @@
+@php
+    use SDLX\Core\Framework\Output;
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -29,28 +32,29 @@
             <main>
                 {{ $slot }}
 
-                <div id="toast-container" aria-live="polite" aria-atomic="true">
-                    @foreach (app(\SDLX\Core\Framework\Output::class)->getToasts() as $toast)
-                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" @if ($toast->isSticky()) data-autohide="false" @else data-delay="10000" @endif>
-                            <div class="toast-header bg-{{ $toast->getType() }}">
-                                <x-icon name="{{ $toast->getIcon() }}" class="mr-2"/>
-                                <strong class="mr-auto">{{ $toast->getTitle() }}</strong>
-                                @if (! $toast->isSticky())
+                <div aria-live="polite" aria-atomic="true">
+                    <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x pb-2 pb-sm-5 px-2">
+                        @foreach (app(Output::class)->getToasts() as $toast)
+                            <div class="toast toast-{{ $toast->getType() }}" role="alert" aria-live="assertive" aria-atomic="true"
+                                 @if ($toast->isSticky()) data-bs-autohide="false" @else data-bs-delay="10000" @endif>
+                                <div class="toast-header">
+                                    <x-icon name="{{ $toast->getIcon() }}" class="mr-2"/>
+                                    <strong class="me-auto">{{ $toast->getTitle() }}</strong>
                                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                                @endif
+                                </div>
+                                <div class="toast-body">
+                                    {{ $toast->getMessage() }}
+                                    @if ($toast->hasLinks())
+                                        <div class="mt-2 pt-2 border-top">
+                                            @foreach ($toast->getLinks() as $label => $href)
+                                                <a class="btn btn-light btn-sm" href="{{ $href ?? 'javascript:void(0);' }}">{{ $label }}</a>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="toast-body">
-                                {{ $toast->getMessage() }}
-                                @if ($toast->hasLinks())
-                                    <div class="toast-action">
-                                        @foreach ($toast->getLinks() as $label => $href)
-                                            <a class="btn btn-light" href="{{ $href ?? 'javascript:void(0);' }}">{{ $label }}</a>
-                                        @endforeach
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
 
             </main>

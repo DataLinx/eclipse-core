@@ -58,6 +58,7 @@ class Toast
     public function __call($name, $arguments): self
     {
         switch ($name) {
+            case 'info':
             case 'success':
             case 'danger':
             case 'warning':
@@ -202,10 +203,10 @@ class Toast
     /**
      * Get toast links
      *
-     * @return array
+     * @return array|null
      */
-    public function getLinks(): array
+    public function getLinks(): ?array
     {
-        return $this->links;
+        return $this->links ?? null;
     }
 }
