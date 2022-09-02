@@ -32,14 +32,14 @@ class SDLXInstall extends Command
      *
      * @var array
      */
-    protected $defaults = [];
+    protected array $defaults = [];
 
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->info("Running SDLX installation procedure...");
 
@@ -54,7 +54,7 @@ class SDLXInstall extends Command
             // Set defaults when there's no interaction
             $this->defaults = [
                 'site' => [
-                    'domain' => 'test.sdlx.dev',
+                    'domain' => 'sdlx.local',
                     'name' => 'SDLX Test',
                 ],
                 'user' => [
@@ -67,17 +67,25 @@ class SDLXInstall extends Command
         }
 
         // Create main site
-        $this->createSite();
+        $site = $this->createSite();
 
         // Create admin user
         $this->createUser();
+
+        // Done
+        $this->newLine(2);
+        $this->info(sprintf('All done! You can now login at %s', $site->getUrl()));
+        $this->newLine(2);
     }
 
     /**
      * Create main site
+     *
+     * @return Site
      */
-    private function createSite()
+    private function createSite(): Site
     {
+        $this->newLine(2);
         $this->question("Please provide the default site data.");
 
         $site = new Site();
@@ -113,33 +121,36 @@ class SDLXInstall extends Command
         $instance_lang->save();
 
         // Done
-        $this->info("Created site {$site->domain}");
+        $this->info("✓ Created site $site->domain");
+
+        return $site;
     }
 
     /**
      * Create Admin user
+     *
+     * @return void
      */
-    private function createUser()
+    private function createUser(): void
     {
+        $this->newLine(2);
         $this->question("Please provide your user data for the admin account.");
 
         $admin = new User();
 
         // Name
         do {
-            $admin->name = $this->ask('What is your name?', $this->defaults['user']['name'] ?? null);
+            $admin->name = $this->ask('First name', $this->defaults['user']['name'] ?? null);
         } while (empty($admin->name));
 
         // Surname
         do {
-            $admin->surname = $this->ask('What is your surname?', $this->defaults['user']['surname'] ?? null);
+            $admin->surname = $this->ask('Last name', $this->defaults['user']['surname'] ?? null);
         } while (empty($admin->surname));
 
         // Email
-        $validator = null;
-
         do {
-            $admin->email = $this->ask('What is your e-mail address?', $this->defaults['user']['email'] ?? null);
+            $admin->email = $this->ask('E-mail address', $this->defaults['user']['email'] ?? null);
 
             $validator = Validator::make([
                 'email' => $admin->email,
@@ -159,11 +170,11 @@ class SDLXInstall extends Command
         do {
             if (isset($this->defaults['user']['password'])) {
                 // In testing, we cannot use the secret() method, so we have to ask()
-                $password = $this->ask('Please provide a password:', $this->defaults['user']['password']);
-                $password_conf = $this->ask('Repeat the password:', $this->defaults['user']['password']);
+                $password = $this->ask('Please provide a password', $this->defaults['user']['password']);
+                $password_conf = $this->ask('Repeat the password', $this->defaults['user']['password']);
             } else {
-                $password = $this->secret('Please provide a password:');
-                $password_conf = $this->secret('Repeat the password:');
+                $password = $this->secret('Please provide a password');
+                $password_conf = $this->secret('Repeat the password');
             }
 
             $validator = Validator::make([
@@ -186,6 +197,6 @@ class SDLXInstall extends Command
         // Done, save
         $admin->save();
 
-        $this->info('Created user '. $admin->email);
+        $this->info("✓ Created user $admin->email");
     }
 }
