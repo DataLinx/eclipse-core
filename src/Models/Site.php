@@ -23,4 +23,24 @@ class Site extends Model
         'is_active' => 1,
         'is_main' => 0,
     ];
+
+    /**
+     * Get full URL to site
+     *
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return ($this->is_secure ? 'https' : 'http') . '://'. $this->domain;
+    }
+
+    /**
+     * Get main site
+     *
+     * @return static
+     */
+    public static function fetchMainSite(): self
+    {
+        return self::where('is_main', 1)->firstOrFail();
+    }
 }
