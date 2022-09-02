@@ -22,9 +22,13 @@ class MenuTest extends PackageTestCase
 
         $menu->addItem(new Menu\Item('Test item', 'test'));
 
+        $section = new Menu\Section('Test section', null, 'section');
+        $section->addItem(new Menu\Item('Another item', 'another-item'));
+        $menu->addItem($section);
+
         $items = $menu->getItems();
 
-        $this->assertCount(1, $items);
+        $this->assertCount(2, $items);
     }
 
     /**
