@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use SDLX\Core\Foundation\Http\Controllers\AbstractController;
 use SDLX\Core\Framework\Output;
-use SDLX\Core\Grids\UsersGrid;
 use SDLX\Core\Models\User;
 
 class UsersController extends AbstractController
@@ -18,11 +17,7 @@ class UsersController extends AbstractController
      */
     public function index()
     {
-        $grid = new UsersGrid();
-
-        return view('core::users.index', [
-            'grid' => $grid,
-        ]);
+        return view('core::users.index');
     }
 
     /**

@@ -43,3 +43,10 @@ Alpine.start();
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
 window.bootstrap = bootstrap;
+
+// --------------------------------------------------
+// Initialize Livewire
+// --------------------------------------------------
+import {livewire_hot_reload} from 'virtual:livewire-hot-reload'
+
+livewire_hot_reload();

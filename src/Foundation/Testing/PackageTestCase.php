@@ -3,7 +3,10 @@
 namespace SDLX\Core\Foundation\Testing;
 
 use Illuminate\Support\Facades\Artisan;
+use Livewire\Livewire;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase;
+use SDLX\Core\Grids\UsersGrid;
 use SDLX\Core\Providers\AuthServiceProvider;
 use SDLX\Core\Providers\CoreServiceProvider;
 use SDLX\Core\Providers\EventServiceProvider;
@@ -36,6 +39,7 @@ abstract class PackageTestCase extends TestCase
             CoreServiceProvider::class,
             EventServiceProvider::class,
             RouteServiceProvider::class,
+            LivewireServiceProvider::class,
         ];
     }
 
@@ -52,6 +56,8 @@ abstract class PackageTestCase extends TestCase
         }
 
         $this->withoutVite();
+
+        Livewire::component('users-grid', UsersGrid::class);
     }
 
     /**

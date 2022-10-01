@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
+use Livewire\Livewire;
 use SDLX\Core\Console\Commands\DiscoverPackages;
 use SDLX\Core\Console\Commands\MapConfig;
 use SDLX\Core\Console\Commands\PostComposerInstall;
@@ -17,6 +18,7 @@ use SDLX\Core\Framework\Context;
 use SDLX\Core\Framework\L10n;
 use SDLX\Core\Framework\Output;
 use SDLX\Core\Framework\Output\Menu;
+use SDLX\Core\Grids\UsersGrid;
 use SDLX\Core\Models\PersonalAccessToken;
 use SDLX\Core\View\Components\Alert;
 use SDLX\Core\View\Components\AppLayout;
@@ -97,6 +99,10 @@ class CoreServiceProvider extends ServiceProvider
         Blade::component(AppLayout::class);
         Blade::component(Alert::class);
         Blade::component(Icon::class);
+
+        if (! $this->app->environment('testing')) {
+            Livewire::component('users-grid', UsersGrid::class);
+        }
 
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     }

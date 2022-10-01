@@ -3,6 +3,7 @@
 namespace SDLX\Core\Framework\Grid\Columns;
 
 use Illuminate\Database\Eloquent\Model;
+use InvalidArgumentException;
 use SDLX\Core\Framework\Grid\Action;
 
 /**
@@ -10,18 +11,20 @@ use SDLX\Core\Framework\Grid\Action;
  */
 class ActionColumn extends Column
 {
+    public bool $sortable = false;
+
     /**
      * @var Action[] The array of Actions
      */
-    protected $actions;
+    protected array $actions;
 
     /**
      * @param Action[] $actions Array with Action objects
      * @param string|null $label Optional label (defaults to "Action")
      */
-    public function __construct(array $actions, $label = null)
+    public function __construct(array $actions, ?string $label = null)
     {
-        parent::__construct(null, $label ?? _('Action'));
+        parent::__construct('_action', $label ?? _('Action'));
 
         $this->actions = $actions;
     }
@@ -29,14 +32,23 @@ class ActionColumn extends Column
     /**
      * @inheritDoc
      */
-    public function render(Model $model)
+    public function render(Model $object): string
     {
         $out = [];
 
         foreach ($this->actions as $action) {
-            $out[] = '<a class="grid-action" data-action="'. $action->getCode() .'" href="'. ($action->hasUrl() ? $action->getUrl($model) : 'javascript:void(0);') .'">'. $action->getLabel() .'</a>';
+            $out[] = '<a class="grid-action" data-action="'. $action->getCode() .'" href="'. ($action->hasUrl() ? $action->getUrl($object) : 'javascript:void(0);') .'">'. $action->getLabel() .'</a>';
         }
 
         return implode(' ', $out);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSortable(bool $sortable): Column
+    {
+        throw new InvalidArgumentException('Action column cannot be sortable');
+    }
+
 }

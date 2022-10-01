@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class ImageColumn extends Column
 {
     /**
-     * @var int Image display width
+     * @var int|null Image display width
      */
-    protected int $width;
+    protected ?int $img_width;
 
     /**
      * @var int Image display height
      */
-    protected int $height;
+    protected int $img_height;
 
     /**
      * @param string $accessor Column accessor (key)
@@ -22,31 +22,31 @@ class ImageColumn extends Column
      * @param int|null $width Image display width
      * @param int|null $height Image display height
      */
-    public function __construct($accessor, $label, int $width = null, int $height = null)
+    public function __construct(string $accessor, string $label, ?int $width = null, ?int $height = null)
     {
         parent::__construct($accessor, $label);
 
-        $this->width = $width;
-        $this->height = $height;
+        $this->img_width = $width;
+        $this->img_height = $height;
     }
 
     /**
      * @inheritDoc
      */
-    public function render(Model $object)
+    public function render(Model $object): string
     {
         $src = parent::render($object);
 
         $settings = [];
 
-        if ($this->width)
+        if ($this->img_width)
         {
-            $settings['w'] = $this->width;
+            $settings['w'] = $this->img_width;
         }
 
-        if ($this->height)
+        if ($this->img_height)
         {
-            $settings['h'] = $this->height;
+            $settings['h'] = $this->img_height;
         }
 
         if ($src) {

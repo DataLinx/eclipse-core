@@ -13,12 +13,22 @@ class Column
     /**
      * @var string Column accessor (key)
      */
-    protected $accessor;
+    protected string $accessor;
 
     /**
      * @var string Label
      */
-    protected $label;
+    protected string $label;
+
+    /**
+     * @var int|null Column width in px
+     */
+    protected ?int $width;
+
+    /**
+     * @var bool Can the data be sorted by this column?
+     */
+    protected bool $sortable = true;
 
     /**
      * Create column object
@@ -26,10 +36,18 @@ class Column
      * @param string $accessor Column accessor (key)
      * @param string $label Column label
      */
-    public function __construct($accessor, $label)
+    public function __construct(string $accessor, string $label)
     {
         $this->accessor = $accessor;
         $this->label = $label;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccessor(): string
+    {
+        return $this->accessor;
     }
 
     /**
@@ -37,7 +55,7 @@ class Column
      *
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->label;
     }
@@ -48,7 +66,7 @@ class Column
      * @param Model $object
      * @return string
      */
-    public function render(Model $object)
+    public function render(Model $object): string
     {
         $val = $object->getAttributeValue($this->accessor);
 
@@ -60,6 +78,45 @@ class Column
             }
         }
 
-        return $val;
+        return $val ?? '';
     }
+
+    /**
+     * @return int|null
+     */
+    public function getWidth(): ?int
+    {
+        return $this->width ?? null;
+    }
+
+    /**
+     * @param int $width
+     * @return Column
+     */
+    public function setWidth(int $width): Column
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSortable(): bool
+    {
+        return $this->sortable;
+    }
+
+    /**
+     * @param bool $sortable
+     * @return $this
+     */
+    public function setSortable(bool $sortable): self
+    {
+        $this->sortable = $sortable;
+
+        return $this;
+    }
+
 }

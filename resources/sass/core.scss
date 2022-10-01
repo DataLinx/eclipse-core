@@ -34,3 +34,28 @@ $toast-header-color: white;
         }
     }
 }
+
+.form-element {
+    margin-bottom: 1rem;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.datagrid {
+    .table {
+        thead {
+            th {
+                .column-sort {
+                    cursor: pointer;
+                    .column-sort-dir {
+                        font-size: $font-size-sm;
+                    }
+                    &:hover {
+                        color: $gray-700;
+                    }
+                }
+            }
+        }
+    }
+}
