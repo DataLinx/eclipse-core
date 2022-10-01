@@ -2,9 +2,11 @@
 
 namespace SDLX\Core\Models;
 
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use SDLX\Core\Database\Factories\UserFactory;
 
@@ -56,16 +58,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get full name for user
-     *
-     * @return string
-     */
-    public function getFullName()
-    {
-        return $this->name .' '. $this->surname;
-    }
-
-    /**
      * Delete user's image, if set
      */
     public function deleteImage()
@@ -108,5 +100,18 @@ class User extends Authenticatable
     public static function newFactory()
     {
         return UserFactory::new();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function query(): Builder
+    {
+        $query = parent::query();
+
+        $query->select('core_user.*')
+            ->addSelect(DB::raw("CONCAT(core_user.name, ' ', core_user.surname) AS full_name"));
+
+        return $query;
     }
 }
