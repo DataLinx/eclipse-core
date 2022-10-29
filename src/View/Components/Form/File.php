@@ -6,5 +6,5 @@ use SDLX\Core\Foundation\View\Components\Form\AbstractInput;
 
 class File extends AbstractInput
 {
-    protected $view = 'core::components.form.file';
+    protected string $view = 'core::components.form.file';
 }

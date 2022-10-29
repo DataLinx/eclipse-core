@@ -19,14 +19,14 @@ class SwitcherTest extends PackageTestCase
         $this->withViewErrors([]);
     }
 
-    public function test_common_example_can_be_displayed()
+    public function test_common_example_can_be_displayed(): void
     {
         // We have to use the blade() method, since component() does not pass the additional simple attributes, e.g. "required"
-        $view = $this->blade('<x-form::switcher name="foo" label="Bar" default="1" help="Help text" id="some-id" class="some-other-class" required data-foo="bar" />');
+        $view = $this->blade('<x-form::switcher name="foo" label="Bar" default="1" help="Help text" id="some-id" class="some-other-class" required data-foo="bar" wire:model="test"/>');
 
         $view->assertSeeInOrder([
             'class=',
-            'mb-3',
+            'form-group',
             'some-other-class',
         ])
             ->assertSeeInOrder([
@@ -45,10 +45,16 @@ class SwitcherTest extends PackageTestCase
                 'checked',
                 'required',
             ], false)
+            ->assertSeeInOrder([
+                '<input',
+                'name="foo"',
+                'class="form-check-input"',
+                'wire:model="test"',
+            ], false)
             ->assertDontSee('is-invalid');
     }
 
-    public function test_errors_can_be_displayed()
+    public function test_errors_can_be_displayed(): void
     {
         $this->withViewErrors([
             'foo' => 'Test error',
@@ -65,7 +71,7 @@ class SwitcherTest extends PackageTestCase
         ]);
     }
 
-    public function test_checked_state_can_be_initialized()
+    public function test_checked_state_can_be_initialized(): void
     {
         $this->mockSessionFlashedData([
             'foo' => '1',
@@ -79,7 +85,7 @@ class SwitcherTest extends PackageTestCase
         $view->assertSee('checked');
     }
 
-    public function test_unchecked_state_can_be_initialized()
+    public function test_unchecked_state_can_be_initialized(): void
     {
         $this->mockSessionFlashedData([
             'foo' => '0',
@@ -93,7 +99,7 @@ class SwitcherTest extends PackageTestCase
         $view->assertDontSee('checked');
     }
 
-    public function test_can_display_as_disabled()
+    public function test_can_display_as_disabled(): void
     {
         $view = $this->component(Switcher::class, [
             'name' => 'foo',

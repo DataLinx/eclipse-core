@@ -35,10 +35,18 @@ $toast-header-color: white;
     }
 }
 
-.form-element {
+.form-group {
     margin-bottom: 1rem;
     &:last-child {
         margin-bottom: 0;
+    }
+    &.is-invalid {
+        color: $danger;
+    }
+    .form-label {
+        .required {
+            color: $danger;
+        }
     }
 }
 

@@ -9,5 +9,5 @@ class Textarea extends AbstractInput
     /**
      * @inheritdoc
      */
-    protected $view = 'core::components.form.textarea';
+    protected string $view = 'core::components.form.textarea';
 }

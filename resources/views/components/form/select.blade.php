@@ -1,23 +1,19 @@
-<div class="mb-3">
+<div {{ $getGroupAttributes() }}>
     @if($label)
         <label class="form-label" for="{{ $id }}">
             {{ $label }}
-            @if(isset($attributes['required']))
+            @if($required)
                 <span class="required">*</span>
             @endif
         </label>
     @endif
     <select
-        {{ $getClasses() }}
         id="{{ $id }}"
         name="{{ $name }}"
-        @if($multiple)
-            multiple
-        @endif
-        @if($help)
-            aria-describedby="{{ $id }}_help"
-        @endif
-        {{ $attributes }}>
+        @if($multiple) multiple @endif
+        @if($help) aria-describedby="{{ $id }}-help" @endif
+        {{ $getControlAttributes() }}
+    >
         @if($placeholder)
             <option value="">{{ $placeholder }}</option>
         @endif
@@ -33,11 +29,11 @@
         @endforeach
     </select>
     @if($help)
-        <small id="{{ $id }}_help" class="form-text">
+        <small id="{{ $id }}-help" class="form-text">
             {{ $help }}
         </small>
     @endif
-    @if(empty($noerror))
+    @if(empty($no_error))
         @error($name)
             <div class="invalid-feedback">
                 {{ $message }}

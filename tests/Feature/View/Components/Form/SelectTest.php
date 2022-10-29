@@ -17,10 +17,10 @@ class SelectTest extends PackageTestCase
         $this->withViewErrors([]);
     }
 
-    public function test_common_example_can_be_displayed()
+    public function test_common_example_can_be_displayed(): void
     {
         // We have to use the blade() method, since component() does not pass the additional simple attributes, e.g. "required"
-        $view = $this->blade('<x-form::select name="foo" label="Bar" :options="$options" default="2" help="Help text" required placeholder="Placeholder" size="sm" />', [
+        $view = $this->blade('<x-form::select name="foo" label="Bar" :options="$options" default="2" help="Help text" required placeholder="Placeholder" size="sm" wire:model="test" />', [
             'options' => [
                 1 => 'One',
                 2 => 'Two',
@@ -37,10 +37,18 @@ class SelectTest extends PackageTestCase
              ->assertSee('Help text')
              ->assertSee('Placeholder')
              ->assertSee('form-control-sm')
+             ->assertSeeInOrder([
+                 'label',
+                 'Bar',
+                 '<select',
+                 'class',
+                 'form-control',
+                 'wire:model="test"',
+             ], false)
              ->assertDontSee('is-invalid');
     }
 
-    public function test_errors_can_be_displayed()
+    public function test_errors_can_be_displayed(): void
     {
         $this->withViewErrors([
             'foo' => 'Test error',
@@ -55,7 +63,7 @@ class SelectTest extends PackageTestCase
              ->assertSee('Test error');
     }
 
-    public function test_can_be_displayed_without_options()
+    public function test_can_be_displayed_without_options(): void
     {
         $view = $this->component(Select::class, [
             'name' => 'foo',
@@ -66,7 +74,7 @@ class SelectTest extends PackageTestCase
              ->assertSee('option value=""', false);
     }
 
-    public function test_option_groups_can_be_displayed()
+    public function test_option_groups_can_be_displayed(): void
     {
         $view = $this->component(Select::class, [
             'name' => 'foo',
@@ -92,7 +100,7 @@ class SelectTest extends PackageTestCase
              ]);
     }
 
-    public function test_multiple_options_can_be_preselected()
+    public function test_multiple_options_can_be_preselected(): void
     {
         $view = $this->component(Select::class, [
             'name' => 'foo',

@@ -20,10 +20,10 @@ class CheckboxTest extends PackageTestCase
         $this->withViewErrors([]);
     }
 
-    public function test_common_example_can_be_rendered()
+    public function test_common_example_can_be_rendered(): void
     {
         // We have to use the blade() method, since component() does not pass the additional simple attributes, e.g. "required"
-        $view = $this->blade('<x-form::checkbox name="foo" label="Bar" id="some-id" :options="$options" default="2" help="Help text" class="some-other-class" required inline />', [
+        $view = $this->blade('<x-form::checkbox name="foo" label="Bar" id="some-id" :options="$options" default="2" help="Help text" class="some-other-class" required inline wire:model="test" />', [
             'options' => [
                 1 => 'One',
                 2 => 'Two',
@@ -33,7 +33,7 @@ class CheckboxTest extends PackageTestCase
 
         $view->assertSeeInOrder([
                 'class',
-                'mb-3',
+                'form-group',
                 'some-other-class',
             ])
             ->assertSeeInOrder([
@@ -49,16 +49,19 @@ class CheckboxTest extends PackageTestCase
             ->assertSee('type="checkbox"', false)
             ->assertSee('name="foo[]"', false)
             ->assertSeeInOrder([
+                'wire:model="test"',
                 'One',
                 'checked',
+                'wire:model="test"',
                 'Two',
+                'wire:model="test"',
                 'Three',
-            ])
+            ], false)
             ->assertSee('form-check')
             ->assertDontSee('is-invalid');
     }
 
-    public function test_error_can_be_displayed()
+    public function test_error_can_be_displayed(): void
     {
         $this->withViewErrors([
             'foo' => 'Test error',
@@ -66,6 +69,10 @@ class CheckboxTest extends PackageTestCase
 
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
+            'options' => [
+                1 => 'One',
+                2 => 'Two',
+            ],
         ]);
 
         $view->assertSeeInOrder([
@@ -75,7 +82,7 @@ class CheckboxTest extends PackageTestCase
         ]);
     }
 
-    public function test_multiple_choices_can_be_selected_by_default()
+    public function test_multiple_choices_can_be_selected_by_default(): void
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
@@ -96,7 +103,7 @@ class CheckboxTest extends PackageTestCase
         ]);
     }
 
-    public function test_data_can_be_repopulated_from_submit()
+    public function test_data_can_be_repopulated_from_submit(): void
     {
         $this->mockSessionFlashedData([
             'foo' => [2, 3],
@@ -121,7 +128,7 @@ class CheckboxTest extends PackageTestCase
         ]);
     }
 
-    public function test_can_be_displayed_without_defaults()
+    public function test_can_be_displayed_without_defaults(): void
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
@@ -135,7 +142,7 @@ class CheckboxTest extends PackageTestCase
         $view->assertDontSee('checked');
     }
 
-    public function test_can_be_displayed_as_disabled()
+    public function test_can_be_displayed_as_disabled(): void
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
@@ -150,7 +157,7 @@ class CheckboxTest extends PackageTestCase
         $view->assertSee('disabled');
     }
 
-    public function test_can_be_displayed_as_radio_choices()
+    public function test_can_be_displayed_as_radio_choices(): void
     {
         $view = $this->component(Radio::class, [
             'name' => 'foo',
@@ -172,7 +179,7 @@ class CheckboxTest extends PackageTestCase
             ]);
     }
 
-    public function test_can_be_displayed_as_buttons()
+    public function test_can_be_displayed_as_buttons(): void
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',
@@ -197,7 +204,7 @@ class CheckboxTest extends PackageTestCase
         ]);
     }
 
-    public function test_can_be_displayed_as_switches()
+    public function test_can_be_displayed_as_switches(): void
     {
         $view = $this->component(Checkbox::class, [
             'name' => 'foo',

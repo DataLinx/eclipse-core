@@ -19,22 +19,23 @@ class FileTest extends PackageTestCase
         $this->withViewErrors([]);
     }
 
-    public function test_common_example_can_be_displayed()
+    public function test_common_example_can_be_displayed(): void
     {
-        $view = $this->blade('<x-form::file name="foo" label="Bar" help="Help text" required size="sm" />');
+        $view = $this->blade('<x-form::file name="foo" label="Bar" help="Help text" required size="sm" wire:model="test" />');
 
         $view->assertSeeInOrder([
             'label', 'Bar', 'span class="required"', '/label',
             'name="foo"',
-            'form-control-sm',
             'required',
             'aria-describedby',
+            'form-control-sm',
+            'wire:model="test"',
             'Help text',
         ], false)
             ->assertDontSee('is-invalid');
     }
 
-    public function test_errors_can_be_displayed()
+    public function test_errors_can_be_displayed(): void
     {
         $this->withViewErrors([
             'foo' => 'Test error',

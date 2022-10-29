@@ -22,7 +22,7 @@ class InputTest extends PackageTestCase
     public function test_common_example_can_be_displayed()
     {
         // We have to use the blade() method, since component() does not pass the additional simple attributes, e.g. "required"
-        $view = $this->blade('<x-form::input name="foo" label="Bar" help="Help text" required placeholder="Placeholder" size="sm" prepend="www." append=".com" />', [
+        $view = $this->blade('<x-form::input name="foo" label="Bar" help="Help text" required placeholder="Placeholder" size="sm" prepend="www." append=".com" wire:model="test" />', [
 
         ]);
 
@@ -38,6 +38,9 @@ class InputTest extends PackageTestCase
                  'input-group-text',
                  'www.',
                  '<input',
+                 'class',
+                 'form-control',
+                 'wire:model="test"',
                  'input-group-text',
                  '.com',
              ], false)

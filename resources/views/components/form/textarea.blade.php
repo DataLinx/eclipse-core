@@ -1,28 +1,25 @@
-<div class="mb-3">
+<div {{ $getGroupAttributes() }}>
     @if($label)
         <label class="form-label" for="{{ $id }}">
             {{ $label }}
-            @if(isset($attributes['required']))
+            @if($required)
                 <span class="required">*</span>
             @endif
         </label>
     @endif
     <textarea
-        {{ $getClasses() }}
         id="{{ $id }}"
         name="{{ $name }}"
-        @if($placeholder)
-            placeholder="{{ $placeholder }}"
-        @endif
-        @if($help)
-            aria-describedby="{{ $id }}_help"
-        @endif>{{ $current }}</textarea>
+        @if($placeholder) placeholder="{{ $placeholder }}" @endif
+        @if($help) aria-describedby="{{ $id }}-help" @endif
+        {{ $getControlAttributes() }}
+    >{{ $current }}</textarea>
     @if($help)
-        <small id="{{ $id }}_help" class="form-text">
+        <small id="{{ $id }}-help" class="form-text">
             {{ $help }}
         </small>
     @endif
-    @if(empty($noerror))
+    @if(empty($no_error))
         @error($name)
         <div class="invalid-feedback">
             {{ $message }}

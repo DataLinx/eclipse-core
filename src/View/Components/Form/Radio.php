@@ -12,12 +12,12 @@ class Radio extends Checkbox
     /**
      * @inheritdoc
      */
-    public $type = 'radio';
+    public string $type = 'radio';
 
     /**
      * @inheritDoc
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }

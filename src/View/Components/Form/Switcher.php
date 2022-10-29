@@ -9,98 +9,93 @@ class Switcher extends AbstractInput
     /**
      * @var string Input value
      */
-    public $value;
+    public mixed $value;
 
     /**
-     * @var bool Required input
+     * @var bool|null Disabled input
      */
-    public $required;
+    public ?bool $disabled;
 
     /**
-     * @var bool Disabled input
+     * @var bool|null All options show inline
      */
-    public $disabled;
-
-    /**
-     * @var bool All options show inline
-     */
-    public $inline;
+    public ?bool $inline;
 
     /**
      * @inheritdoc
      */
-    protected $view = 'core::components.form.switcher';
+    protected string $view = 'core::components.form.switcher';
 
     /**
      * Checkbox constructor.
      *
      * @param string $name
-     * @param string $value
+     * @param mixed $value
      * @param string|null $label
      * @param string|null $id
      * @param string|null $help
-     * @param bool|null $noerror
+     * @param bool|null $no_error
      * @param bool|null $default
      * @param bool|null $required
      * @param bool|null $disabled
      * @param bool|null $inline
      */
     public function __construct(
-        string $name
-        , string $value = '1'
-        , string $label = null
-        , string $id = null
-        , string $help = null
-        , bool $noerror = null
-        , bool $default = null
-        , bool $required = null
-        , bool $disabled = null
-        , bool $inline = null
+        string $name,
+        mixed $value = '1',
+        ?string $label = null,
+        ?string $id = null,
+        ?string $help = null,
+        ?bool $no_error = null,
+        ?bool $default = null,
+        ?bool $required = null,
+        ?bool $disabled = null,
+        ?bool $inline = null,
     )
     {
         parent::__construct(
-            $name
-            , $label
-            , $id
-            , $help
-            , null
-            , $noerror
-            , null
-            , null
-            , (bool)$default
+            $name,
+            $label,
+            $id,
+            $help,
+            null,
+            $no_error,
+            null,
+            null,
+            (bool)$default,
+            $required,
         );
 
         $this->value = $value;
-        $this->required = $required;
-        $this->disabled = $disabled;
-        $this->inline = $inline;
+        $this->disabled = (bool)$disabled;
+        $this->inline = (bool)$inline;
     }
 
     /**
-     * Get form-group classes
-     *
-     * @return string
+     * @inheritDoc
      */
-    public function getClasses()
+    public function getControlClasses(): string
     {
         $classes = [
-            'mb-3',
+            'form-check-input',
         ];
 
         if ($this->hasError()) {
             $classes[] = 'is-invalid';
         }
 
-        return $this->attributes->merge(['class' => implode(' ', $classes)]);
+        return implode(' ', $classes);
     }
 
     /**
      * Is the switch checked?
      *
      * @return bool
+     * @noinspection PhpUnused
      */
-    public function isChecked()
+    public function isChecked(): bool
     {
         return (bool)$this->current;
     }
+
 }
