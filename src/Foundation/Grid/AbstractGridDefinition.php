@@ -151,7 +151,7 @@ abstract class AbstractGridDefinition extends Component
         }
 
         foreach ($this->filters as $filter) {
-            $filter->apply($query, $this->active_filters[$filter->getName()] ?? null);
+            $filter->apply($query, trim($this->active_filters[$filter->getName()] ?? null));
         }
 
         return view('core::components.grid.grid', [
