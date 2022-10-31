@@ -75,7 +75,7 @@ class UsersTest extends PackageTestCase
             }
         }
 
-        $this->assertEquals('John Doe', $user->getFullName());
+        $this->assertEquals('John Doe', $user->full_name);
     }
 
     public function test_edit_user_screen_can_be_rendered()

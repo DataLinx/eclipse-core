@@ -2,13 +2,13 @@
 
 namespace SDLX\Core\Models;
 
-use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use SDLX\Core\Database\Factories\UserFactory;
+use SDLX\Core\Foundation\Database\HasCompositeAttributes;
 
 /**
  * Class User
@@ -16,11 +16,11 @@ use SDLX\Core\Database\Factories\UserFactory;
  * @package SDLX\Core\Models
  *
  * @property int $id User ID
- *
+ * @property string $full_name User's full name
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasCompositeAttributes;
 
     protected $table = 'core_user';
 
@@ -105,13 +105,17 @@ class User extends Authenticatable
     /**
      * @inheritDoc
      */
-    public static function query(): Builder
+    protected static function defineCompositeAttributes(): array
     {
-        $query = parent::query();
-
-        $query->select('core_user.*')
-            ->addSelect(DB::raw("CONCAT(core_user.name, ' ', core_user.surname) AS full_name"));
-
-        return $query;
+        switch (DB::getDefaultConnection()) {
+            case 'sqlite':
+                return [
+                    'full_name' => "core_user.name || ' ' || core_user.surname",
+                ];
+            default:
+                return [
+                    'full_name' => "CONCAT(core_user.name, ' ', core_user.surname)",
+                ];
+        }
     }
 }

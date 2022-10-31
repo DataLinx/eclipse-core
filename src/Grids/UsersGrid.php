@@ -43,7 +43,7 @@ class UsersGrid extends AbstractGridDefinition
         ])) ->setWidth(125);
 
         // Filters
-        $this->filters[] = (new SearchFilter())->addPartialCondition(['name', 'surname', 'email']);
+        $this->filters[] = (new SearchFilter(self::$model))->addPartialCondition(['name', 'surname', 'email', 'full_name']);
         $this->filters[] = new BooleanFilter('email_verified_at', _('Email verified'));
     }
 }
