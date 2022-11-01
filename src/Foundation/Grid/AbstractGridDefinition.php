@@ -17,7 +17,7 @@ abstract class AbstractGridDefinition extends Component
     /**
      * @var int Records per page to show
      */
-    public int $per_page = 10;
+    public int $per_page = 25;
 
     /**
      * @var string|null Column name by which to sort the data
@@ -46,9 +46,15 @@ abstract class AbstractGridDefinition extends Component
 
     protected static string $model;
 
+    /**
+     * URI query parameters that should be pushed to the browser location each time they change
+     *
+     * @var string[]
+     */
     protected $queryString = [
         'sort_by',
         'sort_desc',
+        'per_page',
     ];
 
     protected $paginationTheme = 'bootstrap';
@@ -157,6 +163,23 @@ abstract class AbstractGridDefinition extends Component
         return view('core::components.grid.grid', [
             'objects' => $query->paginate($this->per_page),
         ]);
+    }
+
+    /**
+     * Get options for the "records per page" selector.<br/>
+     * Grid implementations can overload this method to provide their own options.
+     *
+     * @return int[]
+     */
+    public function getPaginationOptions(): array
+    {
+        return [
+            10 => 10,
+            25 => 25,
+            50 => 50,
+            100 => 100,
+            1000 => 1000,
+        ];
     }
 
 }
