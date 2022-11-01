@@ -12,7 +12,7 @@ use SDLX\Core\Foundation\View\Components\Form\AbstractInput;
 class Select extends AbstractInput
 {
     /**
-     * @var array Array of options
+     * @var array|null Array of options
      */
     public ?array $options;
 
@@ -62,12 +62,13 @@ class Select extends AbstractInput
         ?bool $multiple = null,
     )
     {
+        /** @noinspection NestedTernaryOperatorInspection */
         parent::__construct(
             $name,
             $label,
             $id,
             $help,
-            $placeholder ?? ($multiple ? null : _('-- select value --')),
+            is_null($placeholder) ? ($multiple ? null : _('-- select value --')) : $placeholder,
             $no_error,
             $size,
             $object,
@@ -133,5 +134,27 @@ class Select extends AbstractInput
                 }
             }
         }
+    }
+
+    /**
+     * Get control classes
+     *
+     * @return string
+     */
+    public function getControlClasses(): string
+    {
+        $classes = [
+            'form-select',
+        ];
+
+        if ($this->size) {
+            $classes[] = 'form-select-'. $this->size;
+        }
+
+        if ($this->hasError()) {
+            $classes[] = 'is-invalid';
+        }
+
+        return implode(' ', $classes);
     }
 }
