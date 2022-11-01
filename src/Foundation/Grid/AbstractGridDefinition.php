@@ -161,7 +161,7 @@ abstract class AbstractGridDefinition extends Component
         }
 
         return view('core::components.grid.grid', [
-            'objects' => $query->paginate($this->per_page),
+            'objects' => $query->paginate($this->per_page, ['*'], 'page', $this->page),
         ]);
     }
 
@@ -180,6 +180,23 @@ abstract class AbstractGridDefinition extends Component
             100 => 100,
             1000 => 1000,
         ];
+    }
+
+    public function paginationView()
+    {
+        return 'core::components.grid.pagination';
+    }
+
+    public function updating($name, $value)
+    {
+        switch ($name) {
+            case 'page':
+                $this->setPage($value);
+                break;
+            case 'per_page':
+                $this->resetPage();
+                break;
+        }
     }
 
 }

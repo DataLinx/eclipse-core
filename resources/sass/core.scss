@@ -66,6 +66,11 @@ $toast-header-color: white;
             }
         }
         tfoot {
+            .grid-pagination {
+                .input-group {
+                    max-width: 200px;
+                }
+            }
             .grid-per-page {
                 float: right;
                 .form-label {

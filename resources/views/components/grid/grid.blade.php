@@ -56,7 +56,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="{{ count($this->getColumns()) }}">
+                <td class="pt-3" colspan="{{ count($this->getColumns()) }}">
                     {{ $objects->links() }}
                     <x-form::select name="per_page" :options="$this->getPaginationOptions()" :default="$this->per_page" wire:model="per_page" :placeholder="false" :label="_('Records per page') . ':'" size="sm" class="grid-per-page"/>
                 </td>
