@@ -46,18 +46,29 @@
         </tr>
         </thead>
         <tbody>
-            @foreach ($objects as $object)
+            @forelse ($objects as $object)
                 <tr>
                     @foreach ($this->getColumns() as $col)
                         <td>{!! $col->render($object) !!}</td>
                     @endforeach
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="{{ count($this->getColumns()) }}" class="text-center py-3">
+                        {{ _('No records to show') }}
+                    </td>
+                </tr>
+            @endforelse
         </tbody>
         <tfoot>
             <tr>
                 <td class="pt-3" colspan="{{ count($this->getColumns()) }}">
                     {{ $objects->links() }}
+                    @if ($objects->total() > 0)
+                        <div class="grid-page-info mb-3">
+                            {{ sprintf(_('Records shown: %d to %d (%d total)'), $objects->firstItem(), $objects->lastItem(), $objects->total()) }}
+                        </div>
+                    @endif
                     <x-form::select name="per_page" :options="$this->getPaginationOptions()" :default="$this->per_page" wire:model="per_page" :placeholder="false" :label="_('Records per page') . ':'" size="sm" class="grid-per-page"/>
                 </td>
             </tr>

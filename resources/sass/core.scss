@@ -71,6 +71,10 @@ $toast-header-color: white;
                     max-width: 200px;
                 }
             }
+            .grid-page-info {
+                font-size: $font-size-sm;
+                text-align: right;
+            }
             .grid-per-page {
                 float: right;
                 .form-label {
