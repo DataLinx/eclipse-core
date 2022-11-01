@@ -8,9 +8,9 @@ use SDLX\Core\Foundation\Database\Model;
 use SDLX\Core\Framework\Grid\Columns\Column;
 
 /**
- * Abstract Grid Definition that every Grid should implement
+ * Abstract Data Grid class that every Grid should extend
  */
-abstract class AbstractGridDefinition extends Component
+abstract class AbstractDataGrid extends Component
 {
     use WithPagination;
 

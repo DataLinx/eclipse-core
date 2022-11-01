@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Artisan;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase;
-use SDLX\Core\Grids\UsersGrid;
 use SDLX\Core\Providers\AuthServiceProvider;
 use SDLX\Core\Providers\CoreServiceProvider;
 use SDLX\Core\Providers\EventServiceProvider;
 use SDLX\Core\Providers\RouteServiceProvider;
+use SDLX\Core\View\Grids\Users as UsersGrid;
 
 /**
  * Class PackageTestCase

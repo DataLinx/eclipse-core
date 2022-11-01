@@ -18,11 +18,11 @@ use SDLX\Core\Framework\Context;
 use SDLX\Core\Framework\L10n;
 use SDLX\Core\Framework\Output;
 use SDLX\Core\Framework\Output\Menu;
-use SDLX\Core\Grids\UsersGrid;
 use SDLX\Core\Models\PersonalAccessToken;
 use SDLX\Core\View\Components\Alert;
 use SDLX\Core\View\Components\AppLayout;
 use SDLX\Core\View\Components\Icon;
+use SDLX\Core\View\Grids\Users as UsersGrid;
 
 class CoreServiceProvider extends ServiceProvider
 {

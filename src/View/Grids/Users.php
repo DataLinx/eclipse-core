@@ -1,8 +1,8 @@
 <?php
 
-namespace SDLX\Core\Grids;
+namespace SDLX\Core\View\Grids;
 
-use SDLX\Core\Foundation\Grid\AbstractGridDefinition;
+use SDLX\Core\Foundation\Grid\AbstractDataGrid;
 use SDLX\Core\Framework\Grid\Action;
 use SDLX\Core\Framework\Grid\Columns\ActionColumn;
 use SDLX\Core\Framework\Grid\Columns\Column;
@@ -11,7 +11,7 @@ use SDLX\Core\Framework\Grid\Filters\BooleanFilter;
 use SDLX\Core\Framework\Grid\Filters\SearchFilter;
 use SDLX\Core\Models\User;
 
-class UsersGrid extends AbstractGridDefinition
+class Users extends AbstractDataGrid
 {
     protected static string $model = User::class;
 
