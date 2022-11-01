@@ -36,13 +36,13 @@ class SelectTest extends PackageTestCase
              ->assertSee('aria-describedby')
              ->assertSee('Help text')
              ->assertSee('Placeholder')
-             ->assertSee('form-control-sm')
+             ->assertSee('form-select-sm')
              ->assertSeeInOrder([
                  'label',
                  'Bar',
                  '<select',
                  'class',
-                 'form-control',
+                 'form-select',
                  'wire:model="test"',
              ], false)
              ->assertDontSee('is-invalid');
