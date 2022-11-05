@@ -2,6 +2,11 @@
 
 namespace SDLX\Core\Foundation\Grid;
 
+/**
+ * Note: The methods implemented here are tested in BooleanFilterTest.
+ *
+ * @see \SDLX\Core\Tests\Unit\Framework\Grid\Filters\BooleanFilterTest
+ */
 abstract class AbstractFilter implements FilterInterface
 {
     /**
