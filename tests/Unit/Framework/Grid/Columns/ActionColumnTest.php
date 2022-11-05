@@ -21,8 +21,8 @@ class ActionColumnTest extends PackageTestCase
 
         // Test actions
         $actions = [
-            '<a class="grid-action" data-action="edit" href="'. str_replace('{id}', (string)$user->id, url("/users/{id}/edit")) .'">Edit</a>',
-            '<a class="grid-action" data-action="delete" href="javascript:void(0);">Delete</a>',
+            '<a class="btn btn-secondary btn-sm grid-action" data-action="edit" href="'. str_replace('{id}', (string)$user->id, url("/users/{id}/edit")) .'">Edit</a>',
+            '<a class="btn btn-secondary btn-sm grid-action" data-action="delete" href="javascript:void(0);">Delete</a>',
         ];
 
         $this->assertEquals(implode(' ', $actions), $column->render($user));

@@ -37,7 +37,7 @@ class ActionColumn extends Column
         $out = [];
 
         foreach ($this->actions as $action) {
-            $out[] = '<a class="grid-action" data-action="'. $action->getCode() .'" href="'. ($action->hasUrl() ? $action->getUrl($object) : 'javascript:void(0);') .'">'. $action->getLabel() .'</a>';
+            $out[] = '<a class="btn btn-secondary btn-sm grid-action" data-action="'. $action->getCode() .'" href="'. ($action->hasUrl() ? $action->getUrl($object) : 'javascript:void(0);') .'">'. $action->getLabel() .'</a>';
         }
 
         return implode(' ', $out);
