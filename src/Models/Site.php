@@ -2,6 +2,8 @@
 
 namespace SDLX\Core\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use SDLX\Core\Database\Factories\SiteFactory;
 use SDLX\Core\Foundation\Database\Model;
 
 /**
@@ -17,6 +19,8 @@ use SDLX\Core\Foundation\Database\Model;
  */
 class Site extends Model
 {
+    use HasFactory;
+
     protected $table = 'core_site';
 
     protected $attributes = [
@@ -43,4 +47,14 @@ class Site extends Model
     {
         return self::where('is_main', 1)->firstOrFail();
     }
+
+    /**
+     * @inheritDoc
+     */
+    protected static function newFactory()
+    {
+        return SiteFactory::new();
+    }
+
+
 }
