@@ -108,7 +108,7 @@ abstract class AbstractDataGrid extends Component
      */
     public function isSortedDesc(): bool
     {
-        return $this->sort_desc;
+        return $this->sort_desc ?: false;
     }
 
     /**
