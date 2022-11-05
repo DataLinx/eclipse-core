@@ -12,9 +12,9 @@ class ImageColumn extends Column
     protected ?int $img_width;
 
     /**
-     * @var int Image display height
+     * @var int|null Image display height
      */
-    protected int $img_height;
+    protected ?int $img_height;
 
     /**
      * @param string $accessor Column accessor (key)
