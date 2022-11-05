@@ -5,6 +5,7 @@ namespace SDLX\Core\Framework\Grid\Filters;
 use Illuminate\Contracts\Database\Query\Builder;
 use SDLX\Core\Foundation\Database\HasCompositeAttributes;
 use SDLX\Core\Foundation\Grid\AbstractFilter;
+use SDLX\Core\Framework\Database\Helper;
 
 class SearchFilter extends AbstractFilter
 {
@@ -38,7 +39,7 @@ class SearchFilter extends AbstractFilter
                     }
                 }
 
-                $filter_value = self::escapeLikeParameter($filter_value);
+                $filter_value = Helper::escapeLikeParameter($filter_value);
 
                 foreach ($this->partial_conditions as $attribute) {
                     if ($class::hasCompositeAttribute($attribute)) {
@@ -83,20 +84,5 @@ class SearchFilter extends AbstractFilter
         }
 
         return $this;
-    }
-
-    /**
-     * Escape the parameter value for use it the LIKE part of the query
-     *
-     * @param string $param Parameter value
-     * @return string
-     */
-    protected static function escapeLikeParameter($param): string
-    {
-        return str_replace(
-            ['\\', '%', '_'],
-            ['\\\\', '\\%', '\\_'],
-            $param,
-        );
     }
 }
