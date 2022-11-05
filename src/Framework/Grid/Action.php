@@ -83,7 +83,7 @@ class Action
             case 'view':
                 return _('View');
             default:
-                return mb_strtoupper($this->code);
+                return ucfirst($this->code);
         }
     }
 
