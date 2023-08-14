@@ -1,15 +1,15 @@
 <?php
 
-namespace SDLX\Core\Http;
+namespace Eclipse\Core\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use SDLX\Core\Http\Middleware\Authenticate;
-use SDLX\Core\Http\Middleware\EncryptCookies;
-use SDLX\Core\Http\Middleware\PreventRequestsDuringMaintenance;
-use SDLX\Core\Http\Middleware\RedirectIfAuthenticated;
-use SDLX\Core\Http\Middleware\TrimStrings;
-use SDLX\Core\Http\Middleware\TrustProxies;
-use SDLX\Core\Http\Middleware\VerifyCsrfToken;
+use Eclipse\Core\Http\Middleware\Authenticate;
+use Eclipse\Core\Http\Middleware\EncryptCookies;
+use Eclipse\Core\Http\Middleware\PreventRequestsDuringMaintenance;
+use Eclipse\Core\Http\Middleware\RedirectIfAuthenticated;
+use Eclipse\Core\Http\Middleware\TrimStrings;
+use Eclipse\Core\Http\Middleware\TrustProxies;
+use Eclipse\Core\Http\Middleware\VerifyCsrfToken;
 
 class Kernel extends HttpKernel
 {

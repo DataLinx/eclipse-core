@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation\Grid;
+namespace Eclipse\Core\Foundation\Grid;
 
 use Illuminate\Contracts\Database\Query\Builder;
 

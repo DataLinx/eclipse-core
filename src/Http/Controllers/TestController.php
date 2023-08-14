@@ -1,10 +1,10 @@
 <?php
 
-namespace SDLX\Core\Http\Controllers;
+namespace Eclipse\Core\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
-use SDLX\Core\Foundation\Http\Controllers\AbstractController;
-use SDLX\Core\Framework\Output\Menu;
+use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
+use Eclipse\Core\Framework\Output\Menu;
 
 class TestController extends AbstractController
 {

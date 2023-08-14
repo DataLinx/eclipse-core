@@ -1,7 +1,7 @@
 <div class="datagrid">
     @php
-        use SDLX\Core\Framework\Grid\Filters\BooleanFilter;
-        use SDLX\Core\Framework\Grid\Filters\SearchFilter;
+        use Eclipse\Core\Framework\Grid\Filters\BooleanFilter;
+        use Eclipse\Core\Framework\Grid\Filters\SearchFilter;
     @endphp
     @if ($this->hasFilters())
         <div class="card filters mb-3">

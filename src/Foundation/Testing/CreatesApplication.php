@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation\Testing;
+namespace Eclipse\Core\Foundation\Testing;
 
 use Illuminate\Contracts\Console\Kernel;
 

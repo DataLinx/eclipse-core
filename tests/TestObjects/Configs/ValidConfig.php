@@ -1,9 +1,9 @@
 <?php
 
-namespace SDLX\Core\Tests\TestObjects\Configs;
+namespace Eclipse\Core\Tests\TestObjects\Configs;
 
-use SDLX\Core\Foundation\Database\AbstractConfig;
-use SDLX\Core\Framework\Database\Mapper;
+use Eclipse\Core\Foundation\Database\AbstractConfig;
+use Eclipse\Core\Framework\Database\Mapper;
 
 class ValidConfig extends AbstractConfig
 {

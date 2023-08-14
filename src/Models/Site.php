@@ -1,14 +1,14 @@
 <?php
 
-namespace SDLX\Core\Models;
+namespace Eclipse\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use SDLX\Core\Database\Factories\SiteFactory;
-use SDLX\Core\Foundation\Database\Model;
+use Eclipse\Core\Database\Factories\SiteFactory;
+use Eclipse\Core\Foundation\Database\Model;
 
 /**
  * Class Site
- * @package SDLX\Core\Models
+ * @package Eclipse\Core\Models
  *
  * @property int $id Site ID
  * @property string $domain Domain

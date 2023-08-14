@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation\Database;
+namespace Eclipse\Core\Foundation\Database;
 
 use Illuminate\Contracts\Database\Query\Builder as QueryBuilder;
 use Illuminate\Support\Facades\DB;

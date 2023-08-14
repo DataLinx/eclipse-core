@@ -1,12 +1,12 @@
 <?php
 
-namespace SDLX\Core\Http\Controllers;
+namespace Eclipse\Core\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use SDLX\Core\Foundation\Http\Controllers\AbstractController;
-use SDLX\Core\Framework\Output;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
+use Eclipse\Core\Framework\Output;
+use Eclipse\Core\Models\User;
 
 class UsersController extends AbstractController
 {
@@ -56,7 +56,7 @@ class UsersController extends AbstractController
     /**
      * Display the specified resource.
      *
-     * @param  \SDLX\Core\Models\User  $user
+     * @param  \Eclipse\Core\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -67,7 +67,7 @@ class UsersController extends AbstractController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \SDLX\Core\Models\User  $user
+     * @param  \Eclipse\Core\Models\User  $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(User $user)
@@ -82,7 +82,7 @@ class UsersController extends AbstractController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \SDLX\Core\Models\User  $user
+     * @param  \Eclipse\Core\Models\User  $user
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, User $user, Output $output)
@@ -105,7 +105,7 @@ class UsersController extends AbstractController
     /**
      * Remove the specified resource from storage.
      *
-     * @param \SDLX\Core\Models\User $user
+     * @param \Eclipse\Core\Models\User $user
      * @param Output $output
      * @return array
      * @throws \Exception

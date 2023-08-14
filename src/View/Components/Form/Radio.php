@@ -1,11 +1,11 @@
 <?php
 
-namespace SDLX\Core\View\Components\Form;
+namespace Eclipse\Core\View\Components\Form;
 
 /**
  * Form radio component - extends the checkbox component for a simple output tweak.
  *
- * @package SDLX\Core\View\Components\Form
+ * @package Eclipse\Core\View\Components\Form
  */
 class Radio extends Checkbox
 {

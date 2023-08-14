@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace SDLX\Core\Tests\Unit\Framework;
+namespace Eclipse\Core\Tests\Unit\Framework;
 
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Framework\Output;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Framework\Output;
 
 /**
- * @covers \SDLX\Core\Framework\Output
+ * @covers \Eclipse\Core\Framework\Output
  */
 class OutputTest extends PackageTestCase
 {

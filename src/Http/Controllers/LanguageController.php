@@ -1,10 +1,10 @@
 <?php
 
-namespace SDLX\Core\Http\Controllers;
+namespace Eclipse\Core\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SDLX\Core\Foundation\Http\Controllers\AbstractController;
-use SDLX\Core\Models\Language;
+use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
+use Eclipse\Core\Models\Language;
 
 class LanguageController extends AbstractController
 {
@@ -42,7 +42,7 @@ class LanguageController extends AbstractController
     /**
      * Display the specified resource.
      *
-     * @param  \SDLX\Core\Models\Language  $language
+     * @param  \Eclipse\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function show(Language $language)
@@ -53,7 +53,7 @@ class LanguageController extends AbstractController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \SDLX\Core\Models\Language  $language
+     * @param  \Eclipse\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function edit(Language $language)
@@ -65,7 +65,7 @@ class LanguageController extends AbstractController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \SDLX\Core\Models\Language  $language
+     * @param  \Eclipse\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Language $language)
@@ -76,7 +76,7 @@ class LanguageController extends AbstractController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \SDLX\Core\Models\Language  $language
+     * @param  \Eclipse\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function destroy(Language $language)

@@ -1,9 +1,9 @@
 <?php
 
-namespace SDLX\Core\Database\Seeders;
+namespace Eclipse\Core\Database\Seeders;
 
+use Eclipse\Core\Models\User;
 use Illuminate\Database\Seeder;
-use SDLX\Core\Models\User;
 
 class UserSeeder extends Seeder
 {

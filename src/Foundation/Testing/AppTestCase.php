@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation\Testing;
+namespace Eclipse\Core\Foundation\Testing;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
  *
  * This should be used when implementing App tests.
  *
- * @package SDLX\Core\Testing
+ * @package Eclipse\Core\Testing
  */
 abstract class AppTestCase extends BaseTestCase
 {

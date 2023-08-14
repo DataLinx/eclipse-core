@@ -1,13 +1,13 @@
 <?php
 
-namespace SDLX\Core\View\Components\Form;
+namespace Eclipse\Core\View\Components\Form;
 
 use Closure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use SDLX\Core\Foundation\View\Components\Form\AbstractInput;
+use Eclipse\Core\Foundation\View\Components\Form\AbstractInput;
 
 class Select extends AbstractInput
 {

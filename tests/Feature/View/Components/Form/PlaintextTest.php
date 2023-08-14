@@ -1,9 +1,9 @@
 <?php
 
-namespace SDLX\Core\Tests\Feature\View\Components\Form;
+namespace Eclipse\Core\Tests\Feature\View\Components\Form;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use SDLX\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
 
 class PlaintextTest extends PackageTestCase
 {

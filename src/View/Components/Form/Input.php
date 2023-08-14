@@ -1,8 +1,8 @@
 <?php
 
-namespace SDLX\Core\View\Components\Form;
+namespace Eclipse\Core\View\Components\Form;
 
-use SDLX\Core\Foundation\View\Components\Form\AbstractInput;
+use Eclipse\Core\Foundation\View\Components\Form\AbstractInput;
 
 class Input extends AbstractInput
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Framework\Output\Menu;
+namespace Eclipse\Core\Framework\Output\Menu;
 
 class Section extends Item
 {

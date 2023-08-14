@@ -1,30 +1,30 @@
 <?php
 
-namespace SDLX\Core\Foundation\Testing;
+namespace Eclipse\Core\Foundation\Testing;
 
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase;
-use SDLX\Core\Providers\AuthServiceProvider;
-use SDLX\Core\Providers\CoreServiceProvider;
-use SDLX\Core\Providers\EventServiceProvider;
-use SDLX\Core\Providers\RouteServiceProvider;
-use SDLX\Core\View\Grids\Users as UsersGrid;
+use Eclipse\Core\Providers\AuthServiceProvider;
+use Eclipse\Core\Providers\CoreServiceProvider;
+use Eclipse\Core\Providers\EventServiceProvider;
+use Eclipse\Core\Providers\RouteServiceProvider;
+use Eclipse\Core\View\Grids\Users as UsersGrid;
 
 /**
  * Class PackageTestCase
  *
- * This should be used when implementing SDLX packages
+ * This should be used when implementing Eclipse packages
  *
- * @package SDLX\Core\Tests
+ * @package Eclipse\Core\Tests
  */
 abstract class PackageTestCase extends TestCase
 {
     /**
-     * @var bool Run the SDLX install procedure in setUp()
+     * @var bool Run the Eclipse install procedure in setUp()
      */
-    protected $sdlx_install = true;
+    protected $eclipse_install = true;
 
     protected $loadEnvironmentVariables = true;
 
@@ -51,8 +51,8 @@ abstract class PackageTestCase extends TestCase
 
         parent::setUp();
 
-        if ($this->sdlx_install) {
-            Artisan::call('sdlx:install -n'); // -n = no interaction, use testing defaults
+        if ($this->eclipse_install) {
+            Artisan::call('eclipse:install -n'); // -n = no interaction, use testing defaults
         }
 
         $this->withoutVite();

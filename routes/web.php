@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use SDLX\Core\Http\Controllers\DashboardController;
-use SDLX\Core\Http\Controllers\TestController;
-use SDLX\Core\Http\Controllers\UsersController;
+use Eclipse\Core\Http\Controllers\DashboardController;
+use Eclipse\Core\Http\Controllers\TestController;
+use Eclipse\Core\Http\Controllers\UsersController;
 
 // Redirect root requests
 // -------------------------------------------

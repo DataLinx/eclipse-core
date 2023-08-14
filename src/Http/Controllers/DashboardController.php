@@ -1,8 +1,8 @@
 <?php
 
-namespace SDLX\Core\Http\Controllers;
+namespace Eclipse\Core\Http\Controllers;
 
-use SDLX\Core\Foundation\Http\Controllers\AbstractController;
+use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 
 class DashboardController extends AbstractController
 {

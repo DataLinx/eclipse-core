@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Framework\Grid\Columns;
+namespace Eclipse\Core\Framework\Grid\Columns;
 
 use Illuminate\Database\Eloquent\Model;
 

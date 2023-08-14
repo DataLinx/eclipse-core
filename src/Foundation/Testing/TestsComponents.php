@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation\Testing;
+namespace Eclipse\Core\Foundation\Testing;
 
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Request;
@@ -9,7 +9,7 @@ use Mockery;
 /**
  * Trait TestsComponents
  *
- * @package SDLX\Core\Testing
+ * @package Eclipse\Core\Testing
  */
 trait TestsComponents
 {

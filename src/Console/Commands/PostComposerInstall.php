@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Console\Commands;
+namespace Eclipse\Core\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
@@ -12,7 +12,7 @@ class PostComposerInstall extends Command
      *
      * @var string
      */
-    protected $signature = 'sdlx:post-composer-install';
+    protected $signature = 'eclipse:post-composer-install';
 
     /**
      * The console command description.
@@ -38,12 +38,12 @@ class PostComposerInstall extends Command
      */
     public function handle()
     {
-        echo "Running SDLX Post Composer install procedure..." . PHP_EOL;
+        echo "Running Eclipse Post Composer install procedure..." . PHP_EOL;
 
         // Copy the .env file
         // ------------------
         if (!file_exists('.env')) {
-            if (copy('vendor/sdlx/core/.env.example', '.env')) {
+            if (copy('vendor/eclipse/core/.env.example', '.env')) {
                 echo ".env.example copied to .env" . PHP_EOL;
                 Artisan::call("key:generate --ansi");
             } else {

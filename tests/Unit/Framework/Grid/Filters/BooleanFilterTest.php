@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace SDLX\Core\Tests\Unit\Framework\Grid\Filters;
+namespace Eclipse\Core\Tests\Unit\Framework\Grid\Filters;
 
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Framework\Grid\Filters\BooleanFilter;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Framework\Grid\Filters\BooleanFilter;
+use Eclipse\Core\Models\User;
 
 class BooleanFilterTest extends PackageTestCase
 {

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace SDLX\Core\Tests\Unit\Framework\Grid\Columns;
+namespace Eclipse\Core\Tests\Unit\Framework\Grid\Columns;
 
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Framework\Grid\Columns\Column;
-use SDLX\Core\Models\Site;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Framework\Grid\Columns\Column;
+use Eclipse\Core\Models\Site;
+use Eclipse\Core\Models\User;
 
 class ColumnTest extends PackageTestCase
 {

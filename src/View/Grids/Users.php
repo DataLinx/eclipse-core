@@ -1,15 +1,15 @@
 <?php
 
-namespace SDLX\Core\View\Grids;
+namespace Eclipse\Core\View\Grids;
 
-use SDLX\Core\Foundation\Grid\AbstractDataGrid;
-use SDLX\Core\Framework\Grid\Action;
-use SDLX\Core\Framework\Grid\Columns\ActionColumn;
-use SDLX\Core\Framework\Grid\Columns\Column;
-use SDLX\Core\Framework\Grid\Columns\ImageColumn;
-use SDLX\Core\Framework\Grid\Filters\BooleanFilter;
-use SDLX\Core\Framework\Grid\Filters\SearchFilter;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Foundation\Grid\AbstractDataGrid;
+use Eclipse\Core\Framework\Grid\Action;
+use Eclipse\Core\Framework\Grid\Columns\ActionColumn;
+use Eclipse\Core\Framework\Grid\Columns\Column;
+use Eclipse\Core\Framework\Grid\Columns\ImageColumn;
+use Eclipse\Core\Framework\Grid\Filters\BooleanFilter;
+use Eclipse\Core\Framework\Grid\Filters\SearchFilter;
+use Eclipse\Core\Models\User;
 
 class Users extends AbstractDataGrid
 {

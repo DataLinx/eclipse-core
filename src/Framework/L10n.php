@@ -1,14 +1,14 @@
 <?php
 
-namespace SDLX\Core\Framework;
+namespace Eclipse\Core\Framework;
 
 use Exception;
 use Illuminate\Support\Facades\Cookie;
-use SDLX\Core\Models\Language;
+use Eclipse\Core\Models\Language;
 
 /**
  * Class L10n
- * @package SDLX\Core\Framework
+ * @package Eclipse\Core\Framework
  */
 class L10n
 {

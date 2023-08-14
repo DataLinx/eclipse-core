@@ -1,13 +1,13 @@
 <?php
 
-namespace SDLX\Core\Tests\Unit\Framework\Output\Menu;
+namespace Eclipse\Core\Tests\Unit\Framework\Output\Menu;
 
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Framework\Output\Menu\Item;
-use SDLX\Core\Framework\Output\Menu\Section;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Framework\Output\Menu\Item;
+use Eclipse\Core\Framework\Output\Menu\Section;
 
 /**
- * @covers \SDLX\Core\Framework\Output\Menu\Section
+ * @covers \Eclipse\Core\Framework\Output\Menu\Section
  */
 class SectionTest extends PackageTestCase
 {

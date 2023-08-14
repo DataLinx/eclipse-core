@@ -1,11 +1,11 @@
 <?php
 
-namespace SDLX\Core\Foundation\Grid;
+namespace Eclipse\Core\Foundation\Grid;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use SDLX\Core\Foundation\Database\Model;
-use SDLX\Core\Framework\Grid\Columns\Column;
+use Eclipse\Core\Foundation\Database\Model;
+use Eclipse\Core\Framework\Grid\Columns\Column;
 
 /**
  * Abstract Data Grid class that every Grid should extend

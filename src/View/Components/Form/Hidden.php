@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\View\Components\Form;
+namespace Eclipse\Core\View\Components\Form;
 
 use Illuminate\View\Component;
 

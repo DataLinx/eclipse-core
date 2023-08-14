@@ -1,11 +1,11 @@
 <?php
 
-namespace SDLX\Core\Framework\Output;
+namespace Eclipse\Core\Framework\Output;
 
 use Exception;
 use InvalidArgumentException;
-use SDLX\Core\Framework\Output\Menu\Item;
-use SDLX\Core\Framework\Output\Menu\Section;
+use Eclipse\Core\Framework\Output\Menu\Item;
+use Eclipse\Core\Framework\Output\Menu\Section;
 
 /**
  * The main application navigation menu
@@ -34,8 +34,13 @@ class Menu
         if (isset($this->after)) {
             try {
                 $items = arr($this->items);
-                $items->insertAfterKey($this->after, $item, $item->getKey());
-                $this->items = $items->getArray();
+
+                if ($items->positionOfKey($this->after) === null) {
+                    throw new InvalidArgumentException(sprintf('Key "%s" not found', $this->after));
+                }
+
+                $items->afterKey($this->after)->insert($item, $item->getKey());
+                $this->items = $items->toArray();
 
                 // Clear the "after" key
                 $this->after = null;

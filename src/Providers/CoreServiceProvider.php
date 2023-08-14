@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Providers;
+namespace Eclipse\Core\Providers;
 
 use Exception;
 use Illuminate\Support\Facades\Blade;
@@ -9,20 +9,20 @@ use Laravel\Sanctum\Sanctum;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 use Livewire\Livewire;
-use SDLX\Core\Console\Commands\DiscoverPackages;
-use SDLX\Core\Console\Commands\MapConfig;
-use SDLX\Core\Console\Commands\PostComposerInstall;
-use SDLX\Core\Console\Commands\PostComposerUpdate;
-use SDLX\Core\Console\Commands\SDLXInstall;
-use SDLX\Core\Framework\Context;
-use SDLX\Core\Framework\L10n;
-use SDLX\Core\Framework\Output;
-use SDLX\Core\Framework\Output\Menu;
-use SDLX\Core\Models\PersonalAccessToken;
-use SDLX\Core\View\Components\Alert;
-use SDLX\Core\View\Components\AppLayout;
-use SDLX\Core\View\Components\Icon;
-use SDLX\Core\View\Grids\Users as UsersGrid;
+use Eclipse\Core\Console\Commands\DiscoverPackages;
+use Eclipse\Core\Console\Commands\MapConfig;
+use Eclipse\Core\Console\Commands\PostComposerInstall;
+use Eclipse\Core\Console\Commands\PostComposerUpdate;
+use Eclipse\Core\Console\Commands\EclipseInstall;
+use Eclipse\Core\Framework\Context;
+use Eclipse\Core\Framework\L10n;
+use Eclipse\Core\Framework\Output;
+use Eclipse\Core\Framework\Output\Menu;
+use Eclipse\Core\Models\PersonalAccessToken;
+use Eclipse\Core\View\Components\Alert;
+use Eclipse\Core\View\Components\AppLayout;
+use Eclipse\Core\View\Components\Icon;
+use Eclipse\Core\View\Grids\Users as UsersGrid;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -89,13 +89,13 @@ class CoreServiceProvider extends ServiceProvider
             $this->commands([
                 PostComposerInstall::class,
                 PostComposerUpdate::class,
-                SDLXInstall::class,
+                EclipseInstall::class,
                 DiscoverPackages::class,
                 MapConfig::class,
             ]);
         }
 
-        Blade::componentNamespace('SDLX\\Core\\View\\Components\\Form', 'form');
+        Blade::componentNamespace('Eclipse\\Core\\View\\Components\\Form', 'form');
         Blade::component(AppLayout::class);
         Blade::component(Alert::class);
         Blade::component(Icon::class);

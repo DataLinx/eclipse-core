@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Providers;
+namespace Eclipse\Core\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

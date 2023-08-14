@@ -1,12 +1,12 @@
 <?php
 
-namespace SDLX\Core\Models;
+namespace Eclipse\Core\Models;
 
-use SDLX\Core\Foundation\Database\Model;
+use Eclipse\Core\Foundation\Database\Model;
 
 /**
  * Class AppInstance
- * @package SDLX\Core\Models
+ * @package Eclipse\Core\Models
  *
  * @property int $id App instance ID
  * @property int $site_id Site ID

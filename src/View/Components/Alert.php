@@ -1,12 +1,12 @@
 <?php
 
-namespace SDLX\Core\View\Components;
+namespace Eclipse\Core\View\Components;
 
 use Illuminate\View\Component;
 
 /**
  * Class Alert
- * @package SDLX\Core\View\Components
+ * @package Eclipse\Core\View\Components
  */
 class Alert extends Component
 {

@@ -1,11 +1,11 @@
 @php
-    use SDLX\Core\Framework\Output\Menu;
+    use Eclipse\Core\Framework\Output\Menu;
 @endphp
 
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'SDLX') }}
+            {{ config('app.name', 'Eclipse') }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ _("Toggle navigation") }}">

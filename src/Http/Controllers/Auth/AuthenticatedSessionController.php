@@ -1,15 +1,15 @@
 <?php
 
-namespace SDLX\Core\Http\Controllers\Auth;
+namespace Eclipse\Core\Http\Controllers\Auth;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use SDLX\Core\Foundation\Http\Controllers\AbstractController;
-use SDLX\Core\Http\Requests\Auth\LoginRequest;
-use SDLX\Core\Providers\RouteServiceProvider;
+use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
+use Eclipse\Core\Http\Requests\Auth\LoginRequest;
+use Eclipse\Core\Providers\RouteServiceProvider;
 
 class AuthenticatedSessionController extends AbstractController
 {
@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends AbstractController
     /**
      * Handle an incoming authentication request.
      *
-     * @param  \SDLX\Core\Http\Requests\Auth\LoginRequest  $request
+     * @param  \Eclipse\Core\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request)

@@ -1,9 +1,9 @@
 <?php
 
-namespace SDLX\Core\Http\Middleware;
+namespace Eclipse\Core\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
-use SDLX\Core\Framework\L10n;
+use Eclipse\Core\Framework\L10n;
 
 class EncryptCookies extends Middleware
 {

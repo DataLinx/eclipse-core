@@ -1,13 +1,13 @@
 <?php
 
-namespace SDLX\Core\Framework;
+namespace Eclipse\Core\Framework;
 
-use SDLX\Core\Framework\Output\Toast;
+use Eclipse\Core\Framework\Output\Toast;
 
 /**
  * Response output utility class
  *
- * @package SDLX\Core\Framework
+ * @package Eclipse\Core\Framework
  */
 class Output
 {

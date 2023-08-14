@@ -1,11 +1,11 @@
 <?php
 
-namespace SDLX\Core\Tests\Feature\Http\Controllers;
+namespace Eclipse\Core\Tests\Feature\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Models\User;
 
 class UsersTest extends PackageTestCase
 {

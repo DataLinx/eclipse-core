@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use SDLX\Core\Http\Controllers\Auth\AuthenticatedSessionController;
-use SDLX\Core\Http\Controllers\Auth\NewPasswordController;
-use SDLX\Core\Http\Controllers\Auth\PasswordResetLinkController;
+use Eclipse\Core\Http\Controllers\Auth\AuthenticatedSessionController;
+use Eclipse\Core\Http\Controllers\Auth\NewPasswordController;
+use Eclipse\Core\Http\Controllers\Auth\PasswordResetLinkController;
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])

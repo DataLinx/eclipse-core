@@ -1,12 +1,12 @@
 <?php
 
-namespace SDLX\Core\Tests\Feature\View\Components\Form;
+namespace Eclipse\Core\Tests\Feature\View\Components\Form;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Foundation\Testing\TestsComponents;
-use SDLX\Core\View\Components\Form\Checkbox;
-use SDLX\Core\View\Components\Form\Radio;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Foundation\Testing\TestsComponents;
+use Eclipse\Core\View\Components\Form\Checkbox;
+use Eclipse\Core\View\Components\Form\Radio;
 
 class CheckboxTest extends PackageTestCase
 {

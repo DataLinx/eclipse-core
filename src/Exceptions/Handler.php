@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Exceptions;
+namespace Eclipse\Core\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;

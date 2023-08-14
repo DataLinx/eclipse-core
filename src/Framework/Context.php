@@ -1,19 +1,19 @@
 <?php
 
-namespace SDLX\Core\Framework;
+namespace Eclipse\Core\Framework;
 
 use Exception;
 use Illuminate\Support\Facades\Auth;
-use SDLX\Core\Models\AppInstance;
-use SDLX\Core\Models\Language;
-use SDLX\Core\Models\Package;
-use SDLX\Core\Models\Site;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Models\AppInstance;
+use Eclipse\Core\Models\Language;
+use Eclipse\Core\Models\Package;
+use Eclipse\Core\Models\Site;
+use Eclipse\Core\Models\User;
 
 /**
  * Execution context
  *
- * @package SDLX\Core\Framework
+ * @package Eclipse\Core\Framework
  */
 class Context
 {
@@ -69,7 +69,7 @@ class Context
     {
         if (empty($this->app_package)) {
             // TODO App package should be detected or registered
-            $this->app_package = Package::fetchByName('sdlx', 'core');
+            $this->app_package = Package::fetchByName('eclipse', 'core');
         }
 
         return $this->app_package;

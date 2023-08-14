@@ -1,31 +1,31 @@
 <?php
 
-namespace SDLX\Core\Console\Commands;
+namespace Eclipse\Core\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use SDLX\Core\Models\AppInstance;
-use SDLX\Core\Models\Package;
-use SDLX\Core\Models\Site;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Models\AppInstance;
+use Eclipse\Core\Models\Package;
+use Eclipse\Core\Models\Site;
+use Eclipse\Core\Models\User;
 
-class SDLXInstall extends Command
+class EclipseInstall extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'sdlx:install';
+    protected $signature = 'eclipse:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Start the SDLX installation procedure';
+    protected $description = 'Start the Eclipse installation procedure';
 
     /**
      * Default answers, used for testing
@@ -41,21 +41,21 @@ class SDLXInstall extends Command
      */
     public function handle(): void
     {
-        $this->info("Running SDLX installation procedure...");
+        $this->info("Running Eclipse installation procedure...");
 
         $this->callSilent('migrate:fresh');
 
-        $this->callSilent('sdlx:discover-packages');
+        $this->callSilent('eclipse:discover-packages');
 
-        $this->callSilent('sdlx:map-config');
+        $this->callSilent('eclipse:map-config');
 
         // Are we in testing?
         if (App::environment('testing') and $this->option('no-interaction')) {
             // Set defaults when there's no interaction
             $this->defaults = [
                 'site' => [
-                    'domain' => 'sdlx.local',
-                    'name' => 'SDLX Test',
+                    'domain' => 'eclipse.local',
+                    'name' => 'Eclipse Test',
                 ],
                 'user' => [
                     'name' => 'John',
@@ -106,7 +106,7 @@ class SDLXInstall extends Command
         $site->save();
 
         // Create default instance
-        $core_package = Package::fetchByName('sdlx', 'core');
+        $core_package = Package::fetchByName('eclipse', 'core');
 
         $instance = new AppInstance;
         $instance->site_id = $site->id;

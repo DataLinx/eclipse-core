@@ -1,13 +1,13 @@
 <?php
 
-namespace SDLX\Core\Framework\Database;
+namespace Eclipse\Core\Framework\Database;
 
 use Exception;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Database\Schema\ColumnDefinition;
 use Illuminate\Support\Facades\DB;
-use SDLX\Core\Foundation\Database\Mappable;
+use Eclipse\Core\Foundation\Database\Mappable;
 
 class Mapper
 {

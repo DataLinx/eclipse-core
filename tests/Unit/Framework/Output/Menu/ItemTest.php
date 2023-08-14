@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace SDLX\Core\Tests\Unit\Framework\Output\Menu;
+namespace Eclipse\Core\Tests\Unit\Framework\Output\Menu;
 
 use Illuminate\Contracts\Routing\UrlGenerator as UrlGeneratorInterface;
 use InvalidArgumentException;
 use Mockery\MockInterface;
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Framework\Output\Menu\Item;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Framework\Output\Menu\Item;
 
 /**
- * @covers \SDLX\Core\Framework\Output\Menu\Item
+ * @covers \Eclipse\Core\Framework\Output\Menu\Item
  */
 class ItemTest extends PackageTestCase
 {

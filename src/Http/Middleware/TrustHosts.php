@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Http\Middleware;
+namespace Eclipse\Core\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustHosts as Middleware;
 

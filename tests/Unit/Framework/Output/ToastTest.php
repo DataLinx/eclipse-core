@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace SDLX\Core\Tests\Unit\Framework\Output;
+namespace Eclipse\Core\Tests\Unit\Framework\Output;
 
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Framework\Output\Toast;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Framework\Output\Toast;
 
 /**
- * @covers \SDLX\Core\Framework\Output\Toast
+ * @covers \Eclipse\Core\Framework\Output\Toast
  */
 class ToastTest extends PackageTestCase
 {

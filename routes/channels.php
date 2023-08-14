@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('SDLX.Core.Models.User.{id}', function ($user, $id) {
+Broadcast::channel('Eclipse.Core.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });

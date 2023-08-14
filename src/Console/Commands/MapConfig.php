@@ -1,14 +1,14 @@
 <?php
 
-namespace SDLX\Core\Console\Commands;
+namespace Eclipse\Core\Console\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use SDLX\Core\Foundation\Database\AbstractConfig;
-use SDLX\Core\Framework\Database\Mapper;
-use SDLX\Core\Models\Package;
-use SDLX\Core\Models\Site;
+use Eclipse\Core\Foundation\Database\AbstractConfig;
+use Eclipse\Core\Framework\Database\Mapper;
+use Eclipse\Core\Models\Package;
+use Eclipse\Core\Models\Site;
 
 class MapConfig extends Command
 {
@@ -17,7 +17,7 @@ class MapConfig extends Command
      *
      * @var string
      */
-    protected $signature = 'sdlx:map-config';
+    protected $signature = 'eclipse:map-config';
 
     /**
      * The console command description.

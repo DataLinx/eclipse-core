@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Providers;
+namespace Eclipse\Core\Providers;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;

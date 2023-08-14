@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Models;
+namespace Eclipse\Core\Models;
 
 use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace SDLX\Core\Framework\Output;
+namespace Eclipse\Core\Framework\Output;
 
 /**
  * Class Toast
  *
- * @package SDLX\Core\Framework\Output
+ * @package Eclipse\Core\Framework\Output
  * @method self success()
  * @method self danger()
  * @method self warning()

@@ -1,7 +1,7 @@
 <?php
 
-use SDLX\Core\Framework\Output;
-use SDLX\Core\Framework\Output\Toast;
+use Eclipse\Core\Framework\Output;
+use Eclipse\Core\Framework\Output\Toast;
 
 /**
  * Create a toast

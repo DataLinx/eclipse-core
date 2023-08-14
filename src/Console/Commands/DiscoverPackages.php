@@ -1,10 +1,10 @@
 <?php
 
-namespace SDLX\Core\Console\Commands;
+namespace Eclipse\Core\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use SDLX\Core\Models\Package;
+use Eclipse\Core\Models\Package;
 
 class DiscoverPackages extends Command
 {
@@ -13,14 +13,14 @@ class DiscoverPackages extends Command
      *
      * @var string
      */
-    protected $signature = 'sdlx:discover-packages';
+    protected $signature = 'eclipse:discover-packages';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Discover SDLX packages from vendors';
+    protected $description = 'Discover Eclipse packages from vendors';
 
     /**
      * Execute the console command.
@@ -31,7 +31,7 @@ class DiscoverPackages extends Command
     {
         $dir = base_path('vendor');
 
-        $this->info("Discovering SDLX packages in $dir");
+        $this->info("Discovering Eclipse packages in $dir");
 
         foreach (File::directories($dir) as $vendor_dir) {
             foreach (File::directories($vendor_dir) as $package_dir) {
@@ -42,14 +42,14 @@ class DiscoverPackages extends Command
 
                 $json = json_decode(file_get_contents($package_dir .'/composer.json'), true);
 
-                if (! isset($json['extra']['sdlx']['type'])) {
-                    // Not an SDLX package
+                if (! isset($json['extra']['eclipse']['type'])) {
+                    // Not an Eclipse package
                     continue;
                 }
 
                 $vendor = basename($vendor_dir);
                 $name = basename($package_dir);
-                $type = substr($json['extra']['sdlx']['type'], 0, 1);
+                $type = substr($json['extra']['eclipse']['type'], 0, 1);
 
                 $package = Package::where([
                     'vendor' => $vendor,

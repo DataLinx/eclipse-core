@@ -1,7 +1,7 @@
 {
-    "name": "sdlx/core",
+    "name": "eclipse/core",
     "type": "library",
-    "description": "SDLX core package",
+    "description": "Eclipse core package",
     "license": "MIT",
     "authors": [
         {
@@ -13,8 +13,8 @@
         "php": "^8.0",
         "ext-gettext": "*",
         "ext-json": "*",
-        "datalinx/gettext-context": "^1.0",
-        "datalinx/php-utils": "dev-master",
+        "datalinx/gettext-context": "^2.0",
+        "datalinx/php-utils": "^2.3",
         "doctrine/dbal": "^3.4",
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^9.24",
@@ -35,9 +35,9 @@
     },
     "autoload": {
         "psr-4": {
-            "SDLX\\Core\\": "src/",
-            "SDLX\\Core\\Database\\Factories\\": "database/factories/",
-            "SDLX\\Core\\Database\\Seeders\\": "database/seeders/"
+            "Eclipse\\Core\\": "src/",
+            "Eclipse\\Core\\Database\\Factories\\": "database/factories/",
+            "Eclipse\\Core\\Database\\Seeders\\": "database/seeders/"
         },
         "files": [
             "src/helpers.php"
@@ -45,21 +45,21 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "SDLX\\Core\\Tests\\": "tests/"
+            "Eclipse\\Core\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "dont-discover": [],
             "providers": [
-                "SDLX\\Core\\Providers\\CoreServiceProvider",
-                "SDLX\\Core\\Providers\\AuthServiceProvider",
-                "SDLX\\Core\\Providers\\EventServiceProvider",
-                "SDLX\\Core\\Providers\\RouteServiceProvider",
-                "SDLX\\Core\\Providers\\TelescopeServiceProvider"
+                "Eclipse\\Core\\Providers\\CoreServiceProvider",
+                "Eclipse\\Core\\Providers\\AuthServiceProvider",
+                "Eclipse\\Core\\Providers\\EventServiceProvider",
+                "Eclipse\\Core\\Providers\\RouteServiceProvider",
+                "Eclipse\\Core\\Providers\\TelescopeServiceProvider"
             ]
         },
-        "sdlx": {
+        "eclipse": {
             "type": "app"
         }
     },
@@ -72,11 +72,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/datalinx/php-utils"
-        }
-    ]
+    "prefer-stable": true
 }

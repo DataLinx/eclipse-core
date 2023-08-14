@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace SDLX\Core\Tests\Unit\View\Grids;
+namespace Eclipse\Core\Tests\Unit\View\Grids;
 
 use Livewire\Livewire;
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Models\User;
-use SDLX\Core\View\Grids\Users;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Models\User;
+use Eclipse\Core\View\Grids\Users;
 
 class UsersGridTest extends PackageTestCase
 {

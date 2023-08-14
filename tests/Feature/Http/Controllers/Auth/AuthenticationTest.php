@@ -1,10 +1,10 @@
 <?php
 
-namespace SDLX\Core\Tests\Feature\Http\Controllers\Auth;
+namespace Eclipse\Core\Tests\Feature\Http\Controllers\Auth;
 
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Models\User;
-use SDLX\Core\Providers\RouteServiceProvider;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Models\User;
+use Eclipse\Core\Providers\RouteServiceProvider;
 
 class AuthenticationTest extends PackageTestCase
 {

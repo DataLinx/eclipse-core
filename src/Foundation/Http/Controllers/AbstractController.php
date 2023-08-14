@@ -1,13 +1,13 @@
 <?php
 
-namespace SDLX\Core\Foundation\Http\Controllers;
+namespace Eclipse\Core\Foundation\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use SDLX\Core\Framework\Context;
-use SDLX\Core\Framework\L10n;
+use Eclipse\Core\Framework\Context;
+use Eclipse\Core\Framework\L10n;
 
 abstract class AbstractController extends BaseController
 {

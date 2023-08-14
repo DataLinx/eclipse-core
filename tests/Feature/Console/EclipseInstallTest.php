@@ -1,22 +1,22 @@
 <?php
 
-namespace SDLX\Core\Tests\Feature\Console;
+namespace Eclipse\Core\Tests\Feature\Console;
 
-use SDLX\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
 
-class SDLXInstallTest extends PackageTestCase
+class EclipseInstallTest extends PackageTestCase
 {
-    protected $sdlx_install = false;
+    protected $eclipse_install = false;
 
     public function test_system_can_be_installed()
     {
-        $cmd = $this->artisan('sdlx:install');
+        $cmd = $this->artisan('eclipse:install');
 
         // Test site creation
-        $cmd->expectsQuestion('Enter the project domain name', 'sdlx.test')
-            ->expectsQuestion('Enter the project name', 'SDLX Test')
+        $cmd->expectsQuestion('Enter the project domain name', 'eclipse.test')
+            ->expectsQuestion('Enter the project name', 'Eclipse Test')
             ->expectsConfirmation('Is this site served over HTTPS?', 'no')
-            ->expectsOutput('✓ Created site sdlx.test');
+            ->expectsOutput('✓ Created site eclipse.test');
 
         // Test user creation
         $cmd->expectsQuestion('First name', 'John')

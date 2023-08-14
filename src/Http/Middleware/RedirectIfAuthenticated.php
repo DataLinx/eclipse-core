@@ -1,11 +1,11 @@
 <?php
 
-namespace SDLX\Core\Http\Middleware;
+namespace Eclipse\Core\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use SDLX\Core\Providers\RouteServiceProvider;
+use Eclipse\Core\Providers\RouteServiceProvider;
 
 class RedirectIfAuthenticated
 {

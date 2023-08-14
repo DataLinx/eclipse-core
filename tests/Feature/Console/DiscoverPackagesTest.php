@@ -1,9 +1,9 @@
 <?php
 
-namespace SDLX\Core\Tests\Feature\Console;
+namespace Eclipse\Core\Tests\Feature\Console;
 
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Models\Package;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Models\Package;
 
 class DiscoverPackagesTest extends PackageTestCase
 {
@@ -43,7 +43,7 @@ class DiscoverPackagesTest extends PackageTestCase
             mkdir($dir);
         }
 
-        $this->artisan('sdlx:discover-packages')
+        $this->artisan('eclipse:discover-packages')
              ->assertExitCode(0);
     }
 
@@ -57,7 +57,7 @@ class DiscoverPackagesTest extends PackageTestCase
 
         $json = [
             'extra' => [
-                'sdlx' => [
+                'eclipse' => [
                     'type' => 'app',
                 ],
             ],
@@ -65,7 +65,7 @@ class DiscoverPackagesTest extends PackageTestCase
 
         file_put_contents("$dir/composer.json", json_encode($json));
 
-        $this->artisan('sdlx:discover-packages')
+        $this->artisan('eclipse:discover-packages')
              ->assertExitCode(0);
 
         $package = Package::where([
@@ -77,11 +77,11 @@ class DiscoverPackagesTest extends PackageTestCase
         $this->assertEquals(Package::TYPE_APP, $package->type);
 
         // Change package type
-        $json['extra']['sdlx']['type'] = 'module';
+        $json['extra']['eclipse']['type'] = 'module';
 
         file_put_contents("$dir/composer.json", json_encode($json));
 
-        $this->artisan('sdlx:discover-packages')
+        $this->artisan('eclipse:discover-packages')
              ->assertExitCode(0);
 
         $package->refresh();

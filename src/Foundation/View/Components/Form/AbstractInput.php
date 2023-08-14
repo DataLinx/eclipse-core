@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation\View\Components\Form;
+namespace Eclipse\Core\Foundation\View\Components\Form;
 
 use Closure;
 use Illuminate\Contracts\Foundation\Application;

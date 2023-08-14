@@ -1,9 +1,9 @@
 <?php
 
-namespace SDLX\Core\Framework\Grid\Filters;
+namespace Eclipse\Core\Framework\Grid\Filters;
 
 use Illuminate\Contracts\Database\Query\Builder;
-use SDLX\Core\Foundation\Grid\AbstractFilter;
+use Eclipse\Core\Foundation\Grid\AbstractFilter;
 
 class BooleanFilter extends AbstractFilter
 {

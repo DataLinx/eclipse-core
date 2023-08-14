@@ -1,14 +1,14 @@
 <?php
 
-namespace SDLX\Core\Configuration;
+namespace Eclipse\Core\Configuration;
 
-use SDLX\Core\Foundation\Database\AbstractConfig;
-use SDLX\Core\Framework\Database\Mapper;
+use Eclipse\Core\Foundation\Database\AbstractConfig;
+use Eclipse\Core\Framework\Database\Mapper;
 
 /**
  * Class Config
  *
- * @package SDLX\Core\Configuration
+ * @package Eclipse\Core\Configuration
  * @property int $id Config ID
  * @property int $site_id Site ID
  * @property string $owner_name Owner name

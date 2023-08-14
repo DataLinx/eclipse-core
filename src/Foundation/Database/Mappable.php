@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Foundation\Database;
+namespace Eclipse\Core\Foundation\Database;
 
 trait Mappable
 {

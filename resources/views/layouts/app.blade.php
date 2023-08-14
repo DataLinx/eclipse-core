@@ -1,5 +1,5 @@
 @php
-    use SDLX\Core\Framework\Output;
+    use Eclipse\Core\Framework\Output;
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -8,10 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'SDLX') }}</title>
+        <title>{{ config('app.name', 'Eclipse') }}</title>
 
-        @if (config('sdlx.fontawesome_kit_url'))
-            <script src="{{ config('sdlx.fontawesome_kit_url') }}" crossorigin="anonymous"></script>
+        @if (config('eclipse.fontawesome_kit_url'))
+            <script src="{{ config('eclipse.fontawesome_kit_url') }}" crossorigin="anonymous"></script>
         @endif
 
         <!-- Styles -->

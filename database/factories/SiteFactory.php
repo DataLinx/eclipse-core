@@ -1,12 +1,12 @@
 <?php
 
-namespace SDLX\Core\Database\Factories;
+namespace Eclipse\Core\Database\Factories;
 
+use Eclipse\Core\Models\Site;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use SDLX\Core\Models\Site;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\SDLX\Core\Models\Site>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Eclipse\Core\Models\Site>
  */
 class SiteFactory extends Factory
 {

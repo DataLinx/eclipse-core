@@ -1,11 +1,11 @@
 <?php
 
-namespace SDLX\Core\Tests\Feature\Framework;
+namespace Eclipse\Core\Tests\Feature\Framework;
 
 use Exception;
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Framework\L10n;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Framework\L10n;
+use Eclipse\Core\Models\User;
 
 class L10nTest extends PackageTestCase
 {

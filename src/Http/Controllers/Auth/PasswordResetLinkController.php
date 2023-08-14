@@ -1,13 +1,13 @@
 <?php
 
-namespace SDLX\Core\Http\Controllers\Auth;
+namespace Eclipse\Core\Http\Controllers\Auth;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-use SDLX\Core\Foundation\Http\Controllers\AbstractController;
+use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 
 class PasswordResetLinkController extends AbstractController
 {

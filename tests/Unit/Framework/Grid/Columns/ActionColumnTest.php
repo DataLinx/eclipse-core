@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace SDLX\Core\Tests\Unit\Framework\Grid\Columns;
+namespace Eclipse\Core\Tests\Unit\Framework\Grid\Columns;
 
 use InvalidArgumentException;
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Framework\Grid\Action;
-use SDLX\Core\Framework\Grid\Columns\ActionColumn;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Framework\Grid\Action;
+use Eclipse\Core\Framework\Grid\Columns\ActionColumn;
+use Eclipse\Core\Models\User;
 
 class ActionColumnTest extends PackageTestCase
 {

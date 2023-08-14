@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Providers;
+namespace Eclipse\Core\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

@@ -1,11 +1,11 @@
 <?php
 
-namespace SDLX\Core\Tests\Feature\Http\Controllers\Auth;
+namespace Eclipse\Core\Tests\Feature\Http\Controllers\Auth;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;
-use SDLX\Core\Foundation\Testing\PackageTestCase;
-use SDLX\Core\Models\User;
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Models\User;
 
 class PasswordResetTest extends PackageTestCase
 {

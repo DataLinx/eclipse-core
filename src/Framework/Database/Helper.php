@@ -1,6 +1,6 @@
 <?php
 
-namespace SDLX\Core\Framework\Database;
+namespace Eclipse\Core\Framework\Database;
 
 class Helper
 {

@@ -1,19 +1,19 @@
 <?php
 
-namespace SDLX\Core\Models;
+namespace Eclipse\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
-use SDLX\Core\Database\Factories\UserFactory;
-use SDLX\Core\Foundation\Database\HasCompositeAttributes;
+use Eclipse\Core\Database\Factories\UserFactory;
+use Eclipse\Core\Foundation\Database\HasCompositeAttributes;
 
 /**
  * Class User
  *
- * @package SDLX\Core\Models
+ * @package Eclipse\Core\Models
  *
  * @property int $id User ID
  * @property string $full_name User's full name
@@ -107,7 +107,7 @@ class User extends Authenticatable
      */
     protected static function defineCompositeAttributes(): array
     {
-        switch (DB::getDefaultConnection()) {
+        switch (DB::getDriverName()) {
             case 'sqlite':
                 return [
                     'full_name' => "core_user.name || ' ' || core_user.surname",

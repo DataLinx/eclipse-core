@@ -1,11 +1,11 @@
 <?php
 
-namespace SDLX\Core\Framework\Grid\Filters;
+namespace Eclipse\Core\Framework\Grid\Filters;
 
 use Illuminate\Contracts\Database\Query\Builder;
-use SDLX\Core\Foundation\Database\HasCompositeAttributes;
-use SDLX\Core\Foundation\Grid\AbstractFilter;
-use SDLX\Core\Framework\Database\Helper;
+use Eclipse\Core\Foundation\Database\HasCompositeAttributes;
+use Eclipse\Core\Foundation\Grid\AbstractFilter;
+use Eclipse\Core\Framework\Database\Helper;
 
 class SearchFilter extends AbstractFilter
 {
