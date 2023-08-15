@@ -16,8 +16,11 @@ class AlertTest extends PackageTestCase
             </x-alert>');
 
         $view->assertSeeInOrder([
-            'alert-primary',
-            '<h4 class="alert-heading">Foo</h4>',
+            'alert-info',
+            '<h4 class="alert-heading">',
+            'circle-info',
+            'Foo',
+            '</h4>',
             '<p>Bar</p>',
         ], false)
             ->assertDontSee('alert-dismissible')
@@ -26,8 +29,8 @@ class AlertTest extends PackageTestCase
 
     public function test_dismissible_example_can_be_displayed()
     {
-        $view = $this->blade('<x-alert type="success" dismissible id="some-id">
-                <x-slot name="heading">Foo</x-slot>
+        $view = $this->blade('<x-alert type="success" dismissible id="some-id" icon="rabbit">
+                <x-slot:heading>Foo</x-slot:heading>
                 <p>Bar</p>
             </x-alert>');
 
@@ -36,7 +39,10 @@ class AlertTest extends PackageTestCase
             'alert-dismissible',
             'id="some-id"',
             'button',
-            '<h4 class="alert-heading">Foo</h4>',
+            '<h4 class="alert-heading">',
+            'rabbit',
+            'Foo',
+            '</h4>',
             '<p>Bar</p>'
         ], false);
     }

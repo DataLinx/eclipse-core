@@ -82,16 +82,28 @@
             <p>This is the minimal example.</p>
         </x-alert>
 
-        <x-alert type="success">
-            <p>Example with type "success"</p>
+        <x-alert type="success" heading="Great success!">
+            <p>Example with type "success".</p>
+            <p>One must realize the doer in order to receive the spirit of wonderful courage.</p>
         </x-alert>
 
-        <x-alert heading="Example with heading" type="warning">
+        <x-alert type="danger" heading="Action failed!">
+            <p>Example with type "danger".</p>
+            <p>Unearthly arrest a star. Pathways experiment from minerals like ship-wide crewmates.</p>
+        </x-alert>
+
+        <x-alert heading="Warning" type="warning">
+            <p>Example with type "warning".</p>
             <p>The queen is accelerative harmless. Red alert, attitude! Resist without x-ray vision, and we won’t examine a machine.</p>
         </x-alert>
 
-        <x-alert heading="Dismissible example" type="danger" dismissible>
-            <p>This one can be dismissed!</p>
+        <x-alert heading="Notice" type="info">
+            <p>Example with type "info".</p>
+            <p>The queen is accelerative harmless. Red alert, attitude! Resist without x-ray vision, and we won’t examine a machine.</p>
+        </x-alert>
+
+        <x-alert heading="Dismissible example" type="warning" dismissible icon="poo">
+            <p>This one can be dismissed! And it also has a poo heading icon.</p>
         </x-alert>
 
         <h2>Icons</h2>

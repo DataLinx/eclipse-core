@@ -14,17 +14,22 @@ class Alert extends Component
      * @var string Alert type (primary, secondary, success...)
      * @link https://getbootstrap.com/docs/5.2/components/alerts/#examples
      */
-    public $type;
+    public string $type;
 
     /**
      * @var string|null Alert heading (optional)
      */
-    public $heading;
+    public ?string $heading;
 
     /**
      * @var bool|null Should be dismissible or not (default: false)
      */
-    public $dismissible;
+    public ?bool $dismissible;
+
+    /**
+     * @var string|null Heading icon
+     */
+    public ?string $icon;
 
     /**
      * Alert constructor.
@@ -34,14 +39,16 @@ class Alert extends Component
      * @param bool|null $dismissible Dismissible or not (default: false)
      */
     public function __construct(
-        string $type = 'primary'
-        , string $heading = null
-        , bool $dismissible = null
+        string $type = 'info',
+        ?string $heading = null,
+        ?bool $dismissible = null,
+        ?string $icon = null,
     )
     {
         $this->type = $type;
         $this->heading = $heading;
         $this->dismissible = $dismissible;
+        $this->icon = $icon;
     }
 
     /**
@@ -49,16 +56,26 @@ class Alert extends Component
      */
     public function render()
     {
-        return <<<'blade'
-            <div class="alert alert-{{ $type }} @if ($dismissible) alert-dismissible fade show @endif" role="alert" {{ $attributes }}>
-                @if ($dismissible)
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ _('Close') }}"></button>
-                @endif
-                @if ($heading)
-                    <h4 class="alert-heading">{{ $heading }}</h4>
-                @endif
-                {{ $slot }}
-            </div>
-        blade;
+        return view('core::components.alert');
+    }
+
+    /**
+     * Get the default icon for the alert type
+     *
+     * @return string
+     */
+    public function getDefaultIcon(): string
+    {
+        switch ($this->type) {
+            case 'success':
+                return 'check-circle';
+            case 'danger':
+                return 'circle-exclamation';
+            case 'warning':
+                return 'triangle-exclamation';
+            case 'info':
+            default:
+                return 'circle-info';
+        }
     }
 }

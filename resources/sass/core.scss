@@ -89,3 +89,9 @@ $toast-header-color: white;
         }
     }
 }
+
+.alert {
+    :last-child {
+        margin-bottom: 0;
+    }
+}
