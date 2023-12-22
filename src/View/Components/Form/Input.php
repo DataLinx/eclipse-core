@@ -3,6 +3,7 @@
 namespace Eclipse\Core\View\Components\Form;
 
 use Eclipse\Core\Foundation\View\Components\Form\AbstractInput;
+use Illuminate\View\ComponentAttributeBag;
 
 class Input extends AbstractInput
 {
@@ -72,8 +73,27 @@ class Input extends AbstractInput
             $required,
         );
 
-        $this->type = $type;
+        if ($type === 'decimal') {
+            $this->type = 'text';
+        } else {
+            $this->type = $type;
+        }
+
         $this->prepend = $prepend;
         $this->append = $append;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getControlAttributes(): ComponentAttributeBag
+    {
+        switch ($this->type) {
+            case 'number':
+                return parent::getControlAttributes()->merge($this->attributes->only(['step', 'min', 'max', 'lang'])->getAttributes());
+            default:
+                return parent::getControlAttributes();
+        }
+    }
+
 }

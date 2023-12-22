@@ -14,6 +14,10 @@
 
         <x-form::input name="foo" label="Standard text" help="Help text" required placeholder="Placeholder" />
 
+        <x-form::input type="number" name="foo" label="Number" help="Integer number" step="2" min="2" max="10" :placeholder="num(1234567)"/>
+
+        <x-form::input type="decimal" name="foo" label="Decimal number" :placeholder="num(1.23)"/>
+
         <x-form::input name="foo" label="Different sizes" placeholder="size=sm" size="sm" />
         <x-form::input name="foo" placeholder="normal size" />
         <x-form::input name="foo" placeholder="size=lg" size="lg" />
