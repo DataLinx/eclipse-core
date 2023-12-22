@@ -109,30 +109,35 @@
         },
         {
             "name": "datalinx/php-utils",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DataLinx/php-utils.git",
-                "reference": "7c23199096fdb859d76d2cd16b27690589f314d8"
+                "reference": "bf431c1c8929d694c996846b27e254fcab6900e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DataLinx/php-utils/zipball/7c23199096fdb859d76d2cd16b27690589f314d8",
-                "reference": "7c23199096fdb859d76d2cd16b27690589f314d8",
+                "url": "https://api.github.com/repos/DataLinx/php-utils/zipball/bf431c1c8929d694c996846b27e254fcab6900e8",
+                "reference": "bf431c1c8929d694c996846b27e254fcab6900e8",
                 "shasum": ""
             },
             "require": {
+                "ext-intl": "*",
                 "ext-mbstring": "*",
                 "php": ">=7.4"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.13",
+                "giggsey/libphonenumber-for-php": "^8.13",
+                "nesbot/carbon": "^2.71",
                 "phpunit/phpunit": "^9.5.26",
                 "picqer/php-barcode-generator": "^2.2.4"
             },
             "suggest": {
                 "ext-gd": "For FluentBarcode JPG and PNG generators, GD or Imagick is required",
                 "ext-imagick": "For FluentBarcode JPG and PNG generators, GD or Imagick is required",
+                "giggsey/libphonenumber-for-php": "Required for the phone number helper",
+                "nesbot/carbon": "Required for the Carbon date/time helpers",
                 "picqer/php-barcode-generator": "Required to use FluentBarcode"
             },
             "type": "library",
@@ -160,9 +165,9 @@
             ],
             "support": {
                 "issues": "https://github.com/DataLinx/php-utils/issues",
-                "source": "https://github.com/DataLinx/php-utils/tree/v2.3.0"
+                "source": "https://github.com/DataLinx/php-utils/tree/v2.4.0"
             },
-            "time": "2023-06-19T07:27:13+00:00"
+            "time": "2023-10-31T14:29:26+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
