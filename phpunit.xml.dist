@@ -2,8 +2,7 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
-         colors="true"
-         verbose="true">
+         colors="true">
     <testsuites>
         <testsuite name="Feature">
             <directory>./tests/Feature</directory>
@@ -13,13 +12,6 @@
         </testsuite>
     </testsuites>
     <coverage>
-        <include>
-            <directory suffix=".php">./src</directory>
-        </include>
-        <exclude>
-            <!-- Testing the test objects is not needed -->
-            <directory suffix=".php">./src/Foundation/Testing</directory>
-        </exclude>
         <report>
             <html outputDirectory="./build/coverage_report/" lowUpperBound="35" highLowerBound="70"/>
         </report>
@@ -38,4 +30,13 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
     </php>
+    <source>
+        <include>
+            <directory>./src</directory>
+        </include>
+        <exclude>
+            <!-- Testing the test objects is not needed -->
+            <directory>./src/Foundation/Testing</directory>
+        </exclude>
+    </source>
 </phpunit>

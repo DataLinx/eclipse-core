@@ -26,8 +26,6 @@ abstract class PackageTestCase extends TestCase
      */
     protected $eclipse_install = true;
 
-    protected $loadEnvironmentVariables = true;
-
     protected function getPackageProviders($app)
     {
         // We need to manually include this class, since the AppServiceProvider is set in providers in config/app.php

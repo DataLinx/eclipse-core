@@ -2,11 +2,10 @@
 
 namespace Eclipse\Core\Http\Controllers\Auth;
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 use Eclipse\Core\Http\Requests\Auth\LoginRequest;
 use Eclipse\Core\Providers\RouteServiceProvider;
@@ -15,21 +14,16 @@ class AuthenticatedSessionController extends AbstractController
 {
     /**
      * Display the login view.
-     *
-     * @return View|Factory|Application
      */
-    public function create(): View|Factory|Application
+    public function create(): View
     {
         return view('core::auth.login');
     }
 
     /**
      * Handle an incoming authentication request.
-     *
-     * @param  \Eclipse\Core\Http\Requests\Auth\LoginRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(LoginRequest $request)
+    public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
 
@@ -40,11 +34,8 @@ class AuthenticatedSessionController extends AbstractController
 
     /**
      * Destroy an authenticated session.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
 

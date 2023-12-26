@@ -2,21 +2,18 @@
 
 namespace Eclipse\Core\Http\Controllers\Auth;
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\View\View;
 use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 
 class PasswordResetLinkController extends AbstractController
 {
     /**
      * Display the password reset link request view.
-     *
-     * @return Application|Factory|View
      */
-    public function create(): View|Factory|Application
+    public function create(): View
     {
         return view('core::auth.forgot-password');
     }
@@ -24,12 +21,9 @@ class PasswordResetLinkController extends AbstractController
     /**
      * Handle an incoming password reset link request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'email' => ['required', 'email'],

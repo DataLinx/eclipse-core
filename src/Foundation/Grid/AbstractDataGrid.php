@@ -161,7 +161,7 @@ abstract class AbstractDataGrid extends Component
         }
 
         return view('core::components.grid.grid', [
-            'objects' => $query->paginate($this->per_page, ['*'], 'page', $this->page),
+            'objects' => $query->paginate($this->per_page, ['*'], 'page', $this->getPage()),
         ]);
     }
 
