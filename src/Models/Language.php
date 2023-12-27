@@ -6,7 +6,6 @@ use Eclipse\Core\Foundation\Database\Model;
 
 /**
  * Class Language
- * @package Eclipse\Core\Models
  *
  * @property int $id Language ID
  * @property string $name Name

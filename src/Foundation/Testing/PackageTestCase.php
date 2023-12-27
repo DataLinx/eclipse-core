@@ -2,22 +2,20 @@
 
 namespace Eclipse\Core\Foundation\Testing;
 
-use Illuminate\Support\Facades\Artisan;
-use Livewire\Livewire;
-use Livewire\LivewireServiceProvider;
-use Orchestra\Testbench\TestCase;
 use Eclipse\Core\Providers\AuthServiceProvider;
 use Eclipse\Core\Providers\CoreServiceProvider;
 use Eclipse\Core\Providers\EventServiceProvider;
 use Eclipse\Core\Providers\RouteServiceProvider;
 use Eclipse\Core\View\Grids\Users as UsersGrid;
+use Illuminate\Support\Facades\Artisan;
+use Livewire\Livewire;
+use Livewire\LivewireServiceProvider;
+use Orchestra\Testbench\TestCase;
 
 /**
  * Class PackageTestCase
  *
  * This should be used when implementing Eclipse packages
- *
- * @package Eclipse\Core\Tests
  */
 abstract class PackageTestCase extends TestCase
 {
@@ -60,8 +58,6 @@ abstract class PackageTestCase extends TestCase
 
     /**
      * Get the path to the skeleton dir, which is needed to load the correct configs etc. instead of using the ones Testbench provides
-     *
-     * @return string
      */
     protected function getBasePath(): string
     {

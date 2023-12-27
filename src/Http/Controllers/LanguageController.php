@@ -2,9 +2,9 @@
 
 namespace Eclipse\Core\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 use Eclipse\Core\Models\Language;
+use Illuminate\Http\Request;
 
 class LanguageController extends AbstractController
 {
@@ -31,7 +31,6 @@ class LanguageController extends AbstractController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,7 +41,6 @@ class LanguageController extends AbstractController
     /**
      * Display the specified resource.
      *
-     * @param  \Eclipse\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function show(Language $language)
@@ -53,7 +51,6 @@ class LanguageController extends AbstractController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Eclipse\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function edit(Language $language)
@@ -64,8 +61,6 @@ class LanguageController extends AbstractController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Eclipse\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Language $language)
@@ -76,7 +71,6 @@ class LanguageController extends AbstractController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Eclipse\Core\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
     public function destroy(Language $language)

@@ -2,25 +2,24 @@
 
 namespace Eclipse\Core\Models;
 
+use Eclipse\Core\Database\Factories\UserFactory;
+use Eclipse\Core\Foundation\Database\HasCompositeAttributes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
-use Eclipse\Core\Database\Factories\UserFactory;
-use Eclipse\Core\Foundation\Database\HasCompositeAttributes;
 
 /**
  * Class User
  *
- * @package Eclipse\Core\Models
  *
  * @property int $id User ID
  * @property string $full_name User's full name
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasCompositeAttributes;
+    use HasApiTokens, HasCompositeAttributes, HasFactory, Notifiable;
 
     protected $table = 'core_user';
 
@@ -68,7 +67,7 @@ class User extends Authenticatable
         }
 
         // Delete file from filesystem
-        $file = storage_path('app/'. $this->image);
+        $file = storage_path('app/'.$this->image);
 
         if (file_exists($file)) {
             unlink($file);
@@ -85,7 +84,7 @@ class User extends Authenticatable
     /**
      * Fetch User by email
      *
-     * @param string $email User email
+     * @param  string  $email User email
      * @return User
      */
     public static function fetchByEmail($email)
@@ -104,7 +103,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected static function defineCompositeAttributes(): array
     {

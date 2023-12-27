@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\View\Components\Form;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Foundation\Testing\TestsComponents;
 use Eclipse\Core\View\Components\Form\Checkbox;
 use Eclipse\Core\View\Components\Form\Radio;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 
 class CheckboxTest extends PackageTestCase
 {
@@ -32,10 +32,10 @@ class CheckboxTest extends PackageTestCase
         ]);
 
         $view->assertSeeInOrder([
-                'class',
-                'form-group',
-                'some-other-class',
-            ])
+            'class',
+            'form-group',
+            'some-other-class',
+        ])
             ->assertSeeInOrder([
                 'aria-describedby="some-id-help',
                 'id="some-id-help"',
@@ -170,8 +170,8 @@ class CheckboxTest extends PackageTestCase
         ]);
 
         $view->assertSee('type="radio"', false)
-             ->assertSee('name="foo"', false)
-             ->assertSeeInOrder([
+            ->assertSee('name="foo"', false)
+            ->assertSeeInOrder([
                 'One',
                 'checked',
                 'Two',
@@ -200,7 +200,7 @@ class CheckboxTest extends PackageTestCase
             'One',
             'checked',
             'Two',
-            'Three'
+            'Three',
         ]);
     }
 
@@ -223,7 +223,7 @@ class CheckboxTest extends PackageTestCase
                 'One',
                 'checked',
                 'Two',
-                'Three'
+                'Three',
             ]);
     }
 }

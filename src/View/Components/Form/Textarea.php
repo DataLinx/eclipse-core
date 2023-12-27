@@ -7,7 +7,7 @@ use Eclipse\Core\Foundation\View\Components\Form\AbstractInput;
 class Textarea extends AbstractInput
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected string $view = 'core::components.form.textarea';
 }

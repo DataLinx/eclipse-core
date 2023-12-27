@@ -25,9 +25,9 @@ class Action
     private $label;
 
     /**
-     * @param string $code
-     * @param string|null $url
-     * @param string|null $label
+     * @param  string  $code
+     * @param  string|null  $url
+     * @param  string|null  $label
      */
     public function __construct($code, $url = null, $label = null)
     {
@@ -49,7 +49,6 @@ class Action
     /**
      * Get URL
      *
-     * @param Model $model
      * @return string|null
      */
     public function getUrl(Model $model)
@@ -74,8 +73,7 @@ class Action
      */
     private function getDefaultLabel()
     {
-        switch ($this->code)
-        {
+        switch ($this->code) {
             case 'edit':
                 return _('Edit');
             case 'delete':

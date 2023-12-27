@@ -8,8 +8,6 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
  * Class AppTestCase
  *
  * This should be used when implementing App tests.
- *
- * @package Eclipse\Core\Testing
  */
 abstract class AppTestCase extends BaseTestCase
 {

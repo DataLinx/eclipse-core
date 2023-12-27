@@ -2,18 +2,20 @@
 
 namespace Eclipse\Core\Framework\Grid\Filters;
 
-use Illuminate\Contracts\Database\Query\Builder;
 use Eclipse\Core\Foundation\Database\HasCompositeAttributes;
 use Eclipse\Core\Foundation\Grid\AbstractFilter;
 use Eclipse\Core\Framework\Database\Helper;
+use Illuminate\Contracts\Database\Query\Builder;
 
 class SearchFilter extends AbstractFilter
 {
     protected string $model;
+
     private array $exact_conditions = [];
+
     private array $partial_conditions = [];
 
-    public function __construct(string $model, string $name = null, string $label = null)
+    public function __construct(string $model, ?string $name = null, ?string $label = null)
     {
         parent::__construct($name ?: 'search', $label ?: _('Search'));
 
@@ -21,7 +23,7 @@ class SearchFilter extends AbstractFilter
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function apply(Builder $query, $filter_value = null): void
     {
@@ -33,7 +35,7 @@ class SearchFilter extends AbstractFilter
 
                 foreach ($this->exact_conditions as $attribute) {
                     if ($class::hasCompositeAttribute($attribute)) {
-                        $query->orWhereRaw($class::getCompositeDefinition($attribute) . ' = ?', [$filter_value]);
+                        $query->orWhereRaw($class::getCompositeDefinition($attribute).' = ?', [$filter_value]);
                     } else {
                         $query->orWhere($attribute, '=', $filter_value);
                     }
@@ -43,7 +45,7 @@ class SearchFilter extends AbstractFilter
 
                 foreach ($this->partial_conditions as $attribute) {
                     if ($class::hasCompositeAttribute($attribute)) {
-                        $query->orWhereRaw($class::getCompositeDefinition($attribute) . " LIKE ?", ["%$filter_value%"]);
+                        $query->orWhereRaw($class::getCompositeDefinition($attribute).' LIKE ?', ["%$filter_value%"]);
                     } else {
                         $query->orWhere($attribute, 'like', "%$filter_value%");
                     }
@@ -55,7 +57,7 @@ class SearchFilter extends AbstractFilter
     /**
      * Add attribute for exact column value matching
      *
-     * @param array|string $attribute Attribute name or an array of attribute names
+     * @param  array|string  $attribute Attribute name or an array of attribute names
      * @return $this
      */
     public function addExactCondition(array|string $attribute): self
@@ -72,7 +74,7 @@ class SearchFilter extends AbstractFilter
     /**
      * Add attribute for partial column value matching
      *
-     * @param array|string $attribute Attribute name or an array of attribute names
+     * @param  array|string  $attribute Attribute name or an array of attribute names
      * @return $this
      */
     public function addPartialCondition(array|string $attribute): self

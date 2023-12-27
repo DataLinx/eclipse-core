@@ -2,14 +2,14 @@
 
 namespace Eclipse\Core\Console\Commands;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Eclipse\Core\Models\AppInstance;
 use Eclipse\Core\Models\Package;
 use Eclipse\Core\Models\Site;
 use Eclipse\Core\Models\User;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class EclipseInstall extends Command
 {
@@ -29,19 +29,15 @@ class EclipseInstall extends Command
 
     /**
      * Default answers, used for testing
-     *
-     * @var array
      */
     protected array $defaults = [];
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function handle(): void
     {
-        $this->info("Running Eclipse installation procedure...");
+        $this->info('Running Eclipse installation procedure...');
 
         $this->callSilent('migrate:fresh');
 
@@ -80,13 +76,11 @@ class EclipseInstall extends Command
 
     /**
      * Create main site
-     *
-     * @return Site
      */
     private function createSite(): Site
     {
         $this->newLine(2);
-        $this->question("Please provide the default site data.");
+        $this->question('Please provide the default site data.');
 
         $site = new Site();
         $site->is_main = 1;
@@ -98,7 +92,7 @@ class EclipseInstall extends Command
 
         // Site name
         do {
-            $site->name = $this->ask('Enter the project name',$this->defaults['site']['name'] ?? null);
+            $site->name = $this->ask('Enter the project name', $this->defaults['site']['name'] ?? null);
         } while (empty($site->name));
 
         $site->is_secure = $this->confirm('Is this site served over HTTPS?');
@@ -128,13 +122,11 @@ class EclipseInstall extends Command
 
     /**
      * Create Admin user
-     *
-     * @return void
      */
     private function createUser(): void
     {
         $this->newLine(2);
-        $this->question("Please provide your user data for the admin account.");
+        $this->question('Please provide your user data for the admin account.');
 
         $admin = new User();
 

@@ -2,9 +2,9 @@
 
 namespace Eclipse\Core\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 use Eclipse\Core\Framework\Output\Menu;
+use Illuminate\Contracts\Support\Renderable;
 
 class TestController extends AbstractController
 {

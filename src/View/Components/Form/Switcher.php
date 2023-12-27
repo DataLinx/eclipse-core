@@ -22,23 +22,12 @@ class Switcher extends AbstractInput
     public ?bool $inline;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected string $view = 'core::components.form.switcher';
 
     /**
      * Checkbox constructor.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param string|null $label
-     * @param string|null $id
-     * @param string|null $help
-     * @param bool|null $no_error
-     * @param bool|null $default
-     * @param bool|null $required
-     * @param bool|null $disabled
-     * @param bool|null $inline
      */
     public function __construct(
         string $name,
@@ -51,8 +40,7 @@ class Switcher extends AbstractInput
         ?bool $required = null,
         ?bool $disabled = null,
         ?bool $inline = null,
-    )
-    {
+    ) {
         parent::__construct(
             $name,
             $label,
@@ -62,17 +50,17 @@ class Switcher extends AbstractInput
             $no_error,
             null,
             null,
-            (bool)$default,
+            (bool) $default,
             $required,
         );
 
         $this->value = $value;
-        $this->disabled = (bool)$disabled;
-        $this->inline = (bool)$inline;
+        $this->disabled = (bool) $disabled;
+        $this->inline = (bool) $inline;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getControlClasses(): string
     {
@@ -90,12 +78,10 @@ class Switcher extends AbstractInput
     /**
      * Is the switch checked?
      *
-     * @return bool
      * @noinspection PhpUnused
      */
     public function isChecked(): bool
     {
-        return (bool)$this->current;
+        return (bool) $this->current;
     }
-
 }

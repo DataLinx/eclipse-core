@@ -8,7 +8,6 @@ use Eclipse\Core\Framework\Database\Mapper;
 /**
  * Class Config
  *
- * @package Eclipse\Core\Configuration
  * @property int $id Config ID
  * @property int $site_id Site ID
  * @property string $owner_name Owner name

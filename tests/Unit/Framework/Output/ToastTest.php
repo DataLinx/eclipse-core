@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Framework\Output;
 
@@ -10,9 +12,6 @@ use Eclipse\Core\Framework\Output\Toast;
  */
 class ToastTest extends PackageTestCase
 {
-    /**
-     * @return void
-     */
     public function test_toast_can_be_created(): void
     {
         $toast = new Toast('Some message', 'Some title');
@@ -36,15 +35,11 @@ class ToastTest extends PackageTestCase
         $this->assertTrue($toast->isSticky());
     }
 
-    /**
-     * @return void
-     */
     public function test_type_can_be_set(): void
     {
         $toast = new Toast('Some message');
 
-        foreach (['success', 'danger', 'warning', 'info'] as $type)
-        {
+        foreach (['success', 'danger', 'warning', 'info'] as $type) {
             $toast->$type();
 
             $this->assertEquals($type, $toast->getType());
@@ -65,9 +60,6 @@ class ToastTest extends PackageTestCase
         }
     }
 
-    /**
-     * @return void
-     */
     public function test_links_can_be_added(): void
     {
         $toast = new Toast('Some message');

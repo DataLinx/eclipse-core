@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTest extends PackageTestCase
 {
@@ -21,32 +21,32 @@ class UsersTest extends PackageTestCase
     public function test_unauthorized_access_can_be_prevented()
     {
         $this->get('users')
-             ->assertRedirect('login');
+            ->assertRedirect('login');
     }
 
     public function test_authorized_access_can_be_allowed()
     {
         $this->actingAs($this->authedUser)
-             ->get('users')
-             ->assertOk()
-             ->assertViewIs('core::users.index');
+            ->get('users')
+            ->assertOk()
+            ->assertViewIs('core::users.index');
     }
 
     public function test_create_user_screen_can_be_rendered()
     {
         $this->actingAs($this->authedUser)
-             ->get('users/create')
-             ->assertOk()
-             ->assertViewIs('core::users.edit');
+            ->get('users/create')
+            ->assertOk()
+            ->assertViewIs('core::users.edit');
     }
 
     public function test_creation_can_be_canceled()
     {
         $this->actingAs($this->authedUser)
-             ->post('users', [
-                 'action' => 'cancel',
-             ])
-             ->assertRedirect('users');
+            ->post('users', [
+                'action' => 'cancel',
+            ])
+            ->assertRedirect('users');
     }
 
     public function test_new_user_can_be_created()
@@ -83,9 +83,9 @@ class UsersTest extends PackageTestCase
         $user = User::factory()->create();
 
         $this->actingAs($this->authedUser)
-             ->get('users/'. $user->id .'/edit')
-             ->assertOk()
-             ->assertViewIs('core::users.edit');
+            ->get('users/'.$user->id.'/edit')
+            ->assertOk()
+            ->assertViewIs('core::users.edit');
     }
 
     public function test_edit_can_be_canceled()
@@ -93,10 +93,10 @@ class UsersTest extends PackageTestCase
         $user = User::factory()->create();
 
         $this->actingAs($this->authedUser)
-             ->put('users/'. $user->id,  [
-                 'action' => 'cancel',
-             ])
-             ->assertRedirect('users');
+            ->put('users/'.$user->id, [
+                'action' => 'cancel',
+            ])
+            ->assertRedirect('users');
     }
 
     public function test_existing_user_can_be_updated()
@@ -111,7 +111,7 @@ class UsersTest extends PackageTestCase
             'email' => 'diego@vega.es',
         ];
 
-        $response = $this->put('users/'. $user->id, $data);
+        $response = $this->put('users/'.$user->id, $data);
 
         $response->assertRedirect('users');
 
@@ -131,10 +131,10 @@ class UsersTest extends PackageTestCase
 
         $user = User::factory()->create();
 
-        $response = $this->deleteJson('users/'. $user->id);
+        $response = $this->deleteJson('users/'.$user->id);
 
         $response->assertOk()
-                 ->assertJsonFragment(['error' => 0]);
+            ->assertJsonFragment(['error' => 0]);
 
         $this->assertTrue(DB::table('core_user')->where('id', $user->id)->doesntExist(), 'User was not deleted!');
     }

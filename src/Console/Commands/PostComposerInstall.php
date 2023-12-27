@@ -38,19 +38,19 @@ class PostComposerInstall extends Command
      */
     public function handle()
     {
-        echo "Running Eclipse Post Composer install procedure..." . PHP_EOL;
+        echo 'Running Eclipse Post Composer install procedure...'.PHP_EOL;
 
         // Copy the .env file
         // ------------------
-        if (!file_exists('.env')) {
+        if (! file_exists('.env')) {
             if (copy('vendor/eclipse/core/.env.example', '.env')) {
-                echo ".env.example copied to .env" . PHP_EOL;
-                Artisan::call("key:generate --ansi");
+                echo '.env.example copied to .env'.PHP_EOL;
+                Artisan::call('key:generate --ansi');
             } else {
-                die("Could not copy .env.example to .env");
+                exit('Could not copy .env.example to .env');
             }
         } else {
-            echo ".env already exists" . PHP_EOL;
+            echo '.env already exists'.PHP_EOL;
         }
 
         // Install Telescope

@@ -18,6 +18,7 @@ class Icon extends Component
 
     /**
      * @var string|null Icon color (as text-$color)
+     *
      * @link https://getbootstrap.com/docs/4.5/utilities/colors/
      */
     public $color;
@@ -25,23 +26,20 @@ class Icon extends Component
     /**
      * Icon constructor.
      *
-     * @param string $name Icon name
-     * @param string $pack Pack
-     * @param string|null $color Color
+     * @param  string  $name Icon name
+     * @param  string  $pack Pack
+     * @param  string|null  $color Color
      */
     public function __construct(
-        string $name
-        , string $pack = 'fa'
-        , string $color = null
-    )
-    {
+        string $name, string $pack = 'fa', ?string $color = null
+    ) {
         $this->name = $name;
         $this->pack = $pack;
         $this->color = $color;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function render()
     {
@@ -59,11 +57,11 @@ class Icon extends Component
     {
         $classes = [
             $this->pack,
-            'fa-'. $this->name,
+            'fa-'.$this->name,
         ];
 
         if ($this->color) {
-            $classes[] = 'text-'. $this->color;
+            $classes[] = 'text-'.$this->color;
         }
 
         return $this->attributes->merge(['class' => implode(' ', $classes)]);

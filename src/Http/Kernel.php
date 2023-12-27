@@ -2,15 +2,15 @@
 
 namespace Eclipse\Core\Http;
 
-use Eclipse\Core\Http\Middleware\ValidateSignature;
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Eclipse\Core\Http\Middleware\Authenticate;
 use Eclipse\Core\Http\Middleware\EncryptCookies;
 use Eclipse\Core\Http\Middleware\PreventRequestsDuringMaintenance;
 use Eclipse\Core\Http\Middleware\RedirectIfAuthenticated;
 use Eclipse\Core\Http\Middleware\TrimStrings;
 use Eclipse\Core\Http\Middleware\TrustProxies;
+use Eclipse\Core\Http\Middleware\ValidateSignature;
 use Eclipse\Core\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {

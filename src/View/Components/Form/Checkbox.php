@@ -3,11 +3,11 @@
 namespace Eclipse\Core\View\Components\Form;
 
 use Closure;
+use Eclipse\Core\Foundation\View\Components\Form\AbstractInput;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Eclipse\Core\Foundation\View\Components\Form\AbstractInput;
 
 class Checkbox extends AbstractInput
 {
@@ -42,43 +42,31 @@ class Checkbox extends AbstractInput
     public string $type = 'checkbox';
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected string $view = 'core::components.form.checkbox';
 
     /**
      * Checkbox constructor.
      *
-     * @param string $name
-     * @param string|null $label
-     * @param string|null $id
-     * @param string|null $help
-     * @param bool|null $no_error
-     * @param string|null $size Button size, when showing as buttons
-     * @param mixed|null $default
-     * @param array|null $options
-     * @param bool|null $required
-     * @param bool|null $disabled
-     * @param bool|null $inline
-     * @param bool|null $asButtons
-     * @param bool|null $asSwitches
+     * @param  string|null  $size Button size, when showing as buttons
+     * @param  mixed|null  $default
      */
     public function __construct(
         string $name,
-        string $label = null,
-        string $id = null,
-        string $help = null,
-        bool $no_error = null,
-        string $size = null,
+        ?string $label = null,
+        ?string $id = null,
+        ?string $help = null,
+        ?bool $no_error = null,
+        ?string $size = null,
         $default = null,
-        bool $required = null,
-        array $options = null,
-        bool $disabled = null,
-        bool $inline = null,
-        bool $asButtons = null,
-        bool $asSwitches = null,
-    )
-    {
+        ?bool $required = null,
+        ?array $options = null,
+        ?bool $disabled = null,
+        ?bool $inline = null,
+        ?bool $asButtons = null,
+        ?bool $asSwitches = null,
+    ) {
         parent::__construct(
             $name,
             $label,
@@ -100,12 +88,12 @@ class Checkbox extends AbstractInput
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function render(): View|Factory|Htmlable|string|Closure|Application
     {
         // Make sure the control always renders, even if no options were supplied
-        if ( ! is_array($this->options)) {
+        if (! is_array($this->options)) {
             $this->options = [];
         }
 
@@ -119,9 +107,6 @@ class Checkbox extends AbstractInput
 
     /**
      * Prepare options array
-     *
-     * @param array $src_options
-     * @return void
      */
     private function prepOptions(array $src_options): void
     {
@@ -139,9 +124,6 @@ class Checkbox extends AbstractInput
 
     /**
      * Should the specified value be checked?
-     *
-     * @param string $value
-     * @return bool
      */
     private function isValueChecked(string $value): bool
     {
@@ -158,10 +140,9 @@ class Checkbox extends AbstractInput
 
         return false;
     }
+
     /**
      * Get form-group classes
-     *
-     * @return string
      */
     public function getControlClasses(): string
     {
@@ -181,11 +162,9 @@ class Checkbox extends AbstractInput
 
     /**
      * Get input name attribute
-     *
-     * @return string
      */
     public function getName(): string
     {
-        return $this->name .'[]';
+        return $this->name.'[]';
     }
 }

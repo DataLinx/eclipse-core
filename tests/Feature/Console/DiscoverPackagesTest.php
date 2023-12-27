@@ -44,7 +44,7 @@ class DiscoverPackagesTest extends PackageTestCase
         }
 
         $this->artisan('eclipse:discover-packages')
-             ->assertExitCode(0);
+            ->assertExitCode(0);
     }
 
     public function test_package_type_change_can_be_handled()
@@ -66,7 +66,7 @@ class DiscoverPackagesTest extends PackageTestCase
         file_put_contents("$dir/composer.json", json_encode($json));
 
         $this->artisan('eclipse:discover-packages')
-             ->assertExitCode(0);
+            ->assertExitCode(0);
 
         $package = Package::where([
             'vendor' => 'datalinx',
@@ -82,7 +82,7 @@ class DiscoverPackagesTest extends PackageTestCase
         file_put_contents("$dir/composer.json", json_encode($json));
 
         $this->artisan('eclipse:discover-packages')
-             ->assertExitCode(0);
+            ->assertExitCode(0);
 
         $package->refresh();
 

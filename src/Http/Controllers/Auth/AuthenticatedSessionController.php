@@ -2,13 +2,13 @@
 
 namespace Eclipse\Core\Http\Controllers\Auth;
 
+use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
+use Eclipse\Core\Http\Requests\Auth\LoginRequest;
+use Eclipse\Core\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
-use Eclipse\Core\Http\Requests\Auth\LoginRequest;
-use Eclipse\Core\Providers\RouteServiceProvider;
 
 class AuthenticatedSessionController extends AbstractController
 {

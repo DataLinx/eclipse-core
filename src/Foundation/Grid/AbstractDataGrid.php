@@ -2,10 +2,10 @@
 
 namespace Eclipse\Core\Foundation\Grid;
 
-use Livewire\Component;
-use Livewire\WithPagination;
 use Eclipse\Core\Foundation\Database\Model;
 use Eclipse\Core\Framework\Grid\Columns\Column;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 /**
  * Abstract Data Grid class that every Grid should extend
@@ -72,14 +72,13 @@ abstract class AbstractDataGrid extends Component
     /**
      * Sort data by column name
      *
-     * @param string $column
      * @return $this
      */
     public function sortBy(string $column): self
     {
         if ($this->sort_by === $column) {
             // Invert direction
-            $this->sort_desc = !$this->sort_desc;
+            $this->sort_desc = ! $this->sort_desc;
         } else {
             // Reset to ascending
             $this->sort_desc = false;
@@ -92,9 +91,6 @@ abstract class AbstractDataGrid extends Component
 
     /**
      * Is the data currently sorted by the specified column?
-     *
-     * @param string $column
-     * @return bool
      */
     public function isSortedBy(string $column): bool
     {
@@ -103,8 +99,6 @@ abstract class AbstractDataGrid extends Component
 
     /**
      * Is the data currently sorted in descending order?
-     *
-     * @return bool
      */
     public function isSortedDesc(): bool
     {
@@ -123,8 +117,6 @@ abstract class AbstractDataGrid extends Component
 
     /**
      * Does the grid have any filters?
-     *
-     * @return bool
      */
     public function hasFilters(): bool
     {
@@ -133,17 +125,14 @@ abstract class AbstractDataGrid extends Component
 
     /**
      * Construct and return an unique filter key that is used in the wire:key attribute
-     *
-     * @param FilterInterface $filter
-     * @return string
      */
     public function getFilterKey(FilterInterface $filter): string
     {
-        return md5(static::class . 'filter' . $filter->getName());
+        return md5(static::class.'filter'.$filter->getName());
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function render()
     {
@@ -198,5 +187,4 @@ abstract class AbstractDataGrid extends Component
                 break;
         }
     }
-
 }

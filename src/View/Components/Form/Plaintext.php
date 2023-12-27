@@ -19,20 +19,18 @@ class Plaintext extends Component
     /**
      * Plaintext constructor.
      *
-     * @param string|null $label Label
-     * @param string|null $id HTML ID - if not passed, then it's auto-generated
+     * @param  string|null  $label Label
+     * @param  string|null  $id HTML ID - if not passed, then it's auto-generated
      */
     public function __construct(
-        string $label = null
-        , string $id = null
-    )
-    {
+        ?string $label = null, ?string $id = null
+    ) {
         $this->label = $label;
         $this->id = $id;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function render()
     {

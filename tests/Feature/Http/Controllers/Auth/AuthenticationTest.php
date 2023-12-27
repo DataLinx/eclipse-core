@@ -8,7 +8,7 @@ use Eclipse\Core\Providers\RouteServiceProvider;
 
 class AuthenticationTest extends PackageTestCase
 {
-//    use RefreshDatabase;
+    //    use RefreshDatabase;
 
     public function test_login_screen_can_be_rendered(): void
     {

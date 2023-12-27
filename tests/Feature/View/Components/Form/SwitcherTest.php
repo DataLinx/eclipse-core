@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\View\Components\Form;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Foundation\Testing\TestsComponents;
 use Eclipse\Core\View\Components\Form\Switcher;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 
 class SwitcherTest extends PackageTestCase
 {

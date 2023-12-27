@@ -2,6 +2,7 @@
 
 namespace Eclipse\Core\Http\Controllers\Auth;
 
+use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -10,7 +11,6 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 
 class NewPasswordController extends AbstractController
 {
@@ -56,6 +56,6 @@ class NewPasswordController extends AbstractController
         return $status == Password::PASSWORD_RESET
                     ? redirect()->route('login')->with('status', __($status))
                     : back()->withInput($request->only('email'))
-                            ->withErrors(['email' => __($status)]);
+                        ->withErrors(['email' => __($status)]);
     }
 }

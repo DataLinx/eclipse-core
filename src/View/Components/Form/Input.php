@@ -23,26 +23,12 @@ class Input extends AbstractInput
     public ?string $append;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected string $view = 'core::components.form.input';
 
     /**
      * Create a new component instance.
-     *
-     * @param string $name
-     * @param string $type
-     * @param string|null $label
-     * @param string|null $id
-     * @param string|null $help
-     * @param string|null $placeholder
-     * @param bool|null $no_error
-     * @param string|null $size
-     * @param object|null $object
-     * @param mixed|null $default
-     * @param bool|null $required
-     * @param string|null $prepend
-     * @param string|null $append
      */
     public function __construct(
         string $name,
@@ -58,8 +44,7 @@ class Input extends AbstractInput
         ?bool $required = null,
         ?string $prepend = null,
         ?string $append = null,
-    )
-    {
+    ) {
         parent::__construct(
             $name,
             $label,
@@ -84,7 +69,7 @@ class Input extends AbstractInput
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getControlAttributes(): ComponentAttributeBag
     {
@@ -95,5 +80,4 @@ class Input extends AbstractInput
                 return parent::getControlAttributes();
         }
     }
-
 }

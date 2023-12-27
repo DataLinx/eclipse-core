@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\View\Components;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 
 class AlertTest extends PackageTestCase
 {
@@ -43,7 +43,7 @@ class AlertTest extends PackageTestCase
             'rabbit',
             'Foo',
             '</h4>',
-            '<p>Bar</p>'
+            '<p>Bar</p>',
         ], false);
     }
 }

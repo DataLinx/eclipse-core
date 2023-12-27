@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class Error extends Component
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function render()
     {

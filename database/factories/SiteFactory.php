@@ -13,7 +13,7 @@ class SiteFactory extends Factory
     protected $model = Site::class;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function definition()
     {

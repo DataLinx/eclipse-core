@@ -2,13 +2,12 @@
 
 namespace Eclipse\Core\Framework;
 
+use Eclipse\Core\Models\Language;
 use Exception;
 use Illuminate\Support\Facades\Cookie;
-use Eclipse\Core\Models\Language;
 
 /**
  * Class L10n
- * @package Eclipse\Core\Framework
  */
 class L10n
 {
@@ -58,15 +57,15 @@ class L10n
      * Initialize the L10n library
      *
      * @return $this
+     *
      * @throws Exception
      */
     public function initialize()
     {
         try {
             $this->setLanguage($this->detectLanguage());
-        }
-        catch (Exception $exception) {
-            throw new Exception('Could not initialize L10n: '. $exception->getMessage(), 0, $exception);
+        } catch (Exception $exception) {
+            throw new Exception('Could not initialize L10n: '.$exception->getMessage(), 0, $exception);
         }
 
         return $this;
@@ -75,15 +74,16 @@ class L10n
     /**
      * Bind gettext domain
      *
-     * @param string $domain Domain
-     * @param string $directory Path to the locales directory
-     * @param false $set_domain Also activate the domain
+     * @param  string  $domain Domain
+     * @param  string  $directory Path to the locales directory
+     * @param  false  $set_domain Also activate the domain
      * @return $this
+     *
      * @throws Exception
      */
-    public function bindDomain($domain, $directory, $set_domain = FALSE)
+    public function bindDomain($domain, $directory, $set_domain = false)
     {
-        if ( ! file_exists($directory)) {
+        if (! file_exists($directory)) {
             throw new Exception("Directory $directory does not exist");
         }
 
@@ -99,22 +99,23 @@ class L10n
     /**
      * Set gettext domain as active
      *
-     * @param string $domain Domain
-     * @param bool $is_tmp Only as a temporary switch, after which resetDomain() will be used
+     * @param  string  $domain Domain
+     * @param  bool  $is_tmp Only as a temporary switch, after which resetDomain() will be used
      * @return $this
+     *
      * @throws Exception
      */
-    public function setDomain($domain, $is_tmp = FALSE)
+    public function setDomain($domain, $is_tmp = false)
     {
         if (empty($domain)) {
             throw new Exception('Domain parameter is required');
         }
 
         if ($is_tmp) {
-            $this->current_domain = textdomain(NULL);
+            $this->current_domain = textdomain(null);
         }
 
-        if ( ! textdomain($domain)) {
+        if (! textdomain($domain)) {
             throw new Exception("Could not set domain to $domain");
         }
 
@@ -125,13 +126,15 @@ class L10n
      * Reset the domain back after a temporary switch
      *
      * @return $this
+     *
      * @throws Exception
      */
     public function resetDomain()
     {
         if (isset($this->current_domain)) {
             $c_domain = $this->current_domain;
-            $this->current_domain = NULL;
+            $this->current_domain = null;
+
             return $this->setDomain($c_domain);
         }
 
@@ -141,10 +144,11 @@ class L10n
     /**
      * Set active language
      *
-     * @param string $language_id Language ID
-     * @param string|null $data_language_id Data language ID
-     * @param bool $save Save the selection in a cookie
+     * @param  string  $language_id Language ID
+     * @param  string|null  $data_language_id Data language ID
+     * @param  bool  $save Save the selection in a cookie
      * @return $this
+     *
      * @throws Exception
      */
     public function setLanguage($language_id, $data_language_id = null, $save = false)
@@ -154,11 +158,11 @@ class L10n
         }
 
         // Check validity
-        if ( ! $this->isValid($language_id)) {
+        if (! $this->isValid($language_id)) {
             throw new Exception("\"$language_id\" is not a valid UI language");
         }
 
-        if ( ! $this->isValid($data_language_id, true)) {
+        if (! $this->isValid($data_language_id, true)) {
             throw new Exception("\"$data_language_id\" is not a valid data language");
         }
 
@@ -180,7 +184,7 @@ class L10n
 
         // Save if requested
         if ($save) {
-            Cookie::queue(self::COOKIE_NAME, $language_id, 5*365*24*60);
+            Cookie::queue(self::COOKIE_NAME, $language_id, 5 * 365 * 24 * 60);
         }
 
         return $this;
@@ -189,7 +193,7 @@ class L10n
     /**
      * Disable or enable language validation
      *
-     * @param bool $status Status to set
+     * @param  bool  $status Status to set
      * @return $this
      */
     public function setLanguageValidation($status = true)
@@ -202,8 +206,8 @@ class L10n
     /**
      * Check if the provided language is a valid selection for the current context
      *
-     * @param string $language_id Language ID
-     * @param bool $is_data Check against data languages
+     * @param  string  $language_id Language ID
+     * @param  bool  $is_data Check against data languages
      * @return bool
      */
     public function isValid($language_id, $is_data = false)
@@ -232,14 +236,11 @@ class L10n
         // Detect the client language preference
         $client_langs = request()->server('HTTP_ACCEPT_LANGUAGE');
 
-        if (strpos($client_langs, ','))
-        {
+        if (strpos($client_langs, ',')) {
             $langs = explode(',', str_replace(';', ',', $client_langs));
 
-            foreach ($langs as $lang)
-            {
-                if ($this->isValid($lang))
-                {
+            foreach ($langs as $lang) {
+                if ($this->isValid($lang)) {
                     return $lang;
                 }
             }

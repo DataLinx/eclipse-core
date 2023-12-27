@@ -28,7 +28,7 @@ class PostComposerUpdate extends Command
      */
     public function handle()
     {
-        echo "Running Eclipse Post Composer update procedure..." . PHP_EOL;
+        echo 'Running Eclipse Post Composer update procedure...'.PHP_EOL;
 
         // Publish Laravel assets
         // ------------------
@@ -46,6 +46,6 @@ class PostComposerUpdate extends Command
         // ------------------
         Artisan::call('telescope:publish');
 
-        echo "Eclipse Post Composer update procedure completed!" . PHP_EOL;
+        echo 'Eclipse Post Composer update procedure completed!'.PHP_EOL;
     }
 }

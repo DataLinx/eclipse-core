@@ -9,7 +9,7 @@ abstract class AbstractConfig extends Model
     /**
      * Get config instance for the specified site
      *
-     * @param int $site_id Site ID
+     * @param  int  $site_id Site ID
      * @return self
      */
     public static function fetch($site_id)

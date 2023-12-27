@@ -3,11 +3,11 @@
 namespace Eclipse\Core\View\Components\Form;
 
 use Closure;
+use Eclipse\Core\Foundation\View\Components\Form\AbstractInput;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Eclipse\Core\Foundation\View\Components\Form\AbstractInput;
 
 class Select extends AbstractInput
 {
@@ -27,25 +27,12 @@ class Select extends AbstractInput
     public ?bool $multiple;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected string $view = 'core::components.form.select';
 
     /**
      * Select constructor.
-     *
-     * @param string $name
-     * @param string|null $label
-     * @param string|null $id
-     * @param string|null $help
-     * @param string|null $placeholder
-     * @param bool|null $no_error
-     * @param string|null $size
-     * @param object|null $object
-     * @param mixed|null $default
-     * @param bool|null $required
-     * @param array|null $options
-     * @param bool|null $multiple
      */
     public function __construct(
         string $name,
@@ -60,8 +47,7 @@ class Select extends AbstractInput
         ?bool $required = null,
         ?array $options = null,
         ?bool $multiple = null,
-    )
-    {
+    ) {
         /** @noinspection NestedTernaryOperatorInspection */
         parent::__construct(
             $name,
@@ -81,12 +67,12 @@ class Select extends AbstractInput
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function render(): View|Factory|Htmlable|string|Closure|Application
     {
         // Make sure the control always renders, even if no options were supplied
-        if ( ! is_array($this->options)) {
+        if (! is_array($this->options)) {
             $this->options = [];
         }
 
@@ -123,7 +109,7 @@ class Select extends AbstractInput
                     if (is_array($this->default) && in_array($key, $this->default)) {
                         $option['selected'] = true;
                     }
-                } elseif ((string)$this->default === (string)$key) {
+                } elseif ((string) $this->default === (string) $key) {
                     $option['selected'] = true;
                 }
 
@@ -138,8 +124,6 @@ class Select extends AbstractInput
 
     /**
      * Get control classes
-     *
-     * @return string
      */
     public function getControlClasses(): string
     {
@@ -148,7 +132,7 @@ class Select extends AbstractInput
         ];
 
         if ($this->size) {
-            $classes[] = 'form-select-'. $this->size;
+            $classes[] = 'form-select-'.$this->size;
         }
 
         if ($this->hasError()) {

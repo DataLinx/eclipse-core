@@ -1,11 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Framework\Grid\Filters;
 
-use Illuminate\Database\Eloquent\Builder;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Grid\Filters\SearchFilter;
 use Eclipse\Core\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 
 class SearchFilterTest extends PackageTestCase
 {
@@ -41,7 +43,7 @@ class SearchFilterTest extends PackageTestCase
         // -----------------------------------
         $manual_query_2 = User::query();
         $manual_query_2->where(function (Builder $builder) use ($search) {
-            $builder->orWhereRaw(User::getCompositeDefinition('full_name') .' = ?', [$search]);
+            $builder->orWhereRaw(User::getCompositeDefinition('full_name').' = ?', [$search]);
         });
 
         $query_2 = User::query();
@@ -77,7 +79,7 @@ class SearchFilterTest extends PackageTestCase
         // -----------------------------------
         $manual_query_2 = User::query();
         $manual_query_2->where(function (Builder $builder) use ($search) {
-            $builder->orWhereRaw(User::getCompositeDefinition('full_name') . " LIKE ?", ["%$search%"]);
+            $builder->orWhereRaw(User::getCompositeDefinition('full_name').' LIKE ?', ["%$search%"]);
         });
 
         $query_2 = User::query();

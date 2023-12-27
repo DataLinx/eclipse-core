@@ -3,9 +3,9 @@
 namespace Eclipse\Core\Http\Middleware;
 
 use Closure;
+use Eclipse\Core\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Eclipse\Core\Providers\RouteServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated

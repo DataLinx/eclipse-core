@@ -2,18 +2,16 @@
 
 namespace Eclipse\Core\Framework;
 
-use Exception;
-use Illuminate\Support\Facades\Auth;
 use Eclipse\Core\Models\AppInstance;
 use Eclipse\Core\Models\Language;
 use Eclipse\Core\Models\Package;
 use Eclipse\Core\Models\Site;
 use Eclipse\Core\Models\User;
+use Exception;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Execution context
- *
- * @package Eclipse\Core\Framework
  */
 class Context
 {
@@ -46,6 +44,7 @@ class Context
      * Get context app instance
      *
      * @return AppInstance
+     *
      * @throws Exception
      */
     public function app_instance()
@@ -79,6 +78,7 @@ class Context
      * Get context site
      *
      * @return Site
+     *
      * @throws Exception
      */
     public function site()
@@ -98,6 +98,7 @@ class Context
      * Get context language
      *
      * @return Language
+     *
      * @throws Exception
      */
     public function language()

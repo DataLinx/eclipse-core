@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\View\Components\Form;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Foundation\Testing\TestsComponents;
 use Eclipse\Core\View\Components\Form\Input;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 
 class InputTest extends PackageTestCase
 {
@@ -27,24 +27,24 @@ class InputTest extends PackageTestCase
         ]);
 
         $view->assertSee('name="foo"', false)
-             ->assertSee('Bar')
-             ->assertSee('span class="required"', false)
-             ->assertSee('aria-describedby')
-             ->assertSee('Help text')
-             ->assertSee('Placeholder')
-             ->assertSee('form-control-sm')
-             ->assertSeeInOrder([
-                 'input-group',
-                 'input-group-text',
-                 'www.',
-                 '<input',
-                 'class',
-                 'form-control',
-                 'wire:model="test"',
-                 'input-group-text',
-                 '.com',
-             ], false)
-             ->assertDontSee('is-invalid');
+            ->assertSee('Bar')
+            ->assertSee('span class="required"', false)
+            ->assertSee('aria-describedby')
+            ->assertSee('Help text')
+            ->assertSee('Placeholder')
+            ->assertSee('form-control-sm')
+            ->assertSeeInOrder([
+                'input-group',
+                'input-group-text',
+                'www.',
+                '<input',
+                'class',
+                'form-control',
+                'wire:model="test"',
+                'input-group-text',
+                '.com',
+            ], false)
+            ->assertDontSee('is-invalid');
     }
 
     public function test_errors_can_be_displayed()
@@ -58,8 +58,8 @@ class InputTest extends PackageTestCase
         ]);
 
         $view->assertSee('is-invalid')
-             ->assertSee('invalid-feedback')
-             ->assertSee('Test error');
+            ->assertSee('invalid-feedback')
+            ->assertSee('Test error');
     }
 
     public function test_can_repopulate_data_from_submit()
@@ -74,6 +74,6 @@ class InputTest extends PackageTestCase
         ]);
 
         $view->assertSee('Flashed')
-             ->assertDontSee('Saved');
+            ->assertDontSee('Saved');
     }
 }

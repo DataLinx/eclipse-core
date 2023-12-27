@@ -2,11 +2,11 @@
 
 namespace Eclipse\Core\Http\Controllers\Auth;
 
+use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
-use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 
 class PasswordResetLinkController extends AbstractController
 {
@@ -39,6 +39,6 @@ class PasswordResetLinkController extends AbstractController
         return $status == Password::RESET_LINK_SENT
                     ? back()->with('status', __($status))
                     : back()->withInput($request->only('email'))
-                            ->withErrors(['email' => __($status)]);
+                        ->withErrors(['email' => __($status)]);
     }
 }

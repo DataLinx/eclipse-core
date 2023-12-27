@@ -8,15 +8,13 @@ use Mockery;
 
 /**
  * Trait TestsComponents
- *
- * @package Eclipse\Core\Testing
  */
 trait TestsComponents
 {
     /**
      * Mock data submitted to a form which is received by the old() helper.
      *
-     * @param array $data Associative array of simulated form data
+     * @param  array  $data Associative array of simulated form data
      */
     protected function mockSessionFlashedData($data)
     {

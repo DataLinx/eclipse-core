@@ -38,9 +38,9 @@ class Users extends AbstractDataGrid
         $this->columns[] = new Column('email_verified_at', _('Email verified'));
 
         $this->columns[] = (new ActionColumn([
-            new Action('edit', url("/users/{id}/edit")),
+            new Action('edit', url('/users/{id}/edit')),
             //new Action('delete'),
-        ])) ->setWidth(125);
+        ]))->setWidth(125);
 
         // Filters
         $this->filters[] = (new SearchFilter(self::$model))->addPartialCondition(['name', 'surname', 'email', 'full_name']);

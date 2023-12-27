@@ -2,8 +2,8 @@
 
 namespace Eclipse\Core\Http\Middleware;
 
-use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 use Eclipse\Core\Framework\L10n;
+use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 
 class EncryptCookies extends Middleware
 {

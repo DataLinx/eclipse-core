@@ -1,11 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Framework\Output;
 
-use Exception;
-use InvalidArgumentException;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Output\Menu;
+use Exception;
+use InvalidArgumentException;
 
 /**
  * @covers \Eclipse\Core\Framework\Output\Menu
@@ -13,7 +15,6 @@ use Eclipse\Core\Framework\Output\Menu;
 class MenuTest extends PackageTestCase
 {
     /**
-     * @return void
      * @throws Exception
      */
     public function test_items_can_added(): void
@@ -32,7 +33,6 @@ class MenuTest extends PackageTestCase
     }
 
     /**
-     * @return void
      * @throws Exception
      */
     public function test_key_collision_can_be_detected(): void
@@ -46,7 +46,6 @@ class MenuTest extends PackageTestCase
     }
 
     /**
-     * @return void
      * @throws Exception
      */
     public function test_item_can_be_inserted_after_another_item(): void
@@ -67,7 +66,6 @@ class MenuTest extends PackageTestCase
     }
 
     /**
-     * @return void
      * @throws Exception
      */
     public function test_insertion_exception_can_be_caught(): void

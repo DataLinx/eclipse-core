@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Database;
 
-use Illuminate\Database\Schema\Builder;
-use Illuminate\Support\Facades\DB;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Database\Mapper;
+use Illuminate\Database\Schema\Builder;
+use Illuminate\Support\Facades\DB;
 use Tests\TestObjects\Configs\InvalidConfigColumnType;
 use Tests\TestObjects\Configs\InvalidConfigDefinition;
 use Tests\TestObjects\Configs\UpdatedValidConfig;
@@ -43,8 +43,7 @@ class MapperTest extends PackageTestCase
         $this->mapper->map(UpdatedValidConfig::class);
         $this->assertTrue($this->schema->hasColumn('core_test_config', 'another_bool'));
 
-        if (env('DB_CONNECTION') !== 'sqlite')
-        {
+        if (env('DB_CONNECTION') !== 'sqlite') {
             // Remove column - this does not work with sqlite databases
             $this->mapper->removeDeprecatedColumns(UpdatedValidConfig::class);
             $this->assertFalse($this->schema->hasColumn('core_test_config', 'test_object'));
@@ -65,7 +64,7 @@ class MapperTest extends PackageTestCase
 
     public function test_empty_definition_can_be_detected()
     {
-        $this->expectExceptionMessage("Column definition property not set");
+        $this->expectExceptionMessage('Column definition property not set');
         $this->mapper->map(InvalidConfigDefinition::class);
     }
 

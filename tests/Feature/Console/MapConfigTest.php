@@ -13,7 +13,7 @@ class MapConfigTest extends PackageTestCase
         $invalid_cfg = new InvalidConfigDefinition;
 
         $this->artisan('eclipse:map-config')
-             ->expectsOutput(sprintf("Exception thrown when mapping columns for %s: %s", InvalidConfigDefinition::class, 'Column definition property not set'))
-             ->assertExitCode(0);
+            ->expectsOutput(sprintf('Exception thrown when mapping columns for %s: %s', InvalidConfigDefinition::class, 'Column definition property not set'))
+            ->assertExitCode(0);
     }
 }

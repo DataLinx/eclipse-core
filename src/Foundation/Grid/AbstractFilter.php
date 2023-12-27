@@ -26,15 +26,15 @@ abstract class AbstractFilter implements FilterInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getModelName(): string
     {
-        return 'active_filters.' . $this->name;
+        return 'active_filters.'.$this->name;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getLabel(): string
     {
@@ -42,11 +42,10 @@ abstract class AbstractFilter implements FilterInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getName(): string
     {
         return $this->name;
     }
-
 }

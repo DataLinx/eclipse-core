@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\View\Components;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\View\Components\Icon;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 
 class IconTest extends PackageTestCase
 {
@@ -19,7 +19,7 @@ class IconTest extends PackageTestCase
         $view->assertSeeInOrder([
             '<i',
             'fa',
-            'fa-user'
+            'fa-user',
         ], false)->assertDontSee('text-');
     }
 

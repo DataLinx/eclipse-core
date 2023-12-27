@@ -1,15 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Route;
 use Eclipse\Core\Http\Controllers\DashboardController;
 use Eclipse\Core\Http\Controllers\TestController;
 use Eclipse\Core\Http\Controllers\UsersController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
 
 // Redirect root requests
 // -------------------------------------------
 Route::get('/', function () {
-    if ( ! auth()->check()) {
+    if (! auth()->check()) {
         return redirect('dashboard');
     } else {
         return redirect('login');
@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 // Routes for logged in users only
 // -------------------------------------------
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

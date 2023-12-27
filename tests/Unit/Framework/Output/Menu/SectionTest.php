@@ -11,9 +11,6 @@ use Eclipse\Core\Framework\Output\Menu\Section;
  */
 class SectionTest extends PackageTestCase
 {
-    /**
-     * @return void
-     */
     public function test_items_can_be_added(): void
     {
         $section = new Section('Section label', null, 'section');
@@ -27,9 +24,6 @@ class SectionTest extends PackageTestCase
         $this->assertCount(2, $section->getItems());
     }
 
-    /**
-     * @return void
-     */
     public function test_divider_can_be_added(): void
     {
         $section = new Section('Section label', null, 'section');

@@ -1,21 +1,20 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Framework\Output\Menu;
 
+use Eclipse\Core\Foundation\Testing\PackageTestCase;
+use Eclipse\Core\Framework\Output\Menu\Item;
 use Illuminate\Contracts\Routing\UrlGenerator as UrlGeneratorInterface;
 use InvalidArgumentException;
 use Mockery\MockInterface;
-use Eclipse\Core\Foundation\Testing\PackageTestCase;
-use Eclipse\Core\Framework\Output\Menu\Item;
 
 /**
  * @covers \Eclipse\Core\Framework\Output\Menu\Item
  */
 class ItemTest extends PackageTestCase
 {
-    /**
-     * @return void
-     */
     public function test_item_can_be_created(): void
     {
         // Minimal example
@@ -43,9 +42,6 @@ class ItemTest extends PackageTestCase
         $item = new Item('Test label');
     }
 
-    /**
-     * @return void
-     */
     public function test_getters_and_setters_work(): void
     {
         $item = new Item('Test label', url('test'));
@@ -63,9 +59,6 @@ class ItemTest extends PackageTestCase
         $this->assertTrue($item->isDisabled());
     }
 
-    /**
-     * @return void
-     */
     public function test_current_item_can_be_detected(): void
     {
         $item = new Item('Test label', url('test'));

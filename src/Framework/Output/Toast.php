@@ -5,7 +5,6 @@ namespace Eclipse\Core\Framework\Output;
 /**
  * Class Toast
  *
- * @package Eclipse\Core\Framework\Output
  * @method self success()
  * @method self danger()
  * @method self warning()
@@ -46,10 +45,10 @@ class Toast
     /**
      * Toast constructor.
      *
-     * @param string $message Toast message
-     * @param string|null $title Optional custom title
+     * @param  string  $message Toast message
+     * @param  string|null  $title Optional custom title
      */
-    public function __construct(string $message, string $title = null)
+    public function __construct(string $message, ?string $title = null)
     {
         $this->message = $message;
         $this->title = $title;
@@ -74,8 +73,6 @@ class Toast
 
     /**
      * Get toast message
-     *
-     * @return string
      */
     public function getMessage(): string
     {
@@ -85,7 +82,6 @@ class Toast
     /**
      * Set toast title
      *
-     * @param string $title
      * @return $this
      */
     public function title(string $title): self
@@ -97,8 +93,6 @@ class Toast
 
     /**
      * Get toast title
-     *
-     * @return string
      */
     public function getTitle(): string
     {
@@ -121,8 +115,6 @@ class Toast
 
     /**
      * Get toast type
-     *
-     * @return string
      */
     public function getType(): string
     {
@@ -132,7 +124,7 @@ class Toast
     /**
      * Set icon
      *
-     * @param string $name Icon name
+     * @param  string  $name Icon name
      * @return $this
      */
     public function icon(string $name): self
@@ -144,8 +136,6 @@ class Toast
 
     /**
      * Get icon
-     *
-     * @return string
      */
     public function getIcon(): string
     {
@@ -168,8 +158,6 @@ class Toast
 
     /**
      * Is the Toast sticky?
-     *
-     * @return bool
      */
     public function isSticky(): bool
     {
@@ -179,8 +167,8 @@ class Toast
     /**
      * Add link
      *
-     * @param string $label Label
-     * @param string $href Link location / href attribute
+     * @param  string  $label Label
+     * @param  string  $href Link location / href attribute
      * @return $this
      */
     public function link(string $label, string $href): self
@@ -192,8 +180,6 @@ class Toast
 
     /**
      * Does the toast have links?
-     *
-     * @return bool
      */
     public function hasLinks(): bool
     {
@@ -202,8 +188,6 @@ class Toast
 
     /**
      * Get toast links
-     *
-     * @return array|null
      */
     public function getLinks(): ?array
     {

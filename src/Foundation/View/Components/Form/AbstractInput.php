@@ -75,17 +75,6 @@ class AbstractInput extends Component
 
     /**
      * Common form input constructor.
-     *
-     * @param string $name
-     * @param string|null $label
-     * @param string|null $id
-     * @param string|null $help
-     * @param string|null $placeholder
-     * @param bool|null $noerror
-     * @param string|null $size
-     * @param object|null $object
-     * @param mixed|null $default
-     * @param bool|null $required
      */
     public function __construct(
         string $name,
@@ -98,8 +87,7 @@ class AbstractInput extends Component
         ?object $object = null,
         mixed $default = null,
         ?bool $required = null,
-    )
-    {
+    ) {
         $this->name = $name;
         $this->label = $label;
         $this->id = $id;
@@ -121,7 +109,7 @@ class AbstractInput extends Component
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function render(): View|Factory|Htmlable|string|Closure|Application
     {
@@ -135,8 +123,6 @@ class AbstractInput extends Component
 
     /**
      * Get the attribute bag for the form group (outer element/wrapper)
-     *
-     * @return ComponentAttributeBag
      */
     public function getGroupAttributes(): ComponentAttributeBag
     {
@@ -145,8 +131,6 @@ class AbstractInput extends Component
 
     /**
      * Get form-group classes
-     *
-     * @return string
      */
     public function getGroupClasses(): string
     {
@@ -163,8 +147,6 @@ class AbstractInput extends Component
 
     /**
      * Get the attribute bag for the form control (inner element)
-     *
-     * @return ComponentAttributeBag
      */
     public function getControlAttributes(): ComponentAttributeBag
     {
@@ -173,8 +155,6 @@ class AbstractInput extends Component
 
     /**
      * Get form-control classes
-     *
-     * @return string
      */
     public function getControlClasses(): string
     {
@@ -183,7 +163,7 @@ class AbstractInput extends Component
         ];
 
         if ($this->size) {
-            $classes[] = 'form-control-'. $this->size;
+            $classes[] = 'form-control-'.$this->size;
         }
 
         if ($this->hasError()) {
@@ -200,5 +180,4 @@ class AbstractInput extends Component
 
         return $errors && $errors->has($this->name);
     }
-
 }

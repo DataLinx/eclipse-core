@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Framework;
 
-use Exception;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\L10n;
 use Eclipse\Core\Models\User;
+use Exception;
 
 class L10nTest extends PackageTestCase
 {
@@ -31,9 +31,9 @@ class L10nTest extends PackageTestCase
     {
         // Test with set_domain
         $this->l10n->setDomain('core');
-        $this->assertEquals('core', textdomain(NULL));
-        $this->l10n->bindDomain('test', __DIR__ . '/../../../resources/locales', true);
-        $this->assertEquals('test', textdomain(NULL));
+        $this->assertEquals('core', textdomain(null));
+        $this->l10n->bindDomain('test', __DIR__.'/../../../resources/locales', true);
+        $this->assertEquals('test', textdomain(null));
     }
 
     public function test_non_existing_domain_can_be_detected()
@@ -54,23 +54,23 @@ class L10nTest extends PackageTestCase
 
     public function test_tmp_domain_can_be_set()
     {
-        $this->l10n->bindDomain('test', __DIR__ . '/../../../resources/locales');
+        $this->l10n->bindDomain('test', __DIR__.'/../../../resources/locales');
 
         // Initial state
         $this->l10n->setDomain('core');
-        $this->assertEquals('core', textdomain(NULL));
+        $this->assertEquals('core', textdomain(null));
 
         // Set tmp
         $this->l10n->setDomain('test', true);
-        $this->assertEquals('test', textdomain(NULL));
+        $this->assertEquals('test', textdomain(null));
 
         // Reset
         $this->l10n->resetDomain();
-        $this->assertEquals('core', textdomain(NULL));
+        $this->assertEquals('core', textdomain(null));
 
         // Unneeded reset
         $this->l10n->resetDomain();
-        $this->assertEquals('core', textdomain(NULL));
+        $this->assertEquals('core', textdomain(null));
     }
 
     public function test_invalid_language_can_be_detected()
@@ -104,7 +104,7 @@ class L10nTest extends PackageTestCase
     public function test_sl_language_can_be_set_from_cookie()
     {
         $this->actingAs(User::factory()->make())
-             ->withUnencryptedCookie(L10n::COOKIE_NAME, 'sl');
+            ->withUnencryptedCookie(L10n::COOKIE_NAME, 'sl');
 
         $response = $this->get('/dashboard');
 
@@ -114,7 +114,7 @@ class L10nTest extends PackageTestCase
     public function test_en_language_can_be_set_from_cookie()
     {
         $this->actingAs(User::factory()->make())
-             ->withUnencryptedCookie(L10n::COOKIE_NAME, 'en');
+            ->withUnencryptedCookie(L10n::COOKIE_NAME, 'en');
 
         $response = $this->get('/dashboard');
 
@@ -124,7 +124,7 @@ class L10nTest extends PackageTestCase
     public function test_language_can_be_set_from_first_header_value()
     {
         $this->actingAs(User::factory()->make())
-             ->withHeader('HTTP_ACCEPT_LANGUAGE', 'sl,en');
+            ->withHeader('HTTP_ACCEPT_LANGUAGE', 'sl,en');
 
         $response = $this->get('/dashboard');
 
@@ -134,7 +134,7 @@ class L10nTest extends PackageTestCase
     public function test_language_can_be_set_from_non_first_header_value()
     {
         $this->actingAs(User::factory()->make())
-             ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru,en');
+            ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru,en');
 
         $response = $this->get('/dashboard');
 
@@ -144,7 +144,7 @@ class L10nTest extends PackageTestCase
     public function test_invalid_language_in_header_can_be_handled()
     {
         $this->actingAs(User::factory()->make())
-             ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru');
+            ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru');
 
         $response = $this->get('/dashboard');
 

@@ -31,11 +31,11 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             // Core routes
             Route::middleware('web')
-                ->group(__DIR__ . '/../../routes/web.php');
+                ->group(__DIR__.'/../../routes/web.php');
 
             // Core auth routes
             Route::middleware('web')
-                ->group(__DIR__ . '/../../routes/auth.php');
+                ->group(__DIR__.'/../../routes/auth.php');
 
             // Any additional app routes
             if (file_exists(base_path('routes/web.php'))) {

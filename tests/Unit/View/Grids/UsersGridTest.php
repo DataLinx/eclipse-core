@@ -1,11 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\View\Grids;
 
-use Livewire\Livewire;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Models\User;
 use Eclipse\Core\View\Grids\Users;
+use Livewire\Livewire;
 
 class UsersGridTest extends PackageTestCase
 {

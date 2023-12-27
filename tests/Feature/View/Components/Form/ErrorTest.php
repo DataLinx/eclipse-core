@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\View\Components\Form;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\View\Components\Form\Error;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 
 class ErrorTest extends PackageTestCase
 {

@@ -6,15 +6,13 @@ use Eclipse\Core\Framework\Output\Toast;
 
 /**
  * Response output utility class
- *
- * @package Eclipse\Core\Framework
  */
 class Output
 {
     /**
      * Create a new toast notification
      *
-     * @param string $message Toast message
+     * @param  string  $message Toast message
      * @return Toast
      */
     public function toast($message)

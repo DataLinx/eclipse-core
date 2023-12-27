@@ -12,7 +12,6 @@ class Section extends Item
     /**
      * Add item or sub-section to section
      *
-     * @param Item|Section $item
      * @return $this
      */
     public function addItem(Item|Section $item): self
@@ -24,8 +23,6 @@ class Section extends Item
 
     /**
      * Does this section have items?
-     *
-     * @return bool
      */
     public function hasItems(): bool
     {
@@ -51,5 +48,4 @@ class Section extends Item
 
         return $this;
     }
-
 }

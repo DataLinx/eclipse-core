@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\View\Components\Form;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Foundation\Testing\TestsComponents;
 use Eclipse\Core\View\Components\Form\Textarea;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 
 class TextareaTest extends PackageTestCase
 {
@@ -51,8 +51,8 @@ class TextareaTest extends PackageTestCase
         ]);
 
         $view->assertSee('is-invalid')
-             ->assertSee('invalid-feedback')
-             ->assertSee('Test error');
+            ->assertSee('invalid-feedback')
+            ->assertSee('Test error');
     }
 
     public function test_submitted_data_can_be_initialized(): void
@@ -67,6 +67,6 @@ class TextareaTest extends PackageTestCase
         ]);
 
         $view->assertSee('Flashed')
-             ->assertDontSee('Saved');
+            ->assertDontSee('Saved');
     }
 }

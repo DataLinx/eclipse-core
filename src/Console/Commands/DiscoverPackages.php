@@ -2,9 +2,9 @@
 
 namespace Eclipse\Core\Console\Commands;
 
+use Eclipse\Core\Models\Package;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Eclipse\Core\Models\Package;
 
 class DiscoverPackages extends Command
 {
@@ -36,11 +36,11 @@ class DiscoverPackages extends Command
         foreach (File::directories($dir) as $vendor_dir) {
             foreach (File::directories($vendor_dir) as $package_dir) {
 
-                if (! file_exists($package_dir .'/composer.json')) {
+                if (! file_exists($package_dir.'/composer.json')) {
                     continue;
                 }
 
-                $json = json_decode(file_get_contents($package_dir .'/composer.json'), true);
+                $json = json_decode(file_get_contents($package_dir.'/composer.json'), true);
 
                 if (! isset($json['extra']['eclipse']['type'])) {
                     // Not an Eclipse package

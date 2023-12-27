@@ -2,13 +2,13 @@
 
 namespace Eclipse\Core\Console\Commands;
 
-use Exception;
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Eclipse\Core\Foundation\Database\AbstractConfig;
 use Eclipse\Core\Framework\Database\Mapper;
 use Eclipse\Core\Models\Package;
 use Eclipse\Core\Models\Site;
+use Exception;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 
 class MapConfig extends Command
 {
@@ -33,7 +33,7 @@ class MapConfig extends Command
      */
     public function handle()
     {
-        $this->info("Mapping configs...");
+        $this->info('Mapping configs...');
 
         $mapper = new Mapper();
 
@@ -51,7 +51,7 @@ class MapConfig extends Command
                     $this->assert_site_config($class);
                     $processed[] = $class;
                 } catch (Exception $exception) {
-                    $this->error(sprintf("Exception thrown when mapping columns for %s: %s", $class, $exception->getMessage()));
+                    $this->error(sprintf('Exception thrown when mapping columns for %s: %s', $class, $exception->getMessage()));
                 }
             }
         }
@@ -61,7 +61,7 @@ class MapConfig extends Command
             try {
                 $mapper->removeDeprecatedColumns($class);
             } catch (Exception $exception) {
-                $this->error(sprintf("Exception thrown when removing deprecated columns for %s: %s", $class, $exception->getMessage()));
+                $this->error(sprintf('Exception thrown when removing deprecated columns for %s: %s', $class, $exception->getMessage()));
             }
         }
 
@@ -70,13 +70,11 @@ class MapConfig extends Command
 
     /**
      * Find and load any Config classes in the package directory
-     *
-     * @param Package $package
      */
     private function loadPackageConfigs(Package $package)
     {
-        $dir = $package->getDirectory() .'src/Configuration/';
-        $this->line('Checking dir: '. $dir);
+        $dir = $package->getDirectory().'src/Configuration/';
+        $this->line('Checking dir: '.$dir);
 
         if (file_exists($dir)) {
             foreach (File::allFiles($dir) as $file) {
@@ -88,7 +86,7 @@ class MapConfig extends Command
     /**
      * Assert config exists for all sites
      *
-     * @param string $class Config class
+     * @param  string  $class Config class
      */
     private function assert_site_config(string $class)
     {

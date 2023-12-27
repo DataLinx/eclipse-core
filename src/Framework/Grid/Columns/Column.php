@@ -33,8 +33,8 @@ class Column
     /**
      * Create column object
      *
-     * @param string $accessor Column accessor (key)
-     * @param string $label Column label
+     * @param  string  $accessor Column accessor (key)
+     * @param  string  $label Column label
      */
     public function __construct(string $accessor, string $label)
     {
@@ -42,9 +42,6 @@ class Column
         $this->label = $label;
     }
 
-    /**
-     * @return string
-     */
     public function getAccessor(): string
     {
         return $this->accessor;
@@ -52,8 +49,6 @@ class Column
 
     /**
      * Get column label
-     *
-     * @return string
      */
     public function getLabel(): string
     {
@@ -62,16 +57,13 @@ class Column
 
     /**
      * Render (print) the column
-     *
-     * @param Model $object
-     * @return string
      */
     public function render(Model $object): string
     {
         $val = $object->getAttributeValue($this->accessor);
 
         if ($val === null) {
-            $method = Str::camel('get_'. $this->accessor);
+            $method = Str::camel('get_'.$this->accessor);
 
             if (method_exists($object, $method)) {
                 $val = $object->$method();
@@ -81,18 +73,11 @@ class Column
         return $val ?? '';
     }
 
-    /**
-     * @return int|null
-     */
     public function getWidth(): ?int
     {
         return $this->width ?? null;
     }
 
-    /**
-     * @param int $width
-     * @return Column
-     */
     public function setWidth(int $width): Column
     {
         $this->width = $width;
@@ -100,16 +85,12 @@ class Column
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isSortable(): bool
     {
         return $this->sortable;
     }
 
     /**
-     * @param bool $sortable
      * @return $this
      */
     public function setSortable(bool $sortable): self
@@ -118,5 +99,4 @@ class Column
 
         return $this;
     }
-
 }

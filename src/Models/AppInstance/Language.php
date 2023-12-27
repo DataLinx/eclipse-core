@@ -6,7 +6,6 @@ use Eclipse\Core\Foundation\Database\Model;
 
 /**
  * Class Language
- * @package Eclipse\Core\Models\AppInstance
  *
  * @property int $id App instance language ID
  * @property int $app_instance_id App instance ID

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Framework\Grid\Columns;
 
@@ -28,6 +30,6 @@ class ImageColumnTest extends PackageTestCase
             'h' => 50,
         ];
 
-        $this->assertEquals('<img src="img/'. $user->image .'?'. http_build_query($query_params) .'"/>', $column->render($user));
+        $this->assertEquals('<img src="img/'.$user->image.'?'.http_build_query($query_params).'"/>', $column->render($user));
     }
 }

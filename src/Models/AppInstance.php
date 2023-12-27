@@ -6,7 +6,6 @@ use Eclipse\Core\Foundation\Database\Model;
 
 /**
  * Class AppInstance
- * @package Eclipse\Core\Models
  *
  * @property int $id App instance ID
  * @property int $site_id Site ID

@@ -6,12 +6,12 @@ use Illuminate\View\Component;
 
 /**
  * Class Alert
- * @package Eclipse\Core\View\Components
  */
 class Alert extends Component
 {
     /**
      * @var string Alert type (primary, secondary, success...)
+     *
      * @link https://getbootstrap.com/docs/5.2/components/alerts/#examples
      */
     public string $type;
@@ -34,17 +34,16 @@ class Alert extends Component
     /**
      * Alert constructor.
      *
-     * @param string $type Alert type
-     * @param string|null $heading Optional heading
-     * @param bool|null $dismissible Dismissible or not (default: false)
+     * @param  string  $type Alert type
+     * @param  string|null  $heading Optional heading
+     * @param  bool|null  $dismissible Dismissible or not (default: false)
      */
     public function __construct(
         string $type = 'info',
         ?string $heading = null,
         ?bool $dismissible = null,
         ?string $icon = null,
-    )
-    {
+    ) {
         $this->type = $type;
         $this->heading = $heading;
         $this->dismissible = $dismissible;
@@ -52,7 +51,7 @@ class Alert extends Component
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function render()
     {
@@ -61,8 +60,6 @@ class Alert extends Component
 
     /**
      * Get the default icon for the alert type
-     *
-     * @return string
      */
     public function getDefaultIcon(): string
     {

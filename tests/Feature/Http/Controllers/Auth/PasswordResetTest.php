@@ -2,14 +2,14 @@
 
 namespace Tests\Feature\Http\Controllers\Auth;
 
-use Illuminate\Auth\Notifications\ResetPassword;
-use Illuminate\Support\Facades\Notification;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Models\User;
+use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Support\Facades\Notification;
 
 class PasswordResetTest extends PackageTestCase
 {
-//    use RefreshDatabase;
+    //    use RefreshDatabase;
 
     public function test_reset_password_link_screen_can_be_rendered(): void
     {

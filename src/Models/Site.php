@@ -2,13 +2,12 @@
 
 namespace Eclipse\Core\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Eclipse\Core\Database\Factories\SiteFactory;
 use Eclipse\Core\Foundation\Database\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Site
- * @package Eclipse\Core\Models
  *
  * @property int $id Site ID
  * @property string $domain Domain
@@ -30,12 +29,10 @@ class Site extends Model
 
     /**
      * Get full URL to site
-     *
-     * @return string
      */
     public function getUrl(): string
     {
-        return ($this->is_secure ? 'https' : 'http') . '://'. $this->domain;
+        return ($this->is_secure ? 'https' : 'http').'://'.$this->domain;
     }
 
     /**
@@ -49,12 +46,10 @@ class Site extends Model
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected static function newFactory()
     {
         return SiteFactory::new();
     }
-
-
 }
