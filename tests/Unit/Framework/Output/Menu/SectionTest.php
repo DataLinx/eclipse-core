@@ -1,6 +1,6 @@
 <?php
 
-namespace Eclipse\Core\Tests\Unit\Framework\Output\Menu;
+namespace Tests\Unit\Framework\Output\Menu;
 
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Output\Menu\Item;

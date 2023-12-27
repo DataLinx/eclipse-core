@@ -1,6 +1,6 @@
 <?php
 
-namespace Eclipse\Core\Tests\TestObjects\Configs;
+namespace Tests\TestObjects\Configs;
 
 use Eclipse\Core\Foundation\Database\AbstractConfig;
 use Eclipse\Core\Framework\Database\Mapper;

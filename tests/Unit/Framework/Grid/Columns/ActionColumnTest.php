@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Eclipse\Core\Tests\Unit\Framework\Grid\Columns;
+namespace Tests\Unit\Framework\Grid\Columns;
 
 use InvalidArgumentException;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Eclipse\Core\Tests\Feature\Http\Controllers\Auth;
+namespace Tests\Feature\Http\Controllers\Auth;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;

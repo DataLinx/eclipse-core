@@ -1,6 +1,6 @@
 <?php
 
-namespace Eclipse\Core\Tests\Feature\Http\Controllers\Auth;
+namespace Tests\Feature\Http\Controllers\Auth;
 
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Models\User;

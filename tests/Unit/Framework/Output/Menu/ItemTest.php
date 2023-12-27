@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Eclipse\Core\Tests\Unit\Framework\Output\Menu;
+namespace Tests\Unit\Framework\Output\Menu;
 
 use Illuminate\Contracts\Routing\UrlGenerator as UrlGeneratorInterface;
 use InvalidArgumentException;

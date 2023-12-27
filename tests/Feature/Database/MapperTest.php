@@ -1,15 +1,15 @@
 <?php
 
-namespace Eclipse\Core\Tests\Feature\Database;
+namespace Tests\Feature\Database;
 
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Facades\DB;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Database\Mapper;
-use Eclipse\Core\Tests\TestObjects\Configs\InvalidConfigColumnType;
-use Eclipse\Core\Tests\TestObjects\Configs\InvalidConfigDefinition;
-use Eclipse\Core\Tests\TestObjects\Configs\UpdatedValidConfig;
-use Eclipse\Core\Tests\TestObjects\Configs\ValidConfig;
+use Tests\TestObjects\Configs\InvalidConfigColumnType;
+use Tests\TestObjects\Configs\InvalidConfigDefinition;
+use Tests\TestObjects\Configs\UpdatedValidConfig;
+use Tests\TestObjects\Configs\ValidConfig;
 
 class MapperTest extends PackageTestCase
 {

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Eclipse\Core\Tests\Unit\Framework\Grid;
+namespace Tests\Unit\Framework\Grid;
 
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Grid\Action;

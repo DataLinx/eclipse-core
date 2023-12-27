@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Eclipse\Core\Tests\Unit\Framework\Grid\Filters;
+namespace Tests\Unit\Framework\Grid\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;

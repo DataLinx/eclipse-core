@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Eclipse\Core\Tests\Unit\Framework;
+namespace Tests\Unit\Framework;
 
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Output;

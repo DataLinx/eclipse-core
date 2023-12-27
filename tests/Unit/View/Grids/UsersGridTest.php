@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Eclipse\Core\Tests\Unit\View\Grids;
+namespace Tests\Unit\View\Grids;
 
 use Livewire\Livewire;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Eclipse\Core\Tests\Feature\View\Components\Form;
+namespace Tests\Feature\View\Components\Form;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;

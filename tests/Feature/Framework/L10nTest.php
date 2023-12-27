@@ -1,6 +1,6 @@
 <?php
 
-namespace Eclipse\Core\Tests\Feature\Framework;
+namespace Tests\Feature\Framework;
 
 use Exception;
 use Eclipse\Core\Foundation\Testing\PackageTestCase;

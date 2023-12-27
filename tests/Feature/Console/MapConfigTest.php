@@ -1,9 +1,9 @@
 <?php
 
-namespace Eclipse\Core\Tests\Feature\Console;
+namespace Tests\Feature\Console;
 
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
-use Eclipse\Core\Tests\TestObjects\Configs\InvalidConfigDefinition;
+use Tests\TestObjects\Configs\InvalidConfigDefinition;
 
 class MapConfigTest extends PackageTestCase
 {

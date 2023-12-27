@@ -1,6 +1,6 @@
 <?php
 
-namespace Eclipse\Core\Tests\Feature\Console;
+namespace Tests\Feature\Console;
 
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 
