@@ -12,7 +12,7 @@
                     <div class="card-header">{{ _('Reset password') }}</div>
                     <div class="card-body">
 
-                        <form method="POST" action="{{ route('password.update') }}">
+                        <form method="POST" action="{{ route('password.store') }}">
                             @csrf
 
                             <x-form::hidden name="token" value="{{ $request->route('token') }}" />
