@@ -4,6 +4,7 @@ namespace Eclipse\Core\Console\Commands;
 
 use Eclipse\Core\Models\Package;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 
 class DiscoverPackages extends Command
@@ -32,6 +33,25 @@ class DiscoverPackages extends Command
         $dir = base_path('vendor');
 
         $this->info("Discovering Eclipse packages in $dir");
+
+        if (App::environment(['local', 'testing'])) {
+
+            // Get composer.json data for current package
+            $data = json_decode(file_get_contents('./composer.json'), true);
+
+            // If we are testing an Eclipse package...
+            if (stripos($data['name'], 'eclipseapp/') === 0 and $data['name'] !== 'eclipseapp/skeleton') {
+
+                // ... insert own package record, since discovery process below only scans the vendor folder
+                [$vendor, $name] = explode('/', $data['name']);
+
+                $package = new Package();
+                $package->vendor = $vendor;
+                $package->name = $name;
+                $package->type = substr($data['extra']['eclipse']['type'], 0, 1);
+                $package->save();
+            }
+        }
 
         foreach (File::directories($dir) as $vendor_dir) {
             foreach (File::directories($vendor_dir) as $package_dir) {
