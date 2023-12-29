@@ -100,7 +100,7 @@ class EclipseInstall extends Command
         $site->save();
 
         // Create default instance
-        $core_package = Package::fetchByName('eclipse', 'core');
+        $core_package = Package::fetchByName('eclipseapp', 'core');
 
         $instance = new AppInstance;
         $instance->site_id = $site->id;

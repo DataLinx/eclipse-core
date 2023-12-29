@@ -1,5 +1,5 @@
 {
-    "name": "eclipse/core",
+    "name": "eclipseapp/core",
     "type": "library",
     "description": "Eclipse core package",
     "license": "MIT",

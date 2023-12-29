@@ -68,7 +68,7 @@ class Context
     {
         if (empty($this->app_package)) {
             // TODO App package should be detected or registered
-            $this->app_package = Package::fetchByName('eclipse', 'core');
+            $this->app_package = Package::fetchByName('eclipseapp', 'core');
         }
 
         return $this->app_package;
