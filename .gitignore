@@ -1,14 +1,14 @@
 # 1. Keep lines sorted alphabetically in this file
 # 2. Do not add OS or IDE specific lines here — do it in the global .gitignore: https://gist.github.com/subfuzion/db7f57fff2fb6998a16c
 # -----------------------
-.phpunit.result.cache
+/build
+/node_modules
+/public/hot
+/public/storage
+/vendor
+.env
 .php-cs-fixer.cache
-build
+.phpunit.result.cache
 composer.lock
-node_modules
 phpunit.xml
-public/build
-public/hot
-public/storage
 testbench.yaml
-vendor

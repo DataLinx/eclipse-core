@@ -24,6 +24,7 @@
         "livewire/livewire": "^3.0"
     },
     "require-dev": {
+        "eclipseapp/skeleton": "dev-master",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.27",
         "laravel/pint": "^1.13",
