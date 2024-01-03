@@ -117,7 +117,7 @@
         </p>
 
         <x-form::plaintext label="Example with all options:">
-            <x-icon name="heart" pack="fal" color="danger" class="fa-5x fa-beat" id="some-id" />
+            <x-icon name="heart" color="danger" class="fa-5x fa-beat" id="some-id" />
         </x-form::plaintext>
 
 
