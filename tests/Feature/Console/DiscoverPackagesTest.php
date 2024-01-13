@@ -4,9 +4,17 @@ namespace Tests\Feature\Console;
 
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Models\Package;
+use Illuminate\Support\Facades\Storage;
 
 class DiscoverPackagesTest extends PackageTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Storage::fake('local');
+    }
+
     public function tearDown(): void
     {
         // Clean up test files and directories
@@ -43,8 +51,10 @@ class DiscoverPackagesTest extends PackageTestCase
             mkdir($dir);
         }
 
-        $this->artisan('eclipse:discover-packages')
+        $this->artisan('eclipse:discover-packages --test')
             ->assertExitCode(0);
+
+        Storage::disk('local')->assertExists('test-imports.js');
     }
 
     public function test_package_type_change_can_be_handled()
