@@ -47,11 +47,22 @@ class DiscoverPackages extends Command
 
                 // ... insert own package record, since discovery process below only scans the vendor folder
                 [$vendor, $name] = explode('/', $data['name']);
+                $type = substr($data['extra']['eclipse']['type'], 0, 1);
 
-                $package = new Package();
-                $package->vendor = $vendor;
-                $package->name = $name;
-                $package->type = substr($data['extra']['eclipse']['type'], 0, 1);
+                $package = Package::where([
+                    'vendor' => $vendor,
+                    'name' => $name,
+                ])->first();
+
+                if (empty($package)) {
+                    $package = new Package();
+                    $package->vendor = $vendor;
+                    $package->name = $name;
+                    $package->type = substr($data['extra']['eclipse']['type'], 0, 1);
+                } elseif ($package->type !== $type) {
+                    $package->type = $type;
+                }
+
                 $package->save();
 
                 if (file_exists("./resources/js/$name.js")) {
