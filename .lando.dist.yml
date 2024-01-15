@@ -10,8 +10,11 @@ config:
 services:
   appserver:
     type: php:custom
+    xdebug: "debug,develop"
     overrides:
-      image: slimdeluxe/php:8.2
+      image: slimdeluxe/php:8.2-v1.0
+      volumes:
+        - "~/www/packages:/opt/php/packages"
   database:
     creds:
       database: eclipse
