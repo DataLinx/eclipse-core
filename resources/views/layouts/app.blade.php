@@ -18,8 +18,6 @@
         <base href="{{ config('app.url') }}" />
         @vite(['resources/js/app.js'])
 
-        <livewire:styles />
-
     </head>
     <body>
         <div>
@@ -61,8 +59,6 @@
 
             </main>
         </div>
-
-        <livewire:scripts />
 
     </body>
 </html>

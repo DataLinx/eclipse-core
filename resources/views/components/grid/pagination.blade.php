@@ -8,7 +8,7 @@
             <a class="btn btn-outline-secondary" href="javascript:void(0);" aria-label="{{ _('First page') }}" title="{{ _('First page') }}" wire:click="gotoPage(0)"><x-icon name="backward-step" /></a>
             <a class="btn btn-outline-secondary" href="javascript:void(0);" aria-label="{{ _('Previous page') }}" title="{{ _('Previous page') }}" wire:click="previousPage"><x-icon name="caret-left" /></a>
         @endif
-        <input type="text" class="form-control text-center" name="paginator-{{ $paginator->getPageName() }}" wire:model="{{ $paginator->getPageName() }}" value="{{ $paginator->currentPage() }}" wire:key="paginator-{{ $paginator->getPageName() }}-input" aria-label="Example text with two button addons">
+        <input type="text" class="form-control text-center" name="paginator-{{ $paginator->getPageName() }}" wire:model.live="{{ $paginator->getPageName() }}" value="{{ $paginator->currentPage() }}" wire:key="paginator-{{ $paginator->getPageName() }}-input" aria-label="Example text with two button addons">
         @if ($paginator->currentPage() === $paginator->lastPage())
             <button class="btn btn-outline-secondary" type="button" disabled><x-icon name="caret-right" /></button>
             <button class="btn btn-outline-secondary" type="button" disabled><x-icon name="forward-step" /></button>

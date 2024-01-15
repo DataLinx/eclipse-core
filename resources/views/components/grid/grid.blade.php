@@ -10,10 +10,10 @@
                 @foreach ($this->getFilters() as $filter)
                     @switch (get_class($filter))
                         @case (BooleanFilter::class)
-                            <x-form::switcher :name="$filter->getName()" :label="$filter->getLabel()" :wire:model="$filter->getModelName()" wire:key="{{ $this->getFilterKey($filter) }}"/>
+                            <x-form::switcher :name="$filter->getName()" :label="$filter->getLabel()" :wire:model.live="$filter->getModelName()" wire:key="{{ $this->getFilterKey($filter) }}"/>
                             @break
                         @case (SearchFilter::class)
-                            <x-form::input :name="$filter->getName()" :label="$filter->getLabel()" placeholder="{{ _('Enter keywords here') }}" :wire:model.debounce.500ms="$filter->getModelName()"  wire:key="{{ $this->getFilterKey($filter) }}"/>
+                            <x-form::input :name="$filter->getName()" :label="$filter->getLabel()" placeholder="{{ _('Enter keywords here') }}" :wire:model.live.debounce.500ms="$filter->getModelName()"  wire:key="{{ $this->getFilterKey($filter) }}"/>
                             @break
                     @endswitch
                 @endforeach
@@ -69,7 +69,7 @@
                             {{ sprintf(_('Records shown: %d to %d (%d total)'), $objects->firstItem(), $objects->lastItem(), $objects->total()) }}
                         </div>
                     @endif
-                    <x-form::select name="per_page" :options="$this->getPaginationOptions()" :default="$this->per_page" wire:model="per_page" :placeholder="false" :label="_('Records per page') . ':'" size="sm" class="grid-per-page"/>
+                    <x-form::select name="per_page" :options="$this->getPaginationOptions()" :default="$this->per_page" wire:model.live="per_page" :placeholder="false" :label="_('Records per page') . ':'" size="sm" class="grid-per-page"/>
                 </td>
             </tr>
         </tfoot>
