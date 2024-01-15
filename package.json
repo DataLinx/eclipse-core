@@ -1,20 +1,21 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "preview": "vite preview",
         "prepare": "husky install"
     },
     "devDependencies": {
         "@commitlint/cli": "^18.4.3",
         "@commitlint/config-conventional": "^18.4.3",
         "@popperjs/core": "^2.11.6",
-        "alpinejs": "^3.10.3",
         "axios": "^0.27.2",
         "bootstrap": "^5.2.0",
         "husky": "^8.0.3",
+        "laravel-vite-plugin": "^1.0.1",
         "lodash": "^4.17.21",
-        "sass": "^1.54.4"
+        "sass": "^1.54.4",
+        "vite": "^5.0.10"
     }
 }
