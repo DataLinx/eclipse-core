@@ -108,10 +108,8 @@ class DiscoverPackages extends Command
                     $this->line("Updated package: $vendor/$name");
                 }
 
-                $js_file = "$package_dir/resources/js/$name.js";
-
-                if (file_exists($js_file)) {
-                    $js_files[] = $js_file;
+                if (file_exists("$package_dir/resources/js/$name.js")) {
+                    $js_files[] = "../../vendor/$vendor/$name/resources/js/$name.js";
                 }
             }
         }
