@@ -7,7 +7,7 @@ class Helper
     /**
      * Escape the parameter value for use it the LIKE part of the query
      *
-     * @param  string  $param Parameter value
+     * @param  string  $param  Parameter value
      */
     public static function escapeLikeParameter($param): string
     {

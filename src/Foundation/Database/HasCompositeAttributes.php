@@ -54,7 +54,7 @@ trait HasCompositeAttributes
     /**
      * Does this model have the specified composite attribute?
      *
-     * @param  string  $attr Attribute name
+     * @param  string  $attr  Attribute name
      */
     public static function hasCompositeAttribute(string $attr): bool
     {

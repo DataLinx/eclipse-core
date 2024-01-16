@@ -49,7 +49,7 @@ class Checkbox extends AbstractInput
     /**
      * Checkbox constructor.
      *
-     * @param  string|null  $size Button size, when showing as buttons
+     * @param  string|null  $size  Button size, when showing as buttons
      * @param  mixed|null  $default
      */
     public function __construct(

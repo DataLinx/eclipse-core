@@ -84,7 +84,7 @@ class User extends Authenticatable
     /**
      * Fetch User by email
      *
-     * @param  string  $email User email
+     * @param  string  $email  User email
      * @return User
      */
     public static function fetchByEmail($email)

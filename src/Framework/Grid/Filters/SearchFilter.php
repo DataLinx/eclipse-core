@@ -57,7 +57,7 @@ class SearchFilter extends AbstractFilter
     /**
      * Add attribute for exact column value matching
      *
-     * @param  array|string  $attribute Attribute name or an array of attribute names
+     * @param  array|string  $attribute  Attribute name or an array of attribute names
      * @return $this
      */
     public function addExactCondition(array|string $attribute): self
@@ -74,7 +74,7 @@ class SearchFilter extends AbstractFilter
     /**
      * Add attribute for partial column value matching
      *
-     * @param  array|string  $attribute Attribute name or an array of attribute names
+     * @param  array|string  $attribute  Attribute name or an array of attribute names
      * @return $this
      */
     public function addPartialCondition(array|string $attribute): self

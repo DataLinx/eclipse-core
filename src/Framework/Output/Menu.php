@@ -25,7 +25,7 @@ class Menu
     /**
      * Add item to the top level of the menu
      *
-     * @param  Item|Section  $item Item or Section instance
+     * @param  Item|Section  $item  Item or Section instance
      * @return $this
      *
      * @throws Exception

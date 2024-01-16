@@ -86,7 +86,7 @@ class MapConfig extends Command
     /**
      * Assert config exists for all sites
      *
-     * @param  string  $class Config class
+     * @param  string  $class  Config class
      */
     private function assert_site_config(string $class)
     {

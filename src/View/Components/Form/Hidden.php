@@ -15,9 +15,9 @@ class Hidden extends Component
      * Hidden constructor.
      * Either the name and value pair can be supplied or a data array with the same values.
      *
-     * @param  string|null  $name Input name
-     * @param  mixed|null  $value Input value
-     * @param  array|null  $data Data array for multiple inputs
+     * @param  string|null  $name  Input name
+     * @param  mixed|null  $value  Input value
+     * @param  array|null  $data  Data array for multiple inputs
      */
     public function __construct(
         ?string $name = null, $value = null, ?array $data = null
@@ -48,8 +48,8 @@ class Hidden extends Component
     /**
      * Make the form input HTML
      *
-     * @param  string  $name Input name
-     * @param  string|array  $value Input value or array with key-value pairs
+     * @param  string  $name  Input name
+     * @param  string|array  $value  Input value or array with key-value pairs
      * @return string
      */
     private function makeHtml($name, $value)

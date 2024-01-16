@@ -34,9 +34,9 @@ class Alert extends Component
     /**
      * Alert constructor.
      *
-     * @param  string  $type Alert type
-     * @param  string|null  $heading Optional heading
-     * @param  bool|null  $dismissible Dismissible or not (default: false)
+     * @param  string  $type  Alert type
+     * @param  string|null  $heading  Optional heading
+     * @param  bool|null  $dismissible  Dismissible or not (default: false)
      */
     public function __construct(
         string $type = 'info',

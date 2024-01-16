@@ -45,8 +45,8 @@ class Toast
     /**
      * Toast constructor.
      *
-     * @param  string  $message Toast message
-     * @param  string|null  $title Optional custom title
+     * @param  string  $message  Toast message
+     * @param  string|null  $title  Optional custom title
      */
     public function __construct(string $message, ?string $title = null)
     {
@@ -124,7 +124,7 @@ class Toast
     /**
      * Set icon
      *
-     * @param  string  $name Icon name
+     * @param  string  $name  Icon name
      * @return $this
      */
     public function icon(string $name): self
@@ -167,8 +167,8 @@ class Toast
     /**
      * Add link
      *
-     * @param  string  $label Label
-     * @param  string  $href Link location / href attribute
+     * @param  string  $label  Label
+     * @param  string  $href  Link location / href attribute
      * @return $this
      */
     public function link(string $label, string $href): self

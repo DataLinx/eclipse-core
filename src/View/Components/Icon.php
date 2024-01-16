@@ -26,9 +26,9 @@ class Icon extends Component
     /**
      * Icon constructor.
      *
-     * @param  string  $name Icon name
-     * @param  string  $pack Pack
-     * @param  string|null  $color Color
+     * @param  string  $name  Icon name
+     * @param  string  $pack  Pack
+     * @param  string|null  $color  Color
      */
     public function __construct(
         string $name, string $pack = 'fa', ?string $color = null

@@ -19,8 +19,8 @@ class ActionColumn extends Column
     protected array $actions;
 
     /**
-     * @param  Action[]  $actions Array with Action objects
-     * @param  string|null  $label Optional label (defaults to "Action")
+     * @param  Action[]  $actions  Array with Action objects
+     * @param  string|null  $label  Optional label (defaults to "Action")
      */
     public function __construct(array $actions, ?string $label = null)
     {

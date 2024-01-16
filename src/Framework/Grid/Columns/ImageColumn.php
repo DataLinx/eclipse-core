@@ -17,10 +17,10 @@ class ImageColumn extends Column
     protected ?int $img_height;
 
     /**
-     * @param  string  $accessor Column accessor (key)
-     * @param  string  $label Colum label
-     * @param  int|null  $width Image display width
-     * @param  int|null  $height Image display height
+     * @param  string  $accessor  Column accessor (key)
+     * @param  string  $label  Colum label
+     * @param  int|null  $width  Image display width
+     * @param  int|null  $height  Image display height
      */
     public function __construct(string $accessor, string $label, ?int $width = null, ?int $height = null)
     {

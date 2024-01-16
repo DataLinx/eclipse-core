@@ -12,7 +12,7 @@ class Output
     /**
      * Create a new toast notification
      *
-     * @param  string  $message Toast message
+     * @param  string  $message  Toast message
      * @return Toast
      */
     public function toast($message)

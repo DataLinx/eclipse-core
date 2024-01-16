@@ -74,9 +74,9 @@ class L10n
     /**
      * Bind gettext domain
      *
-     * @param  string  $domain Domain
-     * @param  string  $directory Path to the locales directory
-     * @param  false  $set_domain Also activate the domain
+     * @param  string  $domain  Domain
+     * @param  string  $directory  Path to the locales directory
+     * @param  false  $set_domain  Also activate the domain
      * @return $this
      *
      * @throws Exception
@@ -99,8 +99,8 @@ class L10n
     /**
      * Set gettext domain as active
      *
-     * @param  string  $domain Domain
-     * @param  bool  $is_tmp Only as a temporary switch, after which resetDomain() will be used
+     * @param  string  $domain  Domain
+     * @param  bool  $is_tmp  Only as a temporary switch, after which resetDomain() will be used
      * @return $this
      *
      * @throws Exception
@@ -144,9 +144,9 @@ class L10n
     /**
      * Set active language
      *
-     * @param  string  $language_id Language ID
-     * @param  string|null  $data_language_id Data language ID
-     * @param  bool  $save Save the selection in a cookie
+     * @param  string  $language_id  Language ID
+     * @param  string|null  $data_language_id  Data language ID
+     * @param  bool  $save  Save the selection in a cookie
      * @return $this
      *
      * @throws Exception
@@ -193,7 +193,7 @@ class L10n
     /**
      * Disable or enable language validation
      *
-     * @param  bool  $status Status to set
+     * @param  bool  $status  Status to set
      * @return $this
      */
     public function setLanguageValidation($status = true)
@@ -206,8 +206,8 @@ class L10n
     /**
      * Check if the provided language is a valid selection for the current context
      *
-     * @param  string  $language_id Language ID
-     * @param  bool  $is_data Check against data languages
+     * @param  string  $language_id  Language ID
+     * @param  bool  $is_data  Check against data languages
      * @return bool
      */
     public function isValid($language_id, $is_data = false)

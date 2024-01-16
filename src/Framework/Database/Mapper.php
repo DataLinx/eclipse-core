@@ -46,7 +46,7 @@ class Mapper
     /**
      * Map class to database table
      *
-     * @param  string  $class Class FQN
+     * @param  string  $class  Class FQN
      *
      * @throws Exception
      */
@@ -77,8 +77,8 @@ class Mapper
     /**
      * Create new table
      *
-     * @param  string  $table_name Table name
-     * @param  array  $definition Columns definition
+     * @param  string  $table_name  Table name
+     * @param  array  $definition  Columns definition
      */
     private function create(string $table_name, array $definition)
     {
@@ -113,8 +113,8 @@ class Mapper
     /**
      * Update existing table
      *
-     * @param  string  $table_name Table name
-     * @param  array  $definition Columns definition
+     * @param  string  $table_name  Table name
+     * @param  array  $definition  Columns definition
      */
     private function update(string $table_name, array $definition)
     {
@@ -143,8 +143,8 @@ class Mapper
     /**
      * Process column definition - auto-set presets, add defaults...
      *
-     * @param  mixed  $key Definition key
-     * @param  mixed  $value Definition value
+     * @param  mixed  $key  Definition key
+     * @param  mixed  $value  Definition value
      * @return array
      */
     private function processColumnDefinition($key, $value)
@@ -174,10 +174,10 @@ class Mapper
     /**
      * Create column for table
      *
-     * @param  Blueprint  $table Table blueprint instance
-     * @param  string  $column_name Column name
-     * @param  array  $attributes Column attributes
-     * @param  string|null  $after After column
+     * @param  Blueprint  $table  Table blueprint instance
+     * @param  string  $column_name  Column name
+     * @param  array  $attributes  Column attributes
+     * @param  string|null  $after  After column
      * @return ColumnDefinition
      *
      * @throws Exception
@@ -247,7 +247,7 @@ class Mapper
      *
      * @todo Needs to be fixed for SQLite databases, so that MapperTest::testUpdateMap() can run
      *
-     * @param  string  $class Object class
+     * @param  string  $class  Object class
      *
      * @throws Exception
      */

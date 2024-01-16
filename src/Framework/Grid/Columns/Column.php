@@ -33,8 +33,8 @@ class Column
     /**
      * Create column object
      *
-     * @param  string  $accessor Column accessor (key)
-     * @param  string  $label Column label
+     * @param  string  $accessor  Column accessor (key)
+     * @param  string  $label  Column label
      */
     public function __construct(string $accessor, string $label)
     {
