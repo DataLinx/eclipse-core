@@ -7,6 +7,14 @@ $toast-header-color: white;
 // Import Bootstrap source
 @import '~bootstrap/scss/bootstrap';
 
+.navbar {
+    .navbar-brand {
+        img {
+            width: 120px;
+        }
+    }
+}
+
 .toast-container {
     .toast {
         .toast-header {

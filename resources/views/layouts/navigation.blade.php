@@ -1,11 +1,12 @@
 @php
     use Eclipse\Core\Framework\Output\Menu;
+    use Eclipse\Core\Module;
 @endphp
 
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Eclipse') }}
+            <img src="{{ Module::asset('img/logo/logo.svg') }}" alt="{{ config('app.name', 'Eclipse') }}"/>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ _("Toggle navigation") }}">
