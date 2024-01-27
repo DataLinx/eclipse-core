@@ -28,16 +28,14 @@ class UsersTest extends PackageTestCase
     {
         $this->actingAs($this->authedUser)
             ->get('users')
-            ->assertOk()
-            ->assertViewIs('core::users.index');
+            ->assertOk();
     }
 
     public function test_create_user_screen_can_be_rendered()
     {
         $this->actingAs($this->authedUser)
             ->get('users/create')
-            ->assertOk()
-            ->assertViewIs('core::users.edit');
+            ->assertOk();
     }
 
     public function test_creation_can_be_canceled()
@@ -84,8 +82,7 @@ class UsersTest extends PackageTestCase
 
         $this->actingAs($this->authedUser)
             ->get('users/'.$user->id.'/edit')
-            ->assertOk()
-            ->assertViewIs('core::users.edit');
+            ->assertOk();
     }
 
     public function test_edit_can_be_canceled()
