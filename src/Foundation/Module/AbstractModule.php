@@ -22,8 +22,8 @@ abstract class AbstractModule
     /**
      * Generates the URL for a module asset from the given path that is relative to the module `assets` path.
      *
-     * @param  string  $path The path to the asset, **without leading slash**
-     * @param  bool|null  $secure Whether the URL should be secure (HTTPS) or not. Defaults to null.
+     * @param  string  $path  The path to the asset, **without leading slash**
+     * @param  bool|null  $secure  Whether the URL should be secure (HTTPS) or not. Defaults to null.
      * @return string The generated asset URL.
      */
     public static function asset(string $path, ?bool $secure = null): string
