@@ -76,6 +76,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "format": "vendor/bin/pint"
+        "format": "vendor/bin/pint",
+        "test": "vendor/bin/pest"
     }
 }

@@ -10,7 +10,7 @@ config:
 services:
   appserver:
     type: php:custom
-    xdebug: "debug,develop"
+    xdebug: "debug,develop,coverage"
     overrides:
       image: slimdeluxe/php:8.2-v1.0
       volumes:
@@ -40,7 +40,7 @@ tooling:
   test:
     service: appserver
     description: Run package tests
-    cmd: "vendor/bin/phpunit"
+    cmd: "composer test"
   testbench:
     service: appserver
     description: Execute testbench CLI
