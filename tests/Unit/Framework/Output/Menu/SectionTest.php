@@ -1,38 +1,30 @@
 <?php
 
-namespace Tests\Unit\Framework\Output\Menu;
-
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Output\Menu\Item;
 use Eclipse\Core\Framework\Output\Menu\Section;
 
-/**
- * @covers \Eclipse\Core\Framework\Output\Menu\Section
- */
-class SectionTest extends PackageTestCase
-{
-    public function test_items_can_be_added(): void
-    {
-        $section = new Section('Section label', null, 'section');
+uses(PackageTestCase::class);
 
-        $this->assertFalse($section->hasItems());
+test('items can be added', function () {
+    $section = new Section('Section label', null, 'section');
 
-        $section->addItem(new Item('Some item', url('one')));
-        $section->addItem(new Item('Other item', url('two')));
+    expect($section->hasItems())->toBeFalse();
 
-        $this->assertTrue($section->hasItems());
-        $this->assertCount(2, $section->getItems());
-    }
+    $section->addItem(new Item('Some item', url('one')));
+    $section->addItem(new Item('Other item', url('two')));
 
-    public function test_divider_can_be_added(): void
-    {
-        $section = new Section('Section label', null, 'section');
+    expect($section->hasItems())->toBeTrue()
+        ->and($section->getItems())->toHaveCount(2);
+});
 
-        $section->addItem(new Item('Some item', url('one')));
-        $section->addDivider();
-        $section->addItem(new Item('Other item', url('two')));
+test('divider can be added', function () {
+    $section = new Section('Section label', null, 'section');
 
-        $this->assertCount(3, $section->getItems());
-        $this->assertEquals('_divider_', $section->getItems()[1]);
-    }
-}
+    $section->addItem(new Item('Some item', url('one')));
+    $section->addDivider();
+    $section->addItem(new Item('Other item', url('two')));
+
+    expect($section->getItems())->toHaveCount(3)
+        ->and($section->getItems()[1])->toEqual('_divider_');
+});

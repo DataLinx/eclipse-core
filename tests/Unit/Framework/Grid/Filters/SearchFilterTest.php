@@ -2,92 +2,86 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Framework\Grid\Filters;
-
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Grid\Filters\SearchFilter;
 use Eclipse\Core\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 
-class SearchFilterTest extends PackageTestCase
-{
-    public function test_can_be_created(): void
-    {
-        $filter = new SearchFilter(User::class);
+uses(PackageTestCase::class);
 
-        $this->assertEquals('search', $filter->getName());
-        $this->assertEquals('Search', $filter->getLabel());
-    }
+test('can be created', function () {
+    $filter = new SearchFilter(User::class);
 
-    public function test_exact_condition_can_be_applied(): void
-    {
-        $search = 'test';
+    expect($filter->getName())->toEqual('search')
+        ->and($filter->getLabel())->toEqual('Search');
+});
 
-        $manual_query = User::query();
-        $manual_query->where(function (Builder $builder) use ($search) {
-            $builder->orWhere('name', '=', $search);
-            $builder->orWhere('surname', '=', $search);
-            $builder->orWhere('email', '=', $search);
-        });
+test('exact condition can be applied', function () {
+    $search = 'test';
 
-        $query = User::query();
+    $manual_query = User::query();
+    $manual_query->where(function (Builder $builder) use ($search) {
+        $builder->orWhere('name', '=', $search);
+        $builder->orWhere('surname', '=', $search);
+        $builder->orWhere('email', '=', $search);
+    });
 
-        $filter = new SearchFilter(User::class);
-        $filter->addExactCondition('name');
-        $filter->addExactCondition(['surname', 'email']);
-        $filter->apply($query, $search);
+    $query = User::query();
 
-        $this->assertEquals($manual_query->toSql(), $query->toSql());
+    $filter = new SearchFilter(User::class);
+    $filter->addExactCondition('name');
+    $filter->addExactCondition(['surname', 'email']);
+    $filter->apply($query, $search);
 
-        // Test composite attribute
-        // -----------------------------------
-        $manual_query_2 = User::query();
-        $manual_query_2->where(function (Builder $builder) use ($search) {
-            $builder->orWhereRaw(User::getCompositeDefinition('full_name').' = ?', [$search]);
-        });
+    expect($query->toSql())->toEqual($manual_query->toSql());
 
-        $query_2 = User::query();
+    // Test composite attribute
+    // -----------------------------------
+    $manual_query_2 = User::query();
+    $manual_query_2->where(function (Builder $builder) use ($search) {
+        $builder->orWhereRaw(User::getCompositeDefinition('full_name').' = ?', [$search]);
+    });
 
-        $filter_2 = new SearchFilter(User::class);
-        $filter_2->addExactCondition('full_name');
-        $filter_2->apply($query_2, $search);
+    $query_2 = User::query();
 
-        $this->assertEquals($manual_query_2->toSql(), $query_2->toSql());
-    }
+    $filter_2 = new SearchFilter(User::class);
+    $filter_2->addExactCondition('full_name');
+    $filter_2->apply($query_2, $search);
 
-    public function test_partial_condition_can_be_applied(): void
-    {
-        $search = 'test';
+    expect($query_2->toSql())->toEqual($manual_query_2->toSql());
+});
 
-        $manual_query = User::query();
-        $manual_query->where(function (Builder $builder) use ($search) {
-            $builder->orWhere('name', 'like', "%$search%");
-            $builder->orWhere('surname', 'like', "%$search%");
-            $builder->orWhere('email', 'like', "%$search%");
-        });
+test('partial condition can be applied', function () {
+    $search = 'test';
 
-        $query = User::query();
+    $manual_query = User::query();
+    $manual_query->where(function (Builder $builder) use ($search) {
+        $builder->orWhere('name', 'like', "%$search%");
+        $builder->orWhere('surname', 'like', "%$search%");
+        $builder->orWhere('email', 'like', "%$search%");
+    });
 
-        $filter = new SearchFilter(User::class);
-        $filter->addPartialCondition('name');
-        $filter->addPartialCondition(['surname', 'email']);
-        $filter->apply($query, $search);
+    $query = User::query();
 
-        $this->assertEquals($manual_query->toSql(), $query->toSql());
+    $filter = new SearchFilter(User::class);
+    $filter->addPartialCondition('name');
+    $filter->addPartialCondition(['surname', 'email']);
+    $filter->apply($query, $search);
 
-        // Test composite attribute
-        // -----------------------------------
-        $manual_query_2 = User::query();
-        $manual_query_2->where(function (Builder $builder) use ($search) {
-            $builder->orWhereRaw(User::getCompositeDefinition('full_name').' LIKE ?', ["%$search%"]);
-        });
+    expect($query->toSql())->toEqual($manual_query->toSql());
 
-        $query_2 = User::query();
+    // Test composite attribute
+    // -----------------------------------
+    $manual_query_2 = User::query();
+    $manual_query_2->where(function (Builder $builder) use ($search) {
+        $builder->orWhereRaw(User::getCompositeDefinition('full_name').' LIKE ?', ["%$search%"]);
+    });
 
-        $filter_2 = new SearchFilter(User::class);
-        $filter_2->addPartialCondition('full_name');
-        $filter_2->apply($query_2, $search);
+    $query_2 = User::query();
 
-        $this->assertEquals($manual_query_2->toSql(), $query_2->toSql());
-    }
-}
+    $filter_2 = new SearchFilter(User::class);
+    $filter_2->addPartialCondition('full_name');
+    $filter_2->apply($query_2, $search);
+
+    expect($query_2->toSql())->toEqual($manual_query_2->toSql());
+});

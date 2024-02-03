@@ -2,73 +2,62 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Framework\Output\Menu;
-
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Output\Menu\Item;
 use Illuminate\Contracts\Routing\UrlGenerator as UrlGeneratorInterface;
-use InvalidArgumentException;
 use Mockery\MockInterface;
 
-/**
- * @covers \Eclipse\Core\Framework\Output\Menu\Item
- */
-class ItemTest extends PackageTestCase
-{
-    public function test_item_can_be_created(): void
-    {
-        // Minimal example
-        $item = new Item('Test label', url('test'));
+uses(PackageTestCase::class);
 
-        $this->assertEquals('Test label', $item->getLabel());
-        $this->assertEquals(url('test'), $item->getHref());
+test('item can be created', function () {
+    // Minimal example
+    $item = new Item('Test label', url('test'));
 
-        // Example with both href and key
-        $item = new Item('Test label', url('test'), 'test_key');
+    expect($item->getLabel())->toEqual('Test label')
+        ->and($item->getHref())->toEqual(url('test'));
 
-        $this->assertEquals('Test label', $item->getLabel());
-        $this->assertEquals(url('test'), $item->getHref());
-        $this->assertEquals('test_key', $item->getKey());
+    // Example with both href and key
+    $item = new Item('Test label', url('test'), 'test_key');
 
-        // Example with only the key
-        $item = new Item('Test label', null, 'test_key');
+    expect($item->getLabel())->toEqual('Test label')
+        ->and($item->getHref())->toEqual(url('test'))
+        ->and($item->getKey())->toEqual('test_key');
 
-        $this->assertEquals('Test label', $item->getLabel());
-        $this->assertEquals('test_key', $item->getKey());
+    // Example with only the key
+    $item = new Item('Test label', null, 'test_key');
 
-        // Test exception
-        $this->expectException(InvalidArgumentException::class);
-        /** @noinspection PhpUnusedLocalVariableInspection */
-        $item = new Item('Test label');
-    }
+    expect($item->getLabel())->toEqual('Test label')
+        ->and($item->getKey())->toEqual('test_key');
 
-    public function test_getters_and_setters_work(): void
-    {
-        $item = new Item('Test label', url('test'));
+    // Test exception
+    $this->expectException(InvalidArgumentException::class);
 
-        $this->assertIsObject($item->setLabel('Another label'));
-        $this->assertEquals('Another label', $item->getLabel());
+    /** @noinspection PhpUnusedLocalVariableInspection */
+    $item = new Item('Test label');
+});
 
-        $this->assertIsObject($item->setHref(url('test-2')));
-        $this->assertEquals(url('test-2'), $item->getHref());
+test('getters and setters work', function () {
+    $item = new Item('Test label', url('test'));
 
-        $this->assertIsObject($item->setKey('test_key'));
-        $this->assertEquals('test_key', $item->getKey());
+    expect($item->setLabel('Another label'))->toBeObject()
+        ->and($item->getLabel())->toEqual('Another label')
+        ->and($item->setHref(url('test-2')))->toBeObject()
+        ->and($item->getHref())->toEqual(url('test-2'))
+        ->and($item->setKey('test_key'))->toBeObject()
+        ->and($item->getKey())->toEqual('test_key')
+        ->and($item->setDisabled(true))->toBeObject()
+        ->and($item->isDisabled())->toBeTrue();
 
-        $this->assertIsObject($item->setDisabled(true));
-        $this->assertTrue($item->isDisabled());
-    }
+});
 
-    public function test_current_item_can_be_detected(): void
-    {
-        $item = new Item('Test label', url('test'));
-        $item2 = new Item('Another item', url('test-2'));
+test('current item can be detected', function () {
+    $item = new Item('Test label', url('test'));
+    $item2 = new Item('Another item', url('test-2'));
 
-        $this->mock(UrlGeneratorInterface::class, function (MockInterface $mock) {
-            $mock->shouldReceive('current')->andReturn(url('test'));
-        });
+    $this->mock(UrlGeneratorInterface::class, function (MockInterface $mock) {
+        $mock->allows('current')->andReturns(url('test'));
+    });
 
-        $this->assertTrue($item->isCurrent());
-        $this->assertFalse($item2->isCurrent());
-    }
-}
+    expect($item->isCurrent())->toBeTrue()
+        ->and($item2->isCurrent())->toBeFalse();
+});

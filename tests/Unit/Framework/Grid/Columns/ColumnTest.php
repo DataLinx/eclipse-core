@@ -2,42 +2,37 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Framework\Grid\Columns;
-
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Grid\Columns\Column;
 use Eclipse\Core\Models\Site;
 use Eclipse\Core\Models\User;
 
-class ColumnTest extends PackageTestCase
-{
-    public function test_can_be_created(): void
-    {
-        $column = new Column('test', 'Test label');
+uses(PackageTestCase::class);
 
-        $this->assertEquals('test', $column->getAccessor());
-        $this->assertEquals('Test label', $column->getLabel());
+test('can be created', function () {
+    $column = new Column('test', 'Test label');
 
-        $column->setWidth(200);
-        $this->assertEquals(200, $column->getWidth());
+    expect($column->getAccessor())->toEqual('test')
+        ->and($column->getLabel())->toEqual('Test label');
 
-        $this->assertEquals(true, $column->isSortable());
-        $column->setSortable(false);
-        $this->assertEquals(false, $column->isSortable());
-    }
+    $column->setWidth(200);
+    expect($column->getWidth())->toEqual(200)
+        ->and($column->isSortable())->toEqual(true);
 
-    public function test_can_be_rendered(): void
-    {
-        $user = User::factory()->create();
+    $column->setSortable(false);
+    expect($column->isSortable())->toEqual(false);
+});
 
-        $column = new Column('name', 'Name');
+test('can be rendered', function () {
+    $user = User::factory()->create();
 
-        $this->assertEquals($user->name, $column->render($user));
+    $column = new Column('name', 'Name');
 
-        $column_2 = new Column('url', 'URL');
+    expect($column->render($user))->toEqual($user->name);
 
-        $site = Site::factory()->make();
+    $column_2 = new Column('url', 'URL');
 
-        $this->assertEquals($site->getUrl(), $column_2->render($site));
-    }
-}
+    $site = Site::factory()->make();
+
+    expect($column_2->render($site))->toEqual($site->getUrl());
+});

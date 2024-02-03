@@ -1,29 +1,22 @@
 <?php
 
-namespace Tests\Feature\View\Components\Form;
-
-use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\View\Components\Form\Error;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 
-class ErrorTest extends PackageTestCase
-{
-    use InteractsWithViews;
+uses(InteractsWithViews::class);
 
-    public function test_common_example_can_be_rendered()
-    {
-        $this->withViewErrors([
-            'foo' => 'Test error',
-            'bar' => 'Another error',
-        ]);
+test('common example can be rendered', function () {
+    $this->withViewErrors([
+        'foo' => 'Test error',
+        'bar' => 'Another error',
+    ]);
 
-        $view = $this->component(Error::class);
+    $view = $this->component(Error::class);
 
-        $view->assertSeeInOrder([
-            'alert alert-danger',
-            'Test error',
-            'hr',
-            'Another error',
-        ]);
-    }
-}
+    $view->assertSeeInOrder([
+        'alert alert-danger',
+        'Test error',
+        'hr',
+        'Another error',
+    ]);
+});

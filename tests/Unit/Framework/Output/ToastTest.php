@@ -2,72 +2,62 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Framework\Output;
-
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Output\Toast;
 
-/**
- * @covers \Eclipse\Core\Framework\Output\Toast
- */
-class ToastTest extends PackageTestCase
-{
-    public function test_toast_can_be_created(): void
-    {
-        $toast = new Toast('Some message', 'Some title');
+uses(PackageTestCase::class);
 
-        $this->assertEquals('Some message', $toast->getMessage());
-        $this->assertEquals('Some title', $toast->getTitle());
-        $this->assertEquals('info', $toast->getType());
-        $this->assertEquals('info-circle', $toast->getIcon());
-        $this->assertFalse($toast->isSticky());
-        $this->assertFalse($toast->hasLinks());
-        $this->assertNull($toast->getLinks());
+test('toast can be created', function () {
+    $toast = new Toast('Some message', 'Some title');
 
-        // Test basic setters
-        $toast->title('Some other title');
-        $this->assertEquals('Some other title', $toast->getTitle());
+    expect($toast->getMessage())->toEqual('Some message')
+        ->and($toast->getTitle())->toEqual('Some title')
+        ->and($toast->getType())->toEqual('info')
+        ->and($toast->getIcon())->toEqual('info-circle')
+        ->and($toast->isSticky())->toBeFalse()
+        ->and($toast->hasLinks())->toBeFalse()
+        ->and($toast->getLinks())->toBeNull();
 
-        $toast->icon('test');
-        $this->assertEquals('test', $toast->getIcon());
+    // Test basic setters
+    $toast->title('Some other title');
+    expect($toast->getTitle())->toEqual('Some other title');
 
-        $toast->sticky();
-        $this->assertTrue($toast->isSticky());
-    }
+    $toast->icon('test');
+    expect($toast->getIcon())->toEqual('test');
 
-    public function test_type_can_be_set(): void
-    {
-        $toast = new Toast('Some message');
+    $toast->sticky();
+    expect($toast->isSticky())->toBeTrue();
+});
 
-        foreach (['success', 'danger', 'warning', 'info'] as $type) {
-            $toast->$type();
+test('type can be set', function () {
+    $toast = new Toast('Some message');
 
-            $this->assertEquals($type, $toast->getType());
+    foreach (['success', 'danger', 'warning', 'info'] as $type) {
+        $toast->$type();
 
-            $this->assertEquals(match ($type) {
+        expect($toast->getType())->toEqual($type)
+            ->and($toast->getTitle())->toEqual(match ($type) {
                 'success' => _('Success'),
                 'danger' => _('Error'),
                 'warning' => _('Warning'),
                 'info' => _('Notice'),
-            }, $toast->getTitle());
-
-            $this->assertEquals(match ($type) {
+            })
+            ->and($toast->getIcon())->toEqual(match ($type) {
                 'success' => 'check',
                 'danger' => 'exclamation-circle',
                 'warning' => 'exclamation-triangle',
                 'info' => 'info-circle',
-            }, $toast->getIcon());
-        }
+            });
+
     }
+});
 
-    public function test_links_can_be_added(): void
-    {
-        $toast = new Toast('Some message');
+test('links can be added', function () {
+    $toast = new Toast('Some message');
 
-        $toast->link('Some label', 'link');
-        $toast->link('Another label', 'link-2');
+    $toast->link('Some label', 'link');
+    $toast->link('Another label', 'link-2');
 
-        $this->assertTrue($toast->hasLinks());
-        $this->assertCount(2, $toast->getLinks());
-    }
-}
+    expect($toast->hasLinks())->toBeTrue()
+        ->and($toast->getLinks())->toHaveCount(2);
+});

@@ -2,37 +2,32 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Framework\Grid\Columns;
-
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Grid\Action;
 use Eclipse\Core\Framework\Grid\Columns\ActionColumn;
 use Eclipse\Core\Models\User;
-use InvalidArgumentException;
 
-class ActionColumnTest extends PackageTestCase
-{
-    public function test_can_be_created(): void
-    {
-        $column = new ActionColumn([
-            new Action('edit', url('/users/{id}/edit')),
-            new Action('delete'),
-        ]);
+uses(PackageTestCase::class);
 
-        $user = User::factory()->create();
+test('can be created', function () {
+    $column = new ActionColumn([
+        new Action('edit', url('/users/{id}/edit')),
+        new Action('delete'),
+    ]);
 
-        // Test actions
-        $actions = [
-            '<a class="btn btn-secondary btn-sm grid-action" data-action="edit" href="'.str_replace('{id}', (string) $user->id, url('/users/{id}/edit')).'">Edit</a>',
-            '<a class="btn btn-secondary btn-sm grid-action" data-action="delete" href="javascript:void(0);">Delete</a>',
-        ];
+    $user = User::factory()->create();
 
-        $this->assertEquals(implode(' ', $actions), $column->render($user));
+    // Test actions
+    $actions = [
+        '<a class="btn btn-secondary btn-sm grid-action" data-action="edit" href="'.str_replace('{id}', (string) $user->id, url('/users/{id}/edit')).'">Edit</a>',
+        '<a class="btn btn-secondary btn-sm grid-action" data-action="delete" href="javascript:void(0);">Delete</a>',
+    ];
 
-        // Test sortable parameter
-        $this->assertFalse($column->sortable);
+    expect($column->render($user))->toEqual(implode(' ', $actions))
+        ->and($column->sortable)->toBeFalse();
 
-        $this->expectException(InvalidArgumentException::class);
-        $column->setSortable(true);
-    }
-}
+    // Test sortable parameter
+
+    $this->expectException(InvalidArgumentException::class);
+    $column->setSortable(true);
+});

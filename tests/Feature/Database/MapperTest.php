@@ -1,76 +1,54 @@
 <?php
 
-namespace Tests\Feature\Database;
-
-use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Database\Mapper;
-use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Facades\DB;
 use Tests\TestObjects\Configs\InvalidConfigColumnType;
 use Tests\TestObjects\Configs\InvalidConfigDefinition;
 use Tests\TestObjects\Configs\UpdatedValidConfig;
 use Tests\TestObjects\Configs\ValidConfig;
 
-class MapperTest extends PackageTestCase
-{
-    private $mapper;
+beforeEach(function () {
+    $this->mapper = new Mapper();
+    $this->schema = DB::connection()->getSchemaBuilder();
+});
 
-    /**
-     * @var Builder
-     */
-    private $schema;
+test('config can be mapped', function () {
+    $this->mapper->map(ValidConfig::class);
 
-    public function setUp(): void
-    {
-        parent::setUp();
+    expect($this->schema->hasTable('core_test_config'))->toBeTrue();
+});
 
-        $this->mapper = new Mapper();
-        $this->schema = DB::connection()->getSchemaBuilder();
+test('config can be updated', function () {
+    $this->mapper->map(ValidConfig::class);
+
+    // Add column
+    $this->mapper->map(UpdatedValidConfig::class);
+    expect($this->schema->hasColumn('core_test_config', 'another_bool'))->toBeTrue();
+
+    if (env('DB_CONNECTION') !== 'sqlite') {
+        // Remove column - this does not work with sqlite databases
+        $this->mapper->removeDeprecatedColumns(UpdatedValidConfig::class);
+        expect($this->schema->hasColumn('core_test_config', 'test_object'))->toBeFalse();
     }
 
-    public function test_config_can_be_mapped()
-    {
-        $this->mapper->map(ValidConfig::class);
+    // Invalid config
+    $this->expectExceptionMessage('Column definition property not set');
+    $this->mapper->removeDeprecatedColumns(InvalidConfigDefinition::class);
+});
 
-        $this->assertTrue($this->schema->hasTable('core_test_config'));
-    }
+test('non existing class can be detected', function () {
+    $non_existent_class = '\Some\Class';
 
-    public function test_config_can_be_updated()
-    {
-        $this->mapper->map(ValidConfig::class);
+    $this->expectExceptionMessage("Class $non_existent_class does not exist");
+    $this->mapper->map($non_existent_class);
+});
 
-        // Add column
-        $this->mapper->map(UpdatedValidConfig::class);
-        $this->assertTrue($this->schema->hasColumn('core_test_config', 'another_bool'));
+test('empty definition can be detected', function () {
+    $this->expectExceptionMessage('Column definition property not set');
+    $this->mapper->map(InvalidConfigDefinition::class);
+});
 
-        if (env('DB_CONNECTION') !== 'sqlite') {
-            // Remove column - this does not work with sqlite databases
-            $this->mapper->removeDeprecatedColumns(UpdatedValidConfig::class);
-            $this->assertFalse($this->schema->hasColumn('core_test_config', 'test_object'));
-        }
-
-        // Invalid config
-        $this->expectExceptionMessage('Column definition property not set');
-        $this->mapper->removeDeprecatedColumns(InvalidConfigDefinition::class);
-    }
-
-    public function test_non_existing_class_can_be_detected()
-    {
-        $non_existent_class = '\Some\Class';
-
-        $this->expectExceptionMessage("Class $non_existent_class does not exist");
-        $this->mapper->map($non_existent_class);
-    }
-
-    public function test_empty_definition_can_be_detected()
-    {
-        $this->expectExceptionMessage('Column definition property not set');
-        $this->mapper->map(InvalidConfigDefinition::class);
-    }
-
-    public function test_invalid_column_type_can_be_detected()
-    {
-        $this->expectExceptionMessage(sprintf('Could not create column %s: %s', 'col', 'Unknown column type'));
-        $this->mapper->map(InvalidConfigColumnType::class);
-    }
-}
+test('invalid column type can be detected', function () {
+    $this->expectExceptionMessage(sprintf('Could not create column %s: %s', 'col', 'Unknown column type'));
+    $this->mapper->map(InvalidConfigColumnType::class);
+});

@@ -2,80 +2,58 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Framework\Output;
-
 use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\Output\Menu;
-use Exception;
-use InvalidArgumentException;
+use Eclipse\Core\Framework\Output\Menu\Item;
+use Eclipse\Core\Framework\Output\Menu\Section;
 
-/**
- * @covers \Eclipse\Core\Framework\Output\Menu
- */
-class MenuTest extends PackageTestCase
-{
-    /**
-     * @throws Exception
-     */
-    public function test_items_can_added(): void
-    {
-        $menu = new Menu();
+uses(PackageTestCase::class);
 
-        $menu->addItem(new Menu\Item('Test item', 'test'));
+test('items can added', function () {
+    $menu = new Menu();
 
-        $section = new Menu\Section('Test section', null, 'section');
-        $section->addItem(new Menu\Item('Another item', 'another-item'));
-        $menu->addItem($section);
+    $menu->addItem(new Item('Test item', 'test'));
 
-        $items = $menu->getItems();
+    $section = new Section('Test section', null, 'section');
+    $section->addItem(new Item('Another item', 'another-item'));
+    $menu->addItem($section);
 
-        $this->assertCount(2, $items);
-    }
+    $items = $menu->getItems();
 
-    /**
-     * @throws Exception
-     */
-    public function test_key_collision_can_be_detected(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
+    expect($items)->toHaveCount(2);
+});
 
-        $menu = new Menu();
+test('key collision can be detected', function () {
+    $this->expectException(InvalidArgumentException::class);
 
-        $menu->addItem(new Menu\Item('Test item', 'test'));
-        $menu->addItem(new Menu\Item('Test item', 'test'));
-    }
+    $menu = new Menu();
 
-    /**
-     * @throws Exception
-     */
-    public function test_item_can_be_inserted_after_another_item(): void
-    {
-        $menu = new Menu();
+    $menu->addItem(new Item('Test item', 'test'));
+    $menu->addItem(new Item('Test item', 'test'));
+});
 
-        $menu->addItem(new Menu\Item('One', 'one'));
-        $menu->addItem(new Menu\Item('Three', 'three'));
-        $menu->after('one')->addItem(new Menu\Item('Two', 'two'));
+test('item can be inserted after another item', function () {
+    $menu = new Menu();
 
-        $items = $menu->getItems();
+    $menu->addItem(new Item('One', 'one'));
+    $menu->addItem(new Item('Three', 'three'));
+    $menu->after('one')->addItem(new Item('Two', 'two'));
 
-        $this->assertCount(3, $items);
+    $items = $menu->getItems();
 
-        $this->assertEquals('one', $items['one']->getKey());
-        $this->assertEquals('two', $items['two']->getKey());
-        $this->assertEquals('three', $items['three']->getKey());
-    }
+    expect($items)->toHaveCount(3)
+        ->and($items['one']->getKey())->toEqual('one')
+        ->and($items['two']->getKey())->toEqual('two')
+        ->and($items['three']->getKey())->toEqual('three');
 
-    /**
-     * @throws Exception
-     */
-    public function test_insertion_exception_can_be_caught(): void
-    {
-        $this->expectException(Exception::class);
+});
 
-        $menu = new Menu();
+test('insertion exception can be caught', function () {
+    $this->expectException(Exception::class);
 
-        $menu->addItem(new Menu\Item('Three', 'three'));
+    $menu = new Menu();
 
-        $menu->after('one')->addItem(new Menu\Item('Two', 'two'));
-    }
-}
+    $menu->addItem(new Item('Three', 'three'));
+
+    $menu->after('one')->addItem(new Item('Two', 'two'));
+});

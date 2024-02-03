@@ -1,39 +1,31 @@
 <?php
 
-namespace Tests\Feature\View\Components;
-
-use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\View\Components\Icon;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 
-class IconTest extends PackageTestCase
-{
-    use InteractsWithViews;
+uses(InteractsWithViews::class);
 
-    public function test_minimal_example_can_be_displayed()
-    {
-        $view = $this->component(Icon::class, [
-            'name' => 'user',
-        ]);
+test('minimal example can be displayed', function () {
+    $view = $this->component(Icon::class, [
+        'name' => 'user',
+    ]);
 
-        $view->assertSeeInOrder([
-            '<i',
-            'fa',
-            'fa-user',
-        ], false)->assertDontSee('text-');
-    }
+    $view->assertSeeInOrder([
+        '<i',
+        'fa',
+        'fa-user',
+    ], false)->assertDontSee('text-');
+});
 
-    public function test_full_example_can_be_displayed()
-    {
-        $view = $this->blade('<x-icon name="user" pack="fal" color="success" class="fa-10x" id="some-id"/>');
+test('full example can be displayed', function () {
+    $view = $this->blade('<x-icon name="user" pack="fal" color="success" class="fa-10x" id="some-id"/>');
 
-        $view->assertSeeInOrder([
-            '<i',
-            'fal',
-            'fa-user',
-            'text-success',
-            'fa-10x',
-            'id="some-id"',
-        ], false);
-    }
-}
+    $view->assertSeeInOrder([
+        '<i',
+        'fal',
+        'fa-user',
+        'text-success',
+        'fa-10x',
+        'id="some-id"',
+    ], false);
+});

@@ -1,138 +1,118 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
-
-use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class UsersTest extends PackageTestCase
-{
-    protected $authedUser;
+beforeEach(function () {
+    $this->authedUser = User::factory()->make();
+});
 
-    protected function setUp(): void
-    {
-        parent::setUp();
+test('unauthorized access can be prevented', function () {
+    $this->get('users')
+        ->assertRedirect('login');
+});
 
-        $this->authedUser = User::factory()->make();
-    }
+test('authorized access can be allowed', function () {
+    $this->actingAs($this->authedUser)
+        ->get('users')
+        ->assertOk();
+});
 
-    public function test_unauthorized_access_can_be_prevented()
-    {
-        $this->get('users')
-            ->assertRedirect('login');
-    }
+test('create user screen can be rendered', function () {
+    $this->actingAs($this->authedUser)
+        ->get('users/create')
+        ->assertOk();
+});
 
-    public function test_authorized_access_can_be_allowed()
-    {
-        $this->actingAs($this->authedUser)
-            ->get('users')
-            ->assertOk();
-    }
+test('creation can be canceled', function () {
+    $this->actingAs($this->authedUser)
+        ->post('users', [
+            'action' => 'cancel',
+        ])
+        ->assertRedirect('users');
+});
 
-    public function test_create_user_screen_can_be_rendered()
-    {
-        $this->actingAs($this->authedUser)
-            ->get('users/create')
-            ->assertOk();
-    }
+test('new user can be created', function () {
+    $this->actingAs($this->authedUser);
 
-    public function test_creation_can_be_canceled()
-    {
-        $this->actingAs($this->authedUser)
-            ->post('users', [
-                'action' => 'cancel',
-            ])
-            ->assertRedirect('users');
-    }
+    $data = [
+        'name' => 'John',
+        'surname' => 'Doe',
+        'email' => 'john@doe.net',
+        'password' => 'johndoe',
+    ];
 
-    public function test_new_user_can_be_created()
-    {
-        $this->actingAs($this->authedUser);
+    $response = $this->post('users', $data);
 
-        $data = [
-            'name' => 'John',
-            'surname' => 'Doe',
-            'email' => 'john@doe.net',
-            'password' => 'johndoe',
-        ];
+    $response->assertRedirect('users');
 
-        $response = $this->post('users', $data);
+    $user = User::fetchByEmail('john@doe.net');
+    expect($user)->toBeObject();
 
-        $response->assertRedirect('users');
-
-        $user = User::fetchByEmail('john@doe.net');
-        $this->assertIsObject($user);
-
-        foreach ($data as $key => $val) {
-            if ($key === 'password') {
-                $this->assertTrue(Hash::check($val, $user->password), 'Hashed password differs from plain-text!');
-            } else {
-                $this->assertEquals($val, $user->$key);
-            }
+    foreach ($data as $key => $val) {
+        if ($key === 'password') {
+            expect(Hash::check($val, $user->password))->toBeTrue('Hashed password differs from plain-text!');
+        } else {
+            expect($user->$key)->toEqual($val);
         }
-
-        $this->assertEquals('John Doe', $user->full_name);
     }
 
-    public function test_edit_user_screen_can_be_rendered()
-    {
-        $user = User::factory()->create();
+    expect($user->full_name)->toEqual('John Doe');
+});
 
-        $this->actingAs($this->authedUser)
-            ->get('users/'.$user->id.'/edit')
-            ->assertOk();
+test('edit user screen can be rendered', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($this->authedUser)
+        ->get('users/'.$user->id.'/edit')
+        ->assertOk();
+});
+
+test('edit can be canceled', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($this->authedUser)
+        ->put('users/'.$user->id, [
+            'action' => 'cancel',
+        ])
+        ->assertRedirect('users');
+});
+
+test('existing user can be updated', function () {
+    $this->actingAs($this->authedUser);
+
+    $user = User::factory()->create();
+
+    $data = [
+        'name' => 'Diego',
+        'surname' => 'de la Vega',
+        'email' => 'diego@vega.es',
+    ];
+
+    $response = $this->put('users/'.$user->id, $data);
+
+    $response->assertRedirect('users');
+
+    $updatedUser = User::fetchByEmail('diego@vega.es');
+    expect($updatedUser)->toBeObject();
+
+    foreach ($data as $key => $val) {
+        expect($updatedUser->$key)->toEqual($val);
     }
 
-    public function test_edit_can_be_canceled()
-    {
-        $user = User::factory()->create();
+    expect($updatedUser->password)->toEqual($user->password);
+});
 
-        $this->actingAs($this->authedUser)
-            ->put('users/'.$user->id, [
-                'action' => 'cancel',
-            ])
-            ->assertRedirect('users');
-    }
+test('user can be deleted', function () {
+    $this->actingAs($this->authedUser);
 
-    public function test_existing_user_can_be_updated()
-    {
-        $this->actingAs($this->authedUser);
+    $user = User::factory()->create();
 
-        $user = User::factory()->create();
+    $response = $this->deleteJson('users/'.$user->id);
 
-        $data = [
-            'name' => 'Diego',
-            'surname' => 'de la Vega',
-            'email' => 'diego@vega.es',
-        ];
+    $response->assertOk()
+        ->assertJsonFragment(['error' => 0]);
 
-        $response = $this->put('users/'.$user->id, $data);
-
-        $response->assertRedirect('users');
-
-        $updatedUser = User::fetchByEmail('diego@vega.es');
-        $this->assertIsObject($updatedUser);
-
-        foreach ($data as $key => $val) {
-            $this->assertEquals($val, $updatedUser->$key);
-        }
-
-        $this->assertEquals($user->password, $updatedUser->password);
-    }
-
-    public function test_user_can_be_deleted()
-    {
-        $this->actingAs($this->authedUser);
-
-        $user = User::factory()->create();
-
-        $response = $this->deleteJson('users/'.$user->id);
-
-        $response->assertOk()
-            ->assertJsonFragment(['error' => 0]);
-
-        $this->assertTrue(DB::table('core_user')->where('id', $user->id)->doesntExist(), 'User was not deleted!');
-    }
-}
+    expect(DB::table('core_user')->where('id', $user->id)->doesntExist())->toBeTrue('User was not deleted!');
+});

@@ -1,153 +1,125 @@
 <?php
 
-namespace Tests\Feature\Framework;
-
-use Eclipse\Core\Foundation\Testing\PackageTestCase;
 use Eclipse\Core\Framework\L10n;
 use Eclipse\Core\Models\User;
-use Exception;
 
-class L10nTest extends PackageTestCase
-{
-    /**
-     * @var L10n
-     */
-    private $l10n;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        if (empty($this->l10n)) {
-            $this->l10n = resolve(L10n::class);
-        }
-
-        $this->l10n->setLanguage('en');
-        $this->l10n->setLanguageValidation(true);
-        $this->l10n->setDomain('core');
+beforeEach(function () {
+    if (empty($this->l10n)) {
+        $this->l10n = resolve(L10n::class);
     }
 
-    public function test_domain_can_be_bound()
-    {
-        // Test with set_domain
-        $this->l10n->setDomain('core');
-        $this->assertEquals('core', textdomain(null));
-        $this->l10n->bindDomain('test', __DIR__.'/../../../resources/locales', true);
-        $this->assertEquals('test', textdomain(null));
-    }
+    $this->l10n->setLanguage('en');
+    $this->l10n->setLanguageValidation(true);
+    $this->l10n->setDomain('core');
+});
 
-    public function test_non_existing_domain_can_be_detected()
-    {
-        $dir = 'some/dir';
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage("Directory $dir does not exist");
-        $this->l10n->bindDomain('test123', $dir);
-    }
+test('domain can be bound', function () {
+    // Test with set_domain
+    $this->l10n->setDomain('core');
+    expect(textdomain(null))->toEqual('core');
+    $this->l10n->bindDomain('test', __DIR__.'/../../../resources/locales', true);
+    expect(textdomain(null))->toEqual('test');
+});
 
-    public function test_empty_domain_can_be_detected()
-    {
-        // Test empty domain
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage('Domain parameter is required');
-        $this->l10n->setDomain('');
-    }
+test('non existing domain can be detected', function () {
+    $dir = 'some/dir';
+    $this->expectException(Exception::class);
+    $this->expectExceptionMessage("Directory $dir does not exist");
+    $this->l10n->bindDomain('test123', $dir);
+});
 
-    public function test_tmp_domain_can_be_set()
-    {
-        $this->l10n->bindDomain('test', __DIR__.'/../../../resources/locales');
+test('empty domain can be detected', function () {
+    // Test empty domain
+    $this->expectException(Exception::class);
+    $this->expectExceptionMessage('Domain parameter is required');
+    $this->l10n->setDomain('');
+});
 
-        // Initial state
-        $this->l10n->setDomain('core');
-        $this->assertEquals('core', textdomain(null));
+test('tmp domain can be set', function () {
+    $this->l10n->bindDomain('test', __DIR__.'/../../../resources/locales');
 
-        // Set tmp
-        $this->l10n->setDomain('test', true);
-        $this->assertEquals('test', textdomain(null));
+    // Initial state
+    $this->l10n->setDomain('core');
+    expect(textdomain(null))->toEqual('core');
 
-        // Reset
-        $this->l10n->resetDomain();
-        $this->assertEquals('core', textdomain(null));
+    // Set tmp
+    $this->l10n->setDomain('test', true);
+    expect(textdomain(null))->toEqual('test');
 
-        // Unneeded reset
-        $this->l10n->resetDomain();
-        $this->assertEquals('core', textdomain(null));
-    }
+    // Reset
+    $this->l10n->resetDomain();
+    expect(textdomain(null))->toEqual('core');
 
-    public function test_invalid_language_can_be_detected()
-    {
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage('"bla" is not a valid UI language');
-        $this->l10n->setLanguage('bla');
-    }
+    // Unneeded reset
+    $this->l10n->resetDomain();
+    expect(textdomain(null))->toEqual('core');
+});
 
-    public function test_invalid_data_language_can_be_detected()
-    {
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage('"hr" is not a valid data language');
-        $this->l10n->setLanguage('en', 'hr');
-    }
+test('invalid language can be detected', function () {
+    $this->expectException(Exception::class);
+    $this->expectExceptionMessage('"bla" is not a valid UI language');
+    $this->l10n->setLanguage('bla');
+});
 
-    public function test_language_can_be_set()
-    {
-        $this->l10n->setLanguage('en', 'sl');
-        $this->assertEquals('en', $this->l10n->getLanguageId());
-        $this->assertEquals('sl', $this->l10n->getDataLanguageId());
-    }
+test('invalid data language can be detected', function () {
+    $this->expectException(Exception::class);
+    $this->expectExceptionMessage('"hr" is not a valid data language');
+    $this->l10n->setLanguage('en', 'hr');
+});
 
-    public function test_language_validation_can_be_disabled()
-    {
-        $this->l10n->setLanguageValidation(false);
-        $this->l10n->setLanguage('hr');
-        $this->assertEquals('hr', $this->l10n->getLanguageId());
-    }
+test('language can be set', function () {
+    $this->l10n->setLanguage('en', 'sl');
+    expect($this->l10n->getLanguageId())->toEqual('en');
+    expect($this->l10n->getDataLanguageId())->toEqual('sl');
+});
 
-    public function test_sl_language_can_be_set_from_cookie()
-    {
-        $this->actingAs(User::factory()->make())
-            ->withUnencryptedCookie(L10n::COOKIE_NAME, 'sl');
+test('language validation can be disabled', function () {
+    $this->l10n->setLanguageValidation(false);
+    $this->l10n->setLanguage('hr');
+    expect($this->l10n->getLanguageId())->toEqual('hr');
+});
 
-        $response = $this->get('/dashboard');
+test('sl language can be set from cookie', function () {
+    $this->actingAs(User::factory()->make())
+        ->withUnencryptedCookie(L10n::COOKIE_NAME, 'sl');
 
-        $response->assertSee('html lang="sl"', false);
-    }
+    $response = $this->get('/dashboard');
 
-    public function test_en_language_can_be_set_from_cookie()
-    {
-        $this->actingAs(User::factory()->make())
-            ->withUnencryptedCookie(L10n::COOKIE_NAME, 'en');
+    $response->assertSee('html lang="sl"', false);
+});
 
-        $response = $this->get('/dashboard');
+test('en language can be set from cookie', function () {
+    $this->actingAs(User::factory()->make())
+        ->withUnencryptedCookie(L10n::COOKIE_NAME, 'en');
 
-        $response->assertSee('html lang="en"', false);
-    }
+    $response = $this->get('/dashboard');
 
-    public function test_language_can_be_set_from_first_header_value()
-    {
-        $this->actingAs(User::factory()->make())
-            ->withHeader('HTTP_ACCEPT_LANGUAGE', 'sl,en');
+    $response->assertSee('html lang="en"', false);
+});
 
-        $response = $this->get('/dashboard');
+test('language can be set from first header value', function () {
+    $this->actingAs(User::factory()->make())
+        ->withHeader('HTTP_ACCEPT_LANGUAGE', 'sl,en');
 
-        $response->assertSee('html lang="sl"', false);
-    }
+    $response = $this->get('/dashboard');
 
-    public function test_language_can_be_set_from_non_first_header_value()
-    {
-        $this->actingAs(User::factory()->make())
-            ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru,en');
+    $response->assertSee('html lang="sl"', false);
+});
 
-        $response = $this->get('/dashboard');
+test('language can be set from non first header value', function () {
+    $this->actingAs(User::factory()->make())
+        ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru,en');
 
-        $response->assertSee('html lang="en"', false);
-    }
+    $response = $this->get('/dashboard');
 
-    public function test_invalid_language_in_header_can_be_handled()
-    {
-        $this->actingAs(User::factory()->make())
-            ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru');
+    $response->assertSee('html lang="en"', false);
+});
 
-        $response = $this->get('/dashboard');
+test('invalid language in header can be handled', function () {
+    $this->actingAs(User::factory()->make())
+        ->withHeader('HTTP_ACCEPT_LANGUAGE', 'ru');
 
-        $response->assertSee('html lang="en"', false);
-    }
-}
+    $response = $this->get('/dashboard');
+
+    $response->assertSee('html lang="en"', false);
+});
