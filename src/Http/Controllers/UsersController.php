@@ -5,6 +5,8 @@ namespace Eclipse\Core\Http\Controllers;
 use Eclipse\Core\Foundation\Http\Controllers\AbstractController;
 use Eclipse\Core\Framework\Output;
 use Eclipse\Core\Models\User;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,20 +14,16 @@ class UsersController extends AbstractController
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(): Renderable
     {
         return view('core::users.index');
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function create()
+    public function create(): Renderable
     {
         return view('core::users.edit', [
             'user' => new User,
@@ -35,10 +33,8 @@ class UsersController extends AbstractController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request, Output $output)
+    public function store(Request $request, Output $output): RedirectResponse
     {
         if (request('action') === 'cancel') {
             return redirect('users');
@@ -53,8 +49,6 @@ class UsersController extends AbstractController
 
     /**
      * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function show(User $user)
     {
@@ -63,10 +57,8 @@ class UsersController extends AbstractController
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(User $user)
+    public function edit(User $user): Renderable
     {
         return view('core::users.edit', [
             'user' => $user,
@@ -76,10 +68,8 @@ class UsersController extends AbstractController
 
     /**
      * Update the specified resource in storage.
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, User $user, Output $output)
+    public function update(Request $request, User $user, Output $output): RedirectResponse
     {
         if (request('action') === 'cancel') {
             return redirect('users');
@@ -99,11 +89,9 @@ class UsersController extends AbstractController
     /**
      * Remove the specified resource from storage.
      *
-     * @return array
-     *
      * @throws \Exception
      */
-    public function destroy(User $user, Output $output)
+    public function destroy(User $user, Output $output): array
     {
         $user->delete();
 
@@ -116,10 +104,8 @@ class UsersController extends AbstractController
 
     /**
      * Validate the request
-     *
-     * @return array
      */
-    protected function validateRequest(Request $request, $is_new = false)
+    protected function validateRequest(Request $request, $is_new = false): array
     {
         $rules = [
             'name' => 'required|max:100',
