@@ -2,14 +2,9 @@
 
 namespace Eclipse\Core\Foundation\Testing;
 
-use Eclipse\Core\Providers\AuthServiceProvider;
-use Eclipse\Core\Providers\CoreServiceProvider;
-use Eclipse\Core\Providers\EventServiceProvider;
-use Eclipse\Core\Providers\RouteServiceProvider;
 use Eclipse\Core\View\Grids\Users as UsersGrid;
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Livewire;
-use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase;
 
 /**
@@ -24,20 +19,10 @@ abstract class PackageTestCase extends TestCase
      */
     protected $eclipse_install = true;
 
-    protected function getPackageProviders($app)
-    {
-        // We need to manually include this class, since the AppServiceProvider is set in providers in config/app.php
-        require_once app_path('Providers/AppServiceProvider.php');
-
-        // Our additional providers
-        return [
-            AuthServiceProvider::class,
-            CoreServiceProvider::class,
-            EventServiceProvider::class,
-            RouteServiceProvider::class,
-            LivewireServiceProvider::class,
-        ];
-    }
+    /**
+     * @var bool Enable package discovery from composer.json
+     */
+    protected $enablesPackageDiscoveries = true;
 
     protected function setUp(): void
     {
@@ -63,4 +48,16 @@ abstract class PackageTestCase extends TestCase
     {
         return env('APP_BASE_PATH');
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function ignorePackageDiscoveriesFrom(): array
+    {
+        return [
+            // A list of packages that should not be auto-discovered when running tests
+            'laravel/telescope',
+        ];
+    }
+
 }
