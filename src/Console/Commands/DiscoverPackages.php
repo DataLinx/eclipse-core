@@ -33,8 +33,6 @@ class DiscoverPackages extends Command
     {
         $dir = base_path('vendor');
 
-        $this->info("Discovering Eclipse packages in $dir");
-
         $js_files = [];
         $asset_dirs = [];
 
@@ -45,6 +43,8 @@ class DiscoverPackages extends Command
 
             // If we are testing an Eclipse package...
             if (stripos($data['name'], 'eclipseapp/') === 0 and $data['name'] !== 'eclipseapp/skeleton') {
+
+                $dir = getcwd() . '/vendor';
 
                 // ... insert own package record, since discovery process below only scans the vendor folder
                 [$vendor, $name] = explode('/', $data['name']);
@@ -91,6 +91,8 @@ class DiscoverPackages extends Command
             // Skeleton is in root
             $asset_root = '../../../../vendor/';
         }
+
+        $this->info("Discovering Eclipse packages in $dir");
 
         foreach (File::directories($dir) as $vendor_dir) {
             foreach (File::directories($vendor_dir) as $package_dir) {
