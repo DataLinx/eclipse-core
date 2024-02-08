@@ -50,7 +50,7 @@ abstract class PackageTestCase extends TestCase
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function ignorePackageDiscoveriesFrom(): array
     {
@@ -59,5 +59,4 @@ abstract class PackageTestCase extends TestCase
             'laravel/telescope',
         ];
     }
-
 }

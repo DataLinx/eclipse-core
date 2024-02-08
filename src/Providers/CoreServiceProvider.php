@@ -33,7 +33,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $vendor_dir = ($_ENV['ECLIPSE_PACKAGE_DEV'] ?? false) ? '../..' : 'vendor';
 
-        require_once base_path($vendor_dir . '/datalinx/php-utils/src/fluent_helpers.php');
+        require_once base_path($vendor_dir.'/datalinx/php-utils/src/fluent_helpers.php');
 
         $this->app->singleton('context', function () {
             return new Context();

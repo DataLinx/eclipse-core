@@ -44,7 +44,7 @@ class DiscoverPackages extends Command
             // If we are testing an Eclipse package...
             if (stripos($data['name'], 'eclipseapp/') === 0 and $data['name'] !== 'eclipseapp/skeleton') {
 
-                $dir = getcwd() . '/vendor';
+                $dir = getcwd().'/vendor';
 
                 // ... insert own package record, since discovery process below only scans the vendor folder
                 [$vendor, $name] = explode('/', $data['name']);
