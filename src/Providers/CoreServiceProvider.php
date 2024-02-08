@@ -31,7 +31,9 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        require_once app_path('../vendor/datalinx/php-utils/src/fluent_helpers.php');
+        $vendor_dir = ($_ENV['ECLIPSE_PACKAGE_DEV'] ?? false) ? '../..' : 'vendor';
+
+        require_once base_path($vendor_dir . '/datalinx/php-utils/src/fluent_helpers.php');
 
         $this->app->singleton('context', function () {
             return new Context();
