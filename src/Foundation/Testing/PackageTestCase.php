@@ -2,9 +2,7 @@
 
 namespace Eclipse\Core\Foundation\Testing;
 
-use Eclipse\Core\View\Grids\Users as UsersGrid;
 use Illuminate\Support\Facades\Artisan;
-use Livewire\Livewire;
 use Orchestra\Testbench\TestCase;
 
 /**
@@ -37,8 +35,6 @@ abstract class PackageTestCase extends TestCase
         }
 
         $this->withoutVite();
-
-        Livewire::component('users-grid', UsersGrid::class);
     }
 
     /**
