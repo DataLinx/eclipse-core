@@ -99,9 +99,7 @@ class CoreServiceProvider extends ServiceProvider
         Blade::component(Alert::class);
         Blade::component(Icon::class);
 
-        if (! $this->app->environment('testing')) {
-            Livewire::component('users-grid', UsersGrid::class);
-        }
+        Livewire::component('users-grid', UsersGrid::class);
 
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     }
